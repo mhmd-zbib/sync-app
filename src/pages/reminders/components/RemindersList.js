@@ -33,6 +33,7 @@ const RemindersList = () => {
   return (
     <View>
       <FlatList
+        contentContainerStyle={{ gap: 8 }}
         data={mockData}
         renderItem={({ item }) => <ReminderItem item={item} />}
       />
