@@ -5,13 +5,18 @@ const shared = {
 const themes = {
   light: {
     ...shared,
+    primary: "white",
+    textPrimary: "white",
+    textSecondary: "#A3A3A3",
     secondary: "#141414",
-    background: "#ffffff",
+    background: "#000000",
   },
   dark: {
     ...shared,
+    primary: "white",
     textPrimary: "white",
     textSecondary: "#A3A3A3",
+    accent: "#292929",
     secondary: "#141414",
     background: "#000000",
   },

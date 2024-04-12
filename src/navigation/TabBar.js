@@ -12,13 +12,7 @@ const TabBar = () => {
   return (
     <Tab.Navigator
       screenOptions={{
-        headerStyle: {
-          backgroundColor: theme.background,
-        },
-        headerTintColor: theme.primary,
-        headerTitleStyle: {
-          fontWeight: "bold",
-        },
+        headerShown: false,
         tabBarStyle: {
           backgroundColor: theme.background,
           borderTopWidth: 0,

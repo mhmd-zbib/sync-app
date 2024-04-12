@@ -1,11 +1,12 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 import PrimaryCard from "../../../components/cards/PrimaryCard";
+import Typography from "../../../components/Text.js/Typography";
 
-const ContactItem = (item) => {
+const ContactItem = ({ item }) => {
   return (
     <PrimaryCard>
-      <Text>{item.name}</Text>
+      <Typography>{item.name} s</Typography>
     </PrimaryCard>
   );
 };
