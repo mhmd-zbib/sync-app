@@ -3,36 +3,42 @@ import React from "react";
 import ReminderItem from "./ReminderItem";
 import RemindersSection from "./RemindersSection";
 import useGroupedSections from "../../../hooks/useGroupedSections";
+import { useSort } from "../../../hooks/useSort";
+import { useFormatMonthYear } from "../../../hooks/useFormatDate";
+import Typography from "../../../components/Text.js/Typography";
 
 const RemindersList = () => {
   const mockData = [
     {
       title: "Reminder 1",
       description: " Stuff to be here",
-      dateTime: "1592205987550",
+      dateTime: 1592205987550,
       tags: [1, 2, 3, 4],
     },
     {
       title: "Stuff 1",
       description: " Stuff to be here",
-      dateTime: "1592205987550",
+      dateTime: 1593205987550,
       tags: [1, 2, 3, 4],
     },
     {
       title: "House 1",
       description: " Stuff to be here",
-      dateTime: "1712923871309",
+      dateTime: 1712923871309,
       tags: [1, 2, 3, 4],
     },
     {
       title: "Car 1",
-      description: " Stuff to be here",
-      dateTime: "18680000",
+      description: " Stuff to be hesrses",
+      dateTime: 18680000,
       tags: [1, 2, 3, 4],
     },
   ];
 
-  const sections = useGroupedSections(mockData, (item) => item.dateTime);
+  const sort = useSort.byDate(mockData, "dateTime");
+  const sections = useGroupedSections(sort, (item) =>
+    useFormatMonthYear(item.dateTime)
+  );
 
   return (
     <View>

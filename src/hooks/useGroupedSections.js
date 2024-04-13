@@ -1,27 +1,23 @@
 import { useMemo } from "react";
 
 /**
- * Custom hook for filtering and sorting group sections.
+ * Custom hook for filtering and grouping group sections.
  * @param {Array} items - The array of items to group.
  * @param {function} keyExtractor - Function that extracts the key from an item.
  * @param {function} transformKey - Optional function to transform the extracted key.
- * @param {function} sortFunction - Optional function to sort the grouped sections.
- * @returns {Array} - An array of grouped and sorted sections.
+ * @returns {Array} - An array of grouped sections.
  *
  * @example
- *  Grouping by date of birth and sorting by the number of items in each group
- * const sortedSections = useGroupedSections(
+ * Grouping by date of birth:
+ * const sections = useGroupedSections(
  *   people,
- *   item => item.dob,
- *   undefined,
- *   (a, b) => b.data.length - a.data.length
+ *   item => item.dob
  * );
  */
 const useGroupedSections = (
   items,
   keyExtractor,
-  transformKey = (key) => key,
-  sortFunction = (a, b) => a.title.localeCompare(b.title)
+  transformKey = (key) => key
 ) => {
   return useMemo(() => {
     const groups = items.reduce((sections, item) => {
@@ -33,24 +29,11 @@ const useGroupedSections = (
       return sections;
     }, {});
 
-    return Object.keys(groups)
-      .sort((key1, key2) =>
-        sortFunction(
-          {
-            title: key1,
-            data: groups[key1],
-          },
-          {
-            title: key2,
-            data: groups[key2],
-          }
-        )
-      )
-      .map((key) => ({
-        title: key,
-        data: groups[key],
-      }));
-  }, [items, keyExtractor, transformKey, sortFunction]);
+    return Object.keys(groups).map((key) => ({
+      title: key,
+      data: groups[key],
+    }));
+  }, [items, keyExtractor, transformKey]);
 };
 
 export default useGroupedSections;
