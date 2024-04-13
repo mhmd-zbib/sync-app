@@ -2,13 +2,13 @@ import { StyleSheet, ScrollView } from "react-native";
 import React, { useState } from "react";
 import Button from "../../../components/buttons/Button";
 
-const SectionPicker = ({ onChangeContent }) => {
-  const [activeIndex, setActiveIndex] = useState(0);
+const SectionPicker = ({ onChangeContent, activeContent }) => {
   const buttons = [
     { title: "All Connections", onPress: () => onChangeContent(0) },
     { title: "Groups", onPress: () => onChangeContent(1) },
     { title: "Starred", onPress: () => onChangeContent(2) },
-    { title: "Tags", onPress: () => onChangeContent(3) },
+    { title: "Tagged", onPress: () => onChangeContent(3) },
+    { title: "un-Tagged", onPress: () => onChangeContent(4) },
   ];
 
   return (
@@ -24,7 +24,7 @@ const SectionPicker = ({ onChangeContent }) => {
           key={index}
           title={button.title}
           onPress={button.onPress}
-          variant={index === activeIndex ? "primary" : "secondary"}
+          variant={index === activeContent ? "primary" : "secondary"}
         />
       ))}
     </ScrollView>

@@ -8,7 +8,13 @@ const RemindersSection = ({ dateTime }) => {
   const theme = useTheme();
 
   return (
-    <View style={{ flexDirection: "row", alignItems: "center", gap: 8 }}>
+    <View
+      style={{
+        flexDirection: "row",
+        alignItems: "center",
+        gap: 8,
+        marginBottom: 8,
+      }}>
       <Typography variant="lg" color={theme.textSecondary}>
         {dateTime.toString()}
       </Typography>

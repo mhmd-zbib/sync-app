@@ -1,26 +1,44 @@
-import { StyleSheet, Text, View } from "react-native";
 import React, { useState } from "react";
+import { StyleSheet, Text, View } from "react-native";
 import ContactsList from "./components/contacts/ContactsList";
 import SearchBar from "../../components/ui/SearchBar";
 import SectionPicker from "./components/SectionPicker";
+import GroupList from "./components/groups/GroupList";
+
+const CONTACTS = 0;
+const GROUPS = 1;
+const DEFAULT_TEXT = "Default Content";
+
+const ContentDisplay = ({ content }) => {
+  switch (content) {
+    case CONTACTS:
+      return <ContactsList />;
+    case GROUPS:
+      return <GroupList />;
+    default:
+      return <Text>{DEFAULT_TEXT}</Text>;
+  }
+};
 
 const ContactsScreen = () => {
-  const [content, setContent] = useState(0);
-
-  const handleChangeContent = (type) => {
-    setContent(type);
-  };
+  const [content, setContent] = useState(CONTACTS);
 
   return (
-    <View>
+    <View style={styles.container}>
       <SearchBar
-        containerStyle={{ marginBottom: 16 }}
-        placeHolder="Search people"
+        containerStyle={styles.searchBar}
+        placeholder="Search people"
       />
-      <SectionPicker onChangeContent={handleChangeContent} content={content} />
-      <ContactsList />
+      <SectionPicker onChangeContent={setContent} activeContent={content} />
+      <ContentDisplay content={content} />
     </View>
   );
 };
 
 export default ContactsScreen;
+
+const styles = StyleSheet.create({
+  searchBar: {
+    marginBottom: 16,
+  },
+});
