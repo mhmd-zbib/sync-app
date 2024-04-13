@@ -1,25 +1,27 @@
 import { FlatList, SectionList, StyleSheet, Text, View } from "react-native";
 import React from "react";
 import ReminderItem from "./ReminderItem";
+import RemindersSection from "./RemindersSection";
+import useGroupedSections from "../../../hooks/useGroupedSections";
 
 const RemindersList = () => {
   const mockData = [
     {
       title: "Reminder 1",
       description: " Stuff to be here",
-      dateTime: "18680000",
+      dateTime: "1592205987550",
       tags: [1, 2, 3, 4],
     },
     {
       title: "Stuff 1",
       description: " Stuff to be here",
-      dateTime: "18680000",
+      dateTime: "1592205987550",
       tags: [1, 2, 3, 4],
     },
     {
       title: "House 1",
       description: " Stuff to be here",
-      dateTime: "18680000",
+      dateTime: "1712923871309",
       tags: [1, 2, 3, 4],
     },
     {
@@ -30,12 +32,17 @@ const RemindersList = () => {
     },
   ];
 
+  const sections = useGroupedSections(mockData, (item) => item.dateTime);
+
   return (
     <View>
-      <FlatList
+      <SectionList
         contentContainerStyle={{ gap: 8 }}
-        data={mockData}
+        sections={sections}
         renderItem={({ item }) => <ReminderItem item={item} />}
+        renderSectionHeader={({ section: { title } }) => (
+          <RemindersSection dateTime={title} />
+        )}
       />
     </View>
   );

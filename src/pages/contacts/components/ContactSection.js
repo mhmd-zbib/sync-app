@@ -1,14 +1,14 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
+import Typography from "../../../components/Text.js/Typography";
+import { useTheme } from "../../../stores/ThemeStore";
 
 const ContactSection = ({ name }) => {
-  //   let firstChar = name.substring(0, 1);
-
-  console.log(name);
+  const theme = useTheme();
 
   return (
-    <View>
-      <Text>ContactSection</Text>
+    <View style={{ backgroundColor: theme.accent }}>
+      <Typography>{name}</Typography>
     </View>
   );
 };

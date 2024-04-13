@@ -1,5 +1,9 @@
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+/**
+ * Main primary card
+ */
+
 import React from "react";
+import { StyleSheet, TouchableOpacity } from "react-native";
 import { useTheme } from "../../stores/ThemeStore";
 const PrimaryCard = ({ children }) => {
   const theme = useTheme();
