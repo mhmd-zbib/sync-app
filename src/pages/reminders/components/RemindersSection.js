@@ -9,7 +9,7 @@ const RemindersSection = ({ dateTime }) => {
 
   return (
     <View style={{ flexDirection: "row", alignItems: "center", gap: 8 }}>
-      <Typography variant="" color={theme.textSecondary}>
+      <Typography variant="lg" color={theme.textSecondary}>
         {dateTime.toString()}
       </Typography>
       <View style={{ backgroundColor: theme.accent, height: 1, flex: 1 }} />

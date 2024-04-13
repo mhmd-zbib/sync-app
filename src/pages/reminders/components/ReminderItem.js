@@ -3,10 +3,7 @@ import React from "react";
 import PrimaryCard from "../../../components/cards/PrimaryCard";
 import Typography from "../../../components/Text.js/Typography";
 import { useTheme } from "../../../stores/ThemeStore";
-import {
-  useFormatMonthYear,
-  useFormatTimeDayMonth,
-} from "../../../hooks/useFormatDate";
+import DateTimeFormatter from "../../../hooks/useFormatDate";
 
 const ReminderItem = ({ item }) => {
   const theme = useTheme();
@@ -14,7 +11,7 @@ const ReminderItem = ({ item }) => {
   return (
     <PrimaryCard>
       <Typography variant="md" color={theme.textSecondary}>
-        {useFormatTimeDayMonth(item.dateTime)}
+        {DateTimeFormatter.formatTimeDayMonth(item.dateTime)}
       </Typography>
       <Typography variant="lg">{item.title}</Typography>
       {item.description ? (

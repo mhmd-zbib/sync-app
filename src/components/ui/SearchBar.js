@@ -7,21 +7,25 @@ const SearchBar = ({
   searchTerm,
   setSearchTerm,
   placeHolder = "Search",
+  containerStyle,
   children,
 }) => {
   const theme = useTheme();
 
   return (
     <View
-      style={{
-        borderWidth: 1,
-        borderColor: theme.accent,
-        borderRadius: 13,
-        paddingVertical: 12,
-        paddingHorizontal: 12,
-        display: "flex",
-        flexDirection: "row",
-      }}>
+      style={[
+        {
+          borderWidth: 1,
+          backgroundColor: theme.secondary,
+          borderRadius: 500,
+          paddingVertical: 13,
+          paddingHorizontal: 17,
+          display: "flex",
+          flexDirection: "row",
+        },
+        containerStyle,
+      ]}>
       {/* <SearchIcon width={120} height={120} /> */}
       <TextInput
         placeholder={placeHolder}

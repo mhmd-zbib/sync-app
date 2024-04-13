@@ -1,9 +1,12 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
-import Typography from "../../../components/Text.js/Typography";
-import PrimaryCard from "../../../components/cards/PrimaryCard";
-import ProfilePicture from "../../../components/cards/ProfilePicture";
-import { useTheme } from "../../../stores/ThemeStore";
+import Typography from "../../../../components/Text.js/Typography";
+import PrimaryCard from "../../../../components/cards/PrimaryCard";
+import ProfilePicture from "../../../../components/cards/ProfilePicture";
+import { useTheme } from "../../../../stores/ThemeStore";
+import DateTimeFormatter, {
+  useFormatFullDate,
+} from "../../../../hooks/useFormatDate";
 
 const ContactItem = ({ item }) => {
   const theme = useTheme();
@@ -18,7 +21,7 @@ const ContactItem = ({ item }) => {
         }}>
         <ProfilePicture name={item.name} />
         <View style={{ flex: 1 }}>
-          <Typography numberOfLines={1}>{item.name} s</Typography>
+          <Typography numberOfLines={1}>{item.name}</Typography>
         </View>
         <View
           style={{
@@ -28,7 +31,7 @@ const ContactItem = ({ item }) => {
             flexDirection: "row",
           }}>
           <Typography variant="sm" color={theme.textSecondary}>
-            DATE HERE
+            {DateTimeFormatter.formatFullDate(item.date)}
           </Typography>
         </View>
       </View>
