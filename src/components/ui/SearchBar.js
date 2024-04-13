@@ -26,7 +26,7 @@ const SearchBar = ({
         },
         containerStyle,
       ]}>
-      {/* <SearchIcon width={120} height={120} /> */}
+      {/* <Searc  hIcon width={120} height={120} /> */}
       <TextInput
         placeholder={placeHolder}
         placeholderTextColor={theme.textSecondary}

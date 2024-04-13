@@ -1,11 +1,13 @@
 import React from "react";
-import { FlatList, SectionList, StyleSheet, Text, View } from "react-native";
-import ContactItem from "./ContactItem";
-import useGroupedSections from "../../../../hooks/useGroupedSections";
-import ContactSection from "./ContactSection";
+import { FlatList } from "react-native";
 import { useSort } from "../../../../hooks/useSort";
+import ContactItem from "./ContactItem";
+import { useConnectionsSearchStore } from "../../store/useConnectionsSearchStore";
+import useSearch from "../../../../hooks/useSearch";
 
 const ContactsList = () => {
+  const searchTerm = useConnectionsSearchStore((state) => state.searchTerm);
+
   const dummyContacts = [
     {
       name: "Alice",
@@ -37,7 +39,8 @@ const ContactsList = () => {
     },
   ];
 
-  const sort = useSort.byName(dummyContacts, "name");
+  const searched = useSearch(dummyContacts, searchTerm, "name", 300);
+  const sort = useSort.byName(searched, "name");
 
   return (
     <FlatList

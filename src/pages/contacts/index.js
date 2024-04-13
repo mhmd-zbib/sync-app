@@ -4,6 +4,7 @@ import ContactsList from "./components/contacts/ContactsList";
 import SearchBar from "../../components/ui/SearchBar";
 import SectionPicker from "./components/SectionPicker";
 import GroupList from "./components/groups/GroupList";
+import { useConnectionsSearchStore } from "./store/useConnectionsSearchStore";
 
 const CONTACTS = 0;
 const GROUPS = 1;
@@ -22,12 +23,16 @@ const ContentDisplay = ({ content }) => {
 
 const ContactsScreen = () => {
   const [content, setContent] = useState(CONTACTS);
+  const setSearchTerm = useConnectionsSearchStore(
+    (state) => state.setSearchTerm
+  );
 
   return (
     <View style={styles.container}>
       <SearchBar
         containerStyle={styles.searchBar}
         placeholder="Search people"
+        setSearchTerm={setSearchTerm}
       />
       <SectionPicker onChangeContent={setContent} activeContent={content} />
       <ContentDisplay content={content} />
