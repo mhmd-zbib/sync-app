@@ -6,8 +6,6 @@ import { useConnectionsSearchStore } from "../../store/useConnectionsSearchStore
 import useSearch from "../../../../hooks/useSearch";
 
 const ContactsList = () => {
-  const searchTerm = useConnectionsSearchStore((state) => state.searchTerm);
-
   const dummyContacts = [
     {
       name: "Alice",
@@ -39,8 +37,9 @@ const ContactsList = () => {
     },
   ];
 
-  const searched = useSearch(dummyContacts, searchTerm, "name", 200);
-  const sort = useSort.byName(searched, "name");
+  const searchTerm = useConnectionsSearchStore((state) => state.searchTerm);
+  const search = useSearch(dummyContacts, searchTerm, "name", 200);
+  const sort = useSort.byName(search, "name");
 
   return (
     <FlatList

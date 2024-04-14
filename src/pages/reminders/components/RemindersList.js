@@ -7,6 +7,8 @@ import { useSort } from "../../../hooks/useSort";
 import useFormatDateTime from "../../../hooks/useFormatDate";
 import Typography from "../../../components/Text.js/Typography";
 import DateTimeFormatter from "../../../hooks/useFormatDate";
+import useSearch from "../../../hooks/useSearch";
+import { useReminderSearchStore } from "../stores/useReminderSearchStore";
 
 const RemindersList = () => {
   const mockData = [
@@ -35,8 +37,9 @@ const RemindersList = () => {
       tags: [1, 2, 3, 4],
     },
   ];
-
-  const sort = useSort.byDate(mockData, "dateTime");
+  const searchTerm = useReminderSearchStore((state) => state.searchTerm);
+  const search = useSearch(mockData, searchTerm, "title", 200);
+  const sort = useSort.byDate(search, "dateTime");
   const sections = useGroupedSections(sort, (item) =>
     DateTimeFormatter.formatMonthYear(item.dateTime)
   );

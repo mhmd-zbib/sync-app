@@ -1,14 +1,14 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 
-const App = () => {
+const CreateSync = () => {
   return (
     <View>
-      <Text>App.test</Text>
+      <Text>CreateSync</Text>
     </View>
   );
 };
 
-export default App;
+export default CreateSync;
 
 const styles = StyleSheet.create({});

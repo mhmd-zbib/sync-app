@@ -1,6 +1,5 @@
 import Realm from "realm";
 
-// Base schema
 const BaseSchema = {
   properties: {
     id: "int",
@@ -9,7 +8,6 @@ const BaseSchema = {
   },
 };
 
-// Extend the base schema for specific tables
 const ConnectionSchema = {
   name: "Connection",
   primaryKey: "id",
