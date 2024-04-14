@@ -28,7 +28,7 @@ const ContactsScreen = () => {
   );
 
   return (
-    <View style={styles.container}>
+    <View>
       <SearchBar
         containerStyle={styles.searchBar}
         placeholder="Search people"

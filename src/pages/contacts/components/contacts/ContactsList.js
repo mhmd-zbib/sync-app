@@ -39,14 +39,14 @@ const ContactsList = () => {
     },
   ];
 
-  const searched = useSearch(dummyContacts, searchTerm, "name", 300);
+  const searched = useSearch(dummyContacts, searchTerm, "name", 200);
   const sort = useSort.byName(searched, "name");
 
   return (
     <FlatList
       contentContainerStyle={{ gap: 8 }}
       data={sort}
-      keyExtractor={(item, index) => item.name + index}
+      keyExtractor={(item, index) => index}
       renderItem={({ item }) => <ContactItem item={item} />}
     />
   );
