@@ -10,7 +10,7 @@ const RemindersScreen = () => {
   return (
     <View style={{ flex: 1 }}>
       <SearchBar
-        containerStyle={{ marginBottom: 16 }}
+        containerStyle={{ marginBottom: 8 }}
         placeHolder="Search reminders"
         setSearchTerm={setSearchTerm}
       />

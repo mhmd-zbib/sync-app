@@ -45,16 +45,14 @@ const RemindersList = () => {
   );
 
   return (
-    <View>
-      <SectionList
-        contentContainerStyle={{ gap: 8 }}
-        sections={sections}
-        renderItem={({ item }) => <ReminderItem item={item} />}
-        renderSectionHeader={({ section: { title } }) => (
-          <RemindersSection dateTime={title} />
-        )}
-      />
-    </View>
+    <SectionList
+      contentContainerStyle={{ gap: 8 }}
+      sections={sections}
+      renderItem={({ item }) => <ReminderItem item={item} />}
+      renderSectionHeader={({ section: { title } }) => (
+        <RemindersSection dateTime={title} />
+      )}
+    />
   );
 };
 

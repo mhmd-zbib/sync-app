@@ -13,7 +13,8 @@ const RemindersSection = ({ dateTime }) => {
         flexDirection: "row",
         alignItems: "center",
         gap: 8,
-        marginBottom: 8,
+        marginBottom: 0,
+        marginTop: 10,
       }}>
       <Typography variant="lg" color={theme.textSecondary}>
         {dateTime.toString()}

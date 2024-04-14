@@ -10,7 +10,7 @@ const ReminderItem = ({ item }) => {
 
   return (
     <PrimaryCard>
-      <Typography variant="md" color={theme.textSecondary}>
+      <Typography variant="sm" color={theme.textSecondary}>
         {DateTimeFormatter.formatTimeDayMonth(item.dateTime)}
       </Typography>
       <Typography variant="lg">{item.title}</Typography>
