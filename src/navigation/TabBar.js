@@ -13,8 +13,10 @@ const TabBar = () => {
   const theme = useTheme();
 
   const bottomSheetModalRef = useRef();
+
   const [isModalVisible, setModalVisible] = useState(false);
   const snapPoints = useMemo(() => ["5%"], []);
+
   const handlePresentModalPress = useCallback(() => {
     bottomSheetModalRef.current?.present();
     setModalVisible(true);

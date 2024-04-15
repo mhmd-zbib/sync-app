@@ -6,10 +6,11 @@ import React from "react";
 import { StyleSheet, TouchableOpacity } from "react-native";
 import { useTheme } from "../../stores/ThemeStore";
 
-const PrimaryCard = ({ children, style }) => {
+const PrimaryCard = ({ children, style, onPress }) => {
   const theme = useTheme();
   return (
     <TouchableOpacity
+      onPress={onPress}
       activeOpacity={0.8}
       style={[
         styles.card, // Apply default styles first

@@ -1,31 +1,28 @@
-import { StyleSheet, Text, View } from "react-native";
 import React from "react";
+import { StyleSheet, Text, View } from "react-native";
 import AddButton from "./components/addButton";
 import Typography from "../../components/Text.js/Typography";
 import { useNavigation } from "@react-navigation/native";
+import useToggleAddBottomSheet from "../../stores/Navigation/useToggleAddBottomSheet";
 
+//Bottom sheet add component
 const AddToSync = () => {
   const navigation = useNavigation();
+  const { hideModal } = useToggleAddBottomSheet();
+
+  const handlePress = (screen) => () => {
+    hideModal();
+    navigation.navigate(screen);
+  };
+
   return (
     <View style={styles.container}>
       <Typography variant="lg">Add to sync</Typography>
-
-      <View
-        style={{
-          flexDirection: "row",
-          gap: 8,
-          marginTop: 12,
-          marginBottom: 25,
-        }}>
-        <AddButton
-          title={"Connection"}
-          onPress={() => {
-            navigation.navigate("AddReminder");
-          }}
-        />
-        <AddButton title={"Reminder"} />
-        <AddButton title={"Tag"} />
-        <AddButton title={"Group"} />
+      <View style={styles.buttonsContainer}>
+        <AddButton title="Connection" onPress={handlePress("AddConnection")} />
+        <AddButton title="Reminder" onPress={handlePress("AddReminder")} />
+        <AddButton title="Tag" onPress={handlePress("AddTag")} />
+        <AddButton title="Group" onPress={handlePress("AddGroup")} />
       </View>
     </View>
   );
@@ -40,10 +37,8 @@ const styles = StyleSheet.create({
   },
   buttonsContainer: {
     flexDirection: "row",
-    flexWrap: "wrap",
-  },
-  button: {
-    width: "48%",
-    margin: "1%",
+    gap: 8,
+    marginTop: 12,
+    marginBottom: 25,
   },
 });

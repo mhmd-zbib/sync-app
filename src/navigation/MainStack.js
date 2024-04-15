@@ -11,6 +11,8 @@ import { useTheme } from "../stores/ThemeStore";
 import { useColorScheme } from "react-native";
 import AddReminder from "../pages/add/subscreens/addReminder";
 import { BottomSheetModalProvider } from "@gorhom/bottom-sheet";
+import AddContact from "../pages/add/subscreens/addContact";
+import AddConnection from "../pages/add/subscreens/addContact";
 
 const Stack = createNativeStackNavigator();
 
@@ -64,6 +66,7 @@ const MainStack = () => {
             />
 
             <Stack.Screen name="AddReminder" component={AddReminder} />
+            <Stack.Screen name="AddConnection" component={AddConnection} />
           </Stack.Navigator>
         </BottomSheetModalProvider>
       </NavigationContainer>
