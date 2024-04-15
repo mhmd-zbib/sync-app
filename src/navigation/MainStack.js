@@ -9,6 +9,8 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import TabBar from "./TabBar";
 import { useTheme } from "../stores/ThemeStore";
 import { useColorScheme } from "react-native";
+import AddReminder from "../pages/add/subscreens/addReminder";
+import { BottomSheetModalProvider } from "@gorhom/bottom-sheet";
 
 const Stack = createNativeStackNavigator();
 
@@ -37,29 +39,33 @@ const MainStack = () => {
   return (
     <View style={{ flex: 1, backgroundColor: background }}>
       <NavigationContainer theme={MyTheme}>
-        <Stack.Navigator
-          initialRouteName="Reminders"
-          screenOptions={({ navigation }) => ({
-            contentStyle: {
-              paddingHorizontal: 10,
-            },
-            headerStyle: {
-              backgroundColor: background,
-              shadowColor: "transparent",
-            },
-            headerTintColor: textPrimary,
-            headerTitleStyle: {
-              fontWeight: "bold",
-            },
-          })}>
-          <Stack.Screen
-            name="Reminders"
-            component={TabBar}
-            options={({ route }) => ({
-              title: getFocusedRouteNameFromRoute(route),
-            })}
-          />
-        </Stack.Navigator>
+        <BottomSheetModalProvider>
+          <Stack.Navigator
+            initialRouteName="Reminders"
+            screenOptions={({ navigation }) => ({
+              contentStyle: {
+                paddingHorizontal: 10,
+              },
+              headerStyle: {
+                backgroundColor: background,
+                shadowColor: "transparent",
+              },
+              headerTintColor: textPrimary,
+              headerTitleStyle: {
+                fontWeight: "bold",
+              },
+            })}>
+            <Stack.Screen
+              name="Reminders"
+              component={TabBar}
+              options={({ route }) => ({
+                title: getFocusedRouteNameFromRoute(route),
+              })}
+            />
+
+            <Stack.Screen name="AddReminder" component={AddReminder} />
+          </Stack.Navigator>
+        </BottomSheetModalProvider>
       </NavigationContainer>
       <StatusBar backgroundColor={background} barStyle={"light-content"} />
     </View>

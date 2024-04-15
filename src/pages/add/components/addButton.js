@@ -16,11 +16,12 @@ const IconCont = ({ icon }) => {
   );
 };
 
-const AddButton = ({ title, icon }) => {
+const AddButton = ({ title, icon, onPress }) => {
   const theme = useTheme();
 
   return (
     <TouchableOpacity
+      onPress={onPress}
       activeOpacity={0.8}
       style={{
         flex: 1,

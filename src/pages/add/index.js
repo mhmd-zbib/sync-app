@@ -2,8 +2,10 @@ import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 import AddButton from "./components/addButton";
 import Typography from "../../components/Text.js/Typography";
+import { useNavigation } from "@react-navigation/native";
 
 const AddToSync = () => {
+  const navigation = useNavigation();
   return (
     <View style={styles.container}>
       <Typography variant="lg">Add to sync</Typography>
@@ -15,7 +17,12 @@ const AddToSync = () => {
           marginTop: 12,
           marginBottom: 25,
         }}>
-        <AddButton title={"Connection"} />
+        <AddButton
+          title={"Connection"}
+          onPress={() => {
+            navigation.navigate("AddReminder");
+          }}
+        />
         <AddButton title={"Reminder"} />
         <AddButton title={"Tag"} />
         <AddButton title={"Group"} />
