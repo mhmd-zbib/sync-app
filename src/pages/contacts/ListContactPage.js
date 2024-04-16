@@ -31,6 +31,7 @@ const ContactsScreen = () => {
     <View
       style={{
         flex: 1,
+        // gap: 24,
       }}>
       <SearchBar
         containerStyle={styles.searchBar}

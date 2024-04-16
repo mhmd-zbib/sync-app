@@ -17,11 +17,11 @@ const SearchBar = ({
       style={[
         {
           borderWidth: 1,
-          backgroundColor: theme.secondary,
-          borderRadius: 500,
-          paddingVertical: 13,
-          paddingHorizontal: 17,
-          display: "flex",
+          borderColor: theme.accent,
+          borderRadius: 12,
+          paddingVertical: 12,
+          paddingHorizontal: 12,
+          // display: "flex",
           flexDirection: "row",
         },
         containerStyle,
@@ -38,7 +38,6 @@ const SearchBar = ({
         value={searchTerm}
         onChangeText={setSearchTerm}
       />
-
       {children}
     </View>
   );

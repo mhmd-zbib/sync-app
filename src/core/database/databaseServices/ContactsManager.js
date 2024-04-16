@@ -1,4 +1,3 @@
-// ContactsManager.js
 import * as SQLite from "expo-sqlite";
 
 class ContactsManager {

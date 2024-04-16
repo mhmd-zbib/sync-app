@@ -35,7 +35,6 @@ const SectionPicker = ({ onChangeContent, activeContent }) => {
 const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
-    marginBottom: 16,
   },
   contentContainer: {
     alignItems: "center",

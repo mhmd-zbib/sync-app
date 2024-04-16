@@ -19,18 +19,15 @@ const AddContactPage = () => {
     return "secondary";
   };
 
-  useLayoutEffect(() => {
-    navigation.setOptions({
-      title: "Add Connection",
-      headerRight: () => (
-        <Button title="Create" onPress={submitForm} variant={isSubmitOn()} />
-      ),
-    });
-  }, [navigation]);
-
   return (
-    <View style={{ gap: 24 }}>
+    <View
+      style={{
+        flex: 1,
+        justifyContent: "space-between",
+        marginBottom: 24,
+      }}>
       <AddContactForm />
+      <Button title={"Next"} />
     </View>
   );
 };

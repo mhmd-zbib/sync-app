@@ -48,8 +48,8 @@ const TabBar = () => {
           name="Create"
           component={View}
           options={{
-            tabBarLabel: "Check-in",
-            tabBarIcon: ({ size, ...rest }) => <Typography>Hi</Typography>,
+            tabBarLabel: "Add",
+            // tabBarIcon: ({ size, ...rest }) => <Typography>Hi</Typography>,
           }}
           listeners={{
             tabPress: (e) => {

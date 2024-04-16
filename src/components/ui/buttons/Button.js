@@ -12,18 +12,17 @@ const Button = ({
 }) => {
   const theme = useTheme();
 
-  // Adjusted for border only on secondary variant
   const baseButtonStyle = [
     styles.button,
     variant === "secondary"
       ? {
           backgroundColor: "transparent",
-          borderColor: theme.accent, // assuming 'accent' is a defined color in the theme
+          borderColor: theme.accent,
           borderWidth: 1,
         }
       : { backgroundColor: theme.primary },
     disabled && styles.disabledButton,
-    style, // Apply custom style passed as prop
+    style,
   ];
 
   const textColor = getTextColor(theme, variant, disabled);
@@ -54,7 +53,7 @@ function getTextColor(theme, variant, disabled) {
 
 const styles = StyleSheet.create({
   button: {
-    borderRadius: 500,
+    borderRadius: 12,
     paddingVertical: 10,
     paddingHorizontal: 16,
     alignItems: "center",

@@ -16,6 +16,7 @@ const themes = {
     primary: "white",
     textPrimary: "white",
     textSecondary: "#A3A3A3",
+    textAccent: "#737373",
     accent: "#292929",
     subAccent: "#424242",
     secondary: "#141414",

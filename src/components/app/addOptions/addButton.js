@@ -3,19 +3,6 @@ import React from "react";
 import { useTheme } from "../../../stores/shared/themeStore";
 import Typography from "../../ui/text/Typography";
 
-const IconCont = ({ icon }) => {
-  const theme = useTheme();
-  return (
-    <View
-      style={{
-        width: 48,
-        height: 48,
-        backgroundColor: theme.subAccent,
-        borderRadius: 500,
-      }}></View>
-  );
-};
-
 const AddButton = ({ title, icon, onPress }) => {
   const theme = useTheme();
 
@@ -31,8 +18,6 @@ const AddButton = ({ title, icon, onPress }) => {
         borderRadius: 16,
         paddingVertical: 16,
       }}>
-      <IconCont icon={icon} />
-
       <Typography variant="sm">{title}</Typography>
     </TouchableOpacity>
   );

@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { StyleSheet, TextInput, View, Text } from "react-native";
 import { useTheme } from "../../stores/shared/themeStore";
+import Typography from "./text/Typography";
 
 const InputText = ({
   value,
   onChange,
   label,
-  placeholder = "Type here",
+  placeholder = "Type here...",
   style,
   ...props
 }) => {
@@ -18,9 +19,9 @@ const InputText = ({
 
   return (
     <View style={[styles.container, style]}>
-      {/* <Typography style={{ color: theme.textSecondary }}>{label}</Typography> */}
+      <Typography style={{ color: theme.textSecondary }}>{label}</Typography>
       <TextInput
-        placeholderTextColor={theme.textSecondary}
+        placeholderTextColor={theme.textAccent}
         style={[
           styles.input,
           {
