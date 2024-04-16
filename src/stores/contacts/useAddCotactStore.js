@@ -1,4 +1,5 @@
 import create from "zustand";
+import ContactsService from "../../services/ContactService";
 
 const useContactFormStore = create((set) => ({
   formData: {
@@ -14,6 +15,10 @@ const useContactFormStore = create((set) => ({
   submitForm: async () => {
     const { formData } = useContactFormStore.getState();
     console.log("Submitting contact", formData);
+    // ContactsService.createContact(formData);
+    const data = ContactsService.getAllContacts();
+
+    console.log(data, "this is what we got");
   },
   resetForm: () =>
     set({

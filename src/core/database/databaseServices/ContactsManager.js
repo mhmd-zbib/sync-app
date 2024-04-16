@@ -23,7 +23,10 @@ class ContactsManager {
         tx.executeSql(
           "SELECT * FROM connections;",
           [],
-          (_, result) => resolve(result.rows._array),
+          (_, result) => {
+            console.log(result.rows._array, " hi");
+            // resolve(result.rows._array._j);
+          },
           (_, error) => reject(error)
         );
       });

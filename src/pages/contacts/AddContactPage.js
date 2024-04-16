@@ -12,15 +12,18 @@ const AddContactPage = () => {
   const navigation = useNavigation();
   const { formData, submitForm } = useContactFormStore();
 
+  const isSubmitOn = () => {
+    if (formData.name) {
+      return "primary";
+    }
+    return "secondary";
+  };
+
   useLayoutEffect(() => {
     navigation.setOptions({
       title: "Add Connection",
       headerRight: () => (
-        <Button
-          title="Create"
-          onPress={submitForm}
-          variant={formData.name ? "primary" : "secondary"}
-        />
+        <Button title="Create" onPress={submitForm} variant={isSubmitOn()} />
       ),
     });
   }, [navigation]);
