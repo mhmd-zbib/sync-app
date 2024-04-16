@@ -2,12 +2,13 @@ import React, { useState, useCallback, useMemo, useRef } from "react";
 import { BottomSheetModal, BottomSheetView } from "@gorhom/bottom-sheet";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { StyleSheet, Text, View } from "react-native";
-import Typography from "../components/Text.js/Typography";
-import ContactsScreen from "../pages/contacts";
-import RemindersScreen from "../pages/reminders";
-import { useTheme } from "../stores/ThemeStore";
-import BackDrop from "../components/cards/BackDrop";
-import AddToSync from "../pages/add";
+import Typography from "../components/ui/text/Typography";
+import ContactsScreen from "../pages/contacts/ListContactPage";
+import RemindersScreen from "../pages/reminders/ListReminderPage";
+import { useTheme } from "../stores/themeStore";
+import BackDrop from "../components/ui/cards/BackDrop";
+import AddToSync from "../pages/add/AddOptionsPage";
+
 const TabBar = () => {
   const Tab = createBottomTabNavigator();
   const theme = useTheme();

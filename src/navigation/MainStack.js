@@ -7,12 +7,11 @@ import {
 } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import TabBar from "./TabBar";
-import { useTheme } from "../stores/ThemeStore";
+import { useTheme } from "../stores/themeStore";
 import { useColorScheme } from "react-native";
-import AddReminder from "../pages/add/subscreens/addReminder";
 import { BottomSheetModalProvider } from "@gorhom/bottom-sheet";
-import AddContact from "../pages/add/subscreens/addContact";
-import AddConnection from "../pages/add/subscreens/addContact";
+import AddConnection from "../pages/contacts/AddContactPage";
+import AddReminder from "../pages/reminders/AddReminderPage";
 
 const Stack = createNativeStackNavigator();
 

@@ -1,6 +1,6 @@
 import { StyleSheet, Text, TextInput, View } from "react-native";
 import React from "react";
-import { useTheme } from "../../stores/ThemeStore";
+import { useTheme } from "../../stores/themeStore";
 import SearchIcon from "../../../assets/icons/SearchIcon.svg";
 
 const SearchBar = ({
