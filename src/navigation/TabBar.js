@@ -5,7 +5,7 @@ import { StyleSheet, Text, View } from "react-native";
 import Typography from "../components/ui/text/Typography";
 import ContactsScreen from "../pages/contacts/ListContactPage";
 import RemindersScreen from "../pages/reminders/ListReminderPage";
-import { useTheme } from "../stores/themeStore";
+import { useTheme } from "../stores/shared/themeStore";
 import BackDrop from "../components/ui/cards/BackDrop";
 import AddToSync from "../pages/add/AddOptionsPage";
 
@@ -23,8 +23,8 @@ const TabBar = () => {
     setModalVisible(true);
   }, []);
   const handleCloseModal = useCallback(() => {
-    bottomSheetModalRef.current?.close();
     setModalVisible(false);
+    bottomSheetModalRef.current?.close();
   }, []);
   const handleSheetChanges = useCallback((index) => {
     if (index === -1) setModalVisible(false);
@@ -58,7 +58,7 @@ const TabBar = () => {
             },
           }}
         />
-        <Tab.Screen name="Contacts" component={ContactsScreen} />
+        <Tab.Screen name="Connections" component={ContactsScreen} />
       </Tab.Navigator>
       <BottomSheetModal
         handleIndicatorStyle={{ backgroundColor: theme.accent, width: 72 }}

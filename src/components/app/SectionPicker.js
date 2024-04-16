@@ -1,4 +1,4 @@
-import { StyleSheet, ScrollView } from "react-native";
+import { StyleSheet, ScrollView, View } from "react-native";
 import React, { useState } from "react";
 import Button from "../ui/buttons/Button";
 
@@ -12,22 +12,23 @@ const SectionPicker = ({ onChangeContent, activeContent }) => {
   ];
 
   return (
-    <ScrollView
-      horizontal={true}
-      contentOffset={{}}
-      style={styles.container}
-      showsHorizontalScrollIndicator={false}
-      contentContainerStyle={styles.contentContainer}>
-      {buttons.map((button, index) => (
-        <Button
-          style={{ marginHorizontal: 6 }}
-          key={index}
-          title={button.title}
-          onPress={button.onPress}
-          variant={index === activeContent ? "primary" : "secondary"}
-        />
-      ))}
-    </ScrollView>
+    <View>
+      <ScrollView
+        horizontal={true}
+        style={styles.container}
+        showsHorizontalScrollIndicator={false}
+        contentContainerStyle={styles.contentContainer}>
+        {buttons.map((button, index) => (
+          <Button
+            style={{ marginHorizontal: 6 }}
+            key={index}
+            title={button.title}
+            onPress={button.onPress}
+            variant={index === activeContent ? "primary" : "secondary"}
+          />
+        ))}
+      </ScrollView>
+    </View>
   );
 };
 

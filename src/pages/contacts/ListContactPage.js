@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { ScrollView, StyleSheet, Text, View } from "react-native";
 import ContactsList from "../../components/app/contacts/ContactsList";
 import SearchBar from "../../components/ui/SearchBar";
 import SectionPicker from "../../components/app/SectionPicker";
 import GroupList from "../../components/app/groups/GroupList";
-import { useConnectionsSearchStore } from "../../stores/connectionStore";
+import { useConnectionsSearchStore } from "../../stores/contacts/useConnectionsSearchStore";
 
 const CONTACTS = 0;
 const GROUPS = 1;
@@ -28,12 +28,16 @@ const ContactsScreen = () => {
   );
 
   return (
-    <View>
+    <View
+      style={{
+        flex: 1,
+      }}>
       <SearchBar
         containerStyle={styles.searchBar}
         placeholder="Search people"
         setSearchTerm={setSearchTerm}
       />
+
       <SectionPicker onChangeContent={setContent} activeContent={content} />
       <ContentDisplay content={content} />
     </View>

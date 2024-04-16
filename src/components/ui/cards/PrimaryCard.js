@@ -4,7 +4,7 @@
 
 import React from "react";
 import { StyleSheet, TouchableOpacity } from "react-native";
-import { useTheme } from "../../../stores/themeStore";
+import { useTheme } from "../../../stores/shared/themeStore";
 
 const PrimaryCard = ({ children, style, onPress }) => {
   const theme = useTheme();

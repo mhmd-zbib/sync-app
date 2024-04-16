@@ -1,6 +1,6 @@
 import React from "react";
 import { Text, StyleSheet } from "react-native";
-import { useTheme } from "../../../stores/themeStore";
+import { useTheme } from "../../../stores/shared/themeStore";
 
 const Typography = ({
   children,

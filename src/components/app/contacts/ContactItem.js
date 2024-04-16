@@ -3,7 +3,7 @@ import { StyleSheet, View } from "react-native";
 import Typography from "../../ui/text/Typography";
 import PrimaryCard from "../../ui/cards/PrimaryCard";
 import ProfilePicture from "../../ui/cards/ProfilePicture";
-import { useTheme } from "../../../stores/themeStore";
+import { useTheme } from "../../../stores/shared/themeStore";
 
 import DateTimeFormatter from "../../../hooks/useFormatDate";
 

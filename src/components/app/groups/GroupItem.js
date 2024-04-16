@@ -4,7 +4,7 @@ import Typography from "../../ui/text/Typography";
 
 import PrimaryCard from "../../ui/cards/PrimaryCard";
 import ProfilePicture from "../../ui/cards/ProfilePicture";
-import { useTheme } from "../../../stores/themeStore";
+import { useTheme } from "../../../stores/shared/themeStore";
 
 const GroupItem = ({ item }) => {
   const theme = useTheme();

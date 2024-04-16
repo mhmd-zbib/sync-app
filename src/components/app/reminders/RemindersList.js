@@ -4,10 +4,10 @@ import ReminderItem from "./ReminderItem";
 import RemindersSection from "./RemindersSection";
 import useGroupedSections from "../../../hooks/useGroupedSections";
 import { useSort } from "../../../hooks/useSort";
-
 import DateTimeFormatter from "../../../hooks/useFormatDate";
 import useSearch from "../../../hooks/useSearch";
-import { useReminderSearchStore } from "../../../stores/reminderStore";
+import { useReminderSearchStore } from "../../../stores/reminders/useReminderSearchStore";
+import EmptyList from "../EmptyList";
 
 const RemindersList = () => {
   const mockData = [
@@ -45,7 +45,8 @@ const RemindersList = () => {
 
   return (
     <SectionList
-      contentContainerStyle={{ gap: 8 }}
+      ListEmptyComponent={<EmptyList title={"reminders"} />}
+      contentContainerStyle={{ gap: 8, flex: 1 }}
       sections={sections}
       renderItem={({ item }) => <ReminderItem item={item} />}
       renderSectionHeader={({ section: { title } }) => (

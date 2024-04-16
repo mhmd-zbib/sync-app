@@ -2,7 +2,7 @@ import { Text, View } from "react-native";
 import React from "react";
 import RemindersList from "../../components/app/reminders/RemindersList";
 import SearchBar from "../../components/ui/SearchBar";
-import { useReminderSearchStore } from "../../stores/reminderStore";
+import { useReminderSearchStore } from "../../stores/reminders/useReminderSearchStore";
 
 const RemindersScreen = () => {
   const setSearchTerm = useReminderSearchStore((state) => state.setSearchTerm);

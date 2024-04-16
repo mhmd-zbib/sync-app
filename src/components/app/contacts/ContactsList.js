@@ -2,8 +2,9 @@ import React from "react";
 import { FlatList } from "react-native";
 import { useSort } from "../../../hooks/useSort";
 import ContactItem from "./ContactItem";
-import { useConnectionsSearchStore } from "../../../stores/connectionStore";
+import { useConnectionsSearchStore } from "../../../stores/contacts/useConnectionsSearchStore";
 import useSearch from "../../../hooks/useSearch";
+import EmptyList from "../EmptyList";
 
 const ContactsList = () => {
   const dummyContacts = [
@@ -43,7 +44,9 @@ const ContactsList = () => {
 
   return (
     <FlatList
-      contentContainerStyle={{ gap: 8 }}
+      style={{ flex: 1 }}
+      ListEmptyComponent={EmptyList({ title: "connections" })}
+      contentContainerStyle={{ gap: 8, flex: 1 }}
       data={sort}
       keyExtractor={(item, index) => index}
       renderItem={({ item }) => <ContactItem item={item} />}

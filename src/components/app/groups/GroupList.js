@@ -2,8 +2,9 @@ import { FlatList, StyleSheet, Text, View } from "react-native";
 import React from "react";
 import GroupItem from "./GroupItem";
 import useSearch from "../../../hooks/useSearch";
-import { useConnectionsSearchStore } from "../../../stores/connectionStore";
+import { useConnectionsSearchStore } from "../../../stores/contacts/useConnectionsSearchStore";
 import { useSort } from "../../../hooks/useSort";
+import EmptyList from "../EmptyList";
 const GroupList = () => {
   const searchTerm = useConnectionsSearchStore((state) => state.searchTerm);
 
@@ -48,11 +49,12 @@ const GroupList = () => {
   return (
     <FlatList
       data={sort}
+      ListEmptyComponent={<EmptyList title={"groups"} />}
       renderItem={({ item }) => <GroupItem item={item} />}
       keyExtractor={(item, index) => index}
       numColumns={2}
       columnWrapperStyle={{ gap: 8 }}
-      contentContainerStyle={{ width: "100%", gap: 8 }}
+      contentContainerStyle={{ width: "100%", gap: 8, flex: 1 }}
     />
   );
 };

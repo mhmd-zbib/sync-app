@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
-import { useTheme } from "../../../stores/themeStore";
+import { useTheme } from "../../../stores/shared/themeStore";
 import Typography from "../text/Typography";
 import { useGetInitials } from "../../../hooks/useGetInitials";
 

@@ -7,7 +7,7 @@ import {
 } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import TabBar from "./TabBar";
-import { useTheme } from "../stores/themeStore";
+import { useTheme } from "../stores/shared/themeStore";
 import { useColorScheme } from "react-native";
 import { BottomSheetModalProvider } from "@gorhom/bottom-sheet";
 import AddConnection from "../pages/contacts/AddContactPage";

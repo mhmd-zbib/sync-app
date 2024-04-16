@@ -1,19 +1,17 @@
-import * as SQLite from "expo-sqlite";
-
-const db = SQLite.openDatabase("syncapp.db");
+import ContactsManager from "../core/database/databaseServices/ContactsManager";
 
 const ContactsService = {
-  createContact: async (name, email, phoneNumber, tags, callback) => {
-    db.transaction((tx) => {
-      tx.executeSql(
-        `INSERT INTO connections (name, email, phone_number, tags) VALUES (?, ?, ?, ?);`,
-        [name, email, phoneNumber, tags],
-        (_, result) => callback(null, result),
-        (_, error) => callback(error)
-      );
-    });
+  createContact: async (name, email, phoneNumber, tags) => {
+    return ContactsManager.createContact(name, email, phoneNumber, tags);
   },
-  getAllContacts: async () => {},
-  getTaggedContacts: async (reminderId) => {},
+
+  getAllContacts: async () => {
+    return ContactsManager.getAllContacts();
+  },
+
+  getTaggedContacts: async (tag) => {
+    return ContactsManager.getTaggedContacts(tag);
+  },
 };
+
 export default ContactsService;

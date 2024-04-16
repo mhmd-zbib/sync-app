@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 import { useColorScheme } from "react-native";
-import themes from "../styles/theme";
+import themes from "../../styles/theme";
 const ThemeContext = createContext();
 
 export const useTheme = () => useContext(ThemeContext);
