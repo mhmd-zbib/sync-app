@@ -30,7 +30,7 @@ const ContactItem = ({ item }) => {
             flexDirection: "row",
           }}>
           <Typography variant="sm" color={theme.textSecondary}>
-            {DateTimeFormatter.formatFullDate(item.date)}
+            {DateTimeFormatter.formatFullDate(item.created_at)}
           </Typography>
         </View>
       </View>

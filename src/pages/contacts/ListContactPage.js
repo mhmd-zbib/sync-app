@@ -31,14 +31,9 @@ const ContactsScreen = () => {
     <View
       style={{
         flex: 1,
-        // gap: 24,
+        gap: 24,
       }}>
-      <SearchBar
-        containerStyle={styles.searchBar}
-        placeholder="Search people"
-        setSearchTerm={setSearchTerm}
-      />
-
+      <SearchBar placeholder="Search people" setSearchTerm={setSearchTerm} />
       <SectionPicker onChangeContent={setContent} activeContent={content} />
       <ContentDisplay content={content} />
     </View>
@@ -46,9 +41,3 @@ const ContactsScreen = () => {
 };
 
 export default ContactsScreen;
-
-const styles = StyleSheet.create({
-  searchBar: {
-    marginBottom: 16,
-  },
-});

@@ -16,12 +16,27 @@ const useSearch = (items, searchTerm, key, debounceDelay = 300) => {
   const debouncedSearchTerm = useDebounce(searchTerm, debounceDelay);
 
   return useMemo(() => {
-    if (!debouncedSearchTerm.trim()) return items;
+    if (
+      !Array.isArray(items) ||
+      typeof searchTerm !== "string" ||
+      typeof key !== "string"
+    ) {
+      return [];
+    }
+
+    if (!debouncedSearchTerm.trim()) {
+      return items;
+    }
 
     const lowercasedTerm = debouncedSearchTerm.toLowerCase();
-    return items.filter((item) =>
-      item[key]?.toString().toLowerCase().includes(lowercasedTerm)
+    const filteredItems = items.filter(
+      (item) =>
+        item.hasOwnProperty(key) &&
+        item[key]?.toString().toLowerCase().includes(lowercasedTerm)
     );
+
+    // Return empty array if no items match or if the key is not found
+    return filteredItems.length > 0 ? filteredItems : [];
   }, [items, debouncedSearchTerm, key]);
 };
 

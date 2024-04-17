@@ -8,22 +8,23 @@ const Button = ({
   onPress,
   variant = "primary",
   disabled = false,
+  size = "md",
   style,
 }) => {
   const theme = useTheme();
 
-  const baseButtonStyle = [
+  const baseButtonStyle = StyleSheet.flatten([
     styles.button,
-    variant === "secondary"
-      ? {
-          backgroundColor: "transparent",
-          borderColor: theme.accent,
-          borderWidth: 1,
-        }
-      : { backgroundColor: theme.primary },
+    styles[size],
+    variant === "secondary" && {
+      backgroundColor: "transparent",
+      borderColor: theme.accent,
+      borderWidth: 1,
+    },
+    variant !== "secondary" && { backgroundColor: theme.primary },
     disabled && styles.disabledButton,
     style,
-  ];
+  ]);
 
   const textColor = getTextColor(theme, variant, disabled);
 
@@ -32,8 +33,7 @@ const Button = ({
       onPress={onPress}
       activeOpacity={0.8}
       disabled={disabled}
-      style={baseButtonStyle} // Use the combined styles
-    >
+      style={baseButtonStyle}>
       <Typography color={textColor} fontWeight="500" variant="md">
         {title}
       </Typography>
@@ -47,19 +47,31 @@ function getTextColor(theme, variant, disabled) {
   } else if (variant === "secondary") {
     return theme.textSecondary;
   } else {
-    return theme.background; // ensure this is the correct color intended for the text
+    return theme.background;
   }
 }
 
 const styles = StyleSheet.create({
   button: {
-    borderRadius: 12,
-    paddingVertical: 10,
-    paddingHorizontal: 16,
     alignItems: "center",
+    borderRadius: 12,
+    // paddingHorizontal: 16,
+    // paddingVertical: 10,
+  },
+  sm: {
+    paddingHorizontal: 12,
+    paddingVertical: 10,
+  },
+  md: {
+    paddingHorizontal: 16,
+    paddingVertical: 16,
+  },
+  lg: {
+    paddingHorizontal: 20,
+    paddingVertical: 16,
   },
   disabledButton: {
-    opacity: 0.5,
+    opacity: 0.15,
   },
 });
 

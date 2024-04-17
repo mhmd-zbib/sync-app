@@ -26,7 +26,6 @@ const SearchBar = ({
         },
         containerStyle,
       ]}>
-      {/* <Searc  hIcon width={120} height={120} /> */}
       <TextInput
         placeholder={placeHolder}
         placeholderTextColor={theme.textSecondary}
@@ -38,7 +37,7 @@ const SearchBar = ({
         value={searchTerm}
         onChangeText={setSearchTerm}
       />
-      {children}
+      {/* {children} */}
     </View>
   );
 };

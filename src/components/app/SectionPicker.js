@@ -20,6 +20,7 @@ const SectionPicker = ({ onChangeContent, activeContent }) => {
         contentContainerStyle={styles.contentContainer}>
         {buttons.map((button, index) => (
           <Button
+            size="sm"
             style={{ marginHorizontal: 6 }}
             key={index}
             title={button.title}

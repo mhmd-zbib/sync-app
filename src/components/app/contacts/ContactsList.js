@@ -1,57 +1,59 @@
 import React from "react";
-import { FlatList } from "react-native";
-import { useSort } from "../../../hooks/useSort";
-import ContactItem from "./ContactItem";
-import { useConnectionsSearchStore } from "../../../stores/contacts/useConnectionsSearchStore";
+import { FlatList, View, Text, StyleSheet } from "react-native";
+import { useQuery } from "@tanstack/react-query";
+import ContactsService from "../../../services/ContactService";
 import useSearch from "../../../hooks/useSearch";
+import ContactItem from "./ContactItem";
 import EmptyList from "../EmptyList";
+import { useConnectionsSearchStore } from "../../../stores/contacts/useConnectionsSearchStore";
+import { useSort } from "../../../hooks/useSort";
 
 const ContactsList = () => {
-  const dummyContacts = [
-    {
-      name: "Alice",
-      dob: "01/01/1990",
-      phoneNumber: "8",
-      email: "alice@gmail.com",
-      date: 18680000,
-    },
-    {
-      name: "Cob",
-      dob: "02/02/1991",
-      phoneNumber: "4",
-      email: "bob@gmail.com",
-      date: 18680000,
-    },
-    {
-      name: "Bob",
-      dob: "02/02/1991",
-      phoneNumber: "1",
-      email: "bob@gmail.com",
-      date: 18680000,
-    },
-    {
-      name: "Charlie the thirs as fa aga",
-      dob: "03/03/1992",
-      phoneNumber: "2",
-      email: "aharlie@gmail.com",
-      date: 18680000,
-    },
-  ];
+  const {
+    data: contacts,
+    isLoading,
+    isError,
+  } = useQuery({
+    queryKey: ["contactNameList"],
+    queryFn: ContactsService.getAllContacts,
+  });
 
   const searchTerm = useConnectionsSearchStore((state) => state.searchTerm);
-  const search = useSearch(dummyContacts, searchTerm, "name", 200);
-  const sort = useSort.byName(search, "name");
+
+  const filteredContacts = useSearch(contacts, searchTerm, "name");
+  const sortedContacts = useSort.byName(filteredContacts, "name");
+
+  if (isLoading)
+    return (
+      <View style={styles.center}>
+        <Text>Loading...</Text>
+      </View>
+    );
+  if (isError)
+    return (
+      <View style={styles.center}>
+        <Text>Error fetching contacts.</Text>
+      </View>
+    );
+  if (sortedContacts.length === 0) return <EmptyList title="No connections" />;
+
+  console.log(contacts, "contacts");
 
   return (
     <FlatList
-      style={{ flex: 1 }}
-      ListEmptyComponent={EmptyList({ title: "connections" })}
-      contentContainerStyle={{ gap: 8, flex: 1 }}
-      data={sort}
-      keyExtractor={(item, index) => index}
+      style={styles.list}
+      contentContainerStyle={styles.listContainer}
+      data={sortedContacts}
+      keyExtractor={(item, index) => item.id.toString()}
       renderItem={({ item }) => <ContactItem item={item} />}
     />
   );
 };
+
+const styles = StyleSheet.create({
+  list: { flex: 1 },
+  listContainer: { gap: 8 },
+  center: { flex: 1, justifyContent: "center", alignItems: "center" },
+});
 
 export default ContactsList;

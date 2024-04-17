@@ -2,16 +2,19 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import React from "react";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import MainStack from "./src/navigation/MainStack";
-import { ThemeProvider } from "./src/stores/shared/themeStore";
+import { ThemeProvider, useTheme } from "./src/stores/shared/themeStore";
 import * as SQLite from "expo-sqlite";
 import { useEffect } from "react";
 import initDb from "./src/core/database/init";
-import { View } from "react-native";
+import * as SystemUI from "expo-system-ui";
 
 export default function App() {
   const queryClient = new QueryClient();
+  const theme = useTheme();
 
   useEffect(() => {
+    SystemUI.setBackgroundColorAsync("black");
+
     initDb();
     console.log("Tables are ready");
   }, []);

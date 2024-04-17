@@ -2,13 +2,13 @@ import ContactsManager from "../core/database/databaseServices/ContactsManager";
 
 const ContactsService = {
   createContact: async (contactData) => {
+    console.log(contactData);
     const { name, email, phoneNumber, tags } = contactData;
-    console.log("creating");
     return ContactsManager.createContact(name, email, phoneNumber, tags);
   },
 
   getAllContacts: async () => {
-    return ContactsManager.getAllContacts();
+    return await ContactsManager.getAllContacts();
   },
 
   getTaggedContacts: async (tag) => {

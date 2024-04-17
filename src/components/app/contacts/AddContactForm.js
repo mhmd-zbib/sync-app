@@ -13,6 +13,8 @@ const AddContactForm = () => {
         label={"Full Name"}
         value={formData.name}
         onChangeText={(text) => updateField("name", text)}
+        autoFocus={true}
+        returnKeyType="next"
       />
       <InputText
         label={"Phone Number"}

@@ -35,6 +35,7 @@ const TabBar = () => {
     <>
       <Tab.Navigator
         screenOptions={{
+          tabBarHideOnKeyboard: true,
           headerShown: false,
           tabBarStyle: {
             backgroundColor: theme.background,

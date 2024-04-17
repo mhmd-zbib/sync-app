@@ -1,34 +1,49 @@
-import { StyleSheet, Text, View } from "react-native";
-import React, { useLayoutEffect, useState } from "react";
-import InputText from "../../components/ui/InputText";
-import AddContactForm from "../../components/app/contacts/AddContactForm";
 import { useNavigation } from "@react-navigation/native";
-import Typography from "../../components/ui/text/Typography";
-import ContactsService from "../../services/ContactService";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import React, { useCallback } from "react";
+import { KeyboardAvoidingView, StyleSheet, View } from "react-native";
+import AddContactForm from "../../components/app/contacts/AddContactForm";
 import Button from "../../components/ui/buttons/Button";
+import ContactsService from "../../services/ContactService";
 import useContactFormStore from "../../stores/contacts/useAddCotactStore";
+import ContactsManager from "../../core/database/databaseServices/ContactsManager";
 
 const AddContactPage = () => {
   const navigation = useNavigation();
-  const { formData, submitForm } = useContactFormStore();
+  const formData = useContactFormStore((state) => state.formData);
+  const resetForm = useContactFormStore((state) => state.resetForm);
+  const queryClient = useQueryClient();
 
-  const isSubmitOn = () => {
-    if (formData.name) {
-      return "primary";
-    }
-    return "secondary";
+  const { mutate, data, error } = useMutation({
+    mutationFn: (formData) => ContactsService.createContact(formData),
+    onSuccess: () => {
+      resetForm();
+      queryClient.refetchQueries(["contactNameList"]);
+    },
+    onError: (error) => {
+      console.error("error:", error);
+    },
+  });
+
+  const submitForm = () => {
+    mutate(formData);
   };
 
   return (
-    <View
+    <KeyboardAvoidingView
       style={{
         flex: 1,
         justifyContent: "space-between",
         marginBottom: 24,
       }}>
       <AddContactForm />
-      <Button title={"Next"} />
-    </View>
+      <Button
+        title={"Next"}
+        onPress={submitForm}
+        variant="lg"
+        disabled={!formData.name}
+      />
+    </KeyboardAvoidingView>
   );
 };
 

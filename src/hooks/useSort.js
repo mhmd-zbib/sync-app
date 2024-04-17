@@ -11,4 +11,3 @@ export class useSort {
     return [...items].sort((a, b) => a[key] - b[key]);
   }
 }
-    
