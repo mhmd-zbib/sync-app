@@ -3,11 +3,11 @@ import ContactsManager from "../core/database/databaseServices/ContactsManager";
 const ContactsService = {
   createContact: async (contactData) => {
     console.log(contactData);
-    const { name, email, phoneNumber, tags } = contactData;
+    const { name, email, phoneNumber, links } = contactData;
 
     if (!name) return;
 
-    return ContactsManager.createContact(name, email, phoneNumber, tags);
+    return ContactsManager.createContact(name, email, phoneNumber, links);
   },
 
   getAllContacts: async () => {

@@ -8,7 +8,7 @@ const AddContactName = () => {
   const { formData, updateField } = useContactFormStore();
 
   return (
-    <View style={{ gap: 24, marginTop: 32 }}>
+    <View style={{ gap: 24 }}>
       <InputText
         label={"Full Name"}
         value={formData.name}

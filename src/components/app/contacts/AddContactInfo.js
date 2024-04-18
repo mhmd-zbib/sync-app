@@ -10,14 +10,13 @@ const AddContactInfo = () => {
   const { formData, updateField, previousStep } = useContactFormStore();
 
   return (
-    <View style={{ gap: 24, marginTop: 32 }}>
+    <View style={{ gap: 24 }}>
       <InputText
         keyboardType="phone-pad"
         defaultCode="US"
         placeholder="00 000 000"
         label={"Phone Number"}
         value={formData.phoneNumber}
-        autoFocus={true}
         onChangeText={(text) => updateField("phoneNumber", text)}
       />
       <InputText

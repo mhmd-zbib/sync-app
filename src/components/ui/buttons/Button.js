@@ -21,7 +21,12 @@ const Button = ({
       borderColor: theme.accent,
       borderWidth: 1,
     },
-    variant !== "secondary" && { backgroundColor: theme.primary },
+    variant === "neutral" && {
+      backgroundColor: theme.secondary, // Assuming 'neutral' is defined in your theme
+    },
+    variant === "primary" && {
+      backgroundColor: theme.primary,
+    },
     disabled && styles.disabledButton,
     style,
   ]);
@@ -44,7 +49,7 @@ const Button = ({
 function getTextColor(theme, variant, disabled) {
   if (disabled) {
     return theme.disabledText;
-  } else if (variant === "secondary") {
+  } else if (variant === "secondary" || variant === "neutral") {
     return theme.textSecondary;
   } else {
     return theme.background;
@@ -55,8 +60,6 @@ const styles = StyleSheet.create({
   button: {
     alignItems: "center",
     borderRadius: 12,
-    // paddingHorizontal: 16,
-    // paddingVertical: 10,
   },
   sm: {
     paddingHorizontal: 12,

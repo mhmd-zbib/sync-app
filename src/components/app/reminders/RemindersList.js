@@ -46,8 +46,9 @@ const RemindersList = () => {
   return (
     <SectionList
       ListEmptyComponent={<EmptyList title={"reminders"} />}
-      contentContainerStyle={{ gap: 8, flex: 1 }}
+      contentContainerStyle={{ gap: 8 }}
       sections={sections}
+      style={{ flex: 1 }}
       renderItem={({ item }) => <ReminderItem item={item} />}
       renderSectionHeader={({ section: { title } }) => (
         <RemindersSection dateTime={title} />

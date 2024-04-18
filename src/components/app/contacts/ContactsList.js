@@ -37,8 +37,6 @@ const ContactsList = () => {
     );
   if (sortedContacts.length === 0) return <EmptyList title="No connections" />;
 
-  console.log(contacts, "contacts");
-
   return (
     <FlatList
       style={styles.list}

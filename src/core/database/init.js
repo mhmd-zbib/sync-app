@@ -8,7 +8,6 @@ const tableSchemas = [
       name TEXT,
       email TEXT,
       phone_number TEXT,
-      tags TEXT,
       created_at INTEGER
   )`,
   `CREATE TABLE IF NOT EXISTS reminders (
@@ -18,6 +17,13 @@ const tableSchemas = [
     description TEXT,
     created_at INTEGER
    );`,
+  `CREATE TABLE IF NOT EXISTS social_links(
+    link_id INTEGER PRIMARY KEY NOT NULL,
+    connection_id INTEGER,
+    platform TEXT,
+    url TEXT,
+    FOREIGN KEY (connection_id) REFERENCES connections(id)
+  )`,
 ];
 // `CREATE TABLE IF NOT EXISTS groups (
 //     id INTEGER PRIMARY KEY NOT NULL,

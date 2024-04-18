@@ -13,7 +13,7 @@ const GoBackButton = ({ onPress }) => {
       style={{
         alignSelf: "center",
 
-        backgroundColor: theme.primary,
+        backgroundColor: theme.secondary,
         borderRadius: 4,
 
         alignItems: "center",

@@ -7,6 +7,7 @@ import * as SQLite from "expo-sqlite";
 import { useEffect } from "react";
 import initDb from "./src/core/database/init";
 import * as SystemUI from "expo-system-ui";
+import { View } from "react-native";
 
 export default function App() {
   const queryClient = new QueryClient();
@@ -24,8 +25,9 @@ export default function App() {
       <GestureHandlerRootView iew style={{ flex: 1 }}>
         <ThemeProvider>
           {/* <Test /> */}
-
-          <MainStack />
+          <View style={{ flex: 1 }}>
+            <MainStack />
+          </View>
         </ThemeProvider>
       </GestureHandlerRootView>
     </QueryClientProvider>
