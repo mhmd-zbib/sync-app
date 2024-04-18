@@ -4,6 +4,9 @@ const ContactsService = {
   createContact: async (contactData) => {
     console.log(contactData);
     const { name, email, phoneNumber, tags } = contactData;
+
+    if (!name) return;
+
     return ContactsManager.createContact(name, email, phoneNumber, tags);
   },
 

@@ -1,52 +1,51 @@
-import { useNavigation } from "@react-navigation/native";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
-import React, { useCallback } from "react";
-import { KeyboardAvoidingView, StyleSheet, View } from "react-native";
-import AddContactForm from "../../components/app/contacts/AddContactForm";
+import React from "react";
+import { useContactForm } from "../../hooks/contacts/useContactForm";
+
+import useContactNavigation from "../../hooks/contacts/useContactNavigation";
+import AddContactInfo from "../../components/app/contacts/AddContactInfo";
+import AddContactLinks from "../../components/app/contacts/AddContactLinks";
+import AddContactName from "../../components/app/contacts/AddContactName";
 import Button from "../../components/ui/buttons/Button";
-import ContactsService from "../../services/ContactService";
+import { View } from "react-native";
 import useContactFormStore from "../../stores/contacts/useAddCotactStore";
-import ContactsManager from "../../core/database/databaseServices/ContactsManager";
 
 const AddContactPage = () => {
-  const navigation = useNavigation();
+  const { submitForm } = useContactForm();
+  const navigation = useContactNavigation();
   const formData = useContactFormStore((state) => state.formData);
-  const resetForm = useContactFormStore((state) => state.resetForm);
-  const queryClient = useQueryClient();
+  const { step, nextStep } = useContactFormStore((state) => ({
+    step: state.step,
+    nextStep: state.nextStep,
+  }));
 
-  const { mutate, data, error } = useMutation({
-    mutationFn: (formData) => ContactsService.createContact(formData),
-    onSuccess: () => {
-      resetForm();
-      queryClient.refetchQueries(["contactNameList"]);
-    },
-    onError: (error) => {
-      console.error("error:", error);
-    },
-  });
-
-  const submitForm = () => {
-    mutate(formData);
+  const renderStep = () => {
+    switch (step) {
+      case 0:
+        return <AddContactName formData={formData} />;
+      case 1:
+        return <AddContactInfo formData={formData} />;
+      case 2:
+        return <AddContactLinks formData={formData} />;
+      default:
+        return null;
+    }
   };
 
   return (
-    <KeyboardAvoidingView
+    <View
       style={{
         flex: 1,
         justifyContent: "space-between",
         marginBottom: 24,
       }}>
-      <AddContactForm />
+      {renderStep()}
       <Button
-        title={"Next"}
-        onPress={submitForm}
-        variant="lg"
         disabled={!formData.name}
+        title={step === 2 ? "Submit" : "Next"}
+        onPress={step < 2 ? nextStep : submitForm}
       />
-    </KeyboardAvoidingView>
+    </View>
   );
 };
 
 export default AddContactPage;
-
-const styles = StyleSheet.create({});

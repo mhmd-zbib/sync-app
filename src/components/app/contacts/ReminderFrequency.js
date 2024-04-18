@@ -10,11 +10,11 @@ const ReminderFrequency = () => {
 
   console.log(selectedFrequency);
 
-  const frequencies = ["1w", "2w", "3w", "1m"]; // The frequency options
+  const frequencies = ["1w", "2w", "3w", "1m"];
 
   return (
     <View style={styles.container}>
-      <Typography color={theme.textSecondary}>Reminder</Typography>
+      <Typography color={theme.textSecondary}>Reminder Frequency</Typography>
       <View style={styles.buttonContainer}>
         {frequencies.map((freq) => (
           <Button
@@ -34,14 +34,12 @@ const ReminderFrequency = () => {
 export default ReminderFrequency;
 
 const styles = StyleSheet.create({
-  container: {
-    padding: 10,
-  },
+  container: { paddingBottom: 10 },
   buttonContainer: {
     gap: 8,
     flexDirection: "row",
     justifyContent: "space-between",
-    marginTop: 10,
+    marginTop: 15,
   },
   button: {
     paddingHorizontal: 20,

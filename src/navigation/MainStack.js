@@ -12,12 +12,14 @@ import { useColorScheme } from "react-native";
 import { BottomSheetModalProvider } from "@gorhom/bottom-sheet";
 import AddConnection from "../pages/contacts/AddContactPage";
 import AddReminder from "../pages/reminders/AddReminderPage";
+import GoBackButton from "../components/ui/buttons/GoBackButton";
 
 const Stack = createNativeStackNavigator();
 
 const MainStack = () => {
   const { background, textPrimary } = useTheme();
   const colorScheme = useColorScheme();
+  // const navigation = useNavigation
 
   const barStyle = () => {
     if (colorScheme === "dark") {
@@ -44,6 +46,11 @@ const MainStack = () => {
           <Stack.Navigator
             initialRouteName="Reminders"
             screenOptions={({ navigation }) => ({
+              headerLeft: () =>
+                navigation.canGoBack() ? (
+                  <GoBackButton onPress={() => navigation.goBack()} />
+                ) : null,
+              headerTitleAlign: "center",
               contentStyle: {
                 paddingHorizontal: 10,
               },
@@ -52,9 +59,6 @@ const MainStack = () => {
                 shadowColor: "transparent",
               },
               headerTintColor: textPrimary,
-              headerTitleStyle: {
-                fontWeight: "bold",
-              },
             })}>
             <Stack.Screen
               name="Reminders"
