@@ -2,7 +2,6 @@ import React, { useState, useCallback, useMemo, useRef } from "react";
 import { BottomSheetModal, BottomSheetView } from "@gorhom/bottom-sheet";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { StyleSheet, Text, View } from "react-native";
-import Typography from "../components/ui/text/Typography";
 import ContactsScreen from "../pages/contacts/ListContactPage";
 import RemindersScreen from "../pages/reminders/ListReminderPage";
 import { useTheme } from "../stores/shared/themeStore";

@@ -42,8 +42,8 @@ const sizes = {
     fontSize: 18,
   },
   lg: {
-    height: 72,
-    width: 72,
+    height: 80,
+    width: 80,
     fontSize: 24,
   },
 };

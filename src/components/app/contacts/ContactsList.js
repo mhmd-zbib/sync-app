@@ -7,6 +7,7 @@ import ContactItem from "./ContactItem";
 import EmptyList from "../EmptyList";
 import { useConnectionsSearchStore } from "../../../stores/contacts/useConnectionsSearchStore";
 import { useSort } from "../../../hooks/useSort";
+import { useNavigation } from "@react-navigation/native";
 
 const ContactsList = () => {
   const {
@@ -19,9 +20,9 @@ const ContactsList = () => {
   });
 
   const searchTerm = useConnectionsSearchStore((state) => state.searchTerm);
-
   const filteredContacts = useSearch(contacts, searchTerm, "name");
   const sortedContacts = useSort.byName(filteredContacts, "name");
+  const navigation = useNavigation();
 
   if (isLoading)
     return (
@@ -37,13 +38,19 @@ const ContactsList = () => {
     );
   if (sortedContacts.length === 0) return <EmptyList title="No connections" />;
 
+  const navigateToProfile = () => {
+    navigation.navigate("ContactDetails");
+  };
+
   return (
     <FlatList
       style={styles.list}
       contentContainerStyle={styles.listContainer}
       data={sortedContacts}
       keyExtractor={(item, index) => item.id.toString()}
-      renderItem={({ item }) => <ContactItem item={item} />}
+      renderItem={({ item }) => (
+        <ContactItem onPress={navigateToProfile} item={item} />
+      )}
     />
   );
 };

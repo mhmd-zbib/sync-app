@@ -6,10 +6,12 @@ import GoBackButton from "../../components/ui/buttons/GoBackButton";
 import Typography from "../../components/ui/text/Typography";
 import { useTheme } from "../../stores/shared/themeStore";
 import useContactFormStore from "../../stores/contacts/useAddCotactStore";
+import { TouchableOpacity } from "@gorhom/bottom-sheet";
 
 const useContactNavigation = () => {
   const theme = useTheme();
   const navigation = useNavigation();
+  const { submitForm } = useContactForm();
 
   const formData = useContactFormStore((state) => state.formData);
   const { step, previousStep } = useContactFormStore((state) => ({
@@ -28,7 +30,9 @@ const useContactNavigation = () => {
 
       headerRight: () =>
         step === 0 ? null : (
-          <Typography color={theme.textSecondary}>Skip</Typography>
+          <TouchableOpacity activeOpacity={0.8} onPress={submitForm}>
+            <Typography color={theme.textSecondary}>Skip</Typography>
+          </TouchableOpacity>
         ),
     });
   }, [navigation, formData.name, step, previousStep]);

@@ -13,6 +13,7 @@ import { BottomSheetModalProvider } from "@gorhom/bottom-sheet";
 import AddConnection from "../pages/contacts/AddContactPage";
 import AddReminder from "../pages/reminders/AddReminderPage";
 import GoBackButton from "../components/ui/buttons/GoBackButton";
+import DetailsContactPage from "../pages/contacts/DetailsContactPage";
 
 const Stack = createNativeStackNavigator();
 
@@ -70,6 +71,11 @@ const MainStack = () => {
 
             <Stack.Screen name="AddReminder" component={AddReminder} />
             <Stack.Screen name="AddConnection" component={AddConnection} />
+
+            <Stack.Screen
+              name="ContactDetails"
+              component={DetailsContactPage}
+            />
           </Stack.Navigator>
         </BottomSheetModalProvider>
       </NavigationContainer>

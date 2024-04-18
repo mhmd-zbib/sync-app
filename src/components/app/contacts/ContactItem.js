@@ -7,10 +7,10 @@ import { useTheme } from "../../../stores/shared/themeStore";
 
 import DateTimeFormatter from "../../../hooks/useFormatDate";
 
-const ContactItem = ({ item }) => {
+const ContactItem = ({ onPress, item }) => {
   const theme = useTheme();
   return (
-    <PrimaryCard>
+    <PrimaryCard onPress={onPress}>
       <View
         style={{
           display: "flex",

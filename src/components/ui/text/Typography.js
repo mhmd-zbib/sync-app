@@ -39,6 +39,7 @@ const getTypographyStyles = (theme, variant) => {
   const variantStyles = {
     p: { fontSize: 14 },
     lg: { fontSize: 16 },
+    xlg: { fontSize: 20 },
     md: { fontSize: 14 },
     sm: { fontSize: 12 },
     al: { fontSize: 14 },
