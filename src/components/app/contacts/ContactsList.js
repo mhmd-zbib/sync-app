@@ -36,10 +36,10 @@ const ContactsList = () => {
         <Text>Error fetching contacts.</Text>
       </View>
     );
-  if (sortedContacts.length === 0) return <EmptyList title="No connections" />;
+  if (sortedContacts.length === 0) return <EmptyList title="connections" />;
 
-  const navigateToProfile = () => {
-    navigation.navigate("ContactDetails");
+  const navigateToProfile = (id) => {
+    navigation.navigate("ContactDetails", { userId: id });
   };
 
   return (
@@ -49,7 +49,7 @@ const ContactsList = () => {
       data={sortedContacts}
       keyExtractor={(item, index) => item.id.toString()}
       renderItem={({ item }) => (
-        <ContactItem onPress={navigateToProfile} item={item} />
+        <ContactItem onPress={() => navigateToProfile(item.id)} item={item} />
       )}
     />
   );
@@ -57,7 +57,7 @@ const ContactsList = () => {
 
 const styles = StyleSheet.create({
   list: { flex: 1 },
-  listContainer: { gap: 8 },
+  listContainer: { gap: 8, marginHorizontal: 10 },
   center: { flex: 1, justifyContent: "center", alignItems: "center" },
 });
 

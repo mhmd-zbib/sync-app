@@ -1,18 +1,62 @@
-import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
-import ContactDetailsTab from "./ContactDetailsTab";
-import ContactNotesTab from "./ContactNotesTab";
+import React, { useState } from "react";
+import { View, StyleSheet, Dimensions } from "react-native";
+import { TabView, SceneMap, TabBar } from "react-native-tab-view";
+import ContactInfo from "./info/ContactInfo";
+import { useTheme } from "../../../stores/shared/themeStore";
 
-const Tab = createMaterialTopTabNavigator();
+const SecondRoute = () => (
+  <View style={[styles.scene, { backgroundColor: "#673ab7" }]} />
+);
 
-const ContactOptionsTable = () => {
-  return (
-    <Tab.Navigator>
-      <Tab.Screen name="Home" component={ContactDetailsTab} />
-      <Tab.Screen name="Settings" component={ContactNotesTab} />
-    </Tab.Navigator>
+const ThirdRoute = () => (
+  <View style={[styles.scene, { backgroundColor: "#009688" }]} />
+);
+
+const initialLayout = { width: Dimensions.get("window").width };
+
+export default function ContactOptionsTable() {
+  const theme = useTheme();
+
+  const [index, setIndex] = useState(0);
+  const [routes] = useState([
+    { key: "first", title: "Info" },
+    { key: "second", title: "Notes" },
+    { key: "third", title: "Reminders" },
+    // { key: "fourth", title: "Groups" },
+  ]);
+
+  const renderScene = SceneMap({
+    first: ContactInfo,
+    second: SecondRoute,
+    third: ThirdRoute,
+  });
+
+  const renderTabBar = (props) => (
+    <TabBar
+      {...props}
+      indicatorStyle={{ backgroundColor: "white" }}
+      style={{
+        backgroundColor: "transparent",
+        borderBottomWidth: 1,
+        borderColor: theme.accent,
+      }}
+    />
   );
-};
 
-export default ContactOptionsTable;
+  return (
+    <TabView
+      navigationState={{ index, routes }}
+      renderScene={renderScene}
+      renderTabBar={renderTabBar}
+      onIndexChange={setIndex}
+      initialLayout={initialLayout}
+      style={styles.tabView}
+    />
+  );
+}
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  scene: {
+    flex: 1,
+  },
+});

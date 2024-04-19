@@ -3,6 +3,8 @@ import React from "react";
 import ProfilePicture from "../../ui/cards/ProfilePicture";
 import Typography from "../../ui/text/Typography";
 import { useTheme } from "../../../stores/shared/themeStore";
+import { useContactDetailsStore } from "../../../stores/contacts/useContactDetailsStore";
+import ContactSocialLinks from "./ContactSocialLinks";
 
 const ButtonReminder = ({ title, onPress }) => {
   const theme = useTheme();
@@ -25,22 +27,24 @@ const ButtonReminder = ({ title, onPress }) => {
 };
 
 const ContactProfileHeader = () => {
+  const { name } = useContactDetailsStore((state) => state.contactDetails);
+
   return (
     <View
       style={{
-        marginHorizontal: 20,
         flexDirection: "row",
         gap: 16,
+        marginHorizontal: 10,
       }}>
-      <ProfilePicture name={"Janno Carlitz"} size="lg" />
+      <ProfilePicture name={name} size="lg" />
 
       <View style={{ justifyContent: "space-around" }}>
-        <Typography variant="xlg">Janno Stuff</Typography>
+        <Typography variant="xlg">{name}</Typography>
 
-        <View style={{ flexDirection: "row", gap: 6 }}>
+        {/* <View style={{ flexDirection: "row", gap: 6 }}>
           <ButtonReminder title={"Birthday"} />
           <ButtonReminder title={"Birthday"} />
-        </View>
+        </View> */}
       </View>
     </View>
   );

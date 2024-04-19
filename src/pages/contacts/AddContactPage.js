@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "space-between",
     marginBottom: 24,
-    marginTop: 32,
+    marginHorizontal: 10,
   },
   contentContainer: {
     flexGrow: 1,

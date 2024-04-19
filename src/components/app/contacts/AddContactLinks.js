@@ -58,7 +58,7 @@ const AddContactLinks = () => {
           <Typography>{platform || "Platform"}</Typography>
         </TouchableOpacity>
       </View>
-      <Button title="Add" onPress={handleAddLink} variant="neutral" />
+      <Button title="Add" onPress={handleAddLink} variant="accent" />
       <ScrollView contentContainerStyle={{ gap: 10 }}>
         {links.map((item, index) => (
           <AddContactSocialCard

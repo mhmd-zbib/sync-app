@@ -21,8 +21,8 @@ const Button = ({
       borderColor: theme.accent,
       borderWidth: 1,
     },
-    variant === "neutral" && {
-      backgroundColor: theme.secondary, // Assuming 'neutral' is defined in your theme
+    variant === "accent" && {
+      backgroundColor: theme.secondary, // Assuming 'accent' is defined in your theme
     },
     variant === "primary" && {
       backgroundColor: theme.primary,
@@ -49,7 +49,7 @@ const Button = ({
 function getTextColor(theme, variant, disabled) {
   if (disabled) {
     return theme.disabledText;
-  } else if (variant === "secondary" || variant === "neutral") {
+  } else if (variant === "secondary" || variant === "accent") {
     return theme.textSecondary;
   } else {
     return theme.background;

@@ -26,6 +26,7 @@ const AddReminderPage = () => {
         style={{ marginTop: 24 }}
       />
       <InputText
+        label={"Task Description"}
         multiline
         placeholder="Task Description"
         style={{ marginTop: 24 }}

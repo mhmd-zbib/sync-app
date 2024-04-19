@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { ScrollView, StyleSheet, Text, View } from "react-native";
-import ContactsList from "../../components/app/contacts/ContactsList";
-import SearchBar from "../../components/ui/SearchBar";
+import { Text, View } from "react-native";
 import SectionPicker from "../../components/app/SectionPicker";
+import ContactsList from "../../components/app/contacts/ContactsList";
 import GroupList from "../../components/app/groups/GroupList";
+import SearchBar from "../../components/ui/SearchBar";
 import { useConnectionsSearchStore } from "../../stores/contacts/useConnectionsSearchStore";
 
 const CONTACTS = 0;
@@ -33,7 +33,11 @@ const ContactsScreen = () => {
         flex: 1,
         gap: 24,
       }}>
-      <SearchBar placeholder="Search people" setSearchTerm={setSearchTerm} />
+      <SearchBar
+        placeHolder="Search people"
+        setSearchTerm={setSearchTerm}
+        containerStyle={{ marginHorizontal: 10 }}
+      />
       <SectionPicker onChangeContent={setContent} activeContent={content} />
       <ContentDisplay content={content} />
     </View>

@@ -2,11 +2,40 @@ import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 import ContactProfileHeader from "../../components/app/contactDetails/ContactProfileHeader";
 import ContactOptionsTable from "../../components/app/contactDetails/ContactOptionsTable";
+import ContactsService from "../../services/ContactService";
+import { useQuery } from "@tanstack/react-query";
+import { useContactDetailsStore } from "../../stores/contacts/useContactDetailsStore";
+import Typography from "../../components/ui/text/Typography";
+import ContactSocialLinks from "../../components/app/contactDetails/ContactSocialLinks";
 
-const DetailsContactPage = () => {
+const DetailsContactPage = ({ route }) => {
+  const { userId } = route.params;
+  const setContactDetails = useContactDetailsStore(
+    (state) => state.setContactDetails
+  );
+
+  const {
+    data: contactDetails,
+    isLoading,
+    isSuccess,
+  } = useQuery({
+    queryKey: ["contactDetails"],
+    queryFn: () => ContactsService.getContactDetails(userId),
+  });
+
+  if (isSuccess) {
+    setContactDetails(contactDetails);
+    console.log("done");
+  }
+
+  if (isLoading) {
+    return <Typography>Loading...</Typography>;
+  }
+
   return (
-    <View style={{ marginTop: 32 }}>
+    <View style={{ flex: 1, gap: 20 }}>
       <ContactProfileHeader />
+      <ContactSocialLinks />
       <ContactOptionsTable />
     </View>
   );

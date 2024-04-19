@@ -1,14 +1,14 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 
-const ContactDetailsTab = () => {
+const ContactNotes = () => {
   return (
     <View>
-      <Text>ContactDetailsTab</Text>
+      <Text>ContactNotes</Text>
     </View>
   );
 };
 
-export default ContactDetailsTab;
+export default ContactNotes;
 
 const styles = StyleSheet.create({});

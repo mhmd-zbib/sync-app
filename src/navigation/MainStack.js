@@ -48,14 +48,13 @@ const MainStack = () => {
             initialRouteName="Reminders"
             screenOptions={({ navigation }) => ({
               headerLeft: () =>
-                navigation.canGoBack() ? (
+                navigation.canGoBack() && (
                   <GoBackButton onPress={() => navigation.goBack()} />
-                ) : null,
+                ),
               headerTitleAlign: "center",
-              contentStyle: {
-                paddingHorizontal: 10,
-              },
+
               headerStyle: {
+                paddingVertical: 24,
                 backgroundColor: background,
                 shadowColor: "transparent",
               },

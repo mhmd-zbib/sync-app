@@ -58,8 +58,27 @@ class ContactsManager {
     console.log("Socials added");
   }
 
+  async addContactDescription(id, description) {
+    return this.createSQL(
+      "UPDATE connections SET description = ?  WHERE id = ? ;",
+      [description, id]
+    );
+  }
+
   getAllContacts() {
     return this.readSQL("SELECT * FROM connections;");
+  }
+
+  getContactDetails(id) {
+    console.log(`Fetching details for ID: ${id}`);
+    return this.readSQL("SELECT * FROM connections WHERE id = ?", [id]);
+  }
+
+  getContactSocialLinks(id) {
+    return this.readSQL(
+      "SELECT platform, url FROM social_links WHERE connection_id = ? ",
+      [id]
+    );
   }
 
   getTaggedContacts(tag) {

@@ -12,10 +12,8 @@ const GoBackButton = ({ onPress }) => {
       onPress={onPress}
       style={{
         alignSelf: "center",
-
         backgroundColor: theme.secondary,
         borderRadius: 4,
-
         alignItems: "center",
         justifyContent: "center",
         width: 32,

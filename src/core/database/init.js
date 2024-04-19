@@ -8,6 +8,7 @@ const tableSchemas = [
       name TEXT,
       email TEXT,
       phone_number TEXT,
+      description TEXT,
       created_at INTEGER
   )`,
   `CREATE TABLE IF NOT EXISTS reminders (
