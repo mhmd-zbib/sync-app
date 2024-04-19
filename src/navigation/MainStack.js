@@ -52,7 +52,9 @@ const MainStack = () => {
                   <GoBackButton onPress={() => navigation.goBack()} />
                 ),
               headerTitleAlign: "center",
-
+              contentStyle: {
+                paddingTop: 20,
+              },
               headerStyle: {
                 paddingVertical: 24,
                 backgroundColor: background,

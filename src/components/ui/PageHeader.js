@@ -12,7 +12,7 @@ const CustomHeader = ({ title, onBackPress, navigation }) => {
       style={{
         backgroundColor: theme.background,
         flexDirection: "row",
-        paddingVertical: 24,
+        paddingVertical: 16,
         flexDirection: "row",
         alignItems: "center",
         justifyContent: "center",

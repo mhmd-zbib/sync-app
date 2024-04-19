@@ -1,4 +1,3 @@
-// ContactEditDescription.js
 import React, { useState } from "react";
 import { Modal, StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import CustomHeader from "../../../ui/PageHeader";
@@ -27,6 +26,8 @@ const ContactEditDescription = ({ isVisible, onClose, description }) => {
     setDesc(description);
   };
 
+  console.log(description);
+
   return (
     <Modal
       animationType="slide"
@@ -41,7 +42,12 @@ const ContactEditDescription = ({ isVisible, onClose, description }) => {
           paddingHorizontal: 10,
           gap: 32,
         }}>
-        <InputText label={"Description"} value={desc} onChange={setDesc} />
+        <InputText
+          multiline
+          label={"Description"}
+          value={desc}
+          onChange={setDesc}
+        />
         <Button title={"Save"} onPress={submit} />
       </View>
     </Modal>

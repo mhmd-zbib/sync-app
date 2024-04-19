@@ -15,6 +15,10 @@ const ContactsService = {
     return await ContactsManager.addContactDescription(id, description);
   },
 
+  addContactNote: async (id, title, details) => {
+    return await ContactsManager.addContactNote(id, title, details);
+  },
+
   getAllContacts: async () => {
     return await ContactsManager.getAllContacts();
   },

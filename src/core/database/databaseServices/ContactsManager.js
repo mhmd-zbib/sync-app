@@ -1,4 +1,5 @@
 import * as SQLite from "expo-sqlite";
+import DetailsContactPage from "../../../pages/contacts/DetailsContactPage";
 
 class ContactsManager {
   constructor() {
@@ -62,6 +63,22 @@ class ContactsManager {
     return this.createSQL(
       "UPDATE connections SET description = ?  WHERE id = ? ;",
       [description, id]
+    );
+  }
+
+  async addContactNote(id, title, details) {
+    const date = new Date();
+    const timestamp = date.getTime();
+    return this.createSQL(
+      " INSERT INTO notes (connection_id, title, details, created_at) VALUES (?,?,?,?);",
+      [id, title, details, timestamp]
+    );
+  }
+
+  getContactsNotes(id) {
+    return this.readSQL(
+      "Select title, details FROM notes WHERE connection_id = ? ",
+      [id]
     );
   }
 

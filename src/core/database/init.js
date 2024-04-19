@@ -25,6 +25,14 @@ const tableSchemas = [
     url TEXT,
     FOREIGN KEY (connection_id) REFERENCES connections(id)
   )`,
+  `CREATE TABLE IF NOT EXISTS notes(
+  id INTEGER PRIMARY KEY NOT NULL,
+  connection_id INTEGER,
+   title TEXT,
+   details TEXT,
+   created_at INTEGER,
+   FOREIGN KEY (connection_id) REFERENCES connections(id)
+  )`,
 ];
 // `CREATE TABLE IF NOT EXISTS groups (
 //     id INTEGER PRIMARY KEY NOT NULL,

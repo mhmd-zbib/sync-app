@@ -46,6 +46,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
     gap: 10,
     marginHorizontal: 10,
+    marginTop: 18,
+    marginBottom: 5,
   },
   linkContainer: {
     width: 30,

@@ -3,6 +3,8 @@ import { View, StyleSheet, Dimensions } from "react-native";
 import { TabView, SceneMap, TabBar } from "react-native-tab-view";
 import ContactInfo from "./info/ContactInfo";
 import { useTheme } from "../../../stores/shared/themeStore";
+import Typography from "../../ui/text/Typography";
+import { PanResponderAdapter } from "react-native-tab-view/src/PanResponderAdapter";
 
 const SecondRoute = () => (
   <View style={[styles.scene, { backgroundColor: "#673ab7" }]} />
@@ -34,6 +36,11 @@ export default function ContactOptionsTable() {
   const renderTabBar = (props) => (
     <TabBar
       {...props}
+      renderLabel={({ route }) => (
+        <View style={{ flex: 1, margin: 0 }}>
+          <Typography>{route.title}</Typography>
+        </View>
+      )}
       indicatorStyle={{ backgroundColor: "white" }}
       style={{
         backgroundColor: "transparent",
