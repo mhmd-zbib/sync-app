@@ -1,9 +1,9 @@
 import { FlatList, StyleSheet, Text, View } from "react-native";
 import React from "react";
 import GroupItem from "./GroupItem";
-import useSearch from "../../../hooks/useSearch";
+import useSearch from "../../../hooks/common/useSearch";
 import { useConnectionsSearchStore } from "../../../stores/contacts/useConnectionsSearchStore";
-import { useSort } from "../../../hooks/useSort";
+import { useSort } from "../../../hooks/common/useSort";
 import EmptyList from "../EmptyList";
 const GroupList = () => {
   const searchTerm = useConnectionsSearchStore((state) => state.searchTerm);

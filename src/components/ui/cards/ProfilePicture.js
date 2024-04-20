@@ -2,7 +2,7 @@ import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 import { useTheme } from "../../../stores/shared/themeStore";
 import Typography from "../text/Typography";
-import { useGetInitials } from "../../../hooks/useGetInitials";
+import { useGetInitials } from "../../../hooks/common/useGetInitials";
 
 const ProfilePicture = ({ name, size = "md" }) => {
   const theme = useTheme();

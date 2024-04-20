@@ -2,7 +2,7 @@ import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 import Typography from "../../ui/text/Typography";
 import { useTheme } from "../../../stores/shared/themeStore";
-import { useFormatMonthYear } from "../../../hooks/useFormatDate";
+import { useFormatMonthYear } from "../../../hooks/common/useFormatDate";
 
 const RemindersSection = ({ dateTime }) => {
   const theme = useTheme();

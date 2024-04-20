@@ -2,10 +2,10 @@ import { FlatList, SectionList, StyleSheet, Text, View } from "react-native";
 import React from "react";
 import ReminderItem from "./ReminderItem";
 import RemindersSection from "./RemindersSection";
-import useGroupedSections from "../../../hooks/useGroupedSections";
-import { useSort } from "../../../hooks/useSort";
-import DateTimeFormatter from "../../../hooks/useFormatDate";
-import useSearch from "../../../hooks/useSearch";
+import useGroupedSections from "../../../hooks/common/useGroupedSections";
+import { useSort } from "../../../hooks/common/useSort";
+import DateTimeFormatter from "../../../hooks/common/useFormatDate";
+import useSearch from "../../../hooks/common/useSearch";
 import { useReminderSearchStore } from "../../../stores/reminders/useReminderSearchStore";
 import EmptyList from "../EmptyList";
 

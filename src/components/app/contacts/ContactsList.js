@@ -2,11 +2,11 @@ import React from "react";
 import { FlatList, View, Text, StyleSheet } from "react-native";
 import { useQuery } from "@tanstack/react-query";
 import ContactsService from "../../../services/ContactService";
-import useSearch from "../../../hooks/useSearch";
+import useSearch from "../../../hooks/common/useSearch";
 import ContactItem from "./ContactItem";
 import EmptyList from "../EmptyList";
 import { useConnectionsSearchStore } from "../../../stores/contacts/useConnectionsSearchStore";
-import { useSort } from "../../../hooks/useSort";
+import { useSort } from "../../../hooks/common/useSort";
 import { useNavigation } from "@react-navigation/native";
 
 const ContactsList = () => {

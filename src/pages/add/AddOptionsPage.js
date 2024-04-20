@@ -4,7 +4,6 @@ import AddButton from "../../components/app/addOptions/addButton";
 import Typography from "../../components/ui/text/Typography";
 import { useNavigation } from "@react-navigation/native";
 
-//Bottom sheet add component
 const AddToSync = () => {
   const navigation = useNavigation();
 

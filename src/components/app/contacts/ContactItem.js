@@ -5,7 +5,7 @@ import PrimaryCard from "../../ui/cards/PrimaryCard";
 import ProfilePicture from "../../ui/cards/ProfilePicture";
 import { useTheme } from "../../../stores/shared/themeStore";
 
-import DateTimeFormatter from "../../../hooks/useFormatDate";
+import DateTimeFormatter from "../../../hooks/common/useFormatDate";
 
 const ContactItem = ({ onPress, item }) => {
   const theme = useTheme();

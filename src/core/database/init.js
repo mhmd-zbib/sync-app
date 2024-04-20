@@ -33,6 +33,19 @@ const tableSchemas = [
    created_at INTEGER,
    FOREIGN KEY (connection_id) REFERENCES connections(id)
   )`,
+  `CREATE TABLE IF NOT EXISTS tags(
+    id INTEGER PRIMARY KEY NOT NULL,
+    name TEXT,
+    color, TEXT,
+    created_at INTEGER,
+  )`,
+  ` CREATE TABLE IF NOT EXISTS connection_tags (
+    id INTEGER PRIMARY KEY NOT NULL,
+    connection_id INTEGER,
+    tag_id INTEGER,
+    FOREIGN KEY (connection_id) REFERENCES connections(connection_id) ON DELETE CASCADE,
+    FOREIGN KEY (tag_id) REFERENCES tags(tag_id) ON DELETE CASCADE
+);`,
 ];
 // `CREATE TABLE IF NOT EXISTS groups (
 //     id INTEGER PRIMARY KEY NOT NULL,

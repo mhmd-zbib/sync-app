@@ -10,9 +10,9 @@ const Button = ({
   disabled = false,
   size = "md",
   style,
+  rounded = false, // New rounded prop
 }) => {
   const theme = useTheme();
-
   const baseButtonStyle = StyleSheet.flatten([
     styles.button,
     styles[size],
@@ -22,12 +22,13 @@ const Button = ({
       borderWidth: 1,
     },
     variant === "accent" && {
-      backgroundColor: theme.secondary, // Assuming 'accent' is defined in your theme
+      backgroundColor: theme.secondary,
     },
     variant === "primary" && {
       backgroundColor: theme.primary,
     },
     disabled && styles.disabledButton,
+    rounded && { borderRadius: styles[size].paddingVertical * 2 }, // Applying full rounding
     style,
   ]);
 

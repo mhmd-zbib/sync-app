@@ -14,6 +14,8 @@ import AddConnection from "../pages/contacts/AddContactPage";
 import AddReminder from "../pages/reminders/AddReminderPage";
 import GoBackButton from "../components/ui/buttons/GoBackButton";
 import DetailsContactPage from "../pages/contacts/DetailsContactPage";
+import ListTagsPage from "../pages/tags/ListTagsPage";
+import AddTagsPage from "../pages/tags/AddTagsPage";
 
 const Stack = createNativeStackNavigator();
 
@@ -47,6 +49,7 @@ const MainStack = () => {
           <Stack.Navigator
             initialRouteName="Reminders"
             screenOptions={({ navigation }) => ({
+              presentation: "modal",
               headerLeft: () =>
                 navigation.canGoBack() && (
                   <GoBackButton onPress={() => navigation.goBack()} />
@@ -69,14 +72,14 @@ const MainStack = () => {
                 title: getFocusedRouteNameFromRoute(route),
               })}
             />
-
             <Stack.Screen name="AddReminder" component={AddReminder} />
             <Stack.Screen name="AddConnection" component={AddConnection} />
-
             <Stack.Screen
               name="ContactDetails"
               component={DetailsContactPage}
             />
+            <Stack.Screen name="Tags" component={ListTagsPage} />
+            <Stack.Screen name="AddTag" component={AddTagsPage} />
           </Stack.Navigator>
         </BottomSheetModalProvider>
       </NavigationContainer>

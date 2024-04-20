@@ -3,12 +3,14 @@ import React from "react";
 import ContactInfoCont from "./ContactInfoCont";
 import Typography from "../../../ui/text/Typography";
 import { useTheme } from "../../../../stores/shared/themeStore";
+import { useNavigation } from "@react-navigation/native";
 
-const TagsButton = ({ item, color, border, text }) => {
+const TagsButton = ({ item, color, border, text, onPress }) => {
   const theme = useTheme(color);
 
   return (
     <TouchableOpacity
+      onPress={onPress}
       activeOpacity={0.8}
       style={[styles.button, { backgroundColor: color, borderColor: border }]}>
       <Typography variant="sm" color={text}>
@@ -20,6 +22,7 @@ const TagsButton = ({ item, color, border, text }) => {
 
 const ContactTags = () => {
   const theme = useTheme();
+  const navigation = useNavigation();
 
   const tags = [
     { title: "Developer", color: "red" },
@@ -39,6 +42,9 @@ const ContactTags = () => {
         />
       ))}
       <TagsButton
+        onPress={() => {
+          navigation.navigate("Tags");
+        }}
         item="+ Add new tag"
         text={theme.textSecondary}
         color={theme.secondary}
@@ -58,8 +64,8 @@ const styles = StyleSheet.create({
   button: {
     borderWidth: 1,
     borderColor: "transparent", // Hide border
-    paddingVertical: 3,
-    paddingHorizontal: 8,
+    paddingVertical: 6,
+    paddingHorizontal: 10,
     borderRadius: 6,
     margin: 5, // Add margin for spacing between tags
   },

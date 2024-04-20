@@ -3,7 +3,7 @@ import React from "react";
 import PrimaryCard from "../../ui/cards/PrimaryCard";
 import Typography from "../../ui/text/Typography";
 import { useTheme } from "../../../stores/shared/themeStore";
-import DateTimeFormatter from "../../../hooks/useFormatDate";
+import DateTimeFormatter from "../../../hooks/common/useFormatDate";
 
 const ReminderItem = ({ item }) => {
   const theme = useTheme();

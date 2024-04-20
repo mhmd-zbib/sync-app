@@ -12,7 +12,6 @@ export const useContactForm = () => {
     onSuccess: () => {
       console.log("eyo");
       resetForm();
-      queryClient.refetchQueries(["contactNameList"]);
     },
     onError: (error) => {
       console.error("error:", error);
