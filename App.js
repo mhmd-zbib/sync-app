@@ -1,30 +1,45 @@
+import React, { useState, useEffect } from "react";
+import { View, ActivityIndicator, StyleSheet } from "react-native";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import React from "react";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import MainStack from "./src/navigation/MainStack";
 import { ThemeProvider, useTheme } from "./src/stores/shared/themeStore";
 import * as SQLite from "expo-sqlite";
-import { useEffect } from "react";
 import initDb from "./src/core/database/init";
 import * as SystemUI from "expo-system-ui";
-import { View } from "react-native";
 
 export default function App() {
+  const [isLoading, setLoading] = useState(true);
   const queryClient = new QueryClient();
   const theme = useTheme();
 
   useEffect(() => {
-    SystemUI.setBackgroundColorAsync("black");
+    async function setup() {
+      try {
+        await SystemUI.setBackgroundColorAsync("black");
+        await initDb();
+      } catch (error) {
+        console.error("Error during initial setup:", error);
+      } finally {
+        setLoading(false);
+      }
+    }
 
-    initDb();
-    console.log("Tables are ready");
+    setup();
   }, []);
+
+  if (isLoading) {
+    return (
+      <View style={styles.loader}>
+        <ActivityIndicator size="large" color="white" />
+      </View>
+    );
+  }
 
   return (
     <QueryClientProvider client={queryClient}>
-      <GestureHandlerRootView iew style={{ flex: 1 }}>
-        <ThemeProvider>
-          {/* <Test /> */}
+      <GestureHandlerRootView style={{ flex: 1 }}>
+        <ThemeProvider theme={theme}>
           <View style={{ flex: 1 }}>
             <MainStack />
           </View>
@@ -33,3 +48,11 @@ export default function App() {
     </QueryClientProvider>
   );
 }
+
+const styles = StyleSheet.create({
+  loader: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+});

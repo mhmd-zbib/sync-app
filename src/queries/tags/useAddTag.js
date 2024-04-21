@@ -1,4 +1,3 @@
-import ContactsService from "../../services/ContactService";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import TagsService from "../../services/TagsService";
 

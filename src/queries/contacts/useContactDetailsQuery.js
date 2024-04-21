@@ -1,8 +1,8 @@
 import ContactsService from "../../services/ContactService";
 import { useQuery } from "@tanstack/react-query";
 
-export const useContactDetails = () => {
-  const contactDetails = useQuery({
+export const useContactDetailsQuery = (userId) => {
+  return useQuery({
     queryKey: ["contactDetails"],
     queryFn: () => ContactsService.getContactDetails(userId),
   });
@@ -15,6 +15,4 @@ export const useContactDetails = () => {
   //   if (isLoading) {
   //     return <Typography>Loading...</Typography>;
   //   }
-
-  return { contactDetails };
 };

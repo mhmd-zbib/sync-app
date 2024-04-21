@@ -8,6 +8,9 @@
     "ios": "expo start --ios",
     "web": "expo start --web"
   },
+  "jest": {
+    "preset": "jest-expo"
+  },
   "dependencies": {
     "@gorhom/bottom-sheet": "^4",
     "@react-navigation/bottom-tabs": "^6.5.20",

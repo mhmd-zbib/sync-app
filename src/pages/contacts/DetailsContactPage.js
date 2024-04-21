@@ -1,40 +1,26 @@
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import React, { useLayoutEffect } from "react";
-import ContactProfileHeader from "../../components/app/contactDetails/ContactProfileHeader";
+import React from "react";
+import { View } from "react-native";
 import ContactOptionsTable from "../../components/app/contactDetails/ContactOptionsTable";
-import ContactsService from "../../services/ContactService";
-import { useQuery } from "@tanstack/react-query";
-import { useContactDetailsStore } from "../../stores/contacts/useContactDetailsStore";
-import Typography from "../../components/ui/text/Typography";
+import ContactProfileHeader from "../../components/app/contactDetails/ContactProfileHeader";
 import ContactSocialLinks from "../../components/app/contactDetails/ContactSocialLinks";
-import { useNavigation } from "@react-navigation/native";
+import Typography from "../../components/ui/text/Typography";
+import useContactDetailsLayout from "../../hooks/contacts/useContactDetailsLayout";
+import { useContactDetailsQuery } from "../../queries/contacts/useContactDetailsQuery";
+import { useContactDetailsStore } from "../../stores/contacts/useContactDetailsStore";
 
 const DetailsContactPage = ({ route }) => {
-  const navigation = useNavigation();
-  useLayoutEffect(() => {
-    navigation.setOptions({
-      title: "Profile",
-
-      headerRight: () => (
-        <TouchableOpacity activeOpacity={0.8}>
-          <Typography>Dropdown</Typography>
-        </TouchableOpacity>
-      ),
-    });
-  }, [navigation]);
+  const navigation = useContactDetailsLayout();
   const { userId } = route.params;
+
   const setContactDetails = useContactDetailsStore(
     (state) => state.setContactDetails
   );
 
   const {
     data: contactDetails,
-    isLoading,
     isSuccess,
-  } = useQuery({
-    queryKey: ["contactDetails"],
-    queryFn: () => ContactsService.getContactDetails(userId),
-  });
+    isLoading,
+  } = useContactDetailsQuery(userId);
 
   if (isSuccess) {
     setContactDetails(contactDetails);

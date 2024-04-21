@@ -5,15 +5,16 @@ import Typography from "../../ui/text/Typography";
 import { useTheme } from "../../../stores/shared/themeStore";
 import DateTimeFormatter from "../../../hooks/common/useFormatDate";
 
-const ReminderItem = ({ item }) => {
+const ReminderItem = ({ item, navigation }) => {
   const theme = useTheme();
 
   return (
-    <PrimaryCard>
+    <PrimaryCard
+      onPress={() => navigation.navigate("ReminderDetails", { item })}>
       <Typography variant="sm" color={theme.textSecondary}>
         {DateTimeFormatter.formatTimeDayMonth(item.dateTime)}
       </Typography>
-      <Typography variant="lg">{item.title}</Typography>
+      <Typography variant="lg">{item.name}</Typography>
       {item.description ? (
         <Typography color={theme.textSecondary}>{item.description}</Typography>
       ) : null}

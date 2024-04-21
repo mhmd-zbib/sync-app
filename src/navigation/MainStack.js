@@ -16,6 +16,7 @@ import GoBackButton from "../components/ui/buttons/GoBackButton";
 import DetailsContactPage from "../pages/contacts/DetailsContactPage";
 import ListTagsPage from "../pages/tags/ListTagsPage";
 import AddTagsPage from "../pages/tags/AddTagsPage";
+import DetailsReminderPage from "../pages/reminders/DetailsReminderPage";
 
 const Stack = createNativeStackNavigator();
 
@@ -80,6 +81,10 @@ const MainStack = () => {
             />
             <Stack.Screen name="Tags" component={ListTagsPage} />
             <Stack.Screen name="AddTag" component={AddTagsPage} />
+            <Stack.Screen
+              name="ReminderDetails"
+              component={DetailsReminderPage}
+            />
           </Stack.Navigator>
         </BottomSheetModalProvider>
       </NavigationContainer>

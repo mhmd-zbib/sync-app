@@ -1,64 +1,61 @@
 import React, { useState } from "react";
 import { FlatList, StyleSheet } from "react-native";
-import TagRenderItem from "./TagRenderItem";
 import useSearch from "../../../hooks/common/useSearch";
-import { useTagSearchStore } from "../../../stores/tags/useTagSearchStore";
-import TagsService from "../../../services/TagsService";
-import { useQuery } from "@tanstack/react-query";
-import { useTagsSelectStore } from "../../../stores/tags/useTagsSelectStore";
-import Button from "../../ui/buttons/Button";
-import { useAddContactTags } from "../../../hooks/contacts/useAddContactTags";
+import { useAddContactTags } from "../../../queries/contacts/useAddContactTags";
+import { useTagListQuery } from "../../../queries/tags/useTagListQuery";
 import { useContactDetailsStore } from "../../../stores/contacts/useContactDetailsStore";
+import { useTagSearchStore } from "../../../stores/tags/useTagSearchStore";
+import Button from "../../ui/buttons/Button";
+import TagRenderItem from "./TagRenderItem";
 
 const TagsList = () => {
   const [selectedTagIds, setSelectedTagIds] = useState([]);
   const { addContactTag } = useAddContactTags();
-  const { id: contactId } = useContactDetailsStore(
-    (state) => state.contactDetails
-  );
-
-  const { data: tags } = useQuery({
-    queryKey: ["tags"],
-    queryFn: TagsService.getTags,
-  });
-
+  const { contactDetails } = useContactDetailsStore();
+  const { data: tags } = useTagListQuery();
   const searchTerm = useTagSearchStore((state) => state.searchTerm);
-  const search = useSearch(tags, searchTerm, "name", 200);
+  const filteredTags = useSearch(tags, searchTerm, "name", 200);
 
-  const handleSelectTag = (item) => {
-    if (selectedTagIds.includes(item.id)) {
-      setSelectedTagIds(selectedTagIds.filter((id) => id !== item.id));
-    } else {
-      setSelectedTagIds([...selectedTagIds, item.id]);
-    }
+  const handleSelectTag = (tagId) => {
+    setSelectedTagIds((prevSelected) =>
+      prevSelected.includes(tagId)
+        ? prevSelected.filter((id) => id !== tagId)
+        : [...prevSelected, tagId]
+    );
   };
 
   const handleSubmitTags = () => {
-    addContactTag.mutate({ tags: selectedTagIds, contactId: contactId });
+    addContactTag.mutate({
+      tags: selectedTagIds,
+      contactId: contactDetails.id,
+    });
     setSelectedTagIds([]);
   };
 
   return (
     <>
       <FlatList
-        data={search}
-        style={{ flex: 1 }}
-        contentContainerStyle={{ gap: 6 }}
+        data={filteredTags}
         keyExtractor={(item) => item.id.toString()}
         renderItem={({ item }) => (
           <TagRenderItem
             item={item}
-            onSelect={handleSelectTag}
+            onSelect={() => handleSelectTag(item.id)}
             isSelected={selectedTagIds.includes(item.id)}
           />
         )}
+        contentContainerStyle={styles.container}
       />
-
-      <Button title={"Save"} onPress={handleSubmitTags} />
+      <Button title="Save" onPress={handleSubmitTags} />
     </>
   );
 };
 
-export default TagsList;
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    gap: 6,
+  },
+});
 
-const styles = StyleSheet.create({});
+export default TagsList;

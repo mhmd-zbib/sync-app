@@ -5,7 +5,7 @@ import SearchBar from "../../components/ui/SearchBar";
 import Button from "../../components/ui/buttons/Button";
 import { useTagSearchStore } from "../../stores/tags/useTagSearchStore";
 import useContactNavigation from "../../hooks/contacts/useContactNavigation";
-import useListTagsNavigation from "../../hooks/tags/useListTagsNavigation";
+import useListTagsNavigation from "../../queries/tags/useListTagsNavigation";
 
 const ListTagsPage = () => {
   const setSearchTerm = useTagSearchStore((state) => state.setSearchTerm);

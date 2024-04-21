@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View } from "react-native";
 import React, { useLayoutEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
-import { useContactForm } from "./useContactForm";
+import { useContactForm } from "../../queries/contacts/useContactForm";
 import GoBackButton from "../../components/ui/buttons/GoBackButton";
 import Typography from "../../components/ui/text/Typography";
 import { useTheme } from "../../stores/shared/themeStore";

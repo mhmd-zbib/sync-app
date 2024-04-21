@@ -8,36 +8,14 @@ import DateTimeFormatter from "../../../hooks/common/useFormatDate";
 import useSearch from "../../../hooks/common/useSearch";
 import { useReminderSearchStore } from "../../../stores/reminders/useReminderSearchStore";
 import EmptyList from "../EmptyList";
+import { useRemindersListQuery } from "../../../queries/reminders/useRemindersListQuery";
+import { useNavigation } from "@react-navigation/native";
 
 const RemindersList = () => {
-  const mockData = [
-    {
-      title: "Reminder 1",
-      description: " Stuff to be here",
-      dateTime: 1592205987550,
-      tags: [1, 2, 3, 4],
-    },
-    {
-      title: "Stuff 1",
-      description: " Stuff to be here",
-      dateTime: 1593205987550,
-      tags: [1, 2, 3, 4],
-    },
-    {
-      title: "House 1",
-      description: " Stuff to be here",
-      dateTime: 1712923871309,
-      tags: [1, 2, 3, 4],
-    },
-    {
-      title: "Car 1",
-      description: "Stuff to be hesrses",
-      dateTime: 18680000,
-      tags: [1, 2, 3, 4],
-    },
-  ];
+  const navigation = useNavigation();
+  const { data: reminders, isLoading, isError } = useRemindersListQuery();
   const searchTerm = useReminderSearchStore((state) => state.searchTerm);
-  const search = useSearch(mockData, searchTerm, "title", 200);
+  const search = useSearch(reminders, searchTerm, "name", 200);
   const sort = useSort.byDate(search, "dateTime");
   const sections = useGroupedSections(sort, (item) =>
     DateTimeFormatter.formatMonthYear(item.dateTime)
@@ -49,7 +27,9 @@ const RemindersList = () => {
       contentContainerStyle={{ gap: 8, marginHorizontal: 10 }}
       sections={sections}
       style={{ flex: 1 }}
-      renderItem={({ item }) => <ReminderItem item={item} />}
+      renderItem={({ item }) => (
+        <ReminderItem item={item} navigation={navigation} />
+      )}
       renderSectionHeader={({ section: { title } }) => (
         <RemindersSection dateTime={title} />
       )}

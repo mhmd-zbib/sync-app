@@ -16,6 +16,7 @@ const tableSchemas = [
     name TEXT,
     time TEXT,
     description TEXT,
+    isDone BOOLEAN,
     created_at INTEGER
   )`,
   `CREATE TABLE IF NOT EXISTS social_links(

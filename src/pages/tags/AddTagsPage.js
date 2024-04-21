@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import useAddTagNavigation from "../../hooks/tags/useAddTagNavigation";
 import Button from "../../components/ui/buttons/Button";
 import InputText from "../../components/ui/InputText";
-import { useAddTag } from "../../hooks/tags/useAddTag";
+import { useAddTag } from "../../queries/tags/useAddTag";
 
 const AddTagsPage = () => {
   const navigation = useAddTagNavigation();
@@ -28,7 +28,7 @@ const AddTagsPage = () => {
       <Button
         title={"Add"}
         onPress={() => {
-          addTag.mutate(tagName);
+          addTag.mutate(tagName, { onSuccess: setTagName("") });
         }}
       />
     </View>

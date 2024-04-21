@@ -5,6 +5,7 @@ import Typography from "../../../ui/text/Typography";
 import { useTheme } from "../../../../stores/shared/themeStore";
 import { useNavigation } from "@react-navigation/native";
 import { useContactDetailsStore } from "../../../../stores/contacts/useContactDetailsStore";
+import { useContactTagsQuery } from "../../../../queries/contacts/useContactTagsQuery";
 
 const TagsButton = ({ item, color, border, text, onPress }) => {
   const theme = useTheme(color);
@@ -24,22 +25,21 @@ const TagsButton = ({ item, color, border, text, onPress }) => {
 const ContactTags = () => {
   const theme = useTheme();
   const navigation = useNavigation();
-
   const contactDetails = useContactDetailsStore(
     (state) => state.contactDetails
   );
 
-  console.log(contactDetails, " j");
+  const { data: tags, isError } = useContactTagsQuery();
 
-  const tags = [];
+  if (isError) return <Typography> ERROR</Typography>;
 
   return (
     <ContactInfoCont label={"Tags"} style={styles.container}>
-      {tags.length > 0
+      {tags
         ? tags.map((tag, index) => (
             <TagsButton
               key={index}
-              item={tag.title}
+              item={tag.id}
               color={theme.accent}
               border={theme.secondary}
             />
