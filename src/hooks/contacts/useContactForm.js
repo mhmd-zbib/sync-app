@@ -10,7 +10,7 @@ export const useContactForm = () => {
   const { mutate, data, error } = useMutation({
     mutationFn: (formData) => ContactsService.createContact(formData),
     onSuccess: () => {
-      console.log("eyo");
+      queryClient.refetchQueries("contactNameList");
       resetForm();
     },
     onError: (error) => {

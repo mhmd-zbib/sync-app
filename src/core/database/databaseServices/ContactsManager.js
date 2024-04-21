@@ -9,6 +9,8 @@ class ContactsManager {
       [name, email, phoneNumber, timestamp]
     );
 
+    if (links.length === 0) return;
+
     const userId = contactResult.insertId;
     await this.addSocialLinks(userId, links);
   }
@@ -40,6 +42,16 @@ class ContactsManager {
     );
   }
 
+  async addContactTags(tagIds, contactId) {
+    for (const tagId of tagIds) {
+      console.log("adding", tagId, "for", contactId);
+      await dbManager.createSQL(
+        "INSERT INTO connection_tags (tag_id, connection_id) VALUES (?,?)",
+        [tagId, contactId]
+      );
+    }
+  }
+
   getContactsNotes(id) {
     return dbManager.readSQL(
       "SELECT title, details FROM notes WHERE connection_id = ? ",
@@ -54,6 +66,12 @@ class ContactsManager {
   getContactDetails(id) {
     console.log(`Fetching details for ID: ${id}`);
     return dbManager.readSQL("SELECT * FROM connections WHERE id = ?", [id]);
+  }
+
+  getContactTags(id) {
+    console.log(id, "thats id");
+
+    return dbManager.readSQL(" SELECT * FROM connection_tags", [id]);
   }
 
   getContactSocialLinks(id) {

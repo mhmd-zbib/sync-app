@@ -18,13 +18,10 @@ const ListTagsPage = () => {
         flex: 1,
         marginBottom: 24,
         paddingHorizontal: 10,
-        gap: 20,
+        gap: 25,
       }}>
-      <View style={{ gap: 24, flex: 1 }}>
-        <SearchBar placeHolder="Search tags" setSearchTerm={setSearchTerm} />
-        <TagsList />
-      </View>
-      <Button title={"Save"} />
+      <SearchBar placeHolder="Search tags" setSearchTerm={setSearchTerm} />
+      <TagsList />
     </View>
   );
 };

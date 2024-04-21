@@ -7,9 +7,9 @@ const TagsService = {
 
   addTag: async (tagName) => {
     console.log("here adding", tagName);
-    if (!tagName || tagName.trim("") === "") {
-      return;
-    }
+    // if (!tagName || tagName.trim("") === "") {
+    //   return;
+    // }
 
     return TagsManager.createTag(tagName);
   },

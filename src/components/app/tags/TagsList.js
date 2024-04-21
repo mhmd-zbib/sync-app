@@ -3,13 +3,24 @@ import { FlatList, StyleSheet } from "react-native";
 import TagRenderItem from "./TagRenderItem";
 import useSearch from "../../../hooks/common/useSearch";
 import { useTagSearchStore } from "../../../stores/tags/useTagSearchStore";
+import TagsService from "../../../services/TagsService";
+import { useQuery } from "@tanstack/react-query";
+import { useTagsSelectStore } from "../../../stores/tags/useTagsSelectStore";
+import Button from "../../ui/buttons/Button";
+import { useAddContactTags } from "../../../hooks/contacts/useAddContactTags";
+import { useContactDetailsStore } from "../../../stores/contacts/useContactDetailsStore";
 
 const TagsList = () => {
   const [selectedTagIds, setSelectedTagIds] = useState([]);
-  const tags = [
-    { id: 1, name: "Stuff", color: "red" },
-    { id: 4, name: "Prog", color: "blue" },
-  ];
+  const { addContactTag } = useAddContactTags();
+  const { id: contactId } = useContactDetailsStore(
+    (state) => state.contactDetails
+  );
+
+  const { data: tags } = useQuery({
+    queryKey: ["tags"],
+    queryFn: TagsService.getTags,
+  });
 
   const searchTerm = useTagSearchStore((state) => state.searchTerm);
   const search = useSearch(tags, searchTerm, "name", 200);
@@ -22,22 +33,29 @@ const TagsList = () => {
     }
   };
 
-  console.log(selectedTagIds);
+  const handleSubmitTags = () => {
+    addContactTag.mutate({ tags: selectedTagIds, contactId: contactId });
+    setSelectedTagIds([]);
+  };
 
   return (
-    <FlatList
-      data={search}
-      style={{ flex: 1 }}
-      contentContainerStyle={{ gap: 6 }}
-      keyExtractor={(item) => item.id.toString()}
-      renderItem={({ item }) => (
-        <TagRenderItem
-          item={item}
-          onSelect={handleSelectTag}
-          isSelected={selectedTagIds.includes(item.id)}
-        />
-      )}
-    />
+    <>
+      <FlatList
+        data={search}
+        style={{ flex: 1 }}
+        contentContainerStyle={{ gap: 6 }}
+        keyExtractor={(item) => item.id.toString()}
+        renderItem={({ item }) => (
+          <TagRenderItem
+            item={item}
+            onSelect={handleSelectTag}
+            isSelected={selectedTagIds.includes(item.id)}
+          />
+        )}
+      />
+
+      <Button title={"Save"} onPress={handleSubmitTags} />
+    </>
   );
 };
 

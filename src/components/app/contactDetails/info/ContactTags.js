@@ -4,6 +4,7 @@ import ContactInfoCont from "./ContactInfoCont";
 import Typography from "../../../ui/text/Typography";
 import { useTheme } from "../../../../stores/shared/themeStore";
 import { useNavigation } from "@react-navigation/native";
+import { useContactDetailsStore } from "../../../../stores/contacts/useContactDetailsStore";
 
 const TagsButton = ({ item, color, border, text, onPress }) => {
   const theme = useTheme(color);
@@ -24,23 +25,26 @@ const ContactTags = () => {
   const theme = useTheme();
   const navigation = useNavigation();
 
-  const tags = [
-    { title: "Developer", color: "red" },
-    { title: "Marketing", color: "blue" },
-    { title: "Scientist", color: "green" },
-    { title: "Scientist", color: "green" },
-  ];
+  const contactDetails = useContactDetailsStore(
+    (state) => state.contactDetails
+  );
+
+  console.log(contactDetails, " j");
+
+  const tags = [];
 
   return (
     <ContactInfoCont label={"Tags"} style={styles.container}>
-      {tags.map((tag, index) => (
-        <TagsButton
-          key={index}
-          item={tag.title}
-          color={theme.accent}
-          border={theme.secondary}
-        />
-      ))}
+      {tags.length > 0
+        ? tags.map((tag, index) => (
+            <TagsButton
+              key={index}
+              item={tag.title}
+              color={theme.accent}
+              border={theme.secondary}
+            />
+          ))
+        : null}
       <TagsButton
         onPress={() => {
           navigation.navigate("Tags");

@@ -2,17 +2,16 @@ import ContactsService from "../../services/ContactService";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import TagsService from "../../services/TagsService";
 
-export const useAddTag = () => {
+export const useAddContactTags = () => {
   const queryClient = useQueryClient();
 
-  const addTag = useMutation({
-    mutationFn: (tag) => {
-      console.log(tag, " the tag");
-      TagsService.addTag(tag);
+  const addContactTag = useMutation({
+    mutationFn: ({ tags, contactId }) => {
+      console.log(tags, contactId, "these are the data");
+      ContactsService.addTag(tags, contactId);
     },
     onSuccess: () => {
-      console.log("okay");
-      queryClient.refetchQueries("tags");
+      queryClient.refetchQueries("contactDetails");
     },
     onError: (error) => {
       console.error("error:", error);
@@ -20,6 +19,6 @@ export const useAddTag = () => {
   });
 
   return {
-    addTag,
+    addContactTag,
   };
 };
