@@ -6,13 +6,4 @@ export const useContactDetailsQuery = (userId) => {
     queryKey: ["contactDetails"],
     queryFn: () => ContactsService.getContactDetails(userId),
   });
-
-  //   if (isSuccess) {
-  //     setContactDetails(contactDetails);
-  //     console.log("done");
-  //   }
-
-  //   if (isLoading) {
-  //     return <Typography>Loading...</Typography>;
-  //   }
 };

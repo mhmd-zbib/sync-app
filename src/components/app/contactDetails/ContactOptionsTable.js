@@ -49,7 +49,7 @@ export default function ContactOptionsTable() {
   const handleAddPress = () => {
     console.log("Add button pressed on tab:", index);
 
-    navigation.navigate("AddNote");
+    // navigation.navigate("AddContactNote");
   };
 
   return (

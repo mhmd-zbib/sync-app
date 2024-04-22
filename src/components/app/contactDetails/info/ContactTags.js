@@ -1,4 +1,10 @@
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import {
+  FlatList,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import React from "react";
 import ContactInfoCont from "./ContactInfoCont";
 import Typography from "../../../ui/text/Typography";
@@ -29,16 +35,21 @@ const ContactTags = () => {
 
   return (
     <ContactInfoCont label={"Tags"} style={styles.container}>
-      {tags
-        ? tags.map((tag, index) => (
+      {tags ? (
+        <FlatList
+          data={tags}
+          keyExtractor={(index) => index}
+          renderItem={(item, index) => (
             <TagsButton
               key={index}
-              item={tag.name}
+              item={item.name}
               color={theme.accent}
               border={theme.secondary}
             />
-          ))
-        : null}
+          )}
+        />
+      ) : null}
+
       <TagsButton
         onPress={() => navigation.navigate("Tags")}
         item="+ Add new tag"

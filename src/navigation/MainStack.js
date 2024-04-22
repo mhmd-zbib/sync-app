@@ -77,12 +77,11 @@ const MainStack = () => {
             <Stack.Screen name="AddReminder" component={AddReminder} />
             <Stack.Screen name="AddConnection" component={AddConnection} />
 
-            <Stack.Screen name="AddContactNote" component={AddContactNote} />
-
             <Stack.Screen
               name="ContactDetails"
               component={DetailsContactPage}
             />
+            <Stack.Screen name="AddContactNote" component={AddContactNote} />
             <Stack.Screen name="Tags" component={ListTagsPage} />
             <Stack.Screen name="AddTag" component={AddTagsPage} />
             <Stack.Screen

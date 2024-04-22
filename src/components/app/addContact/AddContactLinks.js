@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { View, TouchableOpacity, Text, ScrollView } from "react-native";
 import InputText from "../../ui/InputText";
 import Button from "../../ui/buttons/Button";
-import PlatformSelector from "../../ui/Dropdown";
+import PlatformSelector from "../../ui/ModalSelector";
 import AddContactSocialCard from "./AddContactSocialCard";
 import useContactFormStore from "../../../stores/contacts/useAddCotactStore";
 import { StyleSheet } from "react-native";
