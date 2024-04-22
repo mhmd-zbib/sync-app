@@ -1,3 +1,4 @@
+import TagsList from "../../../components/app/tags/TagsList";
 import { dbManager } from "../utils";
 
 class ContactsManager {
@@ -44,7 +45,6 @@ class ContactsManager {
 
   async addContactTags(tagIds, contactId) {
     for (const tagId of tagIds) {
-      console.log("adding", tagId, "for", contactId);
       await dbManager.createSQL(
         "INSERT INTO connection_tags (tag_id, connection_id) VALUES (?,?)",
         [tagId, contactId]
@@ -68,10 +68,11 @@ class ContactsManager {
     return dbManager.readSQL("SELECT * FROM connections WHERE id = ?", [id]);
   }
 
-  getContactTags(id) {
-    console.log(id, "thats id");
-
-    return dbManager.readSQL(" SELECT * FROM connection_tags", [id]);
+  async getContactTags(id) {
+    return dbManager.readSQL(
+      "SELECT * FROM tags t JOIN connection_tags ct ON t.id = ct.tag_id  WHERE connection_id = ? ",
+      [id]
+    );
   }
 
   getContactSocialLinks(id) {

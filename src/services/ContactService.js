@@ -21,11 +21,17 @@ const ContactsService = {
     info = details[0];
     info.socialLinks = socialLinks;
     info.tags = contactTags;
+
+    console.log(info, " INFOs");
+
     return info;
   },
 
   getContactTags: async (id) => {
-    return ContactsManager.getContactTags(id);
+    const tags = ContactsManager.getContactTags(id);
+
+    console.log(tags, "EWIIIII");
+    return tags;
   },
 
   addContactDescription: async (contactId, description) => {
@@ -33,7 +39,6 @@ const ContactsService = {
   },
 
   addTag: async (tagId, contactId) => {
-    // if (tagId.length === 0) return;
     return await ContactsManager.addContactTags(tagId, contactId);
   },
 

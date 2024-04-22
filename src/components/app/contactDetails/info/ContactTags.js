@@ -25,13 +25,7 @@ const TagsButton = ({ item, color, border, text, onPress }) => {
 const ContactTags = () => {
   const theme = useTheme();
   const navigation = useNavigation();
-  const contactDetails = useContactDetailsStore(
-    (state) => state.contactDetails
-  );
-
-  const { data: tags, isError } = useContactTagsQuery();
-
-  if (isError) return <Typography> ERROR</Typography>;
+  const { tags } = useContactDetailsStore((state) => state.contactDetails);
 
   return (
     <ContactInfoCont label={"Tags"} style={styles.container}>
@@ -39,16 +33,14 @@ const ContactTags = () => {
         ? tags.map((tag, index) => (
             <TagsButton
               key={index}
-              item={tag.id}
+              item={tag.name}
               color={theme.accent}
               border={theme.secondary}
             />
           ))
         : null}
       <TagsButton
-        onPress={() => {
-          navigation.navigate("Tags");
-        }}
+        onPress={() => navigation.navigate("Tags")}
         item="+ Add new tag"
         text={theme.textSecondary}
         color={theme.secondary}
@@ -67,10 +59,10 @@ const styles = StyleSheet.create({
   },
   button: {
     borderWidth: 1,
-    borderColor: "transparent", // Hide border
+    borderColor: "transparent",
     paddingVertical: 6,
     paddingHorizontal: 10,
     borderRadius: 6,
-    margin: 5, // Add margin for spacing between tags
+    margin: 5,
   },
 });

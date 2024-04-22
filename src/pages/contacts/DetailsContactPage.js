@@ -7,6 +7,8 @@ import Typography from "../../components/ui/text/Typography";
 import useContactDetailsLayout from "../../hooks/contacts/useContactDetailsLayout";
 import { useContactDetailsQuery } from "../../queries/contacts/useContactDetailsQuery";
 import { useContactDetailsStore } from "../../stores/contacts/useContactDetailsStore";
+import Loading from "../../components/ui/Loading";
+import Error from "../../components/ui/Error";
 
 const DetailsContactPage = ({ route }) => {
   const navigation = useContactDetailsLayout();
@@ -20,16 +22,16 @@ const DetailsContactPage = ({ route }) => {
     data: contactDetails,
     isSuccess,
     isLoading,
+    isError,
+    error,
   } = useContactDetailsQuery(userId);
 
   if (isSuccess) {
     setContactDetails(contactDetails);
-    console.log("done");
   }
 
-  if (isLoading) {
-    return <Typography>Loading...</Typography>;
-  }
+  if (isLoading) return <Loading />;
+  if (isError) return <Error error={error} />;
 
   return (
     <View style={{ flex: 1 }}>

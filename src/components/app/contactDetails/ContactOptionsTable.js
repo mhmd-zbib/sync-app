@@ -2,35 +2,29 @@ import React, { useState } from "react";
 import { View, StyleSheet, Dimensions } from "react-native";
 import { TabView, SceneMap, TabBar } from "react-native-tab-view";
 import ContactInfo from "./info/ContactInfo";
+import ContactNotes from "./notes/ContactNotes";
 import { useTheme } from "../../../stores/shared/themeStore";
 import Typography from "../../ui/text/Typography";
-import { PanResponderAdapter } from "react-native-tab-view/src/PanResponderAdapter";
-
-const SecondRoute = () => (
-  <View style={[styles.scene, { backgroundColor: "#673ab7" }]} />
-);
-
-const ThirdRoute = () => (
-  <View style={[styles.scene, { backgroundColor: "#009688" }]} />
-);
+import FloatingAdd from "../../ui/buttons/FloatingAdd";
+import { useNavigation } from "@react-navigation/native";
 
 const initialLayout = { width: Dimensions.get("window").width };
 
 export default function ContactOptionsTable() {
   const theme = useTheme();
-
   const [index, setIndex] = useState(0);
   const [routes] = useState([
     { key: "first", title: "Info" },
     { key: "second", title: "Notes" },
     { key: "third", title: "Reminders" },
-    // { key: "fourth", title: "Groups" },
   ]);
 
   const renderScene = SceneMap({
     first: ContactInfo,
-    second: SecondRoute,
-    third: ThirdRoute,
+    second: ContactNotes,
+    third: () => (
+      <View style={[styles.scene, { backgroundColor: "#009688" }]} />
+    ),
   });
 
   const renderTabBar = (props) => (
@@ -50,20 +44,34 @@ export default function ContactOptionsTable() {
     />
   );
 
+  const navigation = useNavigation();
+
+  const handleAddPress = () => {
+    console.log("Add button pressed on tab:", index);
+
+    navigation.navigate("AddNote");
+  };
+
   return (
-    <TabView
-      navigationState={{ index, routes }}
-      renderScene={renderScene}
-      renderTabBar={renderTabBar}
-      onIndexChange={setIndex}
-      initialLayout={initialLayout}
-      style={styles.tabView}
-    />
+    <>
+      <TabView
+        navigationState={{ index, routes }}
+        renderScene={renderScene}
+        renderTabBar={renderTabBar}
+        onIndexChange={setIndex}
+        initialLayout={initialLayout}
+        style={styles.tabView}
+      />
+      {index !== 0 && <FloatingAdd onPress={handleAddPress} />}
+    </>
   );
 }
 
 const styles = StyleSheet.create({
   scene: {
     flex: 1,
+  },
+  tabView: {
+    marginTop: 25,
   },
 });

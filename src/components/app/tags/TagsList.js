@@ -7,14 +7,19 @@ import { useContactDetailsStore } from "../../../stores/contacts/useContactDetai
 import { useTagSearchStore } from "../../../stores/tags/useTagSearchStore";
 import Button from "../../ui/buttons/Button";
 import TagRenderItem from "./TagRenderItem";
+import { useNavigation } from "@react-navigation/native";
 
-const TagsList = () => {
+const TagsList = ({ route }) => {
   const [selectedTagIds, setSelectedTagIds] = useState([]);
   const { addContactTag } = useAddContactTags();
   const { contactDetails } = useContactDetailsStore();
+  const { tags: selectedTags } = useContactDetailsStore(
+    (state) => state.contactDetails
+  );
   const { data: tags } = useTagListQuery();
   const searchTerm = useTagSearchStore((state) => state.searchTerm);
   const filteredTags = useSearch(tags, searchTerm, "name", 200);
+  const navigation = useNavigation();
 
   const handleSelectTag = (tagId) => {
     setSelectedTagIds((prevSelected) =>
@@ -29,6 +34,7 @@ const TagsList = () => {
       tags: selectedTagIds,
       contactId: contactDetails.id,
     });
+    navigation.goBack();
     setSelectedTagIds([]);
   };
 
@@ -46,7 +52,11 @@ const TagsList = () => {
         )}
         contentContainerStyle={styles.container}
       />
-      <Button title="Save" onPress={handleSubmitTags} />
+      <Button
+        disabled={selectedTagIds.length === 0}
+        title="Save"
+        onPress={handleSubmitTags}
+      />
     </>
   );
 };

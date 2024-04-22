@@ -1,21 +1,14 @@
-import React from "react";
-import {
-  FlatList,
-  View,
-  Text,
-  StyleSheet,
-  ActivityIndicator,
-} from "react-native";
-import { useQuery } from "@tanstack/react-query";
-import ContactsService from "../../../services/ContactService";
-import useSearch from "../../../hooks/common/useSearch";
-import ContactItem from "./ContactItem";
-import EmptyList from "../EmptyList";
-import { useConnectionsSearchStore } from "../../../stores/contacts/useConnectionsSearchStore";
-import { useSort } from "../../../hooks/common/useSort";
 import { useNavigation } from "@react-navigation/native";
+import React from "react";
+import { FlatList, StyleSheet } from "react-native";
+import useSearch from "../../../hooks/common/useSearch";
+import { useSort } from "../../../hooks/common/useSort";
 import { useContactListQuery } from "../../../queries/contacts/useContactsListQuery";
-import Typography from "../../ui/text/Typography";
+import { useConnectionsSearchStore } from "../../../stores/contacts/useConnectionsSearchStore";
+import Error from "../../ui/Error";
+import Loading from "../../ui/Loading";
+import EmptyList from "../EmptyList";
+import ContactItem from "./ContactItem";
 
 const ContactsList = () => {
   const { data: contacts, isLoading, isError, error } = useContactListQuery();
@@ -25,20 +18,8 @@ const ContactsList = () => {
   const sortedContacts = useSort.byName(filteredContacts, "name");
   const navigation = useNavigation();
 
-  if (isLoading)
-    return (
-      <View style={styles.center}>
-        <ActivityIndicator size="large" color="white" />
-      </View>
-    );
-  if (isError) {
-    console.log(error);
-    return (
-      <View style={styles.center}>
-        <Typography>Error fetching contacts. </Typography>
-      </View>
-    );
-  }
+  if (isLoading) return <Loading />;
+  if (isError) return <Error error={error} />;
   if (contacts === 0 || contacts.length === 0)
     return <EmptyList title="connections" />;
 

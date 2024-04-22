@@ -12,7 +12,6 @@ const EmptyList = ({ title }) => {
         display: "flex",
         height: "100%",
         alignItems: "center",
-
         justifyContent: "center",
       }}>
       <Typography color={theme.textSecondary}>No {title} are found!</Typography>

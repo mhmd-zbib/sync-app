@@ -5,6 +5,7 @@ import ContactsList from "../../components/app/contacts/ContactsList";
 import GroupList from "../../components/app/groups/GroupList";
 import SearchBar from "../../components/ui/SearchBar";
 import { useConnectionsSearchStore } from "../../stores/contacts/useConnectionsSearchStore";
+import FloatingAdd from "../../components/ui/buttons/FloatingAdd";
 
 const CONTACTS = 0;
 const GROUPS = 1;
