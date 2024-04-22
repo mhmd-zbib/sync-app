@@ -10,7 +10,7 @@ const Button = ({
   disabled = false,
   size = "md",
   style,
-  rounded = false, // New rounded prop
+  rounded = false,
 }) => {
   const theme = useTheme();
   const baseButtonStyle = StyleSheet.flatten([

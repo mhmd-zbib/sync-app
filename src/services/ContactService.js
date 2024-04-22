@@ -16,8 +16,6 @@ const ContactsService = {
     const socialLinks = await ContactsManager.getContactSocialLinks(id);
     const contactTags = await ContactsManager.getContactTags(id);
 
-    console.log("tags", contactTags);
-
     info = details[0];
     info.socialLinks = socialLinks;
     info.tags = contactTags;
@@ -30,11 +28,12 @@ const ContactsService = {
   getContactTags: async (id) => {
     const tags = ContactsManager.getContactTags(id);
 
-    console.log(tags, "EWIIIII");
     return tags;
   },
 
   addContactDescription: async (contactId, description) => {
+    console.log(description, " this is desc");
+
     return await ContactsManager.addContactDescription(contactId, description);
   },
 
