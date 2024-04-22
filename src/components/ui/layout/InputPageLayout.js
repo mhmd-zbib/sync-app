@@ -2,11 +2,11 @@ import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 import Button from "../buttons/Button";
 
-const PageContainer = ({ children, onPress, buttonTitle }) => {
+const InputPageLayout = ({ children, onPress, buttonTitle }) => {
   return (
     <View
       style={{ flex: 1, justifyContent: "space-between", paddingBottom: 25 }}>
-      {children}
+      <View style={{ gap: 32, paddingHorizontal: 10 }}>{children}</View>
       <Button
         style={{ marginHorizontal: 10 }}
         title={buttonTitle}
@@ -16,6 +16,6 @@ const PageContainer = ({ children, onPress, buttonTitle }) => {
   );
 };
 
-export default PageContainer;
+export default InputPageLayout;
 
 const styles = StyleSheet.create({});

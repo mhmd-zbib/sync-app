@@ -10,6 +10,7 @@ const InfoCard = ({
   bottomBorder = true,
   onPress,
   style,
+  childStyle,
 }) => {
   const theme = useTheme();
 
@@ -41,7 +42,8 @@ const InfoCard = ({
           {rightButton}
         </Typography>
       </View>
-      {children}
+
+      <View style={childStyle}>{children}</View>
     </View>
   );
 };

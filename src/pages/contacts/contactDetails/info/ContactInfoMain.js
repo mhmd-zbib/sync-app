@@ -1,14 +1,18 @@
-import { StyleSheet, Text, View } from "react-native";
+import { ScrollView, StyleSheet, Text, View } from "react-native";
 import React from "react";
-import ContactDescription from "./description/ContactDescription";
-import ContactTagsList from "./tags/ContactTagsList";
+import ContactDescription from "./ContactDescription";
+import ContactTagsList from "./ContactTagsList";
+import ContactConnections from "./ContactConnections";
+import ContactExperience from "./ContactExperience";
 
 const ContactInfoMain = () => {
   return (
-    <View>
+    <ScrollView style={{ flex: 1 }}>
       <ContactDescription />
       <ContactTagsList />
-    </View>
+      <ContactConnections />
+      <ContactExperience />
+    </ScrollView>
   );
 };
 

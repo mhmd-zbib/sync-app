@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { StyleSheet, TextInput, View, Text } from "react-native";
+import { StyleSheet, TextInput, View } from "react-native";
 import { useTheme } from "../../stores/shared/themeStore";
 import Typography from "./text/Typography";
 
