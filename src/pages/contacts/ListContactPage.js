@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Text, View } from "react-native";
 import SectionPicker from "../../features/connections/SectionPicker";
-import ContactsList from "../../features/contacts/contactList/ContactsList";
+import ContactsList from "../../features/contacts/contactList/components/ContactsList";
 import GroupList from "../../features/groups/GroupList";
 import SearchBar from "../../components/ui/SearchBar";
 import { useConnectionsSearchStore } from "../../stores/contacts/useConnectionsSearchStore";

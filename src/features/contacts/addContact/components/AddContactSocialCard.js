@@ -1,9 +1,9 @@
 import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
-import { useTheme } from "../../../stores/shared/themeStore";
-import Typography from "../../../components/ui/text/Typography";
-import useContactFormStore from "../../../stores/contacts/useAddCotactStore";
-import PrimaryCard from "../../../components/ui/cards/PrimaryCard";
+import { useTheme } from "../../../../stores/shared/themeStore";
+import Typography from "../../../../components/ui/text/Typography";
+import useContactFormStore from "../../../../stores/contacts/useAddCotactStore";
+import PrimaryCard from "../../../../components/ui/cards/PrimaryCard";
 
 const AddContactSocialCard = ({ index, platform, url }) => {
   const { removeLink } = useContactFormStore();

@@ -1,57 +1,39 @@
+// ContactsService.js
 import ContactsManager from "../core/database/databaseServices/ContactsManager";
 
-const ContactsService = {
-  createContact: async (contactData) => {
+class ContactsService {
+  async createContact(contactData) {
     const { name, email, phoneNumber, links } = contactData;
-
     if (!name) return;
-
     return ContactsManager.createContact(name, email, phoneNumber, links);
-  },
+  }
 
-  getContactDetails: async (id) => {
-    let info = {};
-
+  async getContactDetails(id) {
     const details = await ContactsManager.getContactDetails(id);
     const socialLinks = await ContactsManager.getContactSocialLinks(id);
-    const contactTags = await ContactsManager.getContactTags(id);
+    const tags = await ContactsManager.getContactTags(id);
+    return { ...details[0], socialLinks, tags };
+  }
 
-    info = details[0];
-    info.socialLinks = socialLinks;
-    info.tags = contactTags;
+  async addContactDescription(contactId, description) {
+    return ContactsManager.addContactDescription(contactId, description);
+  }
 
-    console.log(info, " INFOs");
+  async addTag(tagId, contactId) {
+    return ContactsManager.addContactTags(tagId, contactId);
+  }
 
-    return info;
-  },
+  async addContactNote(id, title, details) {
+    return ContactsManager.addContactNote(id, title, details);
+  }
 
-  getContactTags: async (id) => {
-    const tags = ContactsManager.getContactTags(id);
+  async getAllContacts() {
+    return ContactsManager.getAllContacts();
+  }
 
-    return tags;
-  },
-
-  addContactDescription: async (contactId, description) => {
-    console.log(description, " this is desc");
-
-    return await ContactsManager.addContactDescription(contactId, description);
-  },
-
-  addTag: async (tagId, contactId) => {
-    return await ContactsManager.addContactTags(tagId, contactId);
-  },
-
-  addContactNote: async (id, title, details) => {
-    return await ContactsManager.addContactNote(id, title, details);
-  },
-
-  getAllContacts: async () => {
-    return await ContactsManager.getAllContacts();
-  },
-
-  getTaggedContacts: async (tag) => {
+  async getTaggedContacts(tag) {
     return ContactsManager.getTaggedContacts(tag);
-  },
-};
+  }
+}
 
-export default ContactsService;
+export default new ContactsService();

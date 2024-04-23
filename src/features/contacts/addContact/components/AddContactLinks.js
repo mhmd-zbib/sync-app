@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { View, TouchableOpacity, Text, ScrollView, Modal } from "react-native";
-import InputText from "../../../components/ui/InputText";
-import Button from "../../../components/ui/buttons/Button";
-import ModalSelector from "../../../components/ui/ModalSelector";
+import InputText from "../../../../components/ui/InputText";
+import Button from "../../../../components/ui/buttons/Button";
+import ModalSelector from "../../../../components/ui/ModalSelector";
 import AddContactSocialCard from "./AddContactSocialCard";
-import useContactFormStore from "../../../stores/contacts/useAddCotactStore";
+import useContactFormStore from "../../../../stores/contacts/useAddCotactStore";
 import { StyleSheet } from "react-native";
-import Typography from "../../../components/ui/text/Typography";
-import { useTheme } from "../../../stores/shared/themeStore";
+import Typography from "../../../../components/ui/text/Typography";
+import { useTheme } from "../../../../stores/shared/themeStore";
 
 const AddContactLinks = () => {
   const [platform, setPlatform] = useState("");

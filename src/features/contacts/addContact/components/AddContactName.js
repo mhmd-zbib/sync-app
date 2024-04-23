@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
-import InputText from "../../../components/ui/InputText";
-import useContactFormStore from "../../../stores/contacts/useAddCotactStore";
+import InputText from "../../../../components/ui/InputText";
+import useContactFormStore from "../../../../stores/contacts/useAddCotactStore";
 import ReminderFrequency from "./ReminderFrequency";
 
 const AddContactName = () => {

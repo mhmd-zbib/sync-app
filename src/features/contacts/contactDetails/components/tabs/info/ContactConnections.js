@@ -1,13 +1,12 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
-import InfoCard from "../../../../components/ui/cards/InfoCard";
-import ProfileMissingInfo from "../../../../components/ui/cases/ProfileMissingInfo";
-import Typography from "../../../../components/ui/text/Typography";
-import { useContactDetailsStore } from "../../../../stores/contacts/useContactDetailsStore";
-import { useTheme } from "../../../../stores/shared/themeStore";
+import InfoCard from "../../../../../../components/ui/cards/InfoCard";
+import ProfileMissingInfo from "../../../../../../components/ui/cases/ProfileMissingInfo";
+import Typography from "../../../../../../components/ui/text/Typography";
+import { useContactDetailsStore } from "../../../../../../stores/contacts/useContactDetailsStore";
+import { useTheme } from "../../../../../../stores/shared/themeStore";
 import { useNavigation } from "@react-navigation/native";
-import EditButton from "../../../../components/ui/buttons/EditButton";
-
+import EditButton from "../../../../../../components/ui/buttons/EditButton";
 const ContactConnections = () => {
   const { phone_number, email } = useContactDetailsStore(
     (state) => state.contactDetails

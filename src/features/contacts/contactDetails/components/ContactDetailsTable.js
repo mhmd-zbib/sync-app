@@ -1,8 +1,8 @@
 import React from "react";
 import { StyleSheet, View, useWindowDimensions } from "react-native";
 import { SceneMap, TabView, TabBar } from "react-native-tab-view";
-import ContactInfoTab from "./info/ContactInfoTab";
-import { useTheme } from "../../../stores/shared/themeStore";
+import ContactInfoTab from "./tabs/ContactInfoTab";
+import { useTheme } from "../../../../stores/shared/themeStore";
 
 const SecondRoute = () => (
   <View style={{ flex: 1, backgroundColor: "#673ab7" }} />

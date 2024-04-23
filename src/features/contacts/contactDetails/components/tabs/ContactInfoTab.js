@@ -1,9 +1,9 @@
 import { ScrollView, StyleSheet, Text, View } from "react-native";
 import React from "react";
-import ContactDescription from "./ContactDescription";
-import ContactTagsList from "./ContactTagsList";
-import ContactConnections from "./ContactConnections";
-import ContactExperience from "./ContactExperience";
+import ContactDescription from "./info/ContactDescription";
+import ContactTagsList from "./info/ContactTagsList";
+import ContactConnections from "./info/ContactConnections";
+import ContactExperience from "./info/ContactExperience";
 
 const ContactInfoTab = () => {
   return (

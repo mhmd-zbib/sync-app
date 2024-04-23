@@ -1,21 +1,16 @@
 import { useNavigation } from "@react-navigation/native";
 import React from "react";
 import { FlatList, StyleSheet } from "react-native";
-import useSearch from "../../../hooks/common/useSearch";
-import { useSort } from "../../../hooks/common/useSort";
-import { useContactListQuery } from "../../../queries/contacts/useContactsListQuery";
-import { useConnectionsSearchStore } from "../../../stores/contacts/useConnectionsSearchStore";
-import Error from "../../../components/layout/Error";
-import Loading from "../../../components/layout/Loading";
-import EmptyList from "../../../components/ui/EmptyList";
+import Error from "../../../../components/layout/Error";
+import Loading from "../../../../components/layout/Loading";
+import EmptyList from "../../../../components/ui/EmptyList";
+import useContactList from "../hooks/useContactList";
+import { useContactListQuery } from "../queries/useContactsListQuery";
 import ContactItem from "./ContactItem";
 
 const ContactsList = () => {
   const { data: contacts, isLoading, isError, error } = useContactListQuery();
-
-  const searchTerm = useConnectionsSearchStore((state) => state.searchTerm);
-  const filteredContacts = useSearch(contacts, searchTerm, "name");
-  const sortedContacts = useSort.byName(filteredContacts, "name");
+  const sortedContacts = useContactList(contacts);
   const navigation = useNavigation();
 
   if (isLoading) return <Loading />;

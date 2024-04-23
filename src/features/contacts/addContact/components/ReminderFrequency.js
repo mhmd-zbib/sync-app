@@ -1,8 +1,8 @@
 import { StyleSheet, View } from "react-native";
 import React, { useState } from "react";
-import Button from "../../../components/ui/buttons/Button";
-import Typography from "../../../components/ui/text/Typography";
-import { useTheme } from "../../../stores/shared/themeStore";
+import Button from "../../../../components/ui/buttons/Button";
+import Typography from "../../../../components/ui/text/Typography";
+import { useTheme } from "../../../../stores/shared/themeStore";
 
 const ReminderFrequency = () => {
   const theme = useTheme();

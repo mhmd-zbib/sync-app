@@ -4,9 +4,9 @@ import { useContactForm } from "../../queries/contacts/useContactForm";
 import useContactNavigation from "../../hooks/contacts/useContactNavigation";
 import Button from "../../components/ui/buttons/Button";
 import useContactFormStore from "../../stores/contacts/useAddCotactStore";
-import AddContactName from "../../features/contacts/addContact/AddContactName";
-import AddContactLinks from "../../features/contacts/addContact/AddContactLinks";
-import AddContactInfo from "../../features/contacts/addContact/AddContactInfo";
+import AddContactName from "../../features/contacts/addContact/components/AddContactName";
+import AddContactLinks from "../../features/contacts/addContact/components/AddContactLinks";
+import AddContactInfo from "../../features/contacts/addContact/components/AddContactInfo";
 
 const AddContactPage = () => {
   const { submitForm } = useContactForm();

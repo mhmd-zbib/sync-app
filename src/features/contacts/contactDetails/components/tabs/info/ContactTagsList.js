@@ -1,9 +1,8 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
-import ProfileButton from "../../../../components/ui/buttons/ProfileButton";
-import InfoCard from "../../../../components/ui/cards/InfoCard";
-import useContactTagsList from "../../../../hooks/contacts/useContactTagsList";
-
+import ProfileButton from "../../../../../../components/ui/buttons/ProfileButton";
+import InfoCard from "../../../../../../components/ui/cards/InfoCard";
+import useContactTagsList from "../../../../../../hooks/contacts/useContactTagsList";
 const ContactTagsList = () => {
   const { tags, remaining } = useContactTagsList();
 

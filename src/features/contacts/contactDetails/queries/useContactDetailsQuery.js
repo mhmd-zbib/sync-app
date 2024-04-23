@@ -1,4 +1,4 @@
-import ContactsService from "../../services/ContactService";
+import ContactsService from "../../../../services/ContactService";
 import { useQuery } from "@tanstack/react-query";
 
 export const useContactDetailsQuery = (userId) => {

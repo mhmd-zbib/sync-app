@@ -1,8 +1,8 @@
 import { useNavigation } from "@react-navigation/native";
 import React from "react";
 import { StyleSheet, View } from "react-native";
-import InputText from "../../../components/ui/InputText";
-import useContactFormStore from "../../../stores/contacts/useAddCotactStore";
+import InputText from "../../../../components/ui/InputText";
+import useContactFormStore from "../../../../stores/contacts/useAddCotactStore";
 
 const AddContactInfo = () => {
   const navigation = useNavigation();

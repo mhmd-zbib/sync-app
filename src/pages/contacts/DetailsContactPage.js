@@ -2,12 +2,12 @@ import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 import Typography from "../../components/ui/text/Typography";
 import useContactDetailsLayout from "../../hooks/contacts/useContactDetailsLayout";
-import { useContactDetailsQuery } from "../../queries/contacts/useContactDetailsQuery";
+import { useContactDetailsQuery } from "../../features/contacts/contactDetails/queries/useContactDetailsQuery";
 import { useContactDetailsStore } from "../../stores/contacts/useContactDetailsStore";
 import Loading from "../../components/layout/Loading";
 import Error from "../../components/layout/Error";
-import ContactHeader from "../../features/contacts/contactDetails/ContactHeader";
-import ContactDetailsTable from "../../features/contacts/contactDetails/ContactDetailsTable";
+import ContactHeader from "../../features/contacts/contactDetails/components/ContactHeader";
+import ContactDetailsTable from "../../features/contacts/contactDetails/components/ContactDetailsTable";
 
 const DetailsContactPage = ({ route }) => {
   const { userId } = route.params;

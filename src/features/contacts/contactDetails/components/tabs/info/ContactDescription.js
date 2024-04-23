@@ -1,13 +1,11 @@
-import React from "react";
-import { StyleSheet, TouchableOpacity, View } from "react-native";
-import Typography from "../../../../components/ui/text/Typography";
-import InfoCard from "../../../../components/ui/cards/InfoCard";
-import { useContactDetailsStore } from "../../../../stores/contacts/useContactDetailsStore";
 import { useNavigation } from "@react-navigation/native";
-import { useTheme } from "../../../../stores/shared/themeStore";
-import ProfileMissingInfo from "../../../../components/ui/cases/ProfileMissingInfo";
-import EditButton from "../../../../components/ui/buttons/EditButton";
-
+import React from "react";
+import EditButton from "../../../../../../components/ui/buttons/EditButton";
+import InfoCard from "../../../../../../components/ui/cards/InfoCard";
+import ProfileMissingInfo from "../../../../../../components/ui/cases/ProfileMissingInfo";
+import Typography from "../../../../../../components/ui/text/Typography";
+import { useContactDetailsStore } from "../../../../../../stores/contacts/useContactDetailsStore";
+import { useTheme } from "../../../../../../stores/shared/themeStore";
 const ContactDescription = () => {
   const { description } = useContactDetailsStore(
     (state) => state.contactDetails

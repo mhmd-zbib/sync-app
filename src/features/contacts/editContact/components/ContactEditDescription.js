@@ -1,10 +1,10 @@
 import React from "react";
 import InputText from "../../../../components/ui/InputText";
 import InputPageLayout from "../../../../components/layout/InputPageLayout";
-import useContactDescriptionEditor from "../../../../hooks/contacts/useContactDescriptionEditor";
+import useContactEditDescsription from "../hooks/useContactEditDescription";
 
 const ContactEditDescription = () => {
-  const { desc, setDesc, handleSubmit } = useContactDescriptionEditor();
+  const { desc, setDesc, handleSubmit } = useContactEditDescription();
 
   return (
     <InputPageLayout buttonTitle={"Save"} onPress={handleSubmit} st>

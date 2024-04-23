@@ -1,11 +1,11 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
-import Typography from "../../../components/ui/text/Typography";
-import PrimaryCard from "../../../components/ui/cards/PrimaryCard";
-import ProfilePicture from "../../../components/ui/cards/ProfilePicture";
-import { useTheme } from "../../../stores/shared/themeStore";
+import Typography from "../../../../components/ui/text/Typography";
+import PrimaryCard from "../../../../components/ui/cards/PrimaryCard";
+import ProfilePicture from "../../../../components/ui/cards/ProfilePicture";
+import { useTheme } from "../../../../stores/shared/themeStore";
 
-import DateTimeFormatter from "../../../hooks/common/useFormatDate";
+import DateTimeFormatter from "../../../../hooks/common/useFormatDate";
 
 const ContactItem = ({ onPress, item }) => {
   const theme = useTheme();
