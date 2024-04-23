@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { StyleSheet, TextInput, View } from "react-native";
 import { useTheme } from "../../stores/shared/themeStore";
 import Typography from "./text/Typography";
+import Label from "./Label";
 
 const InputText = ({
   value,
@@ -19,7 +20,7 @@ const InputText = ({
 
   return (
     <View style={[styles.container, style]}>
-      <Typography style={{ color: theme.textSecondary }}>{label}</Typography>
+      <Label label={label} />
       <TextInput
         placeholderTextColor={theme.textAccent}
         style={[
