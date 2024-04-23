@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
-import { useTagListQuery } from "../../queries/tags/useTagListQuery";
-import { useContactDetailsStore } from "../../stores/contacts/useContactDetailsStore";
+import { useTagListQuery } from "../../../../queries/tags/useTagListQuery";
+import { useContactDetailsStore } from "../../../../stores/contacts/useContactDetailsStore";
 
 const useContactTagsList = () => {
   const { tags } = useContactDetailsStore((state) => state.contactDetails);

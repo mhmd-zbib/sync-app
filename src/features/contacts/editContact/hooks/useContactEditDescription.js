@@ -1,8 +1,7 @@
-import { useEffect, useState } from "react";
-import { StyleSheet } from "react-native";
-import { useEditDescriptionMutation } from "../queries/useEditDescriptionMutation";
 import { useNavigation } from "@react-navigation/native";
+import { useEffect, useState } from "react";
 import { useContactDetailsStore } from "../../../../stores/contacts/useContactDetailsStore";
+import { useEditDescriptionMutation } from "../queries/useEditDescriptionMutation";
 
 const useContactEditDescription = () => {
   const { id, description } = useContactDetailsStore(

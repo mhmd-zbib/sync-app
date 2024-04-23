@@ -1,14 +1,14 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 
-const ReminderFrequency = () => {
+const SelectPlatformModal = () => {
   return (
     <View>
-      <Text>ReminderFrequency</Text>
+      <Text>SelectPlatformModal</Text>
     </View>
   );
 };
 
-export default ReminderFrequency;
+export default SelectPlatformModal;
 
 const styles = StyleSheet.create({});

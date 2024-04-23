@@ -20,7 +20,7 @@ import DetailsReminderPage from "../pages/reminders/DetailsReminderPage";
 import AddContactNote from "../pages/notes/AddContactNotePage";
 import ContactEditDescription from "../features/contacts/editContact/components/ContactEditDescription";
 import ContactAddExperience from "../features/contacts/editContact/components/ContactAddExp";
-
+import ContactEditConnections from "../features/contacts/editContact/components/ContactEditConnections";
 const Stack = createNativeStackNavigator();
 
 const MainStack = () => {
@@ -78,7 +78,6 @@ const MainStack = () => {
             />
             <Stack.Screen name="AddReminder" component={AddReminder} />
             <Stack.Screen name="AddConnection" component={AddConnection} />
-
             <Stack.Screen
               name="ContactDetails"
               component={DetailsContactPage}
@@ -86,25 +85,21 @@ const MainStack = () => {
             <Stack.Screen name="AddContactNote" component={AddContactNote} />
             <Stack.Screen name="Tags" component={ListTagsPage} />
             <Stack.Screen name="AddTag" component={AddTagsPage} />
-
             <Stack.Screen
               options={{ title: "Edit Description" }}
               name="EditContactDescription"
               component={ContactEditDescription}
             />
-
             <Stack.Screen
               options={{ title: "Edit Contact" }}
               name="ContactEditConnections"
               component={ContactEditConnections}
             />
-
             <Stack.Screen
               name="ContactAddExperience"
               component={ContactAddExperience}
               options={{ title: "Job" }}
             />
-
             <Stack.Screen
               options={{ title: "Details" }}
               name="ReminderDetails"

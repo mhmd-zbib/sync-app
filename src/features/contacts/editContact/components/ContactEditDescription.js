@@ -1,7 +1,7 @@
 import React from "react";
 import InputText from "../../../../components/ui/InputText";
 import InputPageLayout from "../../../../components/layout/InputPageLayout";
-import useContactEditDescsription from "../hooks/useContactEditDescription";
+import useContactEditDescription from "../hooks/useContactEditDescription";
 
 const ContactEditDescription = () => {
   const { desc, setDesc, handleSubmit } = useContactEditDescription();

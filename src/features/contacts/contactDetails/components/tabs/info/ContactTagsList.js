@@ -2,7 +2,7 @@ import React from "react";
 import { StyleSheet, View } from "react-native";
 import ProfileButton from "../../../../../../components/ui/buttons/ProfileButton";
 import InfoCard from "../../../../../../components/ui/cards/InfoCard";
-import useContactTagsList from "../../../../../../hooks/contacts/useContactTagsList";
+import useContactTagsList from "../../../hooks/useContactTagsList";
 const ContactTagsList = () => {
   const { tags, remaining } = useContactTagsList();
 

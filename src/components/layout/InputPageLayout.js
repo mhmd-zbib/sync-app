@@ -1,8 +1,26 @@
-import { StyleSheet, Text, View } from "react-native";
-import React from "react";
+import { useNavigation } from "@react-navigation/native";
+import React, { useLayoutEffect } from "react";
+import { View } from "react-native";
 import Button from "../ui/buttons/Button";
+import GoBackButton from "../ui/buttons/GoBackButton";
 
-const InputPageLayout = ({ children, onPress, buttonTitle }) => {
+const InputPageLayout = ({
+  children,
+  onPress,
+  buttonTitle,
+  screenTitle,
+  onBackPress,
+}) => {
+  const navigation = useNavigation();
+
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      title: screenTitle,
+      headerLeft: () => (
+        <GoBackButton onPress={onBackPress || (() => navigation.goBack())} />
+      ),
+    });
+  }, [navigation, screenTitle]);
   return (
     <View
       style={{ flex: 1, justifyContent: "space-between", paddingBottom: 25 }}>
@@ -17,5 +35,3 @@ const InputPageLayout = ({ children, onPress, buttonTitle }) => {
 };
 
 export default InputPageLayout;
-
-const styles = StyleSheet.create({});

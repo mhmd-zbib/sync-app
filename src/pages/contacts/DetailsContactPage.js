@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 import Typography from "../../components/ui/text/Typography";
-import useContactDetailsLayout from "../../hooks/contacts/useContactDetailsLayout";
+import useContactDetailsLayout from "../../features/contacts/contactDetails/hooks/useContactDetailsLayout";
 import { useContactDetailsQuery } from "../../features/contacts/contactDetails/queries/useContactDetailsQuery";
 import { useContactDetailsStore } from "../../stores/contacts/useContactDetailsStore";
 import Loading from "../../components/layout/Loading";

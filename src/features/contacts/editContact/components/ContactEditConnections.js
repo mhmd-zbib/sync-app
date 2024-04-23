@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
-import InputPageLayout from "../../../../../../components/layout/InputPageLayout";
-import InputText from "../../../../../../components/ui/InputText";
+import InputPageLayout from "../../../../components/layout/InputPageLayout";
+import InputText from "../../../../components/ui/InputText";
 
 const ContactEditConnections = () => {
   return (

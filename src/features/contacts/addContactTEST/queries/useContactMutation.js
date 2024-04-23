@@ -1,8 +1,8 @@
-import ContactsService from "../../services/ContactService";
-import useContactFormStore from "../../stores/contacts/useAddCotactStore";
+import ContactsService from "../../../../services/ContactService";
+import useContactFormStore from "../../../../stores/contacts/useAddCotactStore";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
-export const useContactForm = () => {
+export const useContactMutation = () => {
   const queryClient = useQueryClient();
   const formData = useContactFormStore((state) => state.formData);
   const resetForm = useContactFormStore((state) => state.resetForm);
