@@ -14,8 +14,13 @@ export const useAddContactStore = create((set, get) => ({
     set((state) => ({
       formData: { ...state.formData, [name]: value },
     })),
-  nextStep: () =>
-    set((state) => ({ step: state.step < 2 ? state.step + 1 : state.step })),
+  nextStep: () => {
+    const { step, formData } = get();
+    if (step === 2) {
+      console.log("Final step data:", formData);
+    }
+    set({ step: step < 2 ? step + 1 : step });
+  },
   prevStep: (navigation) => {
     const { step } = get();
     if (step > 0) {

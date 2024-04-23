@@ -1,6 +1,7 @@
-import { StyleSheet, Text, View } from "react-native";
 import React from "react";
-import AddSocialLink from "../components/AddSocialLink";
+import { StyleSheet } from "react-native";
+import Button from "../../../../components/ui/buttons/Button";
+import AddSocialLink from "../components/SocialLinkDetails";
 
 const ThirdSocialLink = () => {
   return (
