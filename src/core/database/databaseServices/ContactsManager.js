@@ -1,4 +1,3 @@
-import TagsList from "../../../components/app/tags/TagsList";
 import { dbManager } from "../utils";
 
 class ContactsManager {

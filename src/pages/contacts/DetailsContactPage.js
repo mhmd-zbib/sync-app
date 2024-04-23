@@ -4,10 +4,10 @@ import Typography from "../../components/ui/text/Typography";
 import useContactDetailsLayout from "../../hooks/contacts/useContactDetailsLayout";
 import { useContactDetailsQuery } from "../../queries/contacts/useContactDetailsQuery";
 import { useContactDetailsStore } from "../../stores/contacts/useContactDetailsStore";
-import Loading from "../../components/ui/Loading";
-import Error from "../../components/ui/Error";
-import ContactHeader from "./contactDetails/ContactHeader";
-import ContactDetailsTable from "./contactDetails/ContactDetailsTable";
+import Loading from "../../components/layout/Loading";
+import Error from "../../components/layout/Error";
+import ContactHeader from "../../features/contacts/contactDetails/ContactHeader";
+import ContactDetailsTable from "../../features/contacts/contactDetails/ContactDetailsTable";
 
 const DetailsContactPage = ({ route }) => {
   const { userId } = route.params;

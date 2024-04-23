@@ -18,9 +18,9 @@ import ListTagsPage from "../pages/tags/ListTagsPage";
 import AddTagsPage from "../pages/tags/AddTagsPage";
 import DetailsReminderPage from "../pages/reminders/DetailsReminderPage";
 import AddContactNote from "../pages/notes/AddContactNotePage";
-import ContactEditDescription from "../pages/contacts/contactDetails/info/ContactEditDescription";
-import ContactEditConnections from "../pages/contacts/contactDetails/info/ContactEditConnections";
-import ContactAddExperience from "../pages/contacts/contactDetails/info/ContactAddExp";
+import ContactEditDescription from "../features/contacts/contactDetails/info/ContactEditDescription";
+import ContactEditConnections from "../features/contacts/contactDetails/info/ContactEditConnections";
+import ContactAddExperience from "../features/contacts/contactDetails/info/ContactAddExp";
 
 const Stack = createNativeStackNavigator();
 

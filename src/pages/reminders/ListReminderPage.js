@@ -1,6 +1,6 @@
 import { Text, View } from "react-native";
 import React from "react";
-import RemindersList from "../../components/app/remindersList/RemindersList";
+import RemindersList from "../../features/reminders/remindersList/RemindersList";
 import SearchBar from "../../components/ui/SearchBar";
 import { useReminderSearchStore } from "../../stores/reminders/useReminderSearchStore";
 

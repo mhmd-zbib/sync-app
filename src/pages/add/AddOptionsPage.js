@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
-import AddButton from "../../components/app/addOptions/addButton";
+import AddButton from "../../features/addOptions/addButton";
 import Typography from "../../components/ui/text/Typography";
 import { useNavigation } from "@react-navigation/native";
 

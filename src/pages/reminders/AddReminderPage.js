@@ -2,7 +2,7 @@ import { StyleSheet, Text, View } from "react-native";
 import React, { useLayoutEffect } from "react";
 import InputText from "../../components/ui/InputText";
 import { useNavigation } from "@react-navigation/native";
-import ReminderAddButton from "../../components/app/remindersList/ReminderAddButton";
+import ReminderAddButton from "../../features/reminders/remindersList/ReminderAddButton";
 import Button from "../../components/ui/buttons/Button";
 import { useAddReminderMutation } from "../../queries/reminders/useAddReminderMutation";
 

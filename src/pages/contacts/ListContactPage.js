@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import { Text, View } from "react-native";
-import SectionPicker from "../../components/app/SectionPicker";
-import ContactsList from "../../components/app/contacts/ContactsList";
-import GroupList from "../../components/app/groups/GroupList";
+import SectionPicker from "../../features/connections/SectionPicker";
+import ContactsList from "../../features/contacts/contactList/ContactsList";
+import GroupList from "../../features/groups/GroupList";
 import SearchBar from "../../components/ui/SearchBar";
 import { useConnectionsSearchStore } from "../../stores/contacts/useConnectionsSearchStore";
-import FloatingAdd from "../../components/ui/buttons/FloatingAdd";
 
 const CONTACTS = 0;
 const GROUPS = 1;

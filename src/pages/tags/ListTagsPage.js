@@ -1,11 +1,9 @@
-import { StyleSheet, Text, View } from "react-native";
 import React from "react";
-import TagsList from "../../components/app/tags/TagsList";
+import { StyleSheet, View } from "react-native";
 import SearchBar from "../../components/ui/SearchBar";
-import Button from "../../components/ui/buttons/Button";
-import { useTagSearchStore } from "../../stores/tags/useTagSearchStore";
-import useContactNavigation from "../../hooks/contacts/useContactNavigation";
+import TagsList from "../../features/tags/TagsList";
 import useListTagsNavigation from "../../queries/tags/useListTagsNavigation";
+import { useTagSearchStore } from "../../stores/tags/useTagSearchStore";
 
 const ListTagsPage = () => {
   const setSearchTerm = useTagSearchStore((state) => state.setSearchTerm);

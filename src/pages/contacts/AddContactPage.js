@@ -2,11 +2,11 @@ import React from "react";
 import { View, StyleSheet, ScrollView } from "react-native";
 import { useContactForm } from "../../queries/contacts/useContactForm";
 import useContactNavigation from "../../hooks/contacts/useContactNavigation";
-import AddContactInfo from "../../components/app/addContact/AddContactInfo";
-import AddContactLinks from "../../components/app/addContact/AddContactLinks";
-import AddContactName from "../../components/app/addContact/AddContactName";
 import Button from "../../components/ui/buttons/Button";
 import useContactFormStore from "../../stores/contacts/useAddCotactStore";
+import AddContactName from "../../features/contacts/addContact/AddContactName";
+import AddContactLinks from "../../features/contacts/addContact/AddContactLinks";
+import AddContactInfo from "../../features/contacts/addContact/AddContactInfo";
 
 const AddContactPage = () => {
   const { submitForm } = useContactForm();

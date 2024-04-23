@@ -10,7 +10,7 @@ import {
 import { useTheme } from "../../stores/shared/themeStore";
 import Typography from "./text/Typography";
 
-const PlatformSelector = ({ visible, onClose, onSelect, options }) => {
+const ModalSelector = ({ visible, onClose, onSelect, options }) => {
   const theme = useTheme();
 
   return (
@@ -73,4 +73,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default PlatformSelector;
+export default ModalSelector;
