@@ -2,20 +2,13 @@ import React, { useState } from "react";
 import { StyleSheet, View } from "react-native";
 import Dropdown from "../../../../components/ui/Dropdown";
 import InputText from "../../../../components/ui/InputText";
-import useSocialLinksStore from "../store/useContactSocialLinksStore";
 import Button from "../../../../components/ui/buttons/Button";
-import { useAddContactStore } from "../store/useAddContactStore";
+import useAddContact from "../hooks/usePlatformArray";
+import useHandleSocialLink from "../hooks/useHandleSocialLink";
 
-const SocialLinkDetails = () => {
-  const platforms = [
-    { label: "LinkedIn", id: 1 },
-    { label: "Instagram", id: 2 },
-    { label: "Twitter", id: 3 },
-    { label: "Facebook", id: 4 },
-  ];
-
-  const { formData } = useAddContactStore();
-
+const SocialLinkInput = () => {
+  const { platforms } = useAddContact();
+  const { handleAddSocialLinks } = useHandleSocialLink();
   const [platform, setPlatform] = useState("");
   const [link, setLink] = useState("");
 
@@ -38,11 +31,12 @@ const SocialLinkDetails = () => {
         />
       </View>
       <Button
+        disabled={!platform || !link}
         title={"Add"}
         size="sm"
         variant="accent"
         onPress={() => {
-          formData.socialMediaLink.push({ link: link, platform: platform });
+          handleAddSocialLinks(link, platform);
         }}
       />
     </>
@@ -60,4 +54,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default SocialLinkDetails;
+export default SocialLinkInput;

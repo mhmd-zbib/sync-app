@@ -1,4 +1,5 @@
 import create from "zustand";
+import useAddContact from "../hooks/useAddContact";
 
 export const useAddContactStore = create((set, get) => ({
   step: 0,
@@ -9,16 +10,18 @@ export const useAddContactStore = create((set, get) => ({
     email: "",
     socialMediaLink: [],
   },
-  setStep: (step) => set({ step }),
+
   setFormData: (name, value) =>
     set((state) => ({
       formData: { ...state.formData, [name]: value },
     })),
+  updateField: (field, value) =>
+    set((state) => ({
+      formData: { ...state.formData, [field]: value },
+    })),
+  setStep: (step) => set({ step }),
   nextStep: () => {
     const { step, formData } = get();
-    if (step === 2) {
-      console.log("Final step data:", formData);
-    }
     set({ step: step < 2 ? step + 1 : step });
   },
   prevStep: (navigation) => {
@@ -29,4 +32,15 @@ export const useAddContactStore = create((set, get) => ({
       navigation.goBack();
     }
   },
+  resetForm: () =>
+    set({
+      formData: {
+        name: "",
+        reminderFrequency: "",
+        phoneNumber: null,
+        email: "",
+        socialMediaLink: [],
+      },
+      step: 0,
+    }),
 }));

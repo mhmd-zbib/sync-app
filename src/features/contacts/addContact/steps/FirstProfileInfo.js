@@ -1,17 +1,21 @@
-import { StyleSheet, Text, View } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import InputText from "../../../../components/ui/InputText";
 import ReminderFrequency from "../components/ReminderFrequency";
+import { useAddContactStore } from "../store/useAddContactStore";
 
 const FirstProfileInfo = () => {
+  const { formData, updateField } = useAddContactStore();
+
   return (
     <>
-      <InputText label={"Name"} />
+      <InputText
+        label={"Full Name"}
+        value={formData.name}
+        onChange={(text) => updateField("name", text)}
+      />
       <ReminderFrequency />
     </>
   );
 };
 
 export default FirstProfileInfo;
-
-const styles = StyleSheet.create({});

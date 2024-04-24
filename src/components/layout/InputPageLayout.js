@@ -10,6 +10,7 @@ const InputPageLayout = ({
   buttonTitle,
   screenTitle,
   onBackPress,
+  disabled = false,
 }) => {
   const navigation = useNavigation();
 
@@ -26,6 +27,7 @@ const InputPageLayout = ({
       style={{ flex: 1, justifyContent: "space-between", paddingBottom: 25 }}>
       <View style={{ gap: 32, paddingHorizontal: 10 }}>{children}</View>
       <Button
+        disabled={disabled}
         style={{ marginHorizontal: 10 }}
         title={buttonTitle}
         onPress={onPress}

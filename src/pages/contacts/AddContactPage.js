@@ -1,21 +1,25 @@
-import { StyleSheet, Text, View } from "react-native";
+import {
+  KeyboardAvoidingView,
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
+} from "react-native";
 import React from "react";
-import { useAddContactSteps } from "../../features/contacts/addContact/hooks/useAddContactSteps";
 import InputPageLayout from "../../components/layout/InputPageLayout";
-import Typography from "../../components/ui/text/Typography";
-import useContactFormStore from "../../stores/contacts/useAddCotactStore";
 import { useAddContactStore } from "../../features/contacts/addContact/store/useAddContactStore";
 import { useNavigation } from "@react-navigation/native";
 import FirstProfileInfo from "../../features/contacts/addContact/steps/FirstProfileInfo";
 import SecondContactInfo from "../../features/contacts/addContact/steps/SecondContactInfo";
 import ThirdSocialLink from "../../features/contacts/addContact/steps/ThirdSocialLink";
-
+import useAddContact from "../../features/contacts/addContact/hooks/useAddContact";
+import { useAddContactMutation } from "../../features/contacts/addContact/queries/useAddContactMutation";
 const AddContactPage = () => {
-  const { step, formData, setFormData, nextStep, prevStep } =
-    useAddContactStore();
+  const { step, nextStep, prevStep, formData } = useAddContactStore();
   const navigation = useNavigation();
 
-  const RenderStep = () => {
+  const { submitForm } = useAddContactMutation();
+  const renderStep = () => {
     switch (step) {
       case 0:
         return <FirstProfileInfo />;
@@ -23,20 +27,21 @@ const AddContactPage = () => {
         return <SecondContactInfo />;
       case 2:
         return <ThirdSocialLink />;
+      default:
+        return null;
     }
   };
 
   return (
     <InputPageLayout
+      disabled={!formData.name}
       screenTitle={"Add Contact"}
       onBackPress={() => prevStep(navigation)}
-      onPress={nextStep}
+      onPress={step < 2 ? nextStep : submitForm}
       buttonTitle={step < 2 ? "Next" : "Add"}>
-      <RenderStep />
+      {renderStep()}
     </InputPageLayout>
   );
 };
 
 export default AddContactPage;
-
-const styles = StyleSheet.create({});

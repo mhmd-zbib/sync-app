@@ -3,9 +3,18 @@ import ContactsManager from "../core/database/databaseServices/ContactsManager";
 
 class ContactsService {
   async createContact(contactData) {
-    const { name, email, phoneNumber, links } = contactData;
+    console.log("I got sent the data", contactData);
+
+    const { name, email, phoneNumber, socialMediaLink } = contactData;
+
+    console.log(name, email, phoneNumber, socialMediaLink);
     if (!name) return;
-    return ContactsManager.createContact(name, email, phoneNumber, links);
+    return ContactsManager.createContact(
+      name,
+      email,
+      phoneNumber,
+      socialMediaLink
+    );
   }
 
   async getContactDetails(id) {
