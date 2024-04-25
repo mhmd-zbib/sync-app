@@ -7,14 +7,14 @@ import SecondContactInfo from "../../features/contacts/addContact/steps/SecondCo
 import ThirdSocialLink from "../../features/contacts/addContact/steps/ThirdSocialLink";
 import { useAddContactStore } from "../../features/contacts/addContact/store/useAddContactStore";
 const AddContactPage = () => {
-  const { step, nextStep, prevStep, formData } = useAddContactStore();
+  const { step, nextStep, prevStep, formData, disabled } = useAddContactStore();
   const navigation = useNavigation();
 
   const { submitForm } = useAddContactMutation();
   const renderStep = () => {
     switch (step) {
       case 0:
-        return <FirstProfileInfo />;
+        return <FirstPro fileInfo />;
       case 1:
         return <SecondContactInfo />;
       case 2:
@@ -26,7 +26,7 @@ const AddContactPage = () => {
 
   return (
     <InputPageLayout
-      disabled={!formData.name}
+      disabled={disabled}
       screenTitle={"Add Contact"}
       onBackPress={() => prevStep(navigation)}
       onPress={step < 2 ? nextStep : submitForm}

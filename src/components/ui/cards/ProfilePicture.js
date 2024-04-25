@@ -3,6 +3,8 @@ import React from "react";
 import { useTheme } from "../../../stores/shared/themeStore";
 import Typography from "../text/Typography";
 import { useGetInitials } from "../../../hooks/common/useGetInitials";
+import Error from "../../layout/Error";
+import Loading from "../../layout/Loading";
 
 const ProfilePicture = ({ name, size = "md" }) => {
   const theme = useTheme();
@@ -20,7 +22,7 @@ const ProfilePicture = ({ name, size = "md" }) => {
         justifyContent: "center",
       }}>
       <Typography style={{ fontSize: sizeStyle.fontSize }}>
-        {useGetInitials(name)}
+        {name ? useGetInitials(name) : <Loading />}
       </Typography>
     </View>
   );

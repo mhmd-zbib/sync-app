@@ -2,13 +2,14 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import ContactsService from "../../../../services/ContactService";
 import { useNavigation } from "@react-navigation/native";
 
-export const useEditDescriptionMutation = () => {
+export const useEditConnectionMutation = () => {
   const queryClient = useQueryClient();
   const navigation = useNavigation();
 
-  const editDescription = useMutation({
-    mutationFn: ({ contactId, description }) => {
-      ContactsService.addContactDescription(contactId, description);
+  const editConnection = useMutation({
+    mutationFn: ({ contactId, phoneNumber, email }) => {
+      console.log(contactId, phoneNumber, email);
+      ContactsService.editContactConnection(contactId, phoneNumber, email);
     },
     onSuccess: () => {
       console.log("DONE!");
@@ -21,6 +22,6 @@ export const useEditDescriptionMutation = () => {
   });
 
   return {
-    editDescription,
+    editConnection,
   };
 };

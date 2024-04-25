@@ -1,9 +1,9 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
-import InfoCard from "../../../../../../components/ui/cards/InfoCard";
-import Typography from "../../../../../../components/ui/text/Typography";
-import { useContactDetailsStore } from "../../../../../../stores/contacts/useContactDetailsStore";
-import ProfileMissingInfo from "../../../../../../components/ui/cases/ProfileMissingInfo";
+import InfoCard from "../../../../../components/ui/cards/InfoCard";
+import Typography from "../../../../../components/ui/text/Typography";
+import { useContactDetailsStore } from "../../../../../stores/contacts/useContactDetailsStore";
+import ProfileMissingInfo from "../../../../../components/ui/cases/ProfileMissingInfo";
 import { useNavigation } from "@react-navigation/native";
 
 const ContactExperience = () => {

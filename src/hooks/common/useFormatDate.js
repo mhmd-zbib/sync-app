@@ -1,11 +1,9 @@
 /**
-* 
-* @params {TimseStamp} - Enter time samp of date and time
-*
-*
-*/
-
-
+ *
+ * @params {TimesStamp} - Enter time samp of date and time
+ *
+ *
+ */
 
 class DateTimeFormatter {
   static monthNames = [
@@ -50,6 +48,12 @@ class DateTimeFormatter {
     const month = DateTimeFormatter.monthNames[monthIndex].substring(0, 3);
     const year = date.getFullYear();
     return `${day} ${month} ${year}`;
+  }
+
+  static fromISOtoUTC(dateString) {
+    const date = new Date(dateString);
+    const timestamp = date.getTime() / 1000;
+    return timestamp;
   }
 }
 

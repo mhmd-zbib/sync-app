@@ -9,17 +9,15 @@ const useContactEditDescription = () => {
   );
 
   const [desc, setDesc] = useState(description || "");
+
   const { editDescription } = useEditDescriptionMutation();
-  const navigation = useNavigation();
 
   useEffect(() => {
     setDesc(description);
   }, []);
 
   const handleSubmit = () => {
-    console.log(desc);
     editDescription.mutate({ contactId: id, description: desc });
-    navigation.goBack();
   };
 
   return {

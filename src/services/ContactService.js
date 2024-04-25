@@ -22,6 +22,20 @@ class ContactsService {
     return { ...details[0], socialLinks, tags };
   }
 
+  async editContactConnection(id, phoneNumber, email) {
+    if (!id) return;
+    if (!phoneNumber && !email) return;
+
+    let newPhoneNum = phoneNumber.trim("");
+    let newEmail = email.trim("");
+
+    console.log(id, newPhoneNum, newEmail, "data");
+
+    if (email) ContactsManager.editContactEmail(id, newEmail);
+    if (phoneNumber) ContactsManager.editContactPhoneNum(id, newPhoneNum);
+    return;
+  }
+
   async addContactDescription(contactId, description) {
     return ContactsManager.addContactDescription(contactId, description);
   }

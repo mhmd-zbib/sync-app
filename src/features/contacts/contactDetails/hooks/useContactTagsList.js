@@ -5,9 +5,9 @@ import { useContactDetailsStore } from "../../../../stores/contacts/useContactDe
 
 const useContactTagsList = () => {
   const { tags } = useContactDetailsStore((state) => state.contactDetails);
-  const firstFourTags = tags.slice(0, 4);
-  const remaining = tags.length - firstFourTags.length;
-  return { tags, remaining };
+  // const firstFourTags = tags.slice(0, 4);
+  // const remaining = tags.length - firstFourTags.length;
+  return { tags };
 };
 
 export default useContactTagsList;

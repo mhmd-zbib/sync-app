@@ -47,6 +47,16 @@ const tableSchemas = [
     FOREIGN KEY (connection_id) REFERENCES connections(id) ON DELETE CASCADE,
     FOREIGN KEY (tag_id) REFERENCES tags(id) ON DELETE CASCADE
   )`,
+  `CREATE TABLE IF NOT EXISTS experience (
+    id INTEGER PRIMARY KEY NOT NULL,
+    connection_id INTEGER,
+    job_title TEXT,
+    position TEXT,
+    company_name TEXT,
+    website_link TEXT,
+    start_date INTEGER,
+   end_date INTEGER
+  )`,
 ];
 
 const initDb = () => {

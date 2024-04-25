@@ -35,6 +35,20 @@ class ContactsManager {
     );
   }
 
+  async editContactPhoneNum(id, phoneNum) {
+    return dbManager.readSQL(
+      "UPDATE connections SET phone_number = ? WHERE id = ?;",
+      [phoneNum, id]
+    );
+  }
+
+  async editContactEmail(id, email) {
+    return dbManager.readSQL("UPDATE connections SET email = ? WHERE id = ?;", [
+      email,
+      id,
+    ]);
+  }
+
   async addContactNote(id, title, details) {
     const date = new Date();
     const timestamp = date.getTime();
@@ -67,6 +81,25 @@ class ContactsManager {
   getContactDetails(id) {
     console.log(`Fetching details for ID: ${id}`);
     return dbManager.readSQL("SELECT * FROM connections WHERE id = ?", [id]);
+  }
+
+  async addContactExperience(
+    id,
+    jobTitle,
+    position,
+    companyName,
+    websiteLink,
+    startDate,
+    endDate
+  ) {
+    return dbManager.createSQL(
+      "INSERT INTO experience id =? job_title= ? position =? company_name = ? website_link = ? start_date= ? end_date = ? ",
+      [id, jobTitle, position, companyName, websiteLink, startDate, endDate]
+    );
+  }
+
+  async getContactExperiences(id) {
+    return dbManager.readSQL("SELECT * FROM experience WHERE id = ? ", [id]);
   }
 
   async getContactTags(id) {

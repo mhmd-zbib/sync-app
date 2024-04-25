@@ -6,6 +6,10 @@ import Typography from "../text/Typography";
 const ProfileButton = ({ name, onPress, isButton = false }) => {
   const theme = useTheme();
 
+  if (!name) {
+    return;
+  }
+
   return (
     <TouchableOpacity
       activeOpacity={0.9}
