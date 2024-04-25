@@ -1,19 +1,11 @@
-import {
-  KeyboardAvoidingView,
-  ScrollView,
-  StyleSheet,
-  Text,
-  View,
-} from "react-native";
+import { useNavigation } from "@react-navigation/native";
 import React from "react";
 import InputPageLayout from "../../components/layout/InputPageLayout";
-import { useAddContactStore } from "../../features/contacts/addContact/store/useAddContactStore";
-import { useNavigation } from "@react-navigation/native";
+import { useAddContactMutation } from "../../features/contacts/addContact/queries/useAddContactMutation";
 import FirstProfileInfo from "../../features/contacts/addContact/steps/FirstProfileInfo";
 import SecondContactInfo from "../../features/contacts/addContact/steps/SecondContactInfo";
 import ThirdSocialLink from "../../features/contacts/addContact/steps/ThirdSocialLink";
-import useAddContact from "../../features/contacts/addContact/hooks/useAddContact";
-import { useAddContactMutation } from "../../features/contacts/addContact/queries/useAddContactMutation";
+import { useAddContactStore } from "../../features/contacts/addContact/store/useAddContactStore";
 const AddContactPage = () => {
   const { step, nextStep, prevStep, formData } = useAddContactStore();
   const navigation = useNavigation();

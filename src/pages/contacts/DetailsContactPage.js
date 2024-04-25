@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View } from "react-native";
-import React from "react";
+import React, { useEffect } from "react";
 import Typography from "../../components/ui/text/Typography";
 import useContactDetailsLayout from "../../features/contacts/contactDetails/hooks/useContactDetailsLayout";
 import { useContactDetailsQuery } from "../../features/contacts/contactDetails/queries/useContactDetailsQuery";
@@ -24,7 +24,12 @@ const DetailsContactPage = ({ route }) => {
     error,
   } = useContactDetailsQuery(userId);
 
-  if (isSuccess) setContactDetails(contactDetails);
+  useEffect(() => {
+    if (isSuccess) {
+      setContactDetails(contactDetails);
+    }
+  }, [isSuccess, contactDetails, setContactDetails]);
+
   if (isLoading) return <Loading />;
   if (isError) return <Error error={error} />;
 

@@ -4,26 +4,28 @@ class ContactsManager {
   async createContact(name, email, phoneNumber, links) {
     const date = new Date();
     const timestamp = date.getTime();
-    const contactResult = await dbManager.readSQL(
+    const contactResult = await dbManager.createSQL(
       "INSERT INTO connections (name, email, phone_number, created_at) VALUES (?, ?, ?, ?);",
       [name, email, phoneNumber, timestamp]
     );
-
-    if (links.length === 0) return;
-
     const userId = contactResult.insertId;
-    await this.addSocialLinks(userId, links);
+    if (links && links.length > 0) {
+      await this.addSocialLinks(userId, links);
+    }
+    return userId;
   }
 
   async addSocialLinks(userId, links) {
-    for (const link of links) {
-      const sql =
-        "INSERT INTO social_links (connection_id, platform, url) VALUES (?,?,?);";
-      const params = [userId, link.platform, link.url];
+    if (links.length !== 0) {
+      for (const link of links) {
+        const sql =
+          "INSERT INTO social_links (connection_id, platform, url) VALUES (?,?,?);";
+        const params = [userId, link.platform, link.url];
 
-      await dbManager.readSQL(sql, params);
+        await dbManager.readSQL(sql, params);
+      }
     }
-    console.log("Socials added");
+    return userId;
   }
 
   async addContactDescription(id, description) {
