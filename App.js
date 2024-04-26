@@ -40,9 +40,7 @@ export default function App() {
     <QueryClientProvider client={queryClient}>
       <GestureHandlerRootView style={{ flex: 1 }}>
         <ThemeProvider theme={theme}>
-          <View style={{ flex: 1 }}>
-            <MainStack />
-          </View>
+          <MainStack />
         </ThemeProvider>
       </GestureHandlerRootView>
     </QueryClientProvider>

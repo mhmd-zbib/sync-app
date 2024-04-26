@@ -1,20 +1,18 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import {
-  View,
-  Text,
-  TouchableOpacity,
-  StyleSheet,
-  TouchableWithoutFeedback,
   Modal,
+  StyleSheet,
+  TouchableOpacity,
+  TouchableWithoutFeedback,
+  View,
 } from "react-native";
-import Typography from "./text/Typography";
-import { useTheme } from "../../stores/shared/themeStore";
+import { useTheme } from "../../stores/themeStore";
 import Label from "./Label";
+import Typography from "./Typography";
 
 const Dropdown = ({ options, onSelect, style, label }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState(null);
-
   const theme = useTheme();
 
   const handleSelectOption = (option) => {
@@ -42,7 +40,7 @@ const Dropdown = ({ options, onSelect, style, label }) => {
             borderColor: theme.accent,
           }}>
           <Typography>
-            {selectedOption ? selectedOption.label : "Select"}
+            {selectedOption ? selectedOption.name : "Select"}
           </Typography>
         </View>
       </TouchableOpacity>
@@ -71,7 +69,7 @@ const Dropdown = ({ options, onSelect, style, label }) => {
                       { borderColor: theme.secondary },
                     ]}
                     onPress={() => handleSelectOption(option)}>
-                    <Typography>{option.label}</Typography>
+                    <Typography>{option.name}</Typography>
                   </TouchableOpacity>
                 ))}
               </View>

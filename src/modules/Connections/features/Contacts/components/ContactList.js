@@ -1,10 +1,9 @@
 import React from "react";
-import { FlatList, StyleSheet } from "react-native";
+import { FlatList, StyleSheet, View } from "react-native";
 import ContactItem from "./ContactItem";
 import { useNavigation } from "@react-navigation/native";
-import Typography from "../../../../../shared/components/ui/Typography";
 
-const ContactsList = ({ contacts }) => {
+const ContactList = ({ contacts }) => {
   const navigation = useNavigation();
   const navigateToProfile = (id) => {
     navigation.navigate("ContactDetails", { userId: id });
@@ -25,8 +24,8 @@ const ContactsList = ({ contacts }) => {
 
 const styles = StyleSheet.create({
   list: { flex: 1 },
-  listContainer: { gap: 8, marginHorizontal: 10 },
+  listContainer: { gap: 8 },
   center: { flex: 1, justifyContent: "center", alignItems: "center" },
 });
 
-export default ContactsList;
+export default ContactList;

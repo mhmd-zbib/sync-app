@@ -1,6 +1,7 @@
 import React from "react";
 import { StyleSheet, TouchableOpacity } from "react-native";
 import { useTheme } from "../../../stores/themeStore";
+
 const PrimaryCard = ({ children, style, onPress }) => {
   const theme = useTheme();
   return (
@@ -8,13 +9,13 @@ const PrimaryCard = ({ children, style, onPress }) => {
       onPress={onPress}
       activeOpacity={0.8}
       style={[
-        styles.card, // Apply default styles first
+        styles.card,
         {
-          backgroundColor: theme.secondary, // Override with theme and custom properties
+          backgroundColor: theme.secondary,
           padding: 16,
           borderRadius: 16,
         },
-        style, // Apply external styles last to allow overrides
+        style,
       ]}>
       {children}
     </TouchableOpacity>
@@ -25,12 +26,11 @@ export default PrimaryCard;
 
 const styles = StyleSheet.create({
   card: {
-    // Default styles for the card
-    gap: 4, // Note: 'gap' property might not work as expected in React Native
+    gap: 4,
     shadowOpacity: 0.2,
     shadowRadius: 4,
     shadowColor: "#000",
     shadowOffset: { height: 2, width: 0 },
-    elevation: 3, // For Android shadow
+    elevation: 3,
   },
 });

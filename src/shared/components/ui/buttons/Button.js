@@ -1,7 +1,7 @@
 import React from "react";
 import { TouchableOpacity, StyleSheet } from "react-native";
-import { useTheme } from "../../../stores/shared/themeStore";
-import Typography from "../text/Typography";
+import { useTheme } from "../../../stores/themeStore";
+import Typography from "../Typography";
 
 const Button = ({
   title,
@@ -28,7 +28,7 @@ const Button = ({
       backgroundColor: theme.primary,
     },
     disabled && styles.disabledButton,
-    rounded && { borderRadius: styles[size].paddingVertical * 2 }, // Applying full rounding
+    rounded && { borderRadius: styles[size].paddingVertical * 2 },
     style,
   ]);
 

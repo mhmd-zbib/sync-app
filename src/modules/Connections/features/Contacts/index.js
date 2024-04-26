@@ -5,7 +5,7 @@ import React from "react";
 // import EmptyList from "../../../../components/ui/EmptyList";
 import useContactList from "./hooks/useContactList";
 import { fetchContacts } from "./services/fetchContacts";
-import ContactsList from "./components/ContactsList";
+import ContactList from "./components/ContactList";
 import Typography from "../../../../shared/components/ui/Typography";
 
 const Contacts = () => {
@@ -25,7 +25,7 @@ const Contacts = () => {
   // if (contacts === 0 || contacts.length === 0)
   //   return <EmptyList title="connections" />;
 
-  return <ContactsList contacts={sortedContacts} />;
+  return <ContactList contacts={sortedContacts} />;
 };
 
 export default Contacts;

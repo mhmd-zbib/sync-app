@@ -9,7 +9,9 @@ const ContactItem = ({ onPress, item }) => {
   const theme = useTheme();
   return (
     <PrimaryCard onPress={onPress}>
-      <Typography>{item.id} s</Typography>
+      <Typography>
+        {item.id} {item.name}
+      </Typography>
       {/* <View
         style={{
           display: "flex",

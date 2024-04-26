@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { StyleSheet, TextInput, View } from "react-native";
-import { useTheme } from "../../stores/shared/themeStore";
-import Typography from "./text/Typography";
+import { useTheme } from "../../stores/themeStore";
 import Label from "./Label";
 
 const InputText = ({

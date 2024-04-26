@@ -1,9 +1,7 @@
-import { StyleSheet, Text, View } from "react-native";
 import React from "react";
+import { StyleSheet, View } from "react-native";
 import { useTheme } from "../../../stores/themeStore";
 import Typography from "../Typography";
-import { useGetInitials } from "../../../hooks/useGetInitials";
-import Loading from "../../../../../src1/components/layout/Loading";
 
 const ProfilePicture = ({ name, size = "md" }) => {
   const theme = useTheme();
@@ -21,7 +19,7 @@ const ProfilePicture = ({ name, size = "md" }) => {
         justifyContent: "center",
       }}>
       <Typography style={{ fontSize: sizeStyle.fontSize }}>
-        {name ? useGetInitials(name) : <Loading />}
+        useGetInitials(name)
       </Typography>
     </View>
   );
