@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
-import Typography from "./text/Typography";
-import { useTheme } from "../../stores/shared/themeStore";
+import Typography from "../ui/Typography";
+import { useTheme } from "../../stores/themeStore";
 
 const EmptyList = ({ title }) => {
   const theme = useTheme();
