@@ -2,6 +2,7 @@ import React from "react";
 import { StyleSheet, View } from "react-native";
 import { useTheme } from "../../../stores/themeStore";
 import Typography from "../Typography";
+import { useGetInitials } from "../../../hooks/useGetInitials";
 
 const ProfilePicture = ({ name, size = "md" }) => {
   const theme = useTheme();
@@ -19,7 +20,7 @@ const ProfilePicture = ({ name, size = "md" }) => {
         justifyContent: "center",
       }}>
       <Typography style={{ fontSize: sizeStyle.fontSize }}>
-        useGetInitials(name)
+        {useGetInitials(name)}
       </Typography>
     </View>
   );

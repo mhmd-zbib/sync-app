@@ -1,12 +1,17 @@
-import React from "react";
-import { FlatList, StyleSheet, View } from "react-native";
-import ContactItem from "./ContactItem";
+/**
+ *  Flat list taking the passed param of contacts and returning a final render of the contacts,
+ * no hooks but for the navigation function
+ */
+
 import { useNavigation } from "@react-navigation/native";
+import React from "react";
+import { FlatList, StyleSheet } from "react-native";
+import ContactItem from "./ContactItem";
 
 const ContactList = ({ contacts }) => {
   const navigation = useNavigation();
   const navigateToProfile = (id) => {
-    navigation.navigate("ContactDetails", { userId: id });
+    navigation.navigate("ContactProfileScreen", { id: id });
   };
 
   return (

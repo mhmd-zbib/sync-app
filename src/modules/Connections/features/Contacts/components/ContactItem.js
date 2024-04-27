@@ -1,3 +1,11 @@
+/**
+ * Its just the render item with nested views, a card for each contact
+ *
+ * @param {Function} onPress - pass the function that will happen upon pressing on the card
+ * @param {Object} item - pass the data for each contact user
+ *
+ */
+
 import React from "react";
 import { StyleSheet, View } from "react-native";
 import PrimaryCard from "../../../../../shared/components/ui/cards/PrimaryCard";
@@ -9,10 +17,7 @@ const ContactItem = ({ onPress, item }) => {
   const theme = useTheme();
   return (
     <PrimaryCard onPress={onPress}>
-      <Typography>
-        {item.id} {item.name}
-      </Typography>
-      {/* <View
+      <View
         style={{
           display: "flex",
           flexDirection: "row",
@@ -34,7 +39,7 @@ const ContactItem = ({ onPress, item }) => {
             {DateTimeFormatter.formatFullDate(item.created_at)}
           </Typography>
         </View>
-      </View> */}
+      </View>
     </PrimaryCard>
   );
 };

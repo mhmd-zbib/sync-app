@@ -11,6 +11,7 @@ import AddContactScreen from "../modules/Add/features/Contacts";
 import GoBackButton from "../shared/components/ui/buttons/GoBackButton";
 import { useTheme } from "../shared/stores/themeStore";
 import TabBar from "./TabBar";
+import ContactProfileScreen from "../modules/ContactProfile";
 const Stack = createNativeStackNavigator();
 
 const MainStack = () => {
@@ -69,6 +70,11 @@ const MainStack = () => {
             <Stack.Screen
               name="AddContactScreen"
               component={AddContactScreen}
+            />
+
+            <Stack.Screen
+              name="ContactProfileScreen"
+              component={ContactProfileScreen}
             />
           </Stack.Navigator>
         </BottomSheetModalProvider>
