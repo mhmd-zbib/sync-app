@@ -1,15 +1,21 @@
 /**
  *
- * Handles the post req of contact to the local database
- *
+ * This service handles the adding of contact to the local database
  * @param {Object} contactInfo Pass contact info as object with: name, reminder freq, phone num, email, social
  */
 
-export default async function AddContactService(contactInfo) {
-  console.log(contactInfo);
+import { dbManager } from "../../../../../database/utils";
 
-  //   const contactResult = await dbManager.createSQL(
-  //     "INSERT INTO connections (name, email, phone_number, created_at) VALUES (?, ?, ?, ?);",
-  //     [name, email, phoneNumber, timestamp]
-  //   );
+export default async function AddContactService(formData) {
+  const { name, phoneNumber, email, timestamp } = formData;
+
+  const contact = await dbManager.createSQL(
+    "INSERT INTO connections (name, email, phone_number, created_at) VALUES (?, ?, ?, ?);",
+    [name, email, phoneNumber, timestamp]
+  );
+
+  console.log(contact, "data");
+
+  const contactId = contact.insertId;
+  return contactId;
 }

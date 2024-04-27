@@ -1,3 +1,9 @@
+/**
+ *
+ * @param {Number} step
+ * @returns {String} screen title
+ */
+
 export default function useAddContactScreenName(step) {
   switch (step) {
     case 0:
