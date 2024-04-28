@@ -14,7 +14,7 @@ const ProfilePicture = ({ name, size = "md" }) => {
         backgroundColor: theme.accent,
         height: sizeStyle.height,
         width: sizeStyle.width,
-        borderRadius: sizeStyle.width / 2,
+        borderRadius: 500,
         display: "flex",
         alignItems: "center",
         justifyContent: "center",

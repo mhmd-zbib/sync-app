@@ -1,16 +1,17 @@
-import { StyleSheet, Text, View } from "react-native";
 import React from "react";
-import ProfilePicture from "../../../../shared/components/ui/cards/ProfilePicture";
+import { StyleSheet, View } from "react-native";
 import Typography from "../../../../shared/components/ui/Typography";
+import ProfilePicture from "../../../../shared/components/ui/cards/ProfilePicture";
+import useGetContactProfile from "../../hooks/useGetContactProfile";
 
 const ProfileHeader = () => {
-  const name = "Mohammad zbib";
+  const { data } = useGetContactProfile();
 
   return (
     <View style={{ paddingHorizontal: 10, flexDirection: "row", gap: 16 }}>
-      <ProfilePicture name={name} size="lg" />
+      <ProfilePicture name={data.name} size="lg" />
       <View style={{ justifyContent: "space-around" }}>
-        <Typography variant="xlg">{name}</Typography>
+        <Typography variant="xlg"> {data.name} </Typography>
         <Typography> add birthday </Typography>
       </View>
     </View>

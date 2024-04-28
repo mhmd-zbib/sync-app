@@ -1,19 +1,33 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Loading from "../../shared/components/layout/Loading";
+import Typography from "../../shared/components/ui/Typography";
 import ProfileHeader from "./features/Header";
-import useContactProfile from "./hooks/useContactProfile";
-import useContactProfileStore from "./stores/useContactProfileStore";
 import TabViewExample from "./features/TabView";
+import useGetContactProfile from "./hooks/useGetContactProfile";
+import useContactIdStore from "./stores/ContactIdStore";
+import Error from "../../shared/components/layout/Error";
+import { View } from "react-native";
 
 const ContactProfileScreen = ({ route }) => {
   const { id } = route.params;
-  const { data, isError, error, isLoading, isSuccess } = useContactProfile(id);
-  const { setContactData, contactData } = useContactProfileStore();
+  const setId = useContactIdStore((state) => state.setId);
+  const { data, isError, error, isLoading } = useGetContactProfile();
 
-  if (isLoading) return <Loading />;
-  if (isError) console.error(error);
+  useEffect(() => {
+    setId(id);
+  }, [id]);
 
-  console.log(contactData, "this is data");
+  if (isLoading) {
+    return <Loading />;
+  }
+
+  if (isError) {
+    return <Error error={error} />;
+  }
+
+  if (!data) {
+    return <Typography>No data available.</Typography>;
+  }
 
   return (
     <>

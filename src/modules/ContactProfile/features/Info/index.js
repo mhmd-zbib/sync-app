@@ -1,8 +1,14 @@
-import { StyleSheet, Text, View } from "react-native";
 import React from "react";
+import DescriptionContactSection from "./sections/DescriptionContactSection";
+import ConnectionContactSection from "./sections/ConnectionContactSection";
 
-const InfoSection = () => {
-  return <></>;
+const InfoTab = () => {
+  return (
+    <>
+      <DescriptionContactSection />
+      <ConnectionContactSection />
+    </>
+  );
 };
 
-export default InfoSection;
+export default InfoTab;

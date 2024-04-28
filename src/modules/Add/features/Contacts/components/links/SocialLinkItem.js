@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
-import PrimaryCard from "../../../../../../shared/components/ui/cards/PrimaryCard";
+import PrimaryCard from "../../../../../../shared/components/ui/cards/ItemCard";
 import Typography from "../../../../../../shared/components/ui/Typography";
 
 const SocialLinkItem = () => {

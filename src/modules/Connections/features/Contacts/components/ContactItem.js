@@ -8,7 +8,7 @@
 
 import React from "react";
 import { StyleSheet, View } from "react-native";
-import PrimaryCard from "../../../../../shared/components/ui/cards/PrimaryCard";
+import PrimaryCard from "../../../../../shared/components/ui/cards/ItemCard";
 import ProfilePicture from "../../../../../shared/components/ui/cards/ProfilePicture";
 import { useTheme } from "../../../../../shared/stores/themeStore";
 import DateTimeFormatter from "../../../../../shared/hooks/useFormatDate";

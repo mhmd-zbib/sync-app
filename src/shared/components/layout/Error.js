@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 
-const Error = ({ error }) => {
+const Error = ({ error, message = "Something went wrong" }) => {
   console.log(error);
   return (
     <View style={styles.center}>
@@ -14,7 +14,7 @@ const Error = ({ error }) => {
           borderRadius: 8,
           opacity: 0.5,
         }}>
-        <Text style={{ color: "red" }}>An error popped!</Text>
+        <Text style={{ color: "red" }}>{message} </Text>
       </View>
     </View>
   );

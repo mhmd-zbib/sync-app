@@ -1,3 +1,4 @@
+import { ColorSchemeStore } from "nativewind/dist/style-sheet/color-scheme";
 import { dbManager } from "../../../database/utils";
 
 class GetContactProfileService {
@@ -5,8 +6,16 @@ class GetContactProfileService {
     this.dbManager = dbManager;
   }
 
-  getInfo(id) {
-    return dbManager.readSQL("Select * FROM connections WHERE id = ? ", [id]);
+  async getInfo(id) {
+    const results = await this.dbManager.readSQL(
+      "SELECT * FROM connections WHERE id = ?",
+      [id]
+    );
+    if (results.length === 0) {
+      console.error("No id available");
+      return null;
+    }
+    return results[0];
   }
 }
 

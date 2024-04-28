@@ -1,14 +1,16 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
+import Typography from "../../../../shared/components/ui/Typography";
+import NoteList from "./components/NoteList";
 
-const NotesSection = () => {
+const NotesTab = () => {
   return (
-    <View>
-      <Text>NotesSection</Text>
-    </View>
+    <>
+      <NoteList />
+    </>
   );
 };
 
-export default NotesSection;
+export default NotesTab;
 
 const styles = StyleSheet.create({});
