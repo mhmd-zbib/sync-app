@@ -12,7 +12,7 @@ const ProfileHeader = () => {
       <ProfilePicture name={data.name} size="lg" />
       <View style={{ justifyContent: "space-around" }}>
         <Typography variant="xlg"> {data.name} </Typography>
-        <Typography> add birthday </Typography>
+        <Typography>add birthday</Typography>
       </View>
     </View>
   );
