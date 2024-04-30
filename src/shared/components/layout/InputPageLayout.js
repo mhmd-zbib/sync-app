@@ -27,12 +27,11 @@ const InputPageLayout = ({
       style={{ flex: 1, justifyContent: "space-between", paddingBottom: 25 }}>
       <ScrollView
         style={{
-          gap: 32,
           paddingHorizontal: 10,
           marginBottom: 30,
           flex: 1,
         }}>
-        {children}
+        <View style={{ gap: 26 }}>{children}</View>
       </ScrollView>
 
       <Button

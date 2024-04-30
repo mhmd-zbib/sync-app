@@ -1,7 +1,7 @@
 import React from "react";
 import { TouchableOpacity } from "react-native";
-import { useTheme } from "../../../stores/shared/themeStore";
-import Typography from "../text/Typography";
+import { useTheme } from "../../../stores/themeStore";
+import Typography from "../Typography";
 
 const ProfileButton = ({ name, onPress, isButton = false }) => {
   const theme = useTheme();

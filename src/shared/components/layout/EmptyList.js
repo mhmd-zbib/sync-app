@@ -14,7 +14,7 @@ const EmptyList = ({ title }) => {
         alignItems: "center",
         justifyContent: "center",
       }}>
-      <Typography color={theme.textSecondary}>No {title} are found!</Typography>
+      <Typography color={theme.textSecondary}>No {title} yet!</Typography>
     </View>
   );
 };

@@ -1,6 +1,6 @@
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import React from "react";
-import { useTheme } from "../../../stores/shared/themeStore";
+import { useTheme } from "../../../stores/themeStore";
 
 const FloatingAdd = ({ onPress }) => {
   const theme = useTheme();
@@ -19,6 +19,7 @@ const FloatingAdd = ({ onPress }) => {
         borderRadius: 50,
         alignItems: "center",
         justifyContent: "center",
+        zIndex: 900,
       }}>
       <Text>+</Text>
     </TouchableOpacity>

@@ -7,11 +7,12 @@ import {
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import React from "react";
 import { StatusBar, View, useColorScheme } from "react-native";
-import AddContactScreen from "../modules/Add/features/Contacts";
+import AddContactScreen from "../modules/AddFeatures/features/Contacts";
+import ContactProfileScreen from "../modules/ContactProfile";
+import AddNote from "../modules/EditProfile/AddNote";
 import GoBackButton from "../shared/components/ui/buttons/GoBackButton";
 import { useTheme } from "../shared/stores/themeStore";
 import TabBar from "./TabBar";
-import ContactProfileScreen from "../modules/ContactProfile";
 const Stack = createNativeStackNavigator();
 
 const MainStack = () => {
@@ -76,6 +77,8 @@ const MainStack = () => {
               name="ContactProfileScreen"
               component={ContactProfileScreen}
             />
+
+            <Stack.Screen name="AddNote" component={AddNote} />
           </Stack.Navigator>
         </BottomSheetModalProvider>
       </NavigationContainer>

@@ -7,7 +7,7 @@ import GetContactService from "../../../services/GetContactService";
 
 export default function useGetContacts() {
   return useQuery({
-    queryKey: ["contactList"],
+    queryKey: ["ContactList"],
     queryFn: () => GetContactService.getAllContacts(),
   });
 }

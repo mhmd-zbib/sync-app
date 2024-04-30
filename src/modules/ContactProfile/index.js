@@ -1,12 +1,11 @@
 import React, { useEffect } from "react";
+import Error from "../../shared/components/layout/Error";
 import Loading from "../../shared/components/layout/Loading";
 import Typography from "../../shared/components/ui/Typography";
-import ProfileHeader from "./features/Header";
-import TabViewExample from "./features/TabView";
-import useGetContactProfile from "./hooks/useGetContactProfile";
+import ProfileHeader from "./components/Header";
+import TabViewExample from "./components/TabView";
+import useGetContactProfile from "./hooks/useGetProfileInfo";
 import useContactIdStore from "./stores/ContactIdStore";
-import Error from "../../shared/components/layout/Error";
-import { View } from "react-native";
 
 const ContactProfileScreen = ({ route }) => {
   const { id } = route.params;
@@ -26,7 +25,7 @@ const ContactProfileScreen = ({ route }) => {
   }
 
   if (!data) {
-    return <Typography>No data available.</Typography>;
+    return <Typography></Typography>;
   }
 
   return (

@@ -2,11 +2,10 @@ import { BottomSheetModal, BottomSheetView } from "@gorhom/bottom-sheet";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import React, { useCallback, useMemo, useRef, useState } from "react";
 import { StyleSheet, View } from "react-native";
-import BackDrop from "../shared/components/ui/cards/BackDrop";
+import AddOptions from "../modules/AddFeatures";
 import ConnectionsScreen from "../modules/Connections";
-import Typography from "../shared/components/ui/Typography";
+import BackDrop from "../shared/components/ui/cards/BackDrop";
 import { useTheme } from "../shared/stores/themeStore";
-import AddOptions from "../modules/Add";
 
 const TabBar = () => {
   const Tab = createBottomTabNavigator();
@@ -46,7 +45,6 @@ const TabBar = () => {
           component={View}
           options={{
             tabBarLabel: "Add",
-            // tabBarIcon: ({ size, ...rest }) => <Typography>Hi</Typography>,
           }}
           listeners={{
             tabPress: (e) => {

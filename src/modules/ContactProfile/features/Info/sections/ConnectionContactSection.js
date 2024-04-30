@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import InfoSectionCont from "../components/InfoSectionCont";
-import useGetContactProfile from "../../../hooks/useGetContactProfile";
+import useGetContactProfile from "../../../hooks/useGetProfileInfo";
 import Typography from "../../../../../shared/components/ui/Typography";
 import { useTheme } from "../../../../../shared/stores/themeStore";
 import EmptySection from "../components/EmptySection";

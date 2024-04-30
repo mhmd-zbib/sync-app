@@ -12,13 +12,13 @@ const NoteCard = ({ variant, title, description, date, children }) => {
         {date}
       </Typography>
       <Typography
-        style={{ marginTop: 8, marginBottom: 2 }}
+        style={{ marginTop: 6, marginBottom: 2 }}
         numberOfLines={1}
-        fontWeight={"500"}
+        fontWeight={"400"}
         variant="xlg">
         {title}
       </Typography>
-      <Typography numberOfLines={3}>{description}</Typography>
+      {description && <Typography numberOfLines={3}>{description}</Typography>}
       {children}
     </ItemCard>
   );
