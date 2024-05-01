@@ -7,13 +7,16 @@ import { useNavigation } from "@react-navigation/native";
  *
  * @param {number|string} id - The ID of the note to delete.
  */
+
 export default function useDeleteNote(id) {
   const navigation = useNavigation();
   const queryClient = useQueryClient();
 
   const deleteNote = useMutation({
     mutationKey: ["DeleteNote", id],
-    mutationFn: () => NoteServices.delete(id),
+    mutationFn: () => {
+      NoteServices.delete(id);
+    },
     onSuccess: () => {
       console.log("Note deleted successfully");
       queryClient.invalidateQueries(["ProfileNotes"]);

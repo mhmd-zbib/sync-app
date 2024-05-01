@@ -6,12 +6,28 @@ class NoteService {
   }
 
   async add(noteData) {
-    const { id, title, description, timestamp } = noteData;
+    const { contactId, title, details, timestamp } = noteData;
 
     return this.dbManager.createSQL(
       "INSERT INTO notes (connection_id, title, details, created_at) VALUES (?,?,?,?)",
-      [id, title, description, timestamp]
+      [contactId, title, details, timestamp]
     );
+  }
+
+  async edit(noteData) {
+    const { id, title, details, timestamp } = noteData;
+    return this.dbManager.createSQL(
+      "UPDATE notes SET title = ?, details = ?, created_at = ? WHERE id = ?",
+      [title, details, timestamp, id]
+    );
+  }
+
+  async getDetails(id) {
+    const result = await this.dbManager.readSQL(
+      "SELECT * FROM notes WHERE id = ?",
+      [id]
+    );
+    return result[0];
   }
 
   async list(id) {

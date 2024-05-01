@@ -4,15 +4,16 @@ import InputPageLayout from "../../../../shared/components/layout/InputPageLayou
 import InputText from "../../../../shared/components/ui/InputText";
 import useAddNote from "./hooks/useAddNote";
 
-const AddNoteScreen = () => {
-  const { noteData, handleAddNote, handleInputChange } = useAddNote();
+const AddNoteScreen = ({ route }) => {
+  const { data } = route.params || {};
+  const { noteData, handleNote, handleInputChange } = useAddNote(data);
 
   return (
     <InputPageLayout
       disabled={!noteData.title.trim()}
-      screenTitle={"Add Note"}
-      buttonTitle={"Create"}
-      onPress={() => handleAddNote.mutate()}>
+      screenTitle={data ? "Edit Note" : "Add Note"}
+      buttonTitle={data ? "Edit" : "Create"}
+      onPress={() => handleNote.mutate()}>
       <InputText
         label={"Note Title"}
         value={noteData.title}
@@ -21,8 +22,8 @@ const AddNoteScreen = () => {
       <InputText
         label={"Note Description"}
         multiline
-        value={noteData.description}
-        onChange={(text) => handleInputChange("description", text)}
+        value={noteData.details}
+        onChange={(text) => handleInputChange("details", text)}
       />
     </InputPageLayout>
   );

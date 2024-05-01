@@ -1,8 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
-import GetProfile from "../../ContactProfile/services/ProfileService";
-import useContactIdStore from "../../ContactProfile/stores/ContactIdStore";
-import NotesServices from "../services/NoteServices";
-import NoteServices from "../services/NoteServices";
+import useContactIdStore from "../../../../ContactProfile/stores/ContactIdStore";
+import NoteServices from "../../../services/NoteServices";
 
 export default function useGetNotes() {
   const id = useContactIdStore((state) => state.id);

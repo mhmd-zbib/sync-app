@@ -4,7 +4,7 @@ import EmptyList from "../../../../shared/components/layout/EmptyList";
 import Error from "../../../../shared/components/layout/Error";
 import Loading from "../../../../shared/components/layout/Loading";
 import FloatingAdd from "../../../../shared/components/ui/buttons/FloatingAdd";
-import useGetNotes from "../../hooks/useGetNotes";
+import useGetNotes from "./hooks/useGetNotes";
 import NoteList from "./components/NoteList";
 import { View } from "react-native";
 import SearchBar from "../../../../shared/components/ui/SearchBar";

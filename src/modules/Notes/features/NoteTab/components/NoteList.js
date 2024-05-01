@@ -9,7 +9,7 @@ const NoteList = ({ data, searchTerm }) => {
 
   function navigateToDetails(item) {
     navigation.navigate("NoteDetails", {
-      item: item,
+      id: item.id,
     });
   }
 

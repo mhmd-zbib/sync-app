@@ -9,13 +9,11 @@ import React from "react";
 import { StatusBar, View, useColorScheme } from "react-native";
 import AddContactScreen from "../modules/AddFeatures/features/Contacts";
 import ContactProfileScreen from "../modules/ContactProfile";
-import AddNote from "../modules/Notes/features/NoteAdd";
+import AddNoteScreen from "../modules/Notes/features/NoteAdd";
+import NoteDetails from "../modules/Notes/features/NoteDetails";
 import GoBackButton from "../shared/components/ui/buttons/GoBackButton";
 import { useTheme } from "../shared/stores/themeStore";
 import TabBar from "./TabBar";
-import NoteDetails from "../modules/Notes/features/NoteDetails";
-import AddNoteScreen from "../modules/Notes/features/NoteAdd";
-import EditNoteScreen from "../modules/Notes/features/NoteEdit";
 const Stack = createNativeStackNavigator();
 
 const MainStack = () => {
@@ -80,7 +78,6 @@ const MainStack = () => {
               component={ContactProfileScreen}
             />
             <Stack.Screen name="NoteDetails" component={NoteDetails} />
-            <Stack.Screen name="EditNoteScreen" component={EditNoteScreen} />
             <Stack.Screen name="AddNoteScreen" component={AddNoteScreen} />
           </Stack.Navigator>
         </BottomSheetModalProvider>

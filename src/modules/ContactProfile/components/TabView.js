@@ -37,7 +37,6 @@ export default function TabViewExample() {
       navigationState={{ index, routes }}
       renderScene={renderScene}
       onIndexChange={setIndex}
-      t
       initialLayout={initialLayout}
       renderTabBar={renderTabBar}
     />

@@ -10,7 +10,10 @@ const DetailPage = ({ children, screenTitle, style, onOptionPress }) => {
     navigation.setOptions({
       title: screenTitle,
       headerRight: () => (
-        <TouchableOpacity onPress={onOptionPress} activeOpacity={0.6}>
+        <TouchableOpacity
+          onPress={onOptionPress}
+          activeOpacity={0.6}
+          style={{ padding: 10 }}>
           <Entypo name="dots-three-vertical" size={20} color="white" />
         </TouchableOpacity>
       ),

@@ -1,48 +1,43 @@
 import { useState } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import EditProfile from "../../../../EditProfile/services/EditProfile";
+import NoteServices from "../../../services/NoteServices";
 import useContactIdStore from "../../../../ContactProfile/stores/ContactIdStore";
 import { useNavigation } from "@react-navigation/native";
-import NoteServices from "../../../services/NoteServices";
 
-export default function useAddNote() {
-  const id = useContactIdStore((state) => state.id);
+export default function useAddNote(
+  initialNoteData = { title: "", details: "" }
+) {
+  console.log(initialNoteData, "inital");
   const navigation = useNavigation();
-  const queryClient = useQueryClient();
-  const [noteData, setNoteData] = useState({
-    title: "",
-    description: "",
-  });
+  const contactId = useContactIdStore((state) => state.id);
+  const [noteData, setNoteData] = useState(initialNoteData);
 
+  const queryClient = useQueryClient();
   const handleInputChange = (name, value) => {
-    setNoteData((prevState) => ({
-      ...prevState,
-      [name]: value,
-    }));
+    setNoteData((prevState) => ({ ...prevState, [name]: value }));
   };
 
-  const handleAddNote = useMutation({
-    mutationKey: "AddNote",
+  const handleNote = useMutation({
+    mutationKey: "AddOrUpdateNote",
     mutationFn: async () => {
       const date = new Date();
       const timestamp = date.getTime();
-      const { title, description } = noteData;
-      return await NoteServices.add({ id, title, description, timestamp });
+      const { id, title, details } = noteData;
+      if (id) {
+        return await NoteServices.edit({ id, title, details, timestamp });
+      } else {
+        return await NoteServices.add({ contactId, title, details, timestamp });
+      }
     },
     onSuccess: () => {
-      console.log("done");
-      queryClient.refetchQueries("ProfileNotes", id);
-
-      navigation.navigate("ContactProfileScreen", { id: id });
+      navigation.goBack();
+      queryClient.invalidateQueries(["NoteDetails"]);
+      queryClient.invalidateQueries(["ProfileNotes"]);
     },
     onError: (error) => {
       console.error(error);
     },
   });
 
-  return {
-    noteData,
-    handleAddNote,
-    handleInputChange,
-  };
+  return { noteData, handleNote, handleInputChange };
 }
