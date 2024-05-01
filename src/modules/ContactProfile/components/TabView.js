@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Dimensions } from "react-native";
 import { SceneMap, TabBar, TabView } from "react-native-tab-view";
 import { useTheme } from "../../../shared/stores/themeStore";
-import NotesTab from "../../Notes";
+import NotesTab from "../../Notes/features/NoteTab";
 import InfoTab from "../features/Info";
 import RemindersTab from "../features/Reminders";
 

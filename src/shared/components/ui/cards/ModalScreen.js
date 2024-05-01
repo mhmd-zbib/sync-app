@@ -6,9 +6,8 @@ import {
   TouchableOpacity,
   TouchableWithoutFeedback,
 } from "react-native";
-import { useTheme } from "../../../stores/shared/themeStore";
+import { useTheme } from "../../../stores/themeStore";
 import Button from "../buttons/Button";
-
 const ModalScreen = ({ visible, onClose, children, closeButton = false }) => {
   const theme = useTheme();
 
@@ -24,9 +23,9 @@ const ModalScreen = ({ visible, onClose, children, closeButton = false }) => {
             <View
               style={[
                 styles.modalContent,
-                { backgroundColor: theme.secondary, gap: 16 },
+                { backgroundColor: theme.secondary, gap: 15 },
               ]}>
-              <View>{children}</View>
+              <>{children}</>
               {closeButton && (
                 <Button
                   variant="secondary"
@@ -53,7 +52,7 @@ const styles = StyleSheet.create({
   },
   modalContent: {
     padding: 20,
-    borderRadius: 10,
+    borderRadius: 20,
     width: "80%",
     alignItems: "center",
   },

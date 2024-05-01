@@ -1,6 +1,7 @@
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import React from "react";
 import { useTheme } from "../../../stores/themeStore";
+import { AntDesign, Octicons } from "@expo/vector-icons";
 
 const FloatingAdd = ({ onPress }) => {
   const theme = useTheme();
@@ -14,14 +15,14 @@ const FloatingAdd = ({ onPress }) => {
         position: "absolute",
         right: 20,
         bottom: 45,
-        width: 55,
-        height: 55,
+        width: 50,
+        height: 50,
         borderRadius: 50,
         alignItems: "center",
         justifyContent: "center",
         zIndex: 900,
       }}>
-      <Text>+</Text>
+      <Octicons name="plus" size={24} color={theme.background} />
     </TouchableOpacity>
   );
 };

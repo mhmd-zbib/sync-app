@@ -1,11 +1,11 @@
 import { dbManager } from "../../../database/utils";
 
-class GetProfile {
+class ProfileService {
   constructor(dbManager) {
     this.dbManager = dbManager;
   }
 
-  async info(id) {
+  async getInfo(id) {
     const results = await this.dbManager.readSQL(
       "SELECT * FROM connections WHERE id = ?",
       [id]
@@ -15,4 +15,4 @@ class GetProfile {
   }
 }
 
-export default new GetProfile(dbManager);
+export default new ProfileService(dbManager);

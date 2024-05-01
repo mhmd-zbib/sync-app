@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import GetProfile from "../services/GetProfile";
+import ProfileService from "../services/ProfileService";
 import useContactIdStore from "../stores/ContactIdStore";
 
 export default function useGetProfileInfo() {
@@ -8,7 +8,7 @@ export default function useGetProfileInfo() {
   return useQuery({
     queryKey: ["ProfileInfo", id],
     queryFn: () => {
-      const info = GetProfile.info(id);
+      const info = ProfileService.getInfo(id);
       console.log(info);
       return info;
     },

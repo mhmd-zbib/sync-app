@@ -17,9 +17,10 @@ const SearchBar = ({
         {
           borderWidth: 1,
           borderColor: theme.accent,
+          // backgroundColor: theme.secondary,
           borderRadius: 12,
           paddingVertical: 12,
-          paddingHorizontal: 12,
+          paddingHorizontal: 22,
           // display: "flex",
           flexDirection: "row",
         },
@@ -27,7 +28,7 @@ const SearchBar = ({
       ]}>
       <TextInput
         placeholder={placeHolder}
-        placeholderTextColor={theme.textSecondary}
+        placeholderTextColor={theme.textAccent}
         style={{
           color: theme.textPrimary,
           fontSize: 16,
@@ -36,7 +37,6 @@ const SearchBar = ({
         value={searchTerm}
         onChangeText={setSearchTerm}
       />
-      {/* {children} */}
     </View>
   );
 };

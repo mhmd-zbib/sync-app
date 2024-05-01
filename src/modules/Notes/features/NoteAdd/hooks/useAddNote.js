@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import EditProfile from "../../services/EditProfile";
-import useContactIdStore from "../../../ContactProfile/stores/ContactIdStore";
+import EditProfile from "../../../../EditProfile/services/EditProfile";
+import useContactIdStore from "../../../../ContactProfile/stores/ContactIdStore";
 import { useNavigation } from "@react-navigation/native";
+import NoteServices from "../../../services/NoteServices";
 
 export default function useAddNote() {
   const id = useContactIdStore((state) => state.id);
@@ -26,8 +27,7 @@ export default function useAddNote() {
       const date = new Date();
       const timestamp = date.getTime();
       const { title, description } = noteData;
-
-      return await EditProfile.notes({ id, title, description, timestamp });
+      return await NoteServices.add({ id, title, description, timestamp });
     },
     onSuccess: () => {
       console.log("done");

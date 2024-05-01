@@ -22,6 +22,7 @@ const InputPageLayout = ({
       ),
     });
   }, [navigation, screenTitle]);
+
   return (
     <View
       style={{ flex: 1, justifyContent: "space-between", paddingBottom: 25 }}>

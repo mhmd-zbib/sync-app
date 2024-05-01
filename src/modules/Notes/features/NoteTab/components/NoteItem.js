@@ -1,14 +1,15 @@
 import { StyleSheet, View } from "react-native";
-import NoteCard from "../../../shared/components/ui/cards/NoteCard";
-import DateTimeFormatter from "../../../shared/hooks/useFormatDate";
+import NoteCard from "../../../../../shared/components/ui/cards/NoteCard";
+import DateTimeFormatter from "../../../../../shared/hooks/useFormatDate";
 
-const NoteItem = ({ item }) => {
+const NoteItem = ({ item, onPress }) => {
   return (
     <NoteCard
+      onPress={onPress}
       variant={"secondary"}
       date={DateTimeFormatter.formatTimeDayMonthYear(item.created_at)}
       title={item.title}
-      description={item.description}
+      description={item.details}
     />
   );
 };

@@ -1,10 +1,10 @@
-import { StyleSheet, Text, View } from "react-native";
 import React from "react";
-import InputPageLayout from "../../../shared/components/layout/InputPageLayout";
-import InputText from "../../../shared/components/ui/InputText";
+import { StyleSheet } from "react-native";
+import InputPageLayout from "../../../../shared/components/layout/InputPageLayout";
+import InputText from "../../../../shared/components/ui/InputText";
 import useAddNote from "./hooks/useAddNote";
 
-const AddNote = () => {
+const AddNoteScreen = () => {
   const { noteData, handleAddNote, handleInputChange } = useAddNote();
 
   return (
@@ -28,6 +28,6 @@ const AddNote = () => {
   );
 };
 
-export default AddNote;
+export default AddNoteScreen;
 
 const styles = StyleSheet.create({});
