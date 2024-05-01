@@ -12,7 +12,7 @@ export default function useNoteModal({ id, data }) {
     {
       title: "Edit",
       onPress: () => {
-        navigation.navigate("AddNoteScreen", { item: data });
+        navigation.navigate("AddNoteScreen", { data });
         toggleModal();
       },
       color: "white",

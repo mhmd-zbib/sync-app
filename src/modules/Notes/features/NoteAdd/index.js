@@ -6,6 +6,8 @@ import useAddNote from "./hooks/useAddNote";
 
 const AddNoteScreen = ({ route }) => {
   const { data } = route.params || {};
+
+  console.log(data, "data");
   const { noteData, handleNote, handleInputChange } = useAddNote(data);
 
   return (
