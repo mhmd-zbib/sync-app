@@ -1,13 +1,22 @@
 export class useSort {
-  static byName(items, key) {
-    return [...items].sort((a, b) => a[key].localeCompare(b[key]));
+  static byName(items, key, ascending = true) {
+    return [...items].sort((a, b) => {
+      const comparison = a[key].localeCompare(b[key]);
+      return ascending ? comparison : -comparison;
+    });
   }
 
-  static byDate(items, key) {
-    return items.sort((a, b) => a[key] - b[key]);
+  static byDate(items, key, ascending = true) {
+    return [...items].sort((a, b) => {
+      const comparison = a[key] - b[key];
+      return ascending ? comparison : -comparison;
+    });
   }
 
-  static byNumber(items, key) {
-    return [...items].sort((a, b) => a[key] - b[key]);
+  static byNumber(items, key, ascending = true) {
+    return [...items].sort((a, b) => {
+      const comparison = a[key] - b[key];
+      return ascending ? comparison : -comparison;
+    });
   }
 }

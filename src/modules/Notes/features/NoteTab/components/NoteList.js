@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { FlatList, StyleSheet } from "react-native";
 import NoteItem from "./NoteItem";
 import useSearch from "../../../../../shared/hooks/useSearch";
+import { useSort } from "../../../../../shared/hooks/useSort";
 
 const NoteList = ({ data, searchTerm }) => {
   const navigation = useNavigation();
@@ -14,12 +15,12 @@ const NoteList = ({ data, searchTerm }) => {
   }
 
   const searchable = useSearch(data, searchTerm, "title");
-
+  const filtered = useSort.byDate(searchable, "created_at", false);
   return (
     <FlatList
       contentContainerStyle={{ gap: 8, paddingBottom: 20 }}
       keyExtractor={(item) => item.id.toString()}
-      data={searchable}
+      data={filtered}
       renderItem={({ item }) => (
         <NoteItem
           onPress={() => {

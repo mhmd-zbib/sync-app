@@ -21,6 +21,7 @@ const InputText = ({
     <View style={[styles.container, style]}>
       <Label label={label} />
       <TextInput
+        autoFocus={true}
         placeholderTextColor={theme.textAccent}
         style={[
           styles.input,

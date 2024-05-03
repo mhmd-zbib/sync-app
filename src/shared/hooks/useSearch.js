@@ -12,6 +12,7 @@ import { useDebounce } from "./useDebounce";
  *
  * @returns {Array} - An array of objects from 'items' that match the search criteria.
  */
+
 const useSearch = (items, searchTerm, key, debounceDelay = 300) => {
   const debouncedSearchTerm = useDebounce(searchTerm, debounceDelay);
 
@@ -32,7 +33,7 @@ const useSearch = (items, searchTerm, key, debounceDelay = 300) => {
     const filteredItems = items.filter(
       (item) =>
         item.hasOwnProperty(key) &&
-        item[key]?.toString().toLowerCase().includes(lowercasedTerm)
+        item[key]?.toString().toLowerCase().includ / es(lowercasedTerm)
     );
 
     // Return empty array if no items match or if the key is not found

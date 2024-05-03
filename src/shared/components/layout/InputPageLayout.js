@@ -1,6 +1,12 @@
-import { useNavigation } from "@react-navigation/native";
 import React, { useLayoutEffect } from "react";
-import { ScrollView, View } from "react-native";
+import {
+  Dimensions,
+  KeyboardAvoidingView,
+  Platform,
+  ScrollView,
+  View,
+} from "react-native";
+import { useNavigation } from "@react-navigation/native";
 import Button from "../ui/buttons/Button";
 import GoBackButton from "../ui/buttons/GoBackButton";
 
@@ -13,6 +19,8 @@ const InputPageLayout = ({
   disabled = false,
 }) => {
   const navigation = useNavigation();
+  const screenHeight = Dimensions.get("window").height;
+  const keyboardVerticalOffset = 0.1 * screenHeight + 5;
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -21,19 +29,21 @@ const InputPageLayout = ({
         <GoBackButton onPress={onBackPress || (() => navigation.goBack())} />
       ),
     });
-  }, [navigation, screenTitle]);
+  }, [navigation, screenTitle, onBackPress]);
 
   return (
-    <View
-      style={{ flex: 1, justifyContent: "space-between", paddingBottom: 25 }}>
-      <ScrollView
-        style={{
-          paddingHorizontal: 10,
-          marginBottom: 30,
-          flex: 1,
-        }}>
-        <View style={{ gap: 26 }}>{children}</View>
-      </ScrollView>
+    <KeyboardAvoidingView
+      behavior="padding"
+      // enabled={true}
+      keyboardVerticalOffset={keyboardVerticalOffset}
+      style={{
+        flex: 1,
+        justifyContent: "space-between",
+        marginBottom: 25,
+      }}>
+      <View style={{ gap: 26, paddingHorizontal: 10, marginBottom: 30 }}>
+        {children}
+      </View>
 
       <Button
         disabled={disabled}
@@ -41,7 +51,7 @@ const InputPageLayout = ({
         title={buttonTitle}
         onPress={onPress}
       />
-    </View>
+    </KeyboardAvoidingView>
   );
 };
 

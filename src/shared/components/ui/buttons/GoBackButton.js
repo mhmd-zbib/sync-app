@@ -2,6 +2,7 @@ import React from "react";
 import { StyleSheet, Text, TouchableOpacity } from "react-native";
 import { useTheme } from "../../../stores/themeStore";
 import { useNavigation } from "@react-navigation/native";
+import { MaterialIcons } from "@expo/vector-icons";
 
 const GoBackButton = ({ onPress }) => {
   const theme = useTheme();
@@ -14,13 +15,18 @@ const GoBackButton = ({ onPress }) => {
       style={{
         alignSelf: "center",
         backgroundColor: theme.secondary,
-        borderRadius: 4,
+        borderRadius: 8,
         alignItems: "center",
         justifyContent: "center",
-        width: 32,
-        height: 32,
+        // width: 32,
+        // height: 32,
+        padding: 8,
       }}>
-      <Text>{"<"}</Text>
+      <MaterialIcons
+        name="arrow-back-ios-new"
+        size={20}
+        color={theme.textAccent}
+      />
     </TouchableOpacity>
   );
 };

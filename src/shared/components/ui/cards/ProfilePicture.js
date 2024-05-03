@@ -1,16 +1,21 @@
 import React from "react";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, TouchableOpacity, View } from "react-native";
 import { useTheme } from "../../../stores/themeStore";
 import Typography from "../Typography";
 import { useGetInitials } from "../../../hooks/useGetInitials";
+import { Feather } from "@expo/vector-icons";
 
-const ProfilePicture = ({ name, size = "md" }) => {
+const ProfilePicture = ({ name, size = "md", onPress }) => {
   const theme = useTheme();
   const sizeStyle = sizes[size] || sizes.medium;
 
   return (
-    <View
+    <TouchableOpacity
+      onPress={onPress}
+      activeOpacity={0.9}
       style={{
+        borderColor: theme.textAccent,
+        borderWidth: 1,
         backgroundColor: theme.accent,
         height: sizeStyle.height,
         width: sizeStyle.width,
@@ -19,10 +24,14 @@ const ProfilePicture = ({ name, size = "md" }) => {
         alignItems: "center",
         justifyContent: "center",
       }}>
-      <Typography style={{ fontSize: sizeStyle.fontSize }}>
-        {useGetInitials(name)}
-      </Typography>
-    </View>
+      {name ? (
+        <Typography style={{ fontSize: sizeStyle.fontSize }}>
+          {useGetInitials(name)}
+        </Typography>
+      ) : (
+        <Feather name="edit" size={24} color={theme.textSecondary} />
+      )}
+    </TouchableOpacity>
   );
 };
 

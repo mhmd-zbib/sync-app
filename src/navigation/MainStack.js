@@ -14,6 +14,7 @@ import NoteDetails from "../modules/Notes/features/NoteDetails";
 import GoBackButton from "../shared/components/ui/buttons/GoBackButton";
 import { useTheme } from "../shared/stores/themeStore";
 import TabBar from "./TabBar";
+import GroupAddScreen from "../modules/Groups/features/GroupAdd";
 const Stack = createNativeStackNavigator();
 
 const MainStack = () => {
@@ -45,7 +46,7 @@ const MainStack = () => {
           <Stack.Navigator
             initialRouteName="Reminders"
             screenOptions={({ navigation }) => ({
-              presentation: "modal",
+              // presentation: "push",
               headerLeft: () =>
                 navigation.canGoBack() && (
                   <GoBackButton onPress={() => navigation.goBack()} />
@@ -56,8 +57,11 @@ const MainStack = () => {
               },
               headerStyle: {
                 paddingVertical: 24,
+
                 backgroundColor: background,
-                shadowColor: "transparent",
+                borderBottomColor: "red",
+                // borderBottomWidth: 0, // Removes the border line
+                // shadowOpacity: 0, // Removes shadow on iOS
               },
               headerTintColor: textPrimary,
             })}>
@@ -72,13 +76,15 @@ const MainStack = () => {
               name="AddContactScreen"
               component={AddContactScreen}
             />
-
             <Stack.Screen
               name="ContactProfileScreen"
               component={ContactProfileScreen}
             />
+            {/* ---------------------------------- Notes --------------------------------- */}
             <Stack.Screen name="NoteDetails" component={NoteDetails} />
             <Stack.Screen name="AddNoteScreen" component={AddNoteScreen} />
+            {/* --------------------------------- Groups --------------------------------- */}
+            <Stack.Screen name="GroupAddScreen" component={GroupAddScreen} />
           </Stack.Navigator>
         </BottomSheetModalProvider>
       </NavigationContainer>

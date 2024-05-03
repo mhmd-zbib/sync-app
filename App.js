@@ -1,5 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { View, ActivityIndicator, StyleSheet } from "react-native";
+import {
+  View,
+  ActivityIndicator,
+  StyleSheet,
+  SafeAreaView,
+} from "react-native";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { ThemeProvider, useTheme } from "./src/shared/stores/themeStore";
@@ -40,7 +45,9 @@ export default function App() {
     <QueryClientProvider client={queryClient}>
       <GestureHandlerRootView style={{ flex: 1 }}>
         <ThemeProvider theme={theme}>
-          <MainStack />
+          <SafeAreaView style={{ flex: 1 }}>
+            <MainStack />
+          </SafeAreaView>
         </ThemeProvider>
       </GestureHandlerRootView>
     </QueryClientProvider>

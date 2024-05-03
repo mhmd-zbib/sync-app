@@ -42,7 +42,7 @@ const AddOptionsScreen = () => {
         </View>
         <View style={styles.buttonsContainer}>
           <AddButton title="Tag" onPress={handlePress("AddTag")} />
-          <AddButton title="Group" onPress={handlePress("AddGroup")} />
+          <AddButton title="Group" onPress={handlePress("GroupAddScreen")} />
         </View>
       </View>
     </View>
