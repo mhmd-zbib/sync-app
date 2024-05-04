@@ -24,7 +24,7 @@ const ConnectionsScreen = () => {
 
 const styles = StyleSheet.create({
   container: {
-    gap: 25,
+    gap: 15,
     flex: 1,
   },
 });

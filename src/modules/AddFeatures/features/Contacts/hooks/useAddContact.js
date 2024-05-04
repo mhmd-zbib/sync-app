@@ -8,10 +8,12 @@
 import AddContactService from "../services/AddContactService";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import useAddContactFormStore from "../store/useAddContactFormStore";
+import { useNavigation } from "@react-navigation/native";
 
 export default function useAddContact() {
   const { formData, resetForm } = useAddContactFormStore();
   const queryClient = useQueryClient();
+  const navigation = useNavigation();
 
   const addContact = useMutation({
     mutationKey: "AddContact",
@@ -26,6 +28,8 @@ export default function useAddContact() {
       resetForm();
       queryClient.refetchQueries("ContactList");
       console.log("Contact added successfully", contactId);
+      navigation.goBack();
+      navigation.navigate("ContactProfileScreen", { id: contactId });
     },
     onError: (error) => {
       console.error(error);

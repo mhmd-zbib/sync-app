@@ -44,7 +44,7 @@ const BottomSheet = ({
       backdropComponent={({ style }) => (
         <BackDrop visible={true} onPress={closeBottomSheet} />
       )}>
-      <BottomSheetView>{children}</BottomSheetView>
+      {children}
     </BottomSheetModal>
   );
 };

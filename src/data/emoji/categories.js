@@ -11,10 +11,6 @@ const list = [
 ];
 const tabs = [
   {
-    tabLabel: "🕒",
-    category: list[0],
-  },
-  {
     tabLabel: "😃",
     category: list[1],
   },

@@ -7,11 +7,13 @@ import TabViewExample from "./components/TabView";
 import useGetContactProfile from "./hooks/useGetProfileInfo";
 import useContactIdStore from "./stores/ContactIdStore";
 import DetailPage from "../../shared/components/layout/DetailPage";
+import { useNavigation } from "@react-navigation/native";
 
 const ContactProfileScreen = ({ route }) => {
   const { id } = route.params;
   const setId = useContactIdStore((state) => state.setId);
   const { data, isError, error, isLoading } = useGetContactProfile();
+  const navigation = useNavigation();
 
   useEffect(() => {
     setId(id);
@@ -30,7 +32,9 @@ const ContactProfileScreen = ({ route }) => {
   }
 
   return (
-    <DetailPage screenTitle={"Profile"}>
+    <DetailPage
+      // onBackPress={navigation.navigate("Connections")}
+      screenTitle={"Profile"}>
       <ProfileHeader />
       <TabViewExample />
     </DetailPage>

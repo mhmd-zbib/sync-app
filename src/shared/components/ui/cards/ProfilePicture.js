@@ -4,8 +4,9 @@ import { useTheme } from "../../../stores/themeStore";
 import Typography from "../Typography";
 import { useGetInitials } from "../../../hooks/useGetInitials";
 import { Feather } from "@expo/vector-icons";
+import shortnameToUnicode from "../../../utils/shortnameToUnicode";
 
-const ProfilePicture = ({ name, size = "md", onPress }) => {
+const ProfilePicture = ({ name, size = "md", onPress, emoji, color }) => {
   const theme = useTheme();
   const sizeStyle = sizes[size] || sizes.medium;
 
@@ -14,9 +15,9 @@ const ProfilePicture = ({ name, size = "md", onPress }) => {
       onPress={onPress}
       activeOpacity={0.9}
       style={{
-        borderColor: theme.textAccent,
+        borderColor: color ? null : theme.textAccent,
         borderWidth: 1,
-        backgroundColor: theme.accent,
+        backgroundColor: color ? color : theme.accent,
         height: sizeStyle.height,
         width: sizeStyle.width,
         borderRadius: 500,
@@ -27,6 +28,10 @@ const ProfilePicture = ({ name, size = "md", onPress }) => {
       {name ? (
         <Typography style={{ fontSize: sizeStyle.fontSize }}>
           {useGetInitials(name)}
+        </Typography>
+      ) : emoji ? (
+        <Typography style={{ fontSize: sizeStyle.fontSize }}>
+          {shortnameToUnicode[`:${emoji}:`]}
         </Typography>
       ) : (
         <Feather name="edit" size={24} color={theme.textSecondary} />
@@ -54,5 +59,11 @@ const sizes = {
     height: 80,
     width: 80,
     fontSize: 24,
+  },
+  xlg: {
+    borderRadius: 500,
+    height: 170,
+    width: 170,
+    fontSize: 60,
   },
 };

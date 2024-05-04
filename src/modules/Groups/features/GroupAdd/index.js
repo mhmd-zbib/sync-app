@@ -1,25 +1,25 @@
 import React, { useCallback, useMemo, useRef } from "react";
-import { StyleSheet, Text, View } from "react-native";
-import Button from "../../../../shared/components/ui/buttons/Button";
+import { StyleSheet } from "react-native";
 import InputPageLayout from "../../../../shared/components/layout/InputPageLayout";
 import InputText from "../../../../shared/components/ui/InputText";
 import ProfilePicture from "../../../../shared/components/ui/cards/ProfilePicture";
+import GroupProfileBottomSheet from "./GroupProfileBottomSheet";
 import BottomSheet from "../../../../shared/components/ui/BottomSheet";
-import GroupProfileBottomSheet from "./components/GroupProfileBottomSheet";
-import EmojiPicker from "../../../../shared/components/ui/emoji/EmojiPicker";
 
 const GroupAddScreen = () => {
   const bottomSheetModalRef = useRef(null);
-  const snapPoints = useMemo(() => ["90%"], []);
+  const snapPoints = useMemo(() => ["100%"], []);
 
   const handlePresentModalPress = useCallback(() => {
     bottomSheetModalRef.current?.present();
   }, []);
 
   return (
-    <InputPageLayout screenTitle={"Create Group"} buttonTitle={"Create"}>
+    <InputPageLayout
+      screenTitle={"Create Group"}
+      buttonTitle={"Create"}
+      disabled>
       <ProfilePicture size="lg" onPress={handlePresentModalPress} />
-
       <InputText label={"Group Name"} />
 
       <BottomSheet
