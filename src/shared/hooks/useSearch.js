@@ -33,7 +33,7 @@ const useSearch = (items, searchTerm, key, debounceDelay = 300) => {
     const filteredItems = items.filter(
       (item) =>
         item.hasOwnProperty(key) &&
-        item[key]?.toString().toLowerCase().includ / es(lowercasedTerm)
+        item[key]?.toString().toLowerCase().includes(lowercasedTerm)
     );
 
     // Return empty array if no items match or if the key is not found

@@ -27,6 +27,7 @@ const SearchBar = ({
         containerStyle,
       ]}>
       <TextInput
+        cursorColor={theme.textSecondary}
         placeholder={placeHolder}
         placeholderTextColor={theme.textAccent}
         style={{

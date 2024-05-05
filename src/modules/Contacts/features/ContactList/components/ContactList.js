@@ -8,7 +8,7 @@ import React from "react";
 import { FlatList, StyleSheet } from "react-native";
 import ContactItem from "./ContactItem";
 
-const ContactList = ({ contacts }) => {
+const ContactList = ({ contacts, section = false }) => {
   const navigation = useNavigation();
   const navigateToProfile = (id) => {
     navigation.navigate("ContactProfileScreen", { id: id });

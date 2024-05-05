@@ -1,5 +1,5 @@
 /**
- * Returns from the local database all the contacts for the user
+ * Handles contact operations with database
  */
 
 import { dbManager } from "../../../database/utils";
