@@ -1,7 +1,6 @@
 import { useState } from "react";
-import Contacts from "../features/Contacts";
-import { get } from "react-native/Libraries/TurboModule/TurboModuleRegistry";
 import Groups from "../features/Groups";
+import ContactScreen from "../../Contacts/features/ContactList/index";
 
 export const useConnections = () => {
   const [activeContent, setActiveContent] = useState(0);
@@ -9,7 +8,7 @@ export const useConnections = () => {
   const getContent = () => {
     switch (activeContent) {
       case 0:
-        return <Contacts />;
+        return <ContactScreen />;
       case 1:
         return <Groups />;
       case 2:
@@ -19,7 +18,7 @@ export const useConnections = () => {
       case 4:
         return "Un-Tagged content shown here";
       default:
-        return <Contacts />;
+        return <ContactScreen />;
     }
   };
 

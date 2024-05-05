@@ -25,6 +25,9 @@ const BottomSheet = ({
   bottomSheetModalRef,
   snapPoints,
   children,
+  enableDynamicSizing = true,
+  index = 1,
+  ...props
 }) => {
   const theme = useTheme();
 
@@ -39,7 +42,7 @@ const BottomSheet = ({
       ref={bottomSheetModalRef}
       index={1}
       snapPoints={snapPoints}
-      enableDynamicSizing
+      enableDynamicSizing={enableDynamicSizing}
       onChange={onChange}
       backdropComponent={({ style }) => (
         <BackDrop visible={true} onPress={closeBottomSheet} />

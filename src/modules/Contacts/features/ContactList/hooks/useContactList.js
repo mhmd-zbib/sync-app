@@ -10,7 +10,7 @@
 import { useMemo } from "react";
 import useSearch from "../../../../../shared/hooks/useSearch";
 import { useSort } from "../../../../../shared/hooks/useSort";
-import { useConnectionsSearchStore } from "../../../store/useConnectionSearchStore";
+import { useConnectionsSearchStore } from "../../../../Connections/store/useConnectionSearchStore";
 
 const useContactList = (contacts) => {
   const searchTerm = useConnectionsSearchStore((state) => state.searchTerm);

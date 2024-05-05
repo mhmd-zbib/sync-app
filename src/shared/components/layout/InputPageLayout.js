@@ -9,6 +9,7 @@ import {
 import { useNavigation } from "@react-navigation/native";
 import Button from "../ui/buttons/Button";
 import GoBackButton from "../ui/buttons/GoBackButton";
+import { platformColor } from "nativewind";
 
 const InputPageLayout = ({
   children,
@@ -20,7 +21,8 @@ const InputPageLayout = ({
 }) => {
   const navigation = useNavigation();
   const screenHeight = Dimensions.get("window").height;
-  const keyboardVerticalOffset = 0.1 * screenHeight + 5;
+  const keyboardVerticalOffset =
+    Platform.OS === "ios" ? 0.1 * screenHeight + 5 : 0;
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -33,7 +35,7 @@ const InputPageLayout = ({
 
   return (
     <KeyboardAvoidingView
-      behavior="padding"
+      behavior={Platform.OS === "ios" ? "padding" : null}
       // enabled={true}
       keyboardVerticalOffset={keyboardVerticalOffset}
       style={{
@@ -46,6 +48,7 @@ const InputPageLayout = ({
       </View>
 
       <Button
+        arrow
         disabled={disabled}
         style={{ marginHorizontal: 10 }}
         title={buttonTitle}

@@ -6,8 +6,9 @@ class GroupService {
   }
 
   async add(groupData) {
+    const { groupName, emoji, backgroundColor } = groupData;
     return await this.dbManager.createSQL(
-      "INSERT INTO groups (name) VALUES (?);"[name]
+      "INSERT INTO groups (name) VALUES (?);"[groupName]
     );
   }
 }

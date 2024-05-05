@@ -7,7 +7,7 @@ import useAddContactSteps from "./hooks/useAddContactSteps";
 import useAddContactScreenName from "./hooks/useRenderTitle";
 import useAddContactFormStore from "./store/useAddContactFormStore";
 
-const AddContactScreen = () => {
+const ContactAddScreen = () => {
   const { step, nextStep, prevStep } = useAddContactSteps();
   const { addContact } = useAddContact();
   useAddContactLayout(step, prevStep);
@@ -24,4 +24,4 @@ const AddContactScreen = () => {
   );
 };
 
-export default AddContactScreen;
+export default ContactAddScreen;

@@ -7,14 +7,14 @@ import {
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import React from "react";
 import { StatusBar, View, useColorScheme } from "react-native";
-import AddContactScreen from "../modules/AddFeatures/features/Contacts";
 import ContactProfileScreen from "../modules/ContactProfile";
+import GroupAddScreen from "../modules/Groups/features/GroupAdd";
 import AddNoteScreen from "../modules/Notes/features/NoteAdd";
 import NoteDetails from "../modules/Notes/features/NoteDetails";
 import GoBackButton from "../shared/components/ui/buttons/GoBackButton";
 import { useTheme } from "../shared/stores/themeStore";
 import TabBar from "./TabBar";
-import GroupAddScreen from "../modules/Groups/features/GroupAdd";
+import ContactAddScreen from "../modules/Contacts/features/ContactAdd";
 const Stack = createNativeStackNavigator();
 
 const MainStack = () => {
@@ -73,13 +73,16 @@ const MainStack = () => {
               })}
             />
             <Stack.Screen
-              name="AddContactScreen"
-              component={AddContactScreen}
-            />
-            <Stack.Screen
               name="ContactProfileScreen"
               component={ContactProfileScreen}
             />
+
+            {/* -------------------------------- Contacts -------------------------------- */}
+            <Stack.Screen
+              name="ContactAddScreen"
+              component={ContactAddScreen}
+            />
+
             {/* ---------------------------------- Notes --------------------------------- */}
             <Stack.Screen name="NoteDetails" component={NoteDetails} />
             <Stack.Screen name="AddNoteScreen" component={AddNoteScreen} />

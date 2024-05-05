@@ -3,11 +3,11 @@
  */
 
 import { useQuery } from "@tanstack/react-query";
-import GetContactService from "../../../services/GetContactService";
+import ContactService from "../../../services/ContactService";
 
 export default function useGetContacts() {
   return useQuery({
     queryKey: ["ContactList"],
-    queryFn: () => GetContactService.getAllContacts(),
+    queryFn: () => ContactService.getAllContacts(),
   });
 }

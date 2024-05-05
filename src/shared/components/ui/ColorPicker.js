@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, View, TouchableOpacity, FlatList } from "react-native";
+import { StyleSheet, TouchableOpacity, FlatList } from "react-native";
 
 const ColorButton = ({ color, onPress }) => (
   <TouchableOpacity

@@ -1,31 +1,65 @@
 import React, { useCallback, useMemo, useRef } from "react";
 import { StyleSheet } from "react-native";
 import InputPageLayout from "../../../../shared/components/layout/InputPageLayout";
-import InputText from "../../../../shared/components/ui/InputText";
-import ProfilePicture from "../../../../shared/components/ui/cards/ProfilePicture";
-import GroupProfileBottomSheet from "./GroupProfileBottomSheet";
 import BottomSheet from "../../../../shared/components/ui/BottomSheet";
+import GroupAddForm from "./components/GroupAddForm";
+import GroupProfileBottomSheet from "./components/GroupProfileBottomSheet";
+import ContactsBottomSheet from "./components/ContactsBottomSheet";
+import useGroupAdd from "./hooks/useGroupAdd";
+import ItemCard from "../../../../shared/components/ui/cards/ItemCard";
+import Typography from "../../../../shared/components/ui/Typography";
+import CardButton from "../../../../shared/components/ui/buttons/CardButton";
 
 const GroupAddScreen = () => {
-  const bottomSheetModalRef = useRef(null);
-  const snapPoints = useMemo(() => ["100%"], []);
+  const groupProfileSheetRef = useRef(null);
+  const contactsSheetRef = useRef(null);
 
-  const handlePresentModalPress = useCallback(() => {
-    bottomSheetModalRef.current?.present();
+  const snapPoints = useMemo(() => ["90%", "90%"], []);
+
+  const handlePresentProfileSheet = useCallback(() => {
+    groupProfileSheetRef.current?.present();
   }, []);
+
+  const handlePresetContactsSheet = useCallback(() => {
+    contactsSheetRef.current?.present();
+  }, []);
+
+  const { setGroupName, groupName, emoji, backgroundColor, onCreate } =
+    useGroupAdd();
 
   return (
     <InputPageLayout
+      onPress={onCreate}
       screenTitle={"Create Group"}
       buttonTitle={"Create"}
-      disabled>
-      <ProfilePicture size="lg" onPress={handlePresentModalPress} />
-      <InputText label={"Group Name"} />
+      disabled={
+        groupName.trim() === "" || emoji === "" || backgroundColor === ""
+      }>
+      <GroupAddForm
+        groupName={groupName}
+        setGroupName={setGroupName}
+        backgroundColor={backgroundColor}
+        emoji={emoji}
+        handlePresentProfileSheet={handlePresentProfileSheet}
+      />
+
+      <CardButton
+        title={"Add Connections"}
+        onPress={handlePresetContactsSheet}
+      />
 
       <BottomSheet
+        enableDynamicSizing={false}
         snapPoints={snapPoints}
-        bottomSheetModalRef={bottomSheetModalRef}>
+        bottomSheetModalRef={groupProfileSheetRef}>
         <GroupProfileBottomSheet />
+      </BottomSheet>
+
+      <BottomSheet
+        enableDynamicSizing={false}
+        snapPoints={snapPoints}
+        bottomSheetModalRef={contactsSheetRef}>
+        <ContactsBottomSheet />
       </BottomSheet>
     </InputPageLayout>
   );

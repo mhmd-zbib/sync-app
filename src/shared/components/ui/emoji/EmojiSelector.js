@@ -9,7 +9,7 @@ const EmojiSelector = ({ setEmoji }) => {
   const theme = useTheme();
 
   return (
-    <View>
+    <>
       <View
         style={{
           flexDirection: "row",
@@ -28,7 +28,7 @@ const EmojiSelector = ({ setEmoji }) => {
         ))}
       </View>
       <EmojiCategory setEmoji={setEmoji} category={activeCategory} />
-    </View>
+    </>
   );
 };
 

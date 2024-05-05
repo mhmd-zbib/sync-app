@@ -5,7 +5,7 @@
  *
  */
 
-import AddContactService from "../services/AddContactService";
+import ContactService from "../../../services/ContactService";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import useAddContactFormStore from "../store/useAddContactFormStore";
 import { useNavigation } from "@react-navigation/native";
@@ -22,7 +22,7 @@ export default function useAddContact() {
       const timestamp = date.getTime();
       const { name, phoneNumber, email } = formData;
 
-      return await AddContactService({ name, phoneNumber, email, timestamp });
+      return await ContactService.add({ name, phoneNumber, email, timestamp });
     },
     onSuccess: (contactId) => {
       resetForm();

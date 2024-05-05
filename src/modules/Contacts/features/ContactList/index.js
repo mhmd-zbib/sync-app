@@ -9,7 +9,7 @@ import useGetContacts from "./hooks/useGetContacts";
 import Loading from "../../../../shared/components/layout/Loading";
 import EmptyList from "../../../../shared/components/layout/EmptyList";
 
-const Contacts = () => {
+const ContactScreen = () => {
   //get contacts
   const { data: contacts, isLoading, isError, error } = useGetContacts();
 
@@ -26,4 +26,4 @@ const Contacts = () => {
   return <ContactList contacts={sortedContacts} />;
 };
 
-export default Contacts;
+export default ContactScreen;

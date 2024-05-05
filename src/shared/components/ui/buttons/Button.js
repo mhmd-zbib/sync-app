@@ -2,6 +2,7 @@ import React from "react";
 import { TouchableOpacity, StyleSheet } from "react-native";
 import { useTheme } from "../../../stores/themeStore";
 import Typography from "../Typography";
+import { MaterialIcons } from "@expo/vector-icons";
 
 const Button = ({
   title,
@@ -11,6 +12,7 @@ const Button = ({
   size = "md",
   style,
   rounded = false,
+  arrow = false,
 }) => {
   const theme = useTheme();
   const baseButtonStyle = StyleSheet.flatten([
@@ -43,6 +45,13 @@ const Button = ({
       <Typography color={textColor} fontWeight="500" variant="md">
         {title}
       </Typography>
+      {arrow && (
+        <MaterialIcons
+          name="arrow-forward-ios"
+          size={16}
+          color={theme.background}
+        />
+      )}
     </TouchableOpacity>
   );
 };
@@ -59,6 +68,9 @@ function getTextColor(theme, variant, disabled) {
 
 const styles = StyleSheet.create({
   button: {
+    flexDirection: "row",
+    justifyContent: "center",
+    gap: 4,
     alignItems: "center",
     borderRadius: 12,
   },
