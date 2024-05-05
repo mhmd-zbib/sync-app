@@ -13,7 +13,7 @@ import { FlatList, StyleSheet } from "react-native";
 import SearchBar from "../../../../../shared/components/ui/SearchBar";
 import NoteItem from "./NoteItem";
 import useSearch from "../../../../../shared/hooks/useSearch";
-import { useSort } from "../../../../../shared/hooks/useSort";
+import useSort from "../../../../../shared/hooks/useSort";
 import { useTheme } from "../../../../../shared/stores/themeStore";
 
 const NoteList = ({ data }) => {
@@ -27,7 +27,7 @@ const NoteList = ({ data }) => {
 
   const [searchTerm, setSearchTerm] = useState("");
   const searchable = useSearch(data, searchTerm, "title");
-  const filtered = useSort.byDate(searchable, "created_at", false);
+  const filtered = useSort(searchable, "created_at", false);
 
   return (
     <FlatList

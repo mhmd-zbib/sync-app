@@ -69,6 +69,8 @@ const MainStack = () => {
               name="Reminders"
               component={TabBar}
               options={({ route }) => ({
+                headerShown: false,
+
                 title: getFocusedRouteNameFromRoute(route),
               })}
             />

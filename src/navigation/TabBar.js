@@ -53,7 +53,11 @@ const TabBar = () => {
             },
           }}
         />
-        <Tab.Screen name="Connections" component={ConnectionsScreen} />
+        <Tab.Screen
+          name="Connections"
+          component={ConnectionsScreen}
+          screenOptions={{ headerShown: false }}
+        />
       </Tab.Navigator>
       <BottomSheetModal
         handleIndicatorStyle={{ backgroundColor: theme.accent, width: 72 }}

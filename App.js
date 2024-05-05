@@ -12,6 +12,7 @@ import * as SQLite from "expo-sqlite";
 import initDb from "./src/database/init";
 import * as SystemUI from "expo-system-ui";
 import MainStack from "./src/navigation/MainStack";
+import ConnectionTest from "./test/connection.test";
 
 export default function App() {
   const [isLoading, setLoading] = useState(true);
@@ -51,6 +52,8 @@ export default function App() {
         </ThemeProvider>
       </GestureHandlerRootView>
     </QueryClientProvider>
+
+    // <ConnectionTest />
   );
 }
 
