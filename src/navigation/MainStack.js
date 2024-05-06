@@ -16,6 +16,7 @@ import { useTheme } from "../shared/stores/themeStore";
 import TabBar from "./TabBar";
 import ContactAddScreen from "../modules/Contacts/features/ContactAdd";
 import ContactSelectListScreen from "../modules/Contacts/features/ContactSelectList";
+import ReminderListScreen from "../modules/Reminders/features/ReminderList";
 const Stack = createNativeStackNavigator();
 
 const MainStack = () => {
@@ -90,6 +91,8 @@ const MainStack = () => {
               name="ContactSelectListScreen"
               component={ContactSelectListScreen}
             />
+
+            {/* -------------------------------- Reminders ------------------------------- */}
 
             {/* ---------------------------------- Notes --------------------------------- */}
             <Stack.Screen name="NoteDetails" component={NoteDetails} />

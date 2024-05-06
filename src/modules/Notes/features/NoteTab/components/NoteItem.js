@@ -7,7 +7,7 @@ const NoteItem = ({ item, onPress }) => {
     <NoteCard
       onPress={onPress}
       variant={"secondary"}
-      date={DateTimeFormatter.formatTimeDayMonthYear(item.created_at)}
+      date={item.created_at}
       title={item.title}
       description={item.details}
     />

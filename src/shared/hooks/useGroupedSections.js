@@ -22,8 +22,7 @@ const useGroupedSections = (
   return useMemo(() => {
     const groups = items.reduce((sections, item) => {
       const key = transformKey(keyExtractor(item));
-      const formattedKey =
-        key.charAt(0).toUpperCase() + key.slice(1).toLowerCase();
+
       if (!sections[key]) {
         sections[key] = [];
       }

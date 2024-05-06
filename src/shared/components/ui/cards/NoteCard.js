@@ -3,13 +3,14 @@ import React from "react";
 import ItemCard from "./ItemCard";
 import Typography from "../Typography";
 import { useTheme } from "../../../stores/themeStore";
+import DateTimeFormatter from "../../../hooks/useFormatDate";
 
 const NoteCard = ({ variant, title, description, date, children, onPress }) => {
   const theme = useTheme();
   return (
     <ItemCard variant={variant} style={{ flex: 1 }} onPress={onPress}>
       <Typography variant="sm" numberOfLines={1} color={theme.textSecondary}>
-        {date}
+        {DateTimeFormatter.formatTimeDayMonthYear(date)}
       </Typography>
       <Typography
         style={{ marginTop: 6, marginBottom: 2 }}

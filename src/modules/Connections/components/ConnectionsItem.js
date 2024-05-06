@@ -13,6 +13,7 @@ const categoryConfig = {
     navigationPath: "ContactProfileScreen",
   },
 };
+
 const ConnectionsItem = ({ item, category, isLoading }) => {
   const navigation = useNavigation();
 

@@ -8,6 +8,7 @@ import useSearch from "../../../../../shared/hooks/useSearch";
 import useSort from "../../../../../shared/hooks/useSort";
 import { useTheme } from "../../../../../shared/stores/themeStore";
 import ContactSelectItem from "./ContactSelectItem";
+import SectionTitleCard from "../../../../../shared/components/ui/cards/SectionTitleCard";
 
 const ContactSelectList = ({ contacts, selected, setSelected }) => {
   const theme = useTheme();
@@ -15,7 +16,9 @@ const ContactSelectList = ({ contacts, selected, setSelected }) => {
 
   const searchable = useSearch(contacts, searchTerm, "name");
   const sortedContacts = useSort(searchable, "name");
-  const sectioned = useGroupedSections(sortedContacts, (item) => item.name[0]);
+  const sectioned = useGroupedSections(sortedContacts, (item) =>
+    item.name[0].toUpperCase()
+  );
 
   const toggleSelect = (id) => {
     setSelected((prev) => {
@@ -28,21 +31,10 @@ const ContactSelectList = ({ contacts, selected, setSelected }) => {
 
   return (
     <View style={{ gap: 10 }}>
-      <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
       <SectionList
         renderSectionHeader={({ section: { title } }) => (
-          <Typography
-            color={theme.textSecondary}
-            style={{
-              backgroundColor: theme.secondary,
-              borderRadius: 5,
-              padding: 5,
-              paddingHorizontal: 10,
-            }}>
-            {title}
-          </Typography>
+          <SectionTitleCard title={title} />
         )}
-        stickyHeaderHiddenOnScroll={false}
         ListEmptyComponent={<EmptyList title={"contacts"} />}
         stickySectionHeadersEnabled
         showsVerticalScrollIndicator={false}
@@ -56,6 +48,11 @@ const ContactSelectList = ({ contacts, selected, setSelected }) => {
           />
         )}
         keyExtractor={(item) => item.id.toString()}
+        stickyHeaderHiddenOnScroll
+        stickyHeaderIndices={[0]}
+        ListHeaderComponent={
+          <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+        }
       />
     </View>
   );

@@ -6,6 +6,7 @@ import AddOptions from "../modules/AddFeatures";
 import ConnectionsScreen from "../modules/Connections";
 import BackDrop from "../shared/components/ui/cards/BackDrop";
 import { useTheme } from "../shared/stores/themeStore";
+import ReminderListScreen from "../modules/Reminders/features/ReminderList";
 
 const TabBar = () => {
   const Tab = createBottomTabNavigator();
@@ -40,6 +41,12 @@ const TabBar = () => {
             elevation: 0,
           },
         }}>
+        <Tab.Screen
+          name="Reminders"
+          component={ReminderListScreen}
+          screenOptions={{ headerShown: false }}
+        />
+
         <Tab.Screen
           name="Create"
           component={View}
