@@ -15,6 +15,7 @@ import GoBackButton from "../shared/components/ui/buttons/GoBackButton";
 import { useTheme } from "../shared/stores/themeStore";
 import TabBar from "./TabBar";
 import ContactAddScreen from "../modules/Contacts/features/ContactAdd";
+import ContactSelectListScreen from "../modules/Contacts/features/ContactSelectList";
 const Stack = createNativeStackNavigator();
 
 const MainStack = () => {
@@ -83,6 +84,11 @@ const MainStack = () => {
             <Stack.Screen
               name="ContactAddScreen"
               component={ContactAddScreen}
+            />
+
+            <Stack.Screen
+              name="ContactSelectListScreen"
+              component={ContactSelectListScreen}
             />
 
             {/* ---------------------------------- Notes --------------------------------- */}

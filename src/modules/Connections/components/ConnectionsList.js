@@ -16,6 +16,7 @@ export default function ConnectionsList() {
   return (
     <FlatList
       data={data[category]}
+      stickyHeaderHiddenOnScroll
       renderItem={({ item }) => (
         <ConnectionsItem
           item={item}

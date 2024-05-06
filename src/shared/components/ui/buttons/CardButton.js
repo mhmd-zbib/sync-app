@@ -24,17 +24,16 @@ const CardButton = ({ title, value, onPress }) => {
           alignItems: "center",
           gap: 14,
         }}>
-        {value && (
-          <Typography
-            variant="sm"
-            style={{
-              backgroundColor: theme.accent,
-              borderRadius: 50,
-              padding: 4,
-            }}>
-            {value}
-          </Typography>
-        )}
+        <Typography
+          variant="sm"
+          style={{
+            backgroundColor: theme.accent,
+            borderRadius: 50,
+            padding: 4,
+            paddingHorizontal: 8,
+          }}>
+          {value}
+        </Typography>
         <MaterialIcons
           name="arrow-forward-ios"
           size={16}

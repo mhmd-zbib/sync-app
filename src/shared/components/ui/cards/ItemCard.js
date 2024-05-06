@@ -1,13 +1,14 @@
 import React from "react";
 import { StyleSheet, TouchableOpacity } from "react-native";
 import { useTheme } from "../../../stores/themeStore";
+import Typography from "../Typography";
 
 const ItemCard = ({ children, style, onPress, variant }) => {
   const theme = useTheme();
 
   const baseStyle = [
     styles.card,
-    style,
+
     {
       borderRadius: 16,
       borderWidth: variant === "secondary" ? 1 : 0,
@@ -19,7 +20,10 @@ const ItemCard = ({ children, style, onPress, variant }) => {
   ];
 
   return (
-    <TouchableOpacity onPress={onPress} activeOpacity={0.8} style={baseStyle}>
+    <TouchableOpacity
+      onPress={onPress}
+      activeOpacity={0.8}
+      style={[baseStyle, style]}>
       {children}
     </TouchableOpacity>
   );

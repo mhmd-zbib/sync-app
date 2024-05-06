@@ -1,15 +1,8 @@
-import React, { useLayoutEffect } from "react";
-import {
-  Dimensions,
-  KeyboardAvoidingView,
-  Platform,
-  ScrollView,
-  View,
-} from "react-native";
 import { useNavigation } from "@react-navigation/native";
+import React, { useLayoutEffect } from "react";
+import { Dimensions, KeyboardAvoidingView, Platform, View } from "react-native";
 import Button from "../ui/buttons/Button";
 import GoBackButton from "../ui/buttons/GoBackButton";
-import { platformColor } from "nativewind";
 
 const InputPageLayout = ({
   children,
@@ -18,6 +11,7 @@ const InputPageLayout = ({
   screenTitle,
   onBackPress,
   disabled = false,
+  headerRight,
 }) => {
   const navigation = useNavigation();
   const screenHeight = Dimensions.get("window").height;
@@ -30,6 +24,12 @@ const InputPageLayout = ({
       headerLeft: () => (
         <GoBackButton onPress={onBackPress || (() => navigation.goBack())} />
       ),
+
+      headerRight: () => {
+        {
+          return headerRight;
+        }
+      },
     });
   }, [navigation, screenTitle, onBackPress]);
 
@@ -43,7 +43,8 @@ const InputPageLayout = ({
         justifyContent: "space-between",
         marginBottom: 25,
       }}>
-      <View style={{ gap: 26, paddingHorizontal: 10, marginBottom: 30 }}>
+      <View
+        style={{ gap: 26, paddingHorizontal: 10, marginBottom: 10, flex: 1 }}>
         {children}
       </View>
 

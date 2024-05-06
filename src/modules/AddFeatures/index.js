@@ -36,7 +36,7 @@ const AddOptionsScreen = () => {
         <View style={styles.buttonsContainer}>
           <AddButton
             title="Connection"
-            onPress={handlePress("AddContactScreen")}
+            onPress={handlePress("ContactAddScreen")}
           />
           <AddButton title="Reminder" onPress={handlePress("AddReminder")} />
         </View>
