@@ -1,3 +1,7 @@
+/**
+ * @param {any} id - note id for details fetching
+ */
+
 import { useQuery } from "@tanstack/react-query";
 import NoteServices from "../services/NoteServices";
 

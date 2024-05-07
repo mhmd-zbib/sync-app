@@ -74,6 +74,13 @@ const styles = StyleSheet.create({
     alignItems: "center",
     borderRadius: 12,
   },
+
+  xsm: {
+    borderRadius: 8,
+    paddingHorizontal: 8,
+    paddingVertical: 6,
+  },
+
   sm: {
     paddingHorizontal: 12,
     paddingVertical: 10,

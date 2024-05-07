@@ -18,6 +18,7 @@ import NoteItem from "./NoteItem";
 import Loading from "../../../../../shared/components/layout/Loading";
 import Error from "../../../../../shared/components/layout/Error";
 import EmptyList from "../../../../../shared/components/layout/EmptyList";
+import Typography from "../../../../../shared/components/ui/Typography";
 
 const NoteList = () => {
   const navigation = useNavigation();
@@ -45,13 +46,14 @@ const NoteList = () => {
       ListHeaderComponentStyle={{
         backgroundColor: theme.background,
         paddingBottom: 5,
-        marginTop: 20,
+        paddingTop: 20,
       }}
       stickyHeaderHiddenOnScroll
       contentContainerStyle={{
         gap: 8,
         paddingBottom: 20,
-        flex: 1,
+        flex: filtered.length > 0 ? null : 1,
+
         marginHorizontal: 10,
       }}
       keyExtractor={(item) => item.id.toString()}

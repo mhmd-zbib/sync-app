@@ -13,7 +13,7 @@ const CategoryTitle = ({ setCategory, activeCategory }) => {
       {categories.map((category) => (
         <Button
           key={category.value}
-          size="sm"
+          size="xsm"
           title={category.title}
           onPress={() => setCategory(category.value)}
           variant={activeCategory === category.value ? "primary" : "secondary"}
