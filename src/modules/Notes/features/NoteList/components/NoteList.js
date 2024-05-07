@@ -8,29 +8,36 @@
  */
 
 import { useNavigation } from "@react-navigation/native";
-import React, { useState } from "react";
+import React from "react";
 import { FlatList, StyleSheet } from "react-native";
 import SearchBar from "../../../../../shared/components/ui/SearchBar";
-import NoteItem from "./NoteItem";
-import useSearch from "../../../../../shared/hooks/useSearch";
-import useSort from "../../../../../shared/hooks/useSort";
 import { useTheme } from "../../../../../shared/stores/themeStore";
+import useContactIdStore from "../../../../ContactProfile/stores/ContactIdStore";
+import { useNoteList } from "../hooks/useNoteList";
+import NoteItem from "./NoteItem";
+import Loading from "../../../../../shared/components/layout/Loading";
+import Error from "../../../../../shared/components/layout/Error";
+import EmptyList from "../../../../../shared/components/layout/EmptyList";
 
-const NoteList = ({ data }) => {
+const NoteList = () => {
   const navigation = useNavigation();
   const theme = useTheme();
+  const id = useContactIdStore((state) => state.id);
+
+  const { searchTerm, setSearchTerm, filtered, noteList } = useNoteList(id);
+
   function navigateToDetails(item) {
     navigation.navigate("NoteDetails", {
       id: item.id,
     });
   }
 
-  const [searchTerm, setSearchTerm] = useState("");
-  const searchable = useSearch(data, searchTerm, "title");
-  const filtered = useSort(searchable, "created_at", false);
+  if (noteList.isLoading) return <Loading />;
+  if (noteList.isError) return <Error error={noteList.error} />;
 
   return (
     <FlatList
+      ListEmptyComponent={<EmptyList title={"notes"} />}
       stickyHeaderIndices={[0]}
       ListHeaderComponent={
         <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
@@ -38,9 +45,15 @@ const NoteList = ({ data }) => {
       ListHeaderComponentStyle={{
         backgroundColor: theme.background,
         paddingBottom: 5,
+        marginTop: 20,
       }}
       stickyHeaderHiddenOnScroll
-      contentContainerStyle={{ gap: 8, paddingBottom: 20 }}
+      contentContainerStyle={{
+        gap: 8,
+        paddingBottom: 20,
+        flex: 1,
+        marginHorizontal: 10,
+      }}
       keyExtractor={(item) => item.id.toString()}
       data={filtered}
       renderItem={({ item }) => (

@@ -1,22 +1,25 @@
 import { useState } from "react";
 import useGroupProfileStore from "../stores/useGroupProfileStore";
-import shortnameToUnicode from "../../../../../shared/utils/shortnameToUnicode";
+import { useGroupAddMutation } from "../../../queries/useGroupAddMutation";
 
 export default function useGroupAdd() {
   const [groupName, setGroupName] = useState("");
-  const [contacts, setContacts] = useState([0]);
   const { emoji, backgroundColor } = useGroupProfileStore();
   const [selectedContacts, setSelectedContacts] = useState([]);
 
-  const onCreate = () => {
-    console.log(
-      groupName,
-      shortnameToUnicode[`:${emoji}:`],
-      backgroundColor,
-      selectedContacts.length
-    );
-  };
+  const { mutate: handleAddGroup } = useGroupAddMutation();
 
+  const onCreate = () => {
+    const date = new Date();
+    const timestamp = date.getTime();
+
+    handleAddGroup({
+      groupName,
+      emoji,
+      backgroundColor,
+      timestamp,
+    });
+  };
   return {
     selectedContacts,
     setSelectedContacts,
@@ -25,6 +28,6 @@ export default function useGroupAdd() {
     emoji,
     backgroundColor,
     onCreate,
-    contacts,
+    handleAddGroup,
   };
 }

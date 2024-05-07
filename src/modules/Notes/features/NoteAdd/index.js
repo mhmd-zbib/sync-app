@@ -1,13 +1,10 @@
 import React from "react";
-import { StyleSheet } from "react-native";
 import InputPageLayout from "../../../../shared/components/layout/InputPageLayout";
 import InputText from "../../../../shared/components/ui/InputText";
-import useAddNote from "./hooks/useAddNote";
+import useAddNote from "./hooks/useNoteAdd";
 
-const AddNoteScreen = ({ route }) => {
+const NoteAddScreen = ({ route }) => {
   const { data } = route.params || {};
-
-  console.log(data, "data");
   const { noteData, handleNote, handleInputChange } = useAddNote(data);
 
   return (
@@ -15,7 +12,7 @@ const AddNoteScreen = ({ route }) => {
       disabled={!noteData.title.trim()}
       screenTitle={data ? "Edit Note" : "Add Note"}
       buttonTitle={data ? "Edit" : "Create"}
-      onPress={() => handleNote.mutate()}>
+      onPress={handleNote}>
       <InputText
         label={"Note Title"}
         value={noteData.title}
@@ -31,6 +28,4 @@ const AddNoteScreen = ({ route }) => {
   );
 };
 
-export default AddNoteScreen;
-
-const styles = StyleSheet.create({});
+export default NoteAddScreen;

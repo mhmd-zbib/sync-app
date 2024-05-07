@@ -4,15 +4,14 @@ import { StyleSheet } from "react-native";
 import InputPageLayout from "../../../../shared/components/layout/InputPageLayout";
 import BottomSheet from "../../../../shared/components/ui/BottomSheet";
 import CardButton from "../../../../shared/components/ui/buttons/CardButton";
-import ContactsBottomSheet from "./components/ContactsBottomSheet";
 import GroupAddForm from "./components/GroupAddForm";
 import GroupProfileBottomSheet from "./components/GroupProfileBottomSheet";
 import useGroupAdd from "./hooks/useGroupAdd";
 
 const GroupAddScreen = ({ route }) => {
   const groupProfileSheetRef = useRef(null);
-  const contactsSheetRef = useRef(null);
   const navigation = useNavigation();
+
   const snapPoints = useMemo(() => ["90%", "90%"], []);
   const handlePresentProfileSheet = useCallback(() => {
     groupProfileSheetRef.current?.present();
@@ -23,9 +22,10 @@ const GroupAddScreen = ({ route }) => {
     groupName,
     emoji,
     backgroundColor,
-    onCreate,
     setSelectedContacts,
     selectedContacts,
+    handleAddGroup,
+    onCreate,
   } = useGroupAdd();
 
   const navigateToSelect = () => {
@@ -67,13 +67,6 @@ const GroupAddScreen = ({ route }) => {
         snapPoints={snapPoints}
         bottomSheetModalRef={groupProfileSheetRef}>
         <GroupProfileBottomSheet />
-      </BottomSheet>
-
-      <BottomSheet
-        enableDynamicSizing={false}
-        snapPoints={snapPoints}
-        bottomSheetModalRef={contactsSheetRef}>
-        <ContactsBottomSheet />
       </BottomSheet>
     </InputPageLayout>
   );

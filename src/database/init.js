@@ -57,6 +57,20 @@ const tableSchemas = [
     start_date INTEGER,
    end_date INTEGER
   )`,
+  `CREATE TABLE IF NOT EXISTS groups (
+    id INTEGER PRIMARY KEY NOT NULL,
+    name TEXT,
+    emoji TEXT,
+    background_color TEXT,
+    created_at INTEGER
+   )`,
+  `CREATE TABLE IF NOT EXISTS group_connections (
+    id INTEGER PRIMARY KEY NOT NULL,
+    group_id INTEGER,
+    connection_id INTEGER,
+    FOREIGN KEY (group_id) REFERENCES groups(id) ON DELETE CASCADE,
+    FOREIGN KEY (connection_id) REFERENCES connections(id) ON DELETE CASCADE
+  )`,
 ];
 
 const initDb = () => {

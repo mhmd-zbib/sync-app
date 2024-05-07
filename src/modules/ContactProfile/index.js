@@ -8,6 +8,7 @@ import useGetContactProfile from "./hooks/useGetProfileInfo";
 import useContactIdStore from "./stores/ContactIdStore";
 import DetailPage from "../../shared/components/layout/DetailPage";
 import { useNavigation } from "@react-navigation/native";
+import OptionsModal from "../../shared/components/ui/OptionsModal";
 
 const ContactProfileScreen = ({ route }) => {
   const { id } = route.params;
@@ -32,12 +33,18 @@ const ContactProfileScreen = ({ route }) => {
   }
 
   return (
-    <DetailPage
-      // onBackPress={navigation.navigate("Connections")}
-      screenTitle={"Profile"}>
-      <ProfileHeader />
-      <TabViewExample />
-    </DetailPage>
+    <>
+      <DetailPage
+        // onBackPress={navigation.navigate("Connections")}
+        screenTitle={"Profile"}>
+        <ProfileHeader />
+        <TabViewExample />
+      </DetailPage>
+
+      {/* <OptionsModal
+      // options={}
+      /> */}
+    </>
   );
 };
 

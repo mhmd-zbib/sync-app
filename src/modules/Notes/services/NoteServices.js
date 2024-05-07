@@ -6,11 +6,11 @@ class NoteService {
   }
 
   async add(noteData) {
-    const { contactId, title, details, timestamp } = noteData;
-
+    const { connection_id, title, details, timestamp } = noteData;
+    console.log(noteData);
     return this.dbManager.createSQL(
       "INSERT INTO notes (connection_id, title, details, created_at) VALUES (?,?,?,?)",
-      [contactId, title, details, timestamp]
+      [connection_id, title, details, timestamp]
     );
   }
 

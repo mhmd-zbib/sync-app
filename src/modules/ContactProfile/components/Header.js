@@ -1,8 +1,8 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
-import Typography from "../../../../shared/components/ui/Typography";
-import ProfilePicture from "../../../../shared/components/ui/cards/ProfilePicture";
-import useGetContactProfile from "../../hooks/useGetProfileInfo";
+import Typography from "../../../shared/components/ui/Typography";
+import ProfilePicture from "../../../shared/components/ui/cards/ProfilePicture";
+import useGetContactProfile from "../hooks/useGetProfileInfo";
 
 const ProfileHeader = () => {
   const { data } = useGetContactProfile();

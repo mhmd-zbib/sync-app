@@ -1,12 +1,11 @@
-import { BottomSheetView } from "@gorhom/bottom-sheet";
 import React, { useEffect, useState } from "react";
-import { StyleSheet, View } from "react-native";
-import ProfilePicture from "../../../../../shared/components/ui/cards/ProfilePicture";
-import EmojiSelector from "../../../../../shared/components/ui/emoji/EmojiSelector";
+import { View } from "react-native";
 import ColorPicker from "../../../../../shared/components/ui/ColorPicker";
 import Switch from "../../../../../shared/components/ui/Switch";
-import { COLORS } from "./Colors";
+import ProfilePicture from "../../../../../shared/components/ui/cards/ProfilePicture";
+import EmojiSelector from "../../../../../shared/components/ui/emoji/EmojiSelector";
 import useGroupProfileStore from "../stores/useGroupProfileStore";
+import { COLORS } from "./Colors";
 
 const GroupProfileBottomSheet = () => {
   const [isSwitchOn, setSwitchOn] = useState(true);

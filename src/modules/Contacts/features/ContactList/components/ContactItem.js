@@ -1,5 +1,5 @@
 /**
- * Its just the render item with nested views, a card for each contact
+ * Render item with nested views, a card for each contact
  *
  * @param {Function} onPress - pass the function that will happen upon pressing on the card
  * @param {Object} item - pass the data for each contact user

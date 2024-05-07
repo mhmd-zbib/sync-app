@@ -1,11 +1,11 @@
 import { useState } from "react";
-import useDeleteNote from "./useDeleteNote";
 import { useNavigation } from "@react-navigation/native";
+import { useNoteDeleteMutation } from "../../../queries/useNoteDeleteMutation";
 
 export default function useNoteModal({ id, data }) {
   console.log(id, data);
 
-  const { deleteNote } = useDeleteNote(id);
+  const { mutate: deleteNote } = useNoteDeleteMutation();
   const navigation = useNavigation();
   const [modalVisible, setModalVisible] = useState(false);
   const options = [
@@ -20,7 +20,7 @@ export default function useNoteModal({ id, data }) {
     {
       title: "Delete",
       onPress: () => {
-        deleteNote.mutate();
+        deleteNote(id);
         toggleModal();
       },
       color: "red",
@@ -33,5 +33,5 @@ export default function useNoteModal({ id, data }) {
     console.log("modal after", modalVisible);
   };
 
-  return { modalVisible, setModalVisible, options, toggleModal };
+  return { modalVisible, options, toggleModal };
 }

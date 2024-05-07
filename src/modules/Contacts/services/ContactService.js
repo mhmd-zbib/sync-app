@@ -22,5 +22,11 @@ class ContactService {
     const contactId = contact.insertId;
     return contactId;
   }
+
+  async delete(id) {
+    return this.dbManager.createSQL("DELETE FROM connections WHERE id = ?;", [
+      id,
+    ]);
+  }
 }
 export default new ContactService(dbManager);
