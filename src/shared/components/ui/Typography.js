@@ -1,6 +1,7 @@
 import React from "react";
 import { Text, StyleSheet } from "react-native";
 import { useTheme } from "../../stores/themeStore";
+import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
 
 const Typography = ({
   children,
@@ -37,12 +38,12 @@ const getTypographyStyles = (theme, variant) => {
   };
 
   const variantStyles = {
-    p: { fontSize: 14 },
-    lg: { fontSize: 16 },
-    xlg: { fontSize: 20 },
-    md: { fontSize: 14 },
-    sm: { fontSize: 12 },
-    al: { fontSize: 14 },
+    p: { fontSize: RFValue(12) },
+    lg: { fontSize: RFValue(12) },
+    xlg: { fontSize: RFValue(18) },
+    md: { fontSize: RFValue(12) },
+    sm: { fontSize: RFValue(10) },
+    al: { fontSize: RFValue(12) },
   };
 
   return { ...defaultStyles, ...variantStyles[variant] };

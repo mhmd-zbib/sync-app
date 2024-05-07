@@ -1,71 +1,35 @@
-import { useNavigation } from "@react-navigation/native";
-import React, { useCallback, useMemo, useRef } from "react";
-import { StyleSheet } from "react-native";
+import React from "react";
 import InputPageLayout from "../../../../shared/components/layout/InputPageLayout";
 import BottomSheet from "../../../../shared/components/ui/BottomSheet";
+import InputText from "../../../../shared/components/ui/InputText";
 import CardButton from "../../../../shared/components/ui/buttons/CardButton";
-import GroupAddForm from "./components/GroupAddForm";
+import ProfilePicture from "../../../../shared/components/ui/cards/ProfilePicture";
 import GroupProfileBottomSheet from "./components/GroupProfileBottomSheet";
 import useGroupAdd from "./hooks/useGroupAdd";
+import useHandleGroupSheet from "./hooks/useHandleGroupSheet";
+import useHandleGroupConnections from "./hooks/useHandleGroupConnections";
 
-const GroupAddScreen = ({ route }) => {
-  const groupProfileSheetRef = useRef(null);
-  const navigation = useNavigation();
-
-  const snapPoints = useMemo(() => ["90%", "90%"], []);
-  const handlePresentProfileSheet = useCallback(() => {
-    groupProfileSheetRef.current?.present();
-  }, []);
-
-  const {
-    setGroupName,
-    groupName,
-    emoji,
-    backgroundColor,
-    setSelectedContacts,
+const GroupAddScreen = () => {
+  const { snapPoints, groupProfileSheetRef, handlePresentProfileSheet } =
+    useHandleGroupSheet();
+  const { selectedContacts, setSelectedContacts } = useGroupAdd();
+  const { navigateToSelectConnections } = useHandleGroupConnections(
     selectedContacts,
-    handleAddGroup,
-    onCreate,
-  } = useGroupAdd();
-
-  const navigateToSelect = () => {
-    navigation.navigate("ContactSelectListScreen", {
-      selectedContacts,
-      onGoBack: (data) => {
-        setSelectedContacts(data);
-      },
-    });
-  };
+    setSelectedContacts
+  );
 
   return (
-    <InputPageLayout
-      onPress={onCreate}
-      screenTitle={"Create Group"}
-      buttonTitle={"Create"}
-      disabled={
-        groupName.trim() === "" ||
-        emoji === "" ||
-        backgroundColor === "" ||
-        selectedContacts.length === 0
-      }>
-      <GroupAddForm
-        groupName={groupName}
-        setGroupName={setGroupName}
-        backgroundColor={backgroundColor}
-        emoji={emoji}
-        handlePresentProfileSheet={handlePresentProfileSheet}
-      />
-
+    <InputPageLayout buttonTitle={"Create"} screenTitle={"Create Group"}>
+      <ProfilePicture size="lg" onPress={handlePresentProfileSheet} />
+      <InputText label="Group Name" />
       <CardButton
-        title={"Add Connections"}
-        onPress={navigateToSelect}
+        title="Connections"
+        onPress={navigateToSelectConnections}
         value={selectedContacts.length}
       />
-
       <BottomSheet
-        enableDynamicSizing={false}
-        snapPoints={snapPoints}
-        bottomSheetModalRef={groupProfileSheetRef}>
+        bottomSheetModalRef={groupProfileSheetRef}
+        snapPoints={snapPoints}>
         <GroupProfileBottomSheet />
       </BottomSheet>
     </InputPageLayout>
@@ -73,5 +37,3 @@ const GroupAddScreen = ({ route }) => {
 };
 
 export default GroupAddScreen;
-
-const styles = StyleSheet.create({});

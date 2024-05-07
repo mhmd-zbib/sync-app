@@ -1,10 +1,6 @@
 import { BottomSheetFlatList } from "@gorhom/bottom-sheet";
 import React, { memo } from "react";
-import {
-  KeyboardAvoidingView,
-  KeyboardAvoidingViewComponent,
-  View,
-} from "react-native";
+import { View } from "react-native";
 import { emojisByCategory } from "../../../../data/emoji/emojis";
 import { useTheme } from "../../../stores/themeStore";
 import SearchBar from "../SearchBar";

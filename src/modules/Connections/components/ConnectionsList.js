@@ -48,6 +48,7 @@ export default function ConnectionsList() {
 const styles = StyleSheet.create({
   container: {
     gap: 10,
+    marginHorizontal: 10,
   },
   listHeader: {
     gap: 10,

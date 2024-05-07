@@ -4,8 +4,9 @@ import { useGroupAddMutation } from "../../../queries/useGroupAddMutation";
 
 export default function useGroupAdd() {
   const [groupName, setGroupName] = useState("");
-  const { emoji, backgroundColor } = useGroupProfileStore();
   const [selectedContacts, setSelectedContacts] = useState([]);
+
+  const { emoji, backgroundColor } = useGroupProfileStore();
 
   const { mutate: handleAddGroup } = useGroupAddMutation();
 

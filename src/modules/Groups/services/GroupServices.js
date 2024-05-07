@@ -7,14 +7,13 @@ class GroupService {
 
   async create(groupData) {
     const { groupName, emoji, backgroundColor, timestamp } = groupData;
-    console.log("this is the group data", groupData);
 
     const group = await this.dbManager.createSQL(
       "INSERT INTO groups (name, emoji, background_color, created_at)  VALUES (?, ?, ?, ?)",
       [groupName, emoji, backgroundColor, timestamp]
     );
 
-    console.log("this is the group", group.insertId);
+    console.log("group id", group.insertId);
     return group.insertId;
   }
 
@@ -29,7 +28,6 @@ class GroupService {
 
   async list() {
     const groups = await this.dbManager.readSQL("SELECT * FROM groups");
-    console.log("this are the groups", groups);
     return groups;
   }
 }

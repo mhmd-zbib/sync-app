@@ -1,9 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
-import GroupServices from "../../../services/GroupServices";
+import GroupServices from "../services/GroupServices";
 
-export default function getGroups() {
+export function useGroupListQuery() {
   return useQuery({
     queryKey: ["GroupList"],
     queryFn: () => GroupServices.list(),
+    staleTime: 300000,
+    cacheTime: 900000,
   });
 }

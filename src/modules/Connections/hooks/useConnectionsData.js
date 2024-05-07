@@ -2,13 +2,14 @@ import { useState } from "react";
 import useSearch from "../../../shared/hooks/useSearch";
 import useSort from "../../../shared/hooks/useSort";
 import useGetContacts from "../../Contacts/features/ContactList/hooks/useGetContacts";
-import useGetGroups from "../../Groups/features/GroupList/hooks/useGetGroups";
+import { useGroupListQuery } from "../../Groups/queries/useGroupListQuery";
 
 export default function useConnectionsData(searchTerm) {
   const [category, setCategory] = useState("contacts");
 
   const { data: contacts, isLoading, error } = useGetContacts();
-  const { data: groups } = useGetGroups();
+  const { data: groups } = useGroupListQuery();
+  console.log("contacts", groups);
 
   const sortedContacts = useSort(contacts, "name");
   const sortedGroups = useSort(groups, "title");
