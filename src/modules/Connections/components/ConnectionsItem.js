@@ -10,7 +10,7 @@ const categoryConfig = {
   },
   groups: {
     component: GroupItem,
-    navigationPath: "ContactProfileScreen",
+    navigationPath: "GroupDetailsScreen",
   },
 };
 
@@ -18,10 +18,9 @@ const ConnectionsItem = ({ item, category, isLoading }) => {
   const navigation = useNavigation();
 
   const handlePress = (item) => {
-    console.log(item, category);
     const config = categoryConfig[category];
     if (config) {
-      navigation.navigate(config.navigationPath, { id: item.id });
+      navigation.navigate(config.navigationPath, { item });
     }
   };
 

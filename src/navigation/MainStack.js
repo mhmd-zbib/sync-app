@@ -17,6 +17,7 @@ import TabBar from "./TabBar";
 import ContactAddScreen from "../modules/Contacts/features/ContactAdd";
 import ContactSelectListScreen from "../modules/Contacts/features/ContactSelectList";
 import ReminderListScreen from "../modules/Reminders/features/ReminderList";
+import GroupDetailsScreen from "../modules/Groups/features/GroupDetails.js";
 const Stack = createNativeStackNavigator();
 
 const MainStack = () => {
@@ -99,6 +100,10 @@ const MainStack = () => {
             <Stack.Screen name="AddNoteScreen" component={AddNoteScreen} />
             {/* --------------------------------- Groups --------------------------------- */}
             <Stack.Screen name="GroupAddScreen" component={GroupAddScreen} />
+            <Stack.Screen
+              name="GroupDetailsScreen"
+              component={GroupDetailsScreen}
+            />
           </Stack.Navigator>
         </BottomSheetModalProvider>
       </NavigationContainer>

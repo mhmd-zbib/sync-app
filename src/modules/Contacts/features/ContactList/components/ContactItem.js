@@ -36,7 +36,8 @@ const ContactItem = ({ onPress, item }) => {
             flexDirection: "row",
           }}>
           <Typography variant="sm" color={theme.textSecondary}>
-            {DateTimeFormatter.formatFullDate(item.created_at)}
+            {item.created_at &&
+              DateTimeFormatter.formatFullDate(item.created_at)}
           </Typography>
         </View>
       </View>

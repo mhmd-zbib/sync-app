@@ -30,6 +30,12 @@ class GroupService {
     const groups = await this.dbManager.readSQL("SELECT * FROM groups");
     return groups;
   }
+  async getContacts(id) {
+    return await this.dbManager.readSQL(
+      "SELECT * FROM group_connections INNER JOIN connections WHERE group_id = ?",
+      [id]
+    );
+  }
 }
 
 export default new GroupService(dbManager);

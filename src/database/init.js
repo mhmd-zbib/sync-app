@@ -63,12 +63,14 @@ const tableSchemas = [
     emoji TEXT,
     background_color TEXT,
     created_at INTEGER,
+    last_updated INTEGER,
     member_count INTEGER
    )`,
   `CREATE TABLE IF NOT EXISTS group_connections (
     id INTEGER PRIMARY KEY NOT NULL,
     group_id INTEGER,
     connection_id INTEGER,
+    created_at INTEGER,
     FOREIGN KEY (group_id) REFERENCES groups(id) ON DELETE CASCADE,
     FOREIGN KEY (connection_id) REFERENCES connections(id) ON DELETE CASCADE
   )`,

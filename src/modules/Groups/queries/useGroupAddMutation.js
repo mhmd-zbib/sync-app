@@ -24,6 +24,8 @@ export function useGroupAddMutation() {
     },
 
     onSuccess: (id) => {
+      navigation.navigate("GroupDetails", { id: id });
+
       queryClient.invalidateQueries(["GroupList"]);
     },
     onError: (error) => {
