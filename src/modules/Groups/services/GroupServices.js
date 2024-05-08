@@ -6,21 +6,21 @@ class GroupService {
   }
 
   async create(groupData) {
-    const { groupName, emoji, backgroundColor, timestamp } = groupData;
+    const { groupName, emoji, backgroundColor, timestamp, selectedContacts } =
+      groupData;
 
-    const group = await this.dbManager.createSQL(
-      "INSERT INTO groups (name, emoji, background_color, created_at)  VALUES (?, ?, ?, ?)",
-      [groupName, emoji, backgroundColor, timestamp]
+    const groupCreate = await this.dbManager.createSQL(
+      "INSERT INTO groups (name, emoji, background_color, created_at, member_count)  VALUES (?, ?, ?, ?, ?)",
+      [groupName, emoji, backgroundColor, timestamp, selectedContacts.length]
     );
 
-    console.log("group id", group.insertId);
-    return group.insertId;
+    return groupCreate.insertId;
   }
 
   async addContacts(id, contacts) {
     for (let contact of contacts) {
       return await this.dbManager.createSQL(
-        "INSERT INTO group_contacts WHERE id = ? (contacts) VALUES (?)",
+        "INSERT INTO group_connections ( group_id, connection_id) VALUES (?, ?)",
         [id, contact]
       );
     }

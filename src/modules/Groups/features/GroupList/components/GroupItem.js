@@ -9,6 +9,7 @@ const GroupItem = ({ item, onPress }) => {
     <ItemCard onPress={onPress}>
       <ProfilePicture emoji={item.emoji} color={item.background_color} />
       <Typography>{item.name}</Typography>
+      <Typography>{item.member_count}</Typography>
     </ItemCard>
   );
 };

@@ -6,6 +6,7 @@ import { useTheme } from "../../../shared/stores/themeStore";
 import useConnectionsData from "../hooks/useConnectionsData";
 import CategoryTitle from "./CategoryTitle";
 import ConnectionsItem from "./ConnectionsItem";
+import EmptyList from "../../../shared/components/layout/EmptyList";
 
 export default function ConnectionsList() {
   const theme = useTheme();
@@ -15,6 +16,7 @@ export default function ConnectionsList() {
 
   return (
     <FlatList
+      ListEmptyComponent={<EmptyList title={category} />}
       data={data[category]}
       stickyHeaderHiddenOnScroll
       renderItem={({ item }) => (
@@ -49,6 +51,7 @@ const styles = StyleSheet.create({
   container: {
     gap: 10,
     marginHorizontal: 10,
+    flex: 1,
   },
   listHeader: {
     gap: 10,

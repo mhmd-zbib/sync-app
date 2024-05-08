@@ -14,12 +14,8 @@ export function useNoteAddMutation() {
 
   return useMutation({
     mutationKey: "AddNote",
-
     mutationFn: async (noteData) => {
-      {
-        console.log(noteData, "what we are sening");
-        return await NoteServices.add(noteData);
-      }
+      return await NoteServices.add(noteData);
     },
     onSuccess: () => {
       // refetch the notes and navigates back

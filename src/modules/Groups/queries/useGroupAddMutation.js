@@ -15,11 +15,16 @@ export function useGroupAddMutation() {
   return useMutation({
     mutationKey: "AddGroup",
     mutationFn: async (groupData) => {
-      return await GroupServices.create(groupData);
+      console.log("Group data:", groupData);
+      const groupCreate = await GroupServices.create(groupData);
+      return await GroupServices.addContacts(
+        groupCreate,
+        groupData.selectedContacts
+      );
     },
+
     onSuccess: (id) => {
-      console.log("Group created");
-      queryClient.refetchQueries(["GroupList"]);
+      queryClient.invalidateQueries(["GroupList"]);
     },
     onError: (error) => {
       console.error("Error creating group:", error);

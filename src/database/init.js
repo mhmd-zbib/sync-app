@@ -62,7 +62,8 @@ const tableSchemas = [
     name TEXT,
     emoji TEXT,
     background_color TEXT,
-    created_at INTEGER
+    created_at INTEGER,
+    member_count INTEGER
    )`,
   `CREATE TABLE IF NOT EXISTS group_connections (
     id INTEGER PRIMARY KEY NOT NULL,

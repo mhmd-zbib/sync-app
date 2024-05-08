@@ -5,22 +5,25 @@ import { useGroupAddMutation } from "../../../queries/useGroupAddMutation";
 export default function useGroupAdd() {
   const [groupName, setGroupName] = useState("");
   const [selectedContacts, setSelectedContacts] = useState([]);
-
   const { emoji, backgroundColor } = useGroupProfileStore();
 
   const { mutate: handleAddGroup } = useGroupAddMutation();
 
+  const isDisabled =
+    !groupName || selectedContacts.length === 0 || !emoji || !backgroundColor;
+
   const onCreate = () => {
     const date = new Date();
     const timestamp = date.getTime();
-
     handleAddGroup({
       groupName,
+      selectedContacts,
       emoji,
       backgroundColor,
       timestamp,
     });
   };
+
   return {
     selectedContacts,
     setSelectedContacts,
@@ -29,6 +32,6 @@ export default function useGroupAdd() {
     emoji,
     backgroundColor,
     onCreate,
-    handleAddGroup,
+    isDisabled,
   };
 }

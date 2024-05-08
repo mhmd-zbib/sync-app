@@ -12,16 +12,37 @@ import useHandleGroupConnections from "./hooks/useHandleGroupConnections";
 const GroupAddScreen = () => {
   const { snapPoints, groupProfileSheetRef, handlePresentProfileSheet } =
     useHandleGroupSheet();
-  const { selectedContacts, setSelectedContacts } = useGroupAdd();
+
+  const {
+    selectedContacts,
+    setSelectedContacts,
+    emoji,
+    backgroundColor,
+    groupName,
+    setGroupName,
+    isDisabled,
+    handleAddGroup,
+    onCreate,
+  } = useGroupAdd();
+
   const { navigateToSelectConnections } = useHandleGroupConnections(
     selectedContacts,
     setSelectedContacts
   );
 
   return (
-    <InputPageLayout buttonTitle={"Create"} screenTitle={"Create Group"}>
-      <ProfilePicture size="lg" onPress={handlePresentProfileSheet} />
-      <InputText label="Group Name" />
+    <InputPageLayout
+      buttonTitle={"Create"}
+      screenTitle={"Create Group"}
+      onPress={onCreate}
+      disabled={isDisabled}>
+      <ProfilePicture
+        size="lg"
+        onPress={handlePresentProfileSheet}
+        emoji={emoji}
+        color={backgroundColor}
+      />
+      <InputText label="Group Name" value={groupName} onChange={setGroupName} />
       <CardButton
         title="Connections"
         onPress={navigateToSelectConnections}
