@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 import Typography from "../Typography";
-import ItemCard from "../cards/ItemCard";
+import ItemCard from "../cards/Card";
 import { useTheme } from "../../../stores/themeStore";
 import { MaterialIcons } from "@expo/vector-icons";
 

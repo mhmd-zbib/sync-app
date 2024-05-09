@@ -9,6 +9,7 @@ import ConnectionsItem from "./ConnectionsItem";
 import EmptyList from "../../../shared/components/layout/EmptyList";
 
 export default function ConnectionsList() {
+  const [selectMode, setSelectMode] = useState(false);
   const theme = useTheme();
   const [searchTerm, setSearchTerm] = useState("");
   const { category, data, setCategory, isLoading } =
@@ -18,12 +19,16 @@ export default function ConnectionsList() {
     <FlatList
       ListEmptyComponent={<EmptyList title={category} />}
       data={data[category]}
-      stickyHeaderHiddenOnScroll
+      stickyHeaderHiddenOnScroll={!selectMode}
       renderItem={({ item }) => (
         <ConnectionsItem
+          // onLongPress={
+          //   !selectMode ? () => setSelectMode(true) : () => setSelectMode(false)
+          // }
           item={item}
           isLoading={isLoading}
           category={category}
+          selectMode={selectMode}
         />
       )}
       keyExtractor={(item, index) => item.id || index.toString()}
@@ -38,7 +43,12 @@ export default function ConnectionsList() {
             searchTerm={searchTerm}
             setSearchTerm={setSearchTerm}
           />
-          <CategoryTitle setCategory={setCategory} activeCategory={category} />
+
+          <CategoryTitle
+            disabled={selectMode}
+            setCategory={setCategory}
+            activeCategory={category}
+          />
         </View>
       }
       stickyHeaderIndices={[0]}

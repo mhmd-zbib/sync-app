@@ -1,18 +1,16 @@
-import React, { useState, useEffect } from "react";
-import {
-  View,
-  ActivityIndicator,
-  StyleSheet,
-  SafeAreaView,
-} from "react-native";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { GestureHandlerRootView } from "react-native-gesture-handler";
-import { ThemeProvider, useTheme } from "./src/shared/stores/themeStore";
-import * as SQLite from "expo-sqlite";
-import initDb from "./src/database/init";
 import * as SystemUI from "expo-system-ui";
+import React, { useEffect, useState } from "react";
+import {
+  ActivityIndicator,
+  SafeAreaView,
+  StyleSheet,
+  View,
+} from "react-native";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
+import initDb from "./src/database/init";
 import MainStack from "./src/navigation/MainStack";
-import ConnectionTest from "./test/connection.test";
+import { ThemeProvider, useTheme } from "./src/shared/stores/themeStore";
 
 export default function App() {
   const [isLoading, setLoading] = useState(true);
@@ -52,8 +50,6 @@ export default function App() {
         </ThemeProvider>
       </GestureHandlerRootView>
     </QueryClientProvider>
-
-    // <ConnectionTest />
   );
 }
 

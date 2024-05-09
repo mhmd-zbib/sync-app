@@ -12,7 +12,6 @@ import ContactSelectItem from "./ContactSelectItem";
 const ContactSelectList = ({ contacts, selected, setSelected }) => {
   const theme = useTheme();
   const [searchTerm, setSearchTerm] = useState("");
-
   const searchable = useSearch(contacts, searchTerm, "name");
   const sortedContacts = useSort(searchable, "name");
   const sectioned = useGroupedSections(sortedContacts, (item) =>

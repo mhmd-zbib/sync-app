@@ -18,7 +18,7 @@ const ReminderList = ({ reminders }) => {
           <SearchBar />
         </View>
       }
-      contentContainerStyle={{ gap: 10 }}
+      contentContainerStyle={{ gap: 10, marginHorizontal: 10 }}
       sections={reminders}
       renderItem={({ item }) => <ReminderItem item={item} />}
       renderSectionHeader={({ section: { title } }) => (

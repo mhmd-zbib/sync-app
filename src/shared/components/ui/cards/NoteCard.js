@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
-import ItemCard from "./ItemCard";
+import ItemCard from "./Card";
 import Typography from "../Typography";
 import { useTheme } from "../../../stores/themeStore";
 import DateTimeFormatter from "../../../hooks/useFormatDate";

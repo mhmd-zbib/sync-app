@@ -4,6 +4,27 @@ import ModalScreen from "./cards/ModalScreen";
 import Typography from "./Typography";
 import { useTheme } from "../../stores/themeStore";
 
+/**
+ * OptionsModal Component
+ * A reusable modal component for displaying a list of clickable options.
+ * Each option can perform an action when pressed.
+ *
+ * Props:
+ * - toggleModal (Function): Function to toggle the modal's visibility.
+ * - modalVisible (Boolean): State indicating whether the modal is visible.
+ * - options (Array): Array of objects defining the options. Each object should have:
+ *    - title (String): Display text for the option.
+ *    - onPress (Function): Function to call when the option is pressed.
+ *    - color (String, optional): Color of the option text.
+ *
+ * Example Usage:
+ * <OptionsModal
+ *   toggleModal={handleToggle}
+ *   modalVisible={isVisible}
+ *   options={[{ title: "Option 1", onPress: handleOption1, color: "#333" }]}
+ * />
+ */
+
 const OptionsModal = ({ toggleModal, modalVisible, options }) => {
   const theme = useTheme();
 

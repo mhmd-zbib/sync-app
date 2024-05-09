@@ -14,13 +14,19 @@ const categoryConfig = {
   },
 };
 
-const ConnectionsItem = ({ item, category, isLoading }) => {
+const ConnectionsItem = ({
+  item,
+  category,
+  isLoading,
+  selectMode,
+  onLongPress,
+}) => {
   const navigation = useNavigation();
 
   const handlePress = (item) => {
     const config = categoryConfig[category];
     if (config) {
-      navigation.navigate(config.navigationPath, { id: item.id });
+      return navigation.navigate(config.navigationPath, { id: item.id });
     }
   };
 
@@ -31,7 +37,12 @@ const ConnectionsItem = ({ item, category, isLoading }) => {
   const ItemComponent = categoryConfig[category]?.component;
 
   return ItemComponent ? (
-    <ItemComponent item={item} onPress={() => handlePress(item)} />
+    <ItemComponent
+      onLongPress={onLongPress}
+      item={item}
+      onPress={() => handlePress(item)}
+      selectMode={selectMode}
+    />
   ) : null;
 };
 

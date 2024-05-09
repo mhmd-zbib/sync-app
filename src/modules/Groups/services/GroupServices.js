@@ -32,7 +32,7 @@ class GroupService {
   }
   async getContacts(id) {
     const data = await this.dbManager.readSQL(
-      "SELECT c.name, gc.created_at FROM connections c JOIN group_connections gc ON c.id = gc.connection_id WHERE gc.group_id = ?;",
+      "SELECT c.name, c.id, gc.created_at FROM connections c JOIN group_connections gc ON c.id = gc.connection_id WHERE gc.group_id = ?;",
       [id]
     );
     return data;
@@ -44,6 +44,12 @@ class GroupService {
       [id]
     );
     return details[0];
+  }
+
+  async delete(id) {
+    return await this.dbManager.createSQL("DELETE FROM groups WHERE id = ?", [
+      id,
+    ]);
   }
 }
 

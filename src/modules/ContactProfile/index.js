@@ -11,8 +11,7 @@ import { useNavigation } from "@react-navigation/native";
 import OptionsModal from "../../shared/components/ui/OptionsModal";
 
 const ContactProfileScreen = ({ route }) => {
-  const { item } = route.params;
-  const id = item.id;
+  const { id } = route.params;
   const setId = useContactIdStore((state) => state.setId);
   const { data, isError, error, isLoading } = useGetContactProfile();
   const navigation = useNavigation();

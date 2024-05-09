@@ -1,43 +1,90 @@
-import React from "react";
-import { StyleSheet, TouchableOpacity } from "react-native";
-import { useTheme } from "../../../stores/themeStore";
+import React, { useState, useCallback, useEffect } from "react";
+import { View, StyleSheet } from "react-native";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
+import Card from "./Card";
+import ProfilePicture from "./ProfilePicture";
 import Typography from "../Typography";
+import { useTheme } from "../../../stores/themeStore";
 
-const ItemCard = ({ children, style, onPress, variant }) => {
-  const theme = useTheme();
+const ItemCard = ({
+  name,
+  rightInfo,
+  onPress,
+  selectMode,
+  onLongPress,
+  emoji,
+  backgroundColor,
+}) => {
+  const { primary, textSecondary, accent } = useTheme();
+  const [isSelected, setIsSelected] = useState(false);
 
-  const baseStyle = [
-    styles.card,
+  const handlePress = useCallback(() => {
+    onPress();
+    if (selectMode) {
+      setIsSelected(!isSelected);
+    }
+  }, [onPress, selectMode, isSelected]);
 
-    {
-      borderRadius: 16,
-      borderWidth: variant === "secondary" ? 1 : 0,
-      borderColor: variant === "secondary" ? theme.secondary : "transparent",
-      backgroundColor:
-        variant === "secondary" ? "transparent" : theme.secondary,
-      padding: 16,
-    },
-  ];
+  const handleLongPress = useCallback(() => {
+    setIsSelected(true);
+    onLongPress();
+  }, [onLongPress]);
+
+  useEffect(() => {
+    if (!selectMode) {
+      setIsSelected(false);
+    }
+  }, [selectMode]);
+
+  const icon = (
+    <MaterialCommunityIcons
+      name={
+        isSelected ? "checkbox-marked-circle" : "checkbox-blank-circle-outline"
+      }
+      size={26}
+      color={isSelected ? primary : accent}
+    />
+  );
+
+  const infoDisplay = selectMode ? (
+    icon
+  ) : (
+    <Typography variant="sm" color={textSecondary}>
+      {rightInfo}
+    </Typography>
+  );
 
   return (
-    <TouchableOpacity
-      onPress={onPress}
-      activeOpacity={0.8}
-      style={[baseStyle, style]}>
-      {children}
-    </TouchableOpacity>
+    <Card onPress={handlePress} onLongPress={onLongPress && handleLongPress}>
+      <View style={styles.container}>
+        <ProfilePicture
+          name={!emoji ? name : undefined}
+          emoji={emoji}
+          color={backgroundColor}
+        />
+        <Typography numberOfLines={1} style={styles.name}>
+          {name}
+        </Typography>
+        <View style={styles.infoContainer}>{infoDisplay}</View>
+      </View>
+    </Card>
   );
 };
 
-export default ItemCard;
-
 const styles = StyleSheet.create({
-  card: {
-    // gap: 4,
-    shadowOpacity: 0.2,
-    shadowRadius: 4,
-    // shadowColor: "#000",
-    // shadowOffset: { height: 2, width: 0 },
-    // elevation: 3,
+  container: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 8,
+  },
+  name: {
+    flex: 1,
+  },
+  infoContainer: {
+    flex: 1,
+    justifyContent: "flex-end",
+    flexDirection: "row",
   },
 });
+
+export default ItemCard;

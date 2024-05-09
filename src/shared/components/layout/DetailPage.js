@@ -1,8 +1,10 @@
-import { MaterialIcons, Entypo } from "@expo/vector-icons";
+import { Entypo } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import React, { useLayoutEffect } from "react";
 import { StyleSheet, TouchableOpacity, View } from "react-native";
 import GoBackButton from "../ui/buttons/GoBackButton";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { useTheme } from "../../stores/themeStore";
 
 const DetailPage = ({
   children,
@@ -10,25 +12,39 @@ const DetailPage = ({
   style,
   onOptionPress,
   onBackPress,
+  deleteButton,
+  onDelete,
 }) => {
   const navigation = useNavigation();
+  const theme = useTheme();
 
   useLayoutEffect(() => {
     navigation.setOptions({
       title: screenTitle,
       headerLeft: () => (
-        <GoBackButton onPress={onBackPress || navigation.goBack} />
+        <GoBackButton onPress={onBackPress ? onBackPress : navigation.goBack} />
       ),
       headerRight: () => (
-        <TouchableOpacity
-          onPress={onOptionPress}
-          activeOpacity={0.6}
-          style={{ padding: 10 }}>
-          <Entypo name="dots-three-vertical" size={20} color="white" />
-        </TouchableOpacity>
+        <>
+          {deleteButton && (
+            <MaterialCommunityIcons
+              onPress={onDelete}
+              name="trash-can-outline"
+              size={24}
+              color={theme.primary}
+            />
+          )}
+          <Entypo
+            onPress={onOptionPress}
+            style={{ padding: 10, marginLeft: 10 }}
+            name="dots-three-vertical"
+            size={20}
+            color={theme.primary}
+          />
+        </>
       ),
     });
-  }, [navigation, screenTitle]);
+  }, [navigation, screenTitle, deleteButton]);
 
   return <View style={[style, { flex: 1 }]}>{children}</View>;
 };

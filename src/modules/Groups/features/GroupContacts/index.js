@@ -1,16 +1,17 @@
 import React from "react";
 import { StyleSheet } from "react-native";
-import GroupContactList from "./components/GroupContactList";
-import { useGroupContactsQuery } from "../../queries/useGroupContactsQuery";
-import Loading from "../../../../shared/components/layout/Loading";
 import Error from "../../../../shared/components/layout/Error";
+import Loading from "../../../../shared/components/layout/Loading";
+import { useGroupContactsQuery } from "../../queries/useGroupContactsQuery";
+import useGroupIdStore from "../../store/useGroupIdStore";
+import GroupContactList from "./components/GroupContactList";
 
 const GroupContactTab = () => {
-  const { data, isLoading, isError, error } = useGroupContactsQuery(2);
+  const id = useGroupIdStore((state) => state.id);
+  const { data, isLoading, isError, error } = useGroupContactsQuery(id);
 
   if (isLoading) return <Loading />;
   if (isError) return <Error error={error} />;
-
   return <GroupContactList data={data} />;
 };
 
