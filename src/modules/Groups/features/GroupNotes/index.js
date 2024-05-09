@@ -1,14 +1,14 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 
-const GroupContactItem = ({ item }) => {
+const GroupNoteTab = () => {
   return (
     <View>
-      <Text>{item.name}</Text>
+      <Text>GroupNoteTab</Text>
     </View>
   );
 };
 
-export default GroupContactItem;
+export default GroupNoteTab;
 
 const styles = StyleSheet.create({});

@@ -20,6 +20,7 @@ const GoBackButton = ({ onPress }) => {
         justifyContent: "center",
         // width: 32,
         // height: 32,
+        // marginRight: 50,
         padding: 8,
       }}>
       <MaterialIcons

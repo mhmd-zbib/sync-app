@@ -16,7 +16,6 @@ import { useTheme } from "../shared/stores/themeStore";
 import TabBar from "./TabBar";
 import ContactAddScreen from "../modules/Contacts/features/ContactAdd";
 import ContactSelectListScreen from "../modules/Contacts/features/ContactSelectList";
-import ReminderListScreen from "../modules/Reminders/features/ReminderList";
 import GroupDetailsScreen from "../modules/Groups/features/GroupDetails.js";
 const Stack = createNativeStackNavigator();
 
@@ -62,7 +61,6 @@ const MainStack = () => {
                 paddingVertical: 24,
 
                 backgroundColor: background,
-                borderBottomColor: "red",
                 // borderBottomWidth: 0, // Removes the border line
                 // shadowOpacity: 0, // Removes shadow on iOS
               },

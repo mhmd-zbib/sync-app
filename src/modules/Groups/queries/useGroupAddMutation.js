@@ -19,13 +19,13 @@ export function useGroupAddMutation() {
       const groupCreate = await GroupServices.create(groupData);
       return await GroupServices.addContacts(
         groupCreate,
-        groupData.selectedContacts
+        groupData.selectedContacts,
+        groupData.timestamp
       );
     },
 
     onSuccess: (id) => {
-      navigation.navigate("GroupDetails", { id: id });
-
+      navigation.navigate("GroupDetailsScreen", { id: id });
       queryClient.invalidateQueries(["GroupList"]);
     },
     onError: (error) => {

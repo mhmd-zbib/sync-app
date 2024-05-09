@@ -20,7 +20,7 @@ const ConnectionsItem = ({ item, category, isLoading }) => {
   const handlePress = (item) => {
     const config = categoryConfig[category];
     if (config) {
-      navigation.navigate(config.navigationPath, { item });
+      navigation.navigate(config.navigationPath, { id: item.id });
     }
   };
 

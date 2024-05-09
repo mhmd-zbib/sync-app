@@ -1,58 +1,40 @@
-import React, { useState } from "react";
-import { View, Text, FlatList, StyleSheet, SafeAreaView } from "react-native";
-import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
-import { NavigationContainer } from "@react-navigation/native";
+import React from "react";
+import { View } from "react-native";
 import Typography from "../../../../shared/components/ui/Typography";
+import ProfilePicture from "../../../../shared/components/ui/cards/ProfilePicture";
+import DetailPage from "../../../../shared/components/layout/DetailPage";
+import DateTimeFormatter from "../../../../shared/hooks/useFormatDate";
+import GroupTabView from "./components/GroupTabView";
+import { useGroupDetailsQuery } from "../../queries/useGroupDetailsQuery";
+import Loading from "../../../../shared/components/layout/Loading";
 
-const Tab = createMaterialTopTabNavigator();
+const GroupDetailsScreen = ({ route }) => {
+  const { id } = route.params;
 
-const data = Array.from({ length: 30 }, (_, i) => ({
-  id: String(i),
-  title: `Item ${i + 1}`,
-}));
+  const { data, isLoading } = useGroupDetailsQuery(id);
+  if (isLoading) return <Loading />;
 
-const TabBarComponent = () => (
-  <Tab.Navigator>
-    <Tab.Screen name="Tab 1" component={() => <Text>Content of Tab 12</Text>} />
-    <Tab.Screen name="Tab 2" component={() => <Text>Content of Tab 2</Text>} />
-  </Tab.Navigator>
-);
+  return (
+    <DetailPage screenTitle={""}>
+      <View style={{ flexDirection: "row", gap: 15, paddingHorizontal: 10 }}>
+        <ProfilePicture
+          emoji={data.emoji}
+          size="lg"
+          color={data.background_color}
+        />
+        <View style={{ justifyContent: "space-around" }}>
+          <Typography variant="lg" fontWeight={500}>
+            {data.name}
+          </Typography>
+          <Typography>
+            {DateTimeFormatter.formatFullDate(data.created_at)}
+          </Typography>
+        </View>
+      </View>
 
-const ListHeader = () => (
-  <View style={{ height: 150 }}>
-    <Typography>stuff ehre</Typography>
+      <GroupTabView />
+    </DetailPage>
+  );
+};
 
-    <NavigationContainer independent={true}>
-      <TabBarComponent />
-    </NavigationContainer>
-  </View>
-);
-
-const ListItem = ({ title }) => (
-  <View style={styles.item}>
-    <Typography>{title} s</Typography>
-  </View>
-);
-
-const TabBarInsideList = () => (
-  <SafeAreaView style={{ flex: 1 }}>
-    <FlatList
-      data={data}
-      ListHeaderComponent={<ListHeader />}
-      renderItem={({ item }) => <ListItem title={item.title} />}
-      keyExtractor={(item) => item.id}
-    />
-  </SafeAreaView>
-);
-
-const styles = StyleSheet.create({
-  item: {
-    padding: 20,
-    fontSize: 18,
-    height: 44,
-    borderBottomWidth: 1,
-    borderBottomColor: "#ccc",
-  },
-});
-
-export default TabBarInsideList;
+export default GroupDetailsScreen;

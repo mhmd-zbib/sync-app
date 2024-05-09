@@ -21,7 +21,7 @@ const GroupAddScreen = () => {
     groupName,
     setGroupName,
     isDisabled,
-    handleAddGroup,
+
     onCreate,
   } = useGroupAdd();
 
