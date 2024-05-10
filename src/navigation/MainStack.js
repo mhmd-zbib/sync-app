@@ -7,7 +7,6 @@ import {
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import React from "react";
 import { StatusBar, View, useColorScheme } from "react-native";
-import ContactProfileScreen from "../modules/ContactProfile";
 import GroupAddScreen from "../modules/Groups/features/GroupAdd";
 import AddNoteScreen from "../modules/Notes/features/NoteAdd";
 import NoteDetails from "../modules/Notes/features/NoteDetails";
@@ -17,6 +16,7 @@ import TabBar from "./TabBar";
 import ContactAddScreen from "../modules/Contacts/features/ContactAdd";
 import ContactSelectListScreen from "../modules/Contacts/features/ContactSelectList";
 import GroupDetailsScreen from "../modules/Groups/features/GroupDetails.js";
+import ContactProfileScreen from "../modules/Contacts/features/ContactProfile/index.js";
 const Stack = createNativeStackNavigator();
 
 const MainStack = () => {
@@ -75,24 +75,21 @@ const MainStack = () => {
                 title: getFocusedRouteNameFromRoute(route),
               })}
             />
+            {/* -------------------------------- Contacts -------------------------------- */}
             <Stack.Screen
               name="ContactProfileScreen"
               component={ContactProfileScreen}
             />
-
-            {/* -------------------------------- Contacts -------------------------------- */}
             <Stack.Screen
               name="ContactAddScreen"
               component={ContactAddScreen}
             />
-
             <Stack.Screen
               name="ContactSelectListScreen"
               component={ContactSelectListScreen}
             />
 
             {/* -------------------------------- Reminders ------------------------------- */}
-
             {/* ---------------------------------- Notes --------------------------------- */}
             <Stack.Screen name="NoteDetails" component={NoteDetails} />
             <Stack.Screen name="AddNoteScreen" component={AddNoteScreen} />

@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
   option: {
     alignItems: "center",
     width: "100%",
-    paddingVertical: 10,
+    paddingVertical: 15,
   },
   separator: {
     height: 1,

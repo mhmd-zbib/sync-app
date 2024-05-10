@@ -11,6 +11,7 @@ import { GestureHandlerRootView } from "react-native-gesture-handler";
 import initDb from "./src/database/init";
 import MainStack from "./src/navigation/MainStack";
 import { ThemeProvider, useTheme } from "./src/shared/stores/themeStore";
+import Typography from "./src/shared/components/ui/Typography";
 
 export default function App() {
   const [isLoading, setLoading] = useState(true);

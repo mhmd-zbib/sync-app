@@ -18,6 +18,7 @@ export default function useAddContact() {
   const addContact = useMutation({
     mutationKey: "AddContact",
     mutationFn: async () => {
+      console.log("Adding contact");
       const date = new Date();
       const timestamp = date.getTime();
       const { name, phoneNumber, email } = formData;

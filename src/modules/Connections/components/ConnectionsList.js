@@ -33,8 +33,7 @@ export default function ConnectionsList() {
       )}
       keyExtractor={(item, index) => item.id || index.toString()}
       ListHeaderComponent={
-        <View
-          style={[styles.listHeader, { backgroundColor: theme.background }]}>
+        <>
           <Typography variant="xlg" fontWeight={500}>
             Connections
           </Typography>
@@ -49,10 +48,11 @@ export default function ConnectionsList() {
             setCategory={setCategory}
             activeCategory={category}
           />
-        </View>
+        </>
       }
       stickyHeaderIndices={[0]}
       contentContainerStyle={styles.container}
+      ListHeaderComponentStyle={{ gap: 10 }}
     />
   );
 }
@@ -61,9 +61,5 @@ const styles = StyleSheet.create({
   container: {
     gap: 10,
     marginHorizontal: 10,
-  },
-  listHeader: {
-    gap: 10,
-    paddingBottom: 10,
   },
 });

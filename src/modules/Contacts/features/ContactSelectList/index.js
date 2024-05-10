@@ -20,6 +20,8 @@ const ContactSelectListScreen = ({ route, navigation }) => {
     navigation.goBack();
   };
 
+  console.log(selected);
+
   return (
     <InputPageLayout
       headerRight={

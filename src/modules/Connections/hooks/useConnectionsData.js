@@ -7,9 +7,8 @@ import { useGroupListQuery } from "../../Groups/queries/useGroupListQuery";
 export default function useConnectionsData(searchTerm) {
   const [category, setCategory] = useState("contacts");
 
-  const { data: contacts, isLoading, error } = useGetContacts();
-  const { data: groups } = useGroupListQuery();
-  console.log("contacts", groups);
+  const { data: contacts, error } = useGetContacts();
+  const { data: groups, isLoading, error: errorGroups } = useGroupListQuery();
 
   const sortedContacts = useSort(contacts, "name");
   const sortedGroups = useSort(groups, "title");

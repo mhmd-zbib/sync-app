@@ -31,7 +31,7 @@ const DetailPage = ({
               onPress={onDelete}
               name="trash-can-outline"
               size={24}
-              color={theme.primary}
+              color={"red"}
             />
           )}
           <Entypo

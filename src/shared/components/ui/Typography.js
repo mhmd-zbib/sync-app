@@ -9,6 +9,7 @@ const Typography = ({
   color: textColor,
   fontWeight: textWeight,
   style: textStyle,
+  onPress,
   ...props
 }) => {
   const theme = useTheme();
@@ -24,7 +25,7 @@ const Typography = ({
   ]);
 
   return (
-    <Text style={mergedStyles} {...props}>
+    <Text onPress={onPress} style={mergedStyles} {...props}>
       {children}
     </Text>
   );

@@ -48,6 +48,7 @@ const ContactSelectList = ({ contacts, selected, setSelected }) => {
         keyExtractor={(item) => item.id.toString()}
         stickyHeaderHiddenOnScroll
         stickyHeaderIndices={[0]}
+        ListHeaderComponentStyle={{ marginBottom: 15 }}
         ListHeaderComponent={
           <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
         }

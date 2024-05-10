@@ -1,8 +1,8 @@
-import * as SQLite from "expo-sqlite";
+import * as SQLite from "expo-sqlite/next";
 
 class DatabaseManager {
   constructor() {
-    this.db = SQLite.openDatabase("syncapp.db");
+    this.db = SQLite.openDatabaseAsync("syncapp");
   }
 
   async createSQL(sql, params = []) {

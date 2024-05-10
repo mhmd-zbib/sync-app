@@ -7,5 +7,7 @@ export function useGroupListQuery() {
     queryFn: () => GroupServices.list(),
     staleTime: 300000,
     cacheTime: 900000,
+    refetchOnMount: true,
+    refetchOnWindowFocus: true,
   });
 }

@@ -9,5 +9,7 @@ export default function useGetContacts() {
   return useQuery({
     queryKey: ["ContactList"],
     queryFn: () => ContactService.getAllContacts(),
+    refetchOnMount: true,
+    refetchOnWindowFocus: true,
   });
 }
