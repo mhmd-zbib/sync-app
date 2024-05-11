@@ -1,9 +1,9 @@
 import { View, Text, FlatList } from "react-native";
 import React from "react";
-import Typography from "../../../../../shared/components/ui/Typography";
-import { useTheme } from "../../../../../shared/stores/themeStore";
-import DateTimeFormatter from "../../../../../shared/hooks/useFormatDate";
-import Separator from "../../../../../shared/components/ui/Separator";
+import Typography from "../../../../../../shared/components/ui/Typography";
+import { useTheme } from "../../../../../../shared/stores/themeStore";
+import DateTimeFormatter from "../../../../../../shared/hooks/useFormatDate";
+import Separator from "../../../../../../shared/components/ui/Separator";
 
 const ExperienceItem = ({ item, index }) => {
   const theme = useTheme();

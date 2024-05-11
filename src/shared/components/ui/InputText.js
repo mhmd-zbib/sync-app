@@ -19,7 +19,7 @@ const InputText = ({
 
   return (
     <View style={[styles.container, style]}>
-      <Label label={label} />
+      {label && <Label label={label} />}
       <TextInput
         placeholderTextColor={theme.textAccent}
         style={[

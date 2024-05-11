@@ -1,8 +1,8 @@
 import { View, Text, StyleSheet } from "react-native";
 import React from "react";
-import Typography from "../../../../../shared/components/ui/Typography";
-import { useTheme } from "../../../../../shared/stores/themeStore";
-import Separator from "../../../../../shared/components/ui/Separator";
+import Typography from "../../../../../../shared/components/ui/Typography";
+import { useTheme } from "../../../../../../shared/stores/themeStore";
+import Separator from "../../../../../../shared/components/ui/Separator";
 
 const ProfileContact = ({ phone, email }) => {
   const theme = useTheme();

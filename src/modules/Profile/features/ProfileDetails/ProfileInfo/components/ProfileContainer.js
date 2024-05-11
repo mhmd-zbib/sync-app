@@ -1,14 +1,12 @@
 import { View, Text } from "react-native";
 import React from "react";
-import Card from "../../../../../shared/components/ui/cards/Card";
-import Typography from "../../../../../shared/components/ui/Typography";
-import Separator from "../../../../../shared/components/ui/Separator";
-import { useTheme } from "../../../../../shared/stores/themeStore";
+import Card from "../../../../../../shared/components/ui/cards/Card";
+import Typography from "../../../../../../shared/components/ui/Typography";
+import Separator from "../../../../../../shared/components/ui/Separator";
+import { useTheme } from "../../../../../../shared/stores/themeStore";
 
 const ProfileContainer = ({ label, data, onPress }) => {
   const theme = useTheme();
-
-  console.log(data);
 
   return (
     <Card

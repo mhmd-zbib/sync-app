@@ -1,10 +1,10 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
-import ProfilePicture from "../../../../shared/components/ui/cards/ProfilePicture";
-import Typography from "../../../../shared/components/ui/Typography";
-import DateTimeFormatter from "../../../../shared/hooks/useFormatDate";
-import { useTheme } from "../../../../shared/stores/themeStore";
-import { useProfileQuery } from "../../queries/useProfileQuery";
+import ProfilePicture from "../../../../../shared/components/ui/cards/ProfilePicture";
+import Typography from "../../../../../shared/components/ui/Typography";
+import DateTimeFormatter from "../../../../../shared/hooks/useFormatDate";
+import { useTheme } from "../../../../../shared/stores/themeStore";
+import { useProfileQuery } from "../../../queries/useProfileQuery";
 
 const ProfileHeader = () => {
   const { data } = useProfileQuery();

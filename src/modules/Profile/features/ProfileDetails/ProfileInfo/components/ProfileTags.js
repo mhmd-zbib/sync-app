@@ -1,8 +1,8 @@
 import { StyleSheet, View } from "react-native";
 import React from "react";
-import Typography from "../../../../../shared/components/ui/Typography";
-import { useTheme } from "../../../../../shared/stores/themeStore";
-import { hexToRGBA } from "../../../../../shared/hooks/useHexToRgb";
+import Typography from "../../../../../../shared/components/ui/Typography";
+import { useTheme } from "../../../../../../shared/stores/themeStore";
+import { hexToRGBA } from "../../../../../../shared/hooks/useHexToRgb";
 
 const ProfileTags = ({ tags }) => {
   const theme = useTheme();

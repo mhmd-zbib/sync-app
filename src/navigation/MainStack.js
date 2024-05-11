@@ -16,7 +16,8 @@ import TabBar from "./TabBar";
 import ContactAddScreen from "../modules/Contacts/features/ContactAdd";
 import ContactSelectListScreen from "../modules/Contacts/features/ContactSelectList";
 import GroupDetailsScreen from "../modules/Groups/features/GroupDetails.js";
-import ProfileScreen from "../modules/Profile/ProfileDetails/index.js";
+import ProfileScreen from "../modules/Profile/features/ProfileDetails/index.js";
+import EditDescriptionScreen from "../modules/Profile/features/EditDescription/index.js";
 
 const Stack = createNativeStackNavigator();
 
@@ -76,11 +77,18 @@ const MainStack = () => {
                 title: getFocusedRouteNameFromRoute(route),
               })}
             />
-            {/* -------------------------------- Contacts -------------------------------- */}
+
+            {/* --------------------------------- Profile -------------------------------- */}
             <Stack.Screen
               name="ContactProfileScreen"
               component={ProfileScreen}
             />
+
+            <Stack.Screen
+              name="EditDescriptionScreen"
+              component={EditDescriptionScreen}
+            />
+            {/* -------------------------------- Contacts -------------------------------- */}
             <Stack.Screen
               name="ContactAddScreen"
               component={ContactAddScreen}
