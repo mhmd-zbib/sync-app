@@ -4,8 +4,11 @@ import ProfilePicture from "../../../../shared/components/ui/cards/ProfilePictur
 import Typography from "../../../../shared/components/ui/Typography";
 import DateTimeFormatter from "../../../../shared/hooks/useFormatDate";
 import { useTheme } from "../../../../shared/stores/themeStore";
+import { useProfileQuery } from "../../queries/useProfileQuery";
 
-const ProfileHeader = ({ data }) => {
+const ProfileHeader = () => {
+  const { data } = useProfileQuery();
+
   const { name, birthday } = data;
   const theme = useTheme();
 

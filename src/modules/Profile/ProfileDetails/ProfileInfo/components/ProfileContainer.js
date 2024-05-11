@@ -19,6 +19,7 @@ const ProfileContainer = ({ label, data, onPress }) => {
       <Typography variant="al" fontWeight={500} color={theme.textSecondary}>
         {label}
       </Typography>
+
       <Separator />
 
       {!data && <Typography color={theme.textAccent}>Tap to add</Typography>}
