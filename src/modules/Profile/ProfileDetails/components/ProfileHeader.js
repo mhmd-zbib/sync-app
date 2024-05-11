@@ -1,11 +1,11 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
-import ProfilePicture from "../../../../../shared/components/ui/cards/ProfilePicture";
-import Typography from "../../../../../shared/components/ui/Typography";
-import DateTimeFormatter from "../../../../../shared/hooks/useFormatDate";
-import { useTheme } from "../../../../../shared/stores/themeStore";
+import ProfilePicture from "../../../../shared/components/ui/cards/ProfilePicture";
+import Typography from "../../../../shared/components/ui/Typography";
+import DateTimeFormatter from "../../../../shared/hooks/useFormatDate";
+import { useTheme } from "../../../../shared/stores/themeStore";
 
-const ContactProfileHeader = ({ data }) => {
+const ProfileHeader = ({ data }) => {
   const { name, birthday } = data;
   const theme = useTheme();
 
@@ -42,6 +42,6 @@ const ContactProfileHeader = ({ data }) => {
   );
 };
 
-export default ContactProfileHeader;
+export default ProfileHeader;
 
 const styles = StyleSheet.create({});

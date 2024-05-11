@@ -8,7 +8,9 @@ const connectionsTableSchema = {
     email TEXT,
     phone_number TEXT,
     description TEXT,
-    created_at INTEGER
+    created_at INTEGER,
+    pinned INTEGER,
+    favorite INTEGER
   )`,
 };
 

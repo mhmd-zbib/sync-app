@@ -24,6 +24,10 @@ const Typography = ({
     textStyle,
   ]);
 
+  if (children.length === 0) {
+    return;
+  }
+
   return (
     <Text onPress={onPress} style={mergedStyles} {...props}>
       {children}
@@ -44,7 +48,7 @@ const getTypographyStyles = (theme, variant) => {
     xlg: { fontSize: RFValue(18) },
     md: { fontSize: RFValue(12) },
     sm: { fontSize: RFValue(10) },
-    al: { fontSize: RFValue(12) },
+    al: { fontSize: RFValue(10.5) },
   };
 
   return { ...defaultStyles, ...variantStyles[variant] };

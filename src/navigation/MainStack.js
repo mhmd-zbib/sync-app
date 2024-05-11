@@ -16,7 +16,8 @@ import TabBar from "./TabBar";
 import ContactAddScreen from "../modules/Contacts/features/ContactAdd";
 import ContactSelectListScreen from "../modules/Contacts/features/ContactSelectList";
 import GroupDetailsScreen from "../modules/Groups/features/GroupDetails.js";
-import ContactProfileScreen from "../modules/Contacts/features/ContactProfile/index.js";
+import ProfileScreen from "../modules/Profile/ProfileDetails/index.js";
+
 const Stack = createNativeStackNavigator();
 
 const MainStack = () => {
@@ -78,7 +79,7 @@ const MainStack = () => {
             {/* -------------------------------- Contacts -------------------------------- */}
             <Stack.Screen
               name="ContactProfileScreen"
-              component={ContactProfileScreen}
+              component={ProfileScreen}
             />
             <Stack.Screen
               name="ContactAddScreen"

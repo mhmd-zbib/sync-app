@@ -1,12 +1,12 @@
 import { useState } from "react";
-import useContactIdStore from "../../../../ContactProfile/stores/ContactIdStore";
 import { useNoteAddMutation } from "../../../queries/useNoteAddMutation";
 import { useNoteEditMutation } from "../../../queries/useNoteEditMutation";
 
 export default function useNoteAdd(
   initialNoteData = { title: "", details: "" }
 ) {
-  const contactId = useContactIdStore((state) => state.id);
+  // const contactId = useContactIdStore((state) => state.id);
+  const contactId = 1;
   const [noteData, setNoteData] = useState(initialNoteData);
 
   const { mutate: addNote } = useNoteAddMutation();

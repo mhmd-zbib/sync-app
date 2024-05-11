@@ -25,7 +25,6 @@ const TabSlides = ({ routes, renderScene }) => {
       renderScene={renderScene}
       onIndexChange={setIndex}
       initialLayout={{ width: layout.width }}
-      sceneContainerStyle={{ padding: 10, paddingTop: 20 }}
     />
   );
 };

@@ -1,10 +1,9 @@
-import { Entypo } from "@expo/vector-icons";
+import { Entypo, MaterialCommunityIcons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import React, { useLayoutEffect } from "react";
-import { StyleSheet, TouchableOpacity, View } from "react-native";
-import GoBackButton from "../ui/buttons/GoBackButton";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { StyleSheet, View } from "react-native";
 import { useTheme } from "../../stores/themeStore";
+import GoBackButton from "../ui/buttons/GoBackButton";
 
 const DetailPage = ({
   children,
