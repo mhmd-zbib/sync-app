@@ -23,6 +23,7 @@
     "expo": "^51.0.2",
     "expo-sqlite": "~14.0.3",
     "expo-status-bar": "~1.12.1",
+    "expo-svg-uri": "^1.3.1",
     "expo-system-ui": "~3.0.4",
     "nativewind": "^2.0.11",
     "react": "18.2.0",

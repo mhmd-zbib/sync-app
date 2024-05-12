@@ -18,6 +18,8 @@ import ContactSelectListScreen from "../modules/Contacts/features/ContactSelectL
 import GroupDetailsScreen from "../modules/Groups/features/GroupDetails.js";
 import ProfileScreen from "../modules/Profile/features/ProfileDetails/index.js";
 import EditDescriptionScreen from "../modules/Profile/features/EditDescription/index.js";
+import EditContactScreen from "../modules/Profile/features/EditContact/index.js";
+import TagListScreen from "../modules/Tags/features/TagsList/index.js";
 
 const Stack = createNativeStackNavigator();
 
@@ -88,6 +90,15 @@ const MainStack = () => {
               name="EditDescriptionScreen"
               component={EditDescriptionScreen}
             />
+            <Stack.Screen
+              name="EditContactScreen"
+              component={EditContactScreen}
+            />
+
+            {/* ---------------------------------- Tags ---------------------------------- */}
+
+            <Stack.Screen name="TagsListScreen" component={TagListScreen} />
+
             {/* -------------------------------- Contacts -------------------------------- */}
             <Stack.Screen
               name="ContactAddScreen"

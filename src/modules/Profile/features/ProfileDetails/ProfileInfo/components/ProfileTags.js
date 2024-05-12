@@ -21,8 +21,7 @@ const ProfileTags = ({ tags }) => {
               {
                 borderColor: tag.color,
                 borderWidth: 1,
-
-                backgroundColor: hexToRGBA(tag.color, 0.1),
+                backgroundColor: hexToRGBA(tag.color, 0.05),
               },
             ]}>
             {tag.tag}

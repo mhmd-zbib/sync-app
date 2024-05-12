@@ -17,11 +17,15 @@ const ProfileScreen = ({ route }) => {
   }, [route.params.id, setId]);
 
   const { isLoading, error, isError } = useProfileQuery(id);
-  if (isLoading) return <Loading />;
-  if (isError) return <Error error={error} />;
+  // if (isLoading) return <Loading />;
+  // if (isError) return <Error error={error} />;
 
   return (
-    <DetailPage screenTitle={"Profile"} style={{ paddingHorizontal: 10 }}>
+    <DetailPage
+      screenTitle={"Profile"}
+      style={{ paddingHorizontal: 10 }}
+      loading={isLoading}
+      error={error}>
       <ScrollView>
         <ProfileHeader />
         <ProfileTabs />

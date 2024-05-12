@@ -11,8 +11,8 @@ const ProfileInfo = ({ id }) => {
   const { data } = useProfileQuery(id);
   const navigation = useNavigation();
 
-  const navigateTo = (route) => {
-    navigation.navigate(route);
+  const navigateTo = (route, params) => {
+    navigation.navigate(route, params);
   };
 
   return (
@@ -20,10 +20,29 @@ const ProfileInfo = ({ id }) => {
       <ProfileContainer
         label="Description"
         data={data.description}
-        onPress={() => navigateTo("EditDescriptionScreen")}
+        onPress={() =>
+          navigateTo("EditDescriptionScreen", { description: data.description })
+        }
       />
-      <ProfileContainer label={"Contact"} data={ProfileContact(data)} />
-      <ProfileContainer label="Tags" data={<ProfileTags tags={data.tags} />} />
+      <ProfileContainer
+        label={"Contact"}
+        data={ProfileContact(data)}
+        onPress={() =>
+          navigateTo("EditContactScreen", {
+            phone: data.phone,
+            email: data.email,
+          })
+        }
+      />
+      <ProfileContainer
+        label="Tags"
+        data={<ProfileTags tags={data.tags} />}
+        onPress={() =>
+          navigateTo("TagsListScreen", {
+            selected: data.tags.map((item) => item.id),
+          })
+        }
+      />
       <ProfileContainer
         label="Experience"
         data={<ProfileExperience data={data.experience} />}

@@ -7,7 +7,7 @@ import Typography from "../ui/Typography";
 const Error = ({ error, message = "Something went wrong" }) => {
   const theme = useTheme();
 
-  console.log(error);
+  console.log(error && error);
   return (
     <View style={styles.center}>
       <View
