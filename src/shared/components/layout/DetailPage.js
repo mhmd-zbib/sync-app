@@ -1,11 +1,14 @@
-import { Entypo, MaterialCommunityIcons } from "@expo/vector-icons";
+import {
+  Entypo,
+  Feather,
+  MaterialCommunityIcons,
+  AntDesign,
+} from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import React, { useLayoutEffect } from "react";
 import { StyleSheet, View } from "react-native";
 import { useTheme } from "../../stores/themeStore";
 import GoBackButton from "../ui/buttons/GoBackButton";
-import Loading from "./Loading";
-import Error from "./Error";
 
 const DetailPage = ({
   children,
@@ -13,10 +16,11 @@ const DetailPage = ({
   style,
   onOptionPress,
   onBackPress,
+  onAddPress,
   deleteButton,
   onDelete,
-  isLoading,
-  error,
+  addButton,
+  optionButton = true,
 }) => {
   const navigation = useNavigation();
   const theme = useTheme();
@@ -38,21 +42,30 @@ const DetailPage = ({
                 color={"red"}
               />
             )}
-            <Entypo
-              onPress={onOptionPress}
-              style={{ padding: 10, marginLeft: 10 }}
-              name="dots-three-vertical"
-              size={20}
-              color={theme.primary}
-            />
+
+            {addButton && (
+              <AntDesign
+                onPress={onAddPress}
+                name="pluscircle"
+                size={24}
+                color={theme.primary}
+              />
+            )}
+
+            {optionButton && (
+              <Entypo
+                onPress={onOptionPress}
+                style={{ padding: 10, marginLeft: 10 }}
+                name="dots-three-vertical"
+                size={20}
+                color={theme.primary}
+              />
+            )}
           </>
         );
       },
     });
   }, [navigation, screenTitle, deleteButton]);
-
-  if (isLoading) return <Loading />;
-  if (error) return <Error error={error} />;
 
   return <View style={[style, { flex: 1 }]}>{children}</View>;
 };

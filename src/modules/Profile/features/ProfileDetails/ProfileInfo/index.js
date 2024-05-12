@@ -26,10 +26,10 @@ const ProfileInfo = ({ id }) => {
       />
       <ProfileContainer
         label={"Contact"}
-        data={ProfileContact(data)}
+        data={<ProfileContact phone={data.phone_number} email={data.email} />}
         onPress={() =>
           navigateTo("EditContactScreen", {
-            phone: data.phone,
+            phone: data.phone_number,
             email: data.email,
           })
         }
@@ -39,13 +39,16 @@ const ProfileInfo = ({ id }) => {
         data={<ProfileTags tags={data.tags} />}
         onPress={() =>
           navigateTo("TagsListScreen", {
-            selected: data.tags.map((item) => item.id),
+            selected: data.tags && data.tags.map((item) => item.id),
           })
         }
       />
       <ProfileContainer
         label="Experience"
         data={<ProfileExperience data={data.experience} />}
+        onPress={() =>
+          navigateTo("ExperienceListScreen", { experience: data.experience })
+        }
       />
     </View>
   );

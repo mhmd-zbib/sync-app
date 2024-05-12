@@ -1,12 +1,12 @@
-import { ScrollView, StyleSheet, Text, View } from "react-native";
-import React, { useEffect, useLayoutEffect } from "react";
+import React, { useLayoutEffect } from "react";
+import { ScrollView, StyleSheet } from "react-native";
+import DetailPage from "../../../../shared/components/layout/DetailPage";
+import Error from "../../../../shared/components/layout/Error";
+import Loading from "../../../../shared/components/layout/Loading";
+import { useProfileQuery } from "../../queries/useProfileQuery";
+import useProfileIdStore from "../../store/useProfileIdStore";
 import ProfileHeader from "./components/ProfileHeader";
 import ProfileTabs from "./components/ProfileTabs";
-import DetailPage from "../../../../shared/components/layout/DetailPage";
-import { useProfileQuery } from "../../queries/useProfileQuery";
-import Loading from "../../../../shared/components/layout/Loading";
-import Error from "../../../../shared/components/layout/Error";
-import useProfileIdStore from "../../store/useProfileIdStore";
 
 const ProfileScreen = ({ route }) => {
   const { setId, id } = useProfileIdStore();
@@ -17,8 +17,8 @@ const ProfileScreen = ({ route }) => {
   }, [route.params.id, setId]);
 
   const { isLoading, error, isError } = useProfileQuery(id);
-  // if (isLoading) return <Loading />;
-  // if (isError) return <Error error={error} />;
+  if (isLoading) return <Loading />;
+  if (isError) return <Error error={error} />;
 
   return (
     <DetailPage

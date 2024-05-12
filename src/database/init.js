@@ -71,16 +71,15 @@ const connectionTagsTableSchema = {
 };
 
 const experienceTableSchema = {
-  version: 1,
+  version: 1.1,
   statement: `CREATE TABLE IF NOT EXISTS experience (
     id INTEGER PRIMARY KEY NOT NULL,
     connection_id INTEGER,
-    job_title TEXT,
-    position TEXT,
-    company_name TEXT,
-    website_link TEXT,
+    title TEXT,
+    company TEXT,
     start_date INTEGER,
-    end_date INTEGER
+    end_date INTEGER,
+    description TEXT
   )`,
 };
 

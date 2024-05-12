@@ -3,14 +3,26 @@ import InputPageLayout from "../../../../shared/components/layout/InputPageLayou
 import InputText from "../../../../shared/components/ui/InputText";
 import { useProfileQuery } from "../../queries/useProfileQuery";
 import Error from "../../../../shared/components/layout/Error";
+import { useDescriptionMutation } from "../../queries/useDescriptionMutation";
+import useProfileIdStore from "../../store/useProfileIdStore";
 
 const EditDescriptionScreen = ({ route }) => {
-  const { description } = route.params;
-  const [newDesc, setNewDesc] = useState(description);
+  const { id } = useProfileIdStore();
+  const { description: oldDescription } = route.params;
+  const [description, setDescription] = useState(oldDescription);
+  const { mutate } = useDescriptionMutation();
 
   return (
-    <InputPageLayout screenTitle={"Description"} buttonTitle={"Done"}>
-      <InputText value={newDesc} onChange={setNewDesc} multiline={true} />
+    <InputPageLayout
+      disabled={!description}
+      screenTitle={"Description"}
+      buttonTitle={"Done"}
+      onPress={() => mutate({ id, description })}>
+      <InputText
+        value={description}
+        onChange={setDescription}
+        multiline={true}
+      />
     </InputPageLayout>
   );
 };

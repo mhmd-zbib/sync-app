@@ -3,7 +3,7 @@ import { StyleSheet, TouchableOpacity } from "react-native";
 import { useTheme } from "../../../stores/themeStore";
 import Typography from "../Typography";
 
-const Card = ({ children, style, onPress, variant, onLongPress }) => {
+const Card = ({ children, style, variant, disabled, ...props }) => {
   const theme = useTheme();
 
   const baseStyle = [
@@ -21,8 +21,8 @@ const Card = ({ children, style, onPress, variant, onLongPress }) => {
 
   return (
     <TouchableOpacity
-      onLongPress={onLongPress}
-      onPress={onPress}
+      {...props}
+      disabled={disabled}
       activeOpacity={0.8}
       style={[baseStyle, style]}>
       {children}

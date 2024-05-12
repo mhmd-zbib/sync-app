@@ -3,6 +3,8 @@ import React, { useLayoutEffect } from "react";
 import { Dimensions, KeyboardAvoidingView, Platform, View } from "react-native";
 import Button from "../ui/buttons/Button";
 import GoBackButton from "../ui/buttons/GoBackButton";
+import { AntDesign, Feather, MaterialCommunityIcons } from "@expo/vector-icons";
+import { useTheme } from "../../stores/themeStore";
 
 const InputPageLayout = ({
   children,
@@ -12,8 +14,11 @@ const InputPageLayout = ({
   onBackPress,
   disabled = false,
   headerRight,
+  addButton = false,
+  onAddPress,
 }) => {
   const navigation = useNavigation();
+  const theme = useTheme();
   const screenHeight = Dimensions.get("window").height;
   const keyboardVerticalOffset =
     Platform.OS === "ios" ? 0.1 * screenHeight + 5 : 0;
@@ -26,9 +31,20 @@ const InputPageLayout = ({
       ),
 
       headerRight: () => {
-        {
-          return headerRight;
-        }
+        return (
+          <>
+            {addButton && (
+              <AntDesign
+                onPress={onAddPress}
+                name="pluscircle"
+                size={24}
+                color={theme.primary}
+              />
+            )}
+
+            {headerRight}
+          </>
+        );
       },
     });
   }, [navigation, screenTitle, onBackPress]);

@@ -19,12 +19,14 @@ const ProfileContact = ({ phone, email }) => {
           <Typography>{phone}</Typography>
         </View>
       )}
-      <Separator />
+      {phone && email && <Separator />}
       {email && (
-        <View style={styles.cont}>
-          <Typography color={theme.textAccent}>Email</Typography>
-          <Typography>{email}</Typography>
-        </View>
+        <>
+          <View style={styles.cont}>
+            <Typography color={theme.textAccent}>Email</Typography>
+            <Typography>{email}</Typography>
+          </View>
+        </>
       )}
     </>
   );

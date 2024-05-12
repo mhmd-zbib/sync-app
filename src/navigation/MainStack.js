@@ -7,19 +7,20 @@ import {
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import React from "react";
 import { StatusBar, View, useColorScheme } from "react-native";
+import ContactAddScreen from "../modules/Contacts/features/ContactAdd";
+import ContactSelectListScreen from "../modules/Contacts/features/ContactSelectList";
 import GroupAddScreen from "../modules/Groups/features/GroupAdd";
+import GroupDetailsScreen from "../modules/Groups/features/GroupDetails.js";
 import AddNoteScreen from "../modules/Notes/features/NoteAdd";
 import NoteDetails from "../modules/Notes/features/NoteDetails";
+import EditContactScreen from "../modules/Profile/features/EditContact/index.js";
+import EditDescriptionScreen from "../modules/Profile/features/EditDescription/index.js";
+import ExperienceListScreen from "../modules/Experience/ExperienceList/index.js";
+import ProfileScreen from "../modules/Profile/features/ProfileDetails/index.js";
+import TagListScreen from "../modules/Tags/features/TagsList/index.js";
 import GoBackButton from "../shared/components/ui/buttons/GoBackButton";
 import { useTheme } from "../shared/stores/themeStore";
 import TabBar from "./TabBar";
-import ContactAddScreen from "../modules/Contacts/features/ContactAdd";
-import ContactSelectListScreen from "../modules/Contacts/features/ContactSelectList";
-import GroupDetailsScreen from "../modules/Groups/features/GroupDetails.js";
-import ProfileScreen from "../modules/Profile/features/ProfileDetails/index.js";
-import EditDescriptionScreen from "../modules/Profile/features/EditDescription/index.js";
-import EditContactScreen from "../modules/Profile/features/EditContact/index.js";
-import TagListScreen from "../modules/Tags/features/TagsList/index.js";
 
 const Stack = createNativeStackNavigator();
 
@@ -84,6 +85,9 @@ const MainStack = () => {
             <Stack.Screen
               name="ContactProfileScreen"
               component={ProfileScreen}
+              options={{
+                title: "Profile",
+              }}
             />
 
             <Stack.Screen
@@ -93,6 +97,13 @@ const MainStack = () => {
             <Stack.Screen
               name="EditContactScreen"
               component={EditContactScreen}
+            />
+            <Stack.Screen
+              name="ExperienceListScreen"
+              component={ExperienceListScreen}
+              options={{
+                title: "Experience",
+              }}
             />
 
             {/* ---------------------------------- Tags ---------------------------------- */}

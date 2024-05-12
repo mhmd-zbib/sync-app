@@ -34,13 +34,26 @@ class ContactService {
     ]);
   }
 
+  async editDescription(id, description) {
+    return this.db.runAsync(
+      "UPDATE connections SET description = ? WHERE id = ?",
+      [description, id]
+    );
+  }
+
+  async editContact(id, phone, email) {
+    console.log(phone);
+    return this.db.runAsync(
+      "UPDATE connections SET phone_number = ?, email = ? WHERE id = ?",
+      [phone, email, id]
+    );
+  }
+
   async getInfo(id) {
-    const results = await this.db.getFirstAsync(
+    return await this.db.getFirstAsync(
       "SELECT * FROM connections WHERE id = ?",
       [id]
     );
-
-    return results[0];
   }
 }
 export default new ContactService();

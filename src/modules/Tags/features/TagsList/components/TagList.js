@@ -31,7 +31,7 @@ const TagList = ({ tags, onSelectTag, selected }) => {
         <TagItem
           item={item}
           onSelect={onSelectTag}
-          selectedId={selected.includes(item.id)}
+          selectedId={selected && selected.includes(item.id)}
         />
       )}
       keyExtractor={(item) => item.id}

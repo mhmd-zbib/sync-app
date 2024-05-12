@@ -7,11 +7,10 @@ export default function DummyProfile(id) {
 
   const user = {
     name: "John Doe",
-    // email: "john@example.com",
     birthday: 8885552742001,
     description: "I'm a software engineer",
     phone: "76782106",
-    email: "test@gmail.com",
+    // email: "test@gmail.com",
     tags: [
       { id: 1, tag: "worker", color: "#FF0000" },
       { id: 2, tag: "chef", color: "#2986CC" },

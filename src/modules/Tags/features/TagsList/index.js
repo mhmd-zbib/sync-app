@@ -9,7 +9,11 @@ const TagListScreen = ({ route }) => {
   const { onSelectTag, print } = useSelectTag(selected);
 
   return (
-    <InputPageLayout buttonTitle={"Add"} screenTitle={"Tags"} onPress={print}>
+    <InputPageLayout
+      buttonTitle={"Add"}
+      screenTitle={"Tags"}
+      onPress={print}
+      addButton>
       <TagList tags={data} onSelectTag={onSelectTag} selected={selected} />
     </InputPageLayout>
   );
