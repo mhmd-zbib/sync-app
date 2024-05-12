@@ -5,13 +5,16 @@ import Typography from "../../../../../shared/components/ui/Typography";
 import DateTimeFormatter from "../../../../../shared/hooks/useFormatDate";
 import { useTheme } from "../../../../../shared/stores/themeStore";
 import { useProfileQuery } from "../../../queries/useProfileQuery";
+import useProfileIdStore from "../../../store/useProfileIdStore";
+import Loading from "../../../../../shared/components/layout/Loading";
+import Error from "../../../../../shared/components/layout/Error";
 
 const ProfileHeader = () => {
-  const { data } = useProfileQuery();
+  const id = useProfileIdStore((state) => state.id);
+  const { data } = useProfileQuery(id);
 
   const { name, birthday } = data;
   const theme = useTheme();
-
   return (
     <View style={{ flexDirection: "row", gap: 16, marginHorizontal: 10 }}>
       <ProfilePicture name={name} size="lg" />

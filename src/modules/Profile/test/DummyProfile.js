@@ -1,5 +1,5 @@
 export default function DummyProfile(id) {
-  console.log(id, "afa");
+  console.log(id, "the id on fetch");
 
   if (id !== 1) {
     return;

@@ -1,14 +1,14 @@
+import { useNavigation } from "@react-navigation/native";
 import React from "react";
-import { ScrollView, View } from "react-native";
+import { View } from "react-native";
+import { useProfileQuery } from "../../../queries/useProfileQuery";
 import ProfileContact from "./components/ProfileContact";
 import ProfileContainer from "./components/ProfileContainer";
-import ProfileTags from "./components/ProfileTags";
 import ProfileExperience from "./components/ProfileExperience";
-import { useProfileQuery } from "../../../queries/useProfileQuery";
-import { useNavigation } from "@react-navigation/native";
+import ProfileTags from "./components/ProfileTags";
 
-const ProfileInfo = () => {
-  const { data } = useProfileQuery();
+const ProfileInfo = ({ id }) => {
+  const { data } = useProfileQuery(id);
   const navigation = useNavigation();
 
   const navigateTo = (route) => {

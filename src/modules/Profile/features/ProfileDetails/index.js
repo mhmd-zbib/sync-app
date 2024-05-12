@@ -1,5 +1,5 @@
 import { ScrollView, StyleSheet, Text, View } from "react-native";
-import React, { useEffect } from "react";
+import React, { useEffect, useLayoutEffect } from "react";
 import ProfileHeader from "./components/ProfileHeader";
 import ProfileTabs from "./components/ProfileTabs";
 import DetailPage from "../../../../shared/components/layout/DetailPage";
@@ -9,29 +9,23 @@ import Error from "../../../../shared/components/layout/Error";
 import useProfileIdStore from "../../store/useProfileIdStore";
 
 const ProfileScreen = ({ route }) => {
-  const { isLoading, data } = useProfileQuery(route.params.id);
-  const { setId } = useProfileIdStore();
+  const { setId, id } = useProfileIdStore();
 
-  useEffect(() => {
+  useLayoutEffect(() => {
+    console.log(route.params.id);
     setId(route.params.id);
-  }, [route]);
+  }, [route.params.id, setId]);
 
-  if (isLoading) {
-    return <Loading />;
-  }
-
-  if (!data) return <Error />;
+  const { isLoading, error, isError } = useProfileQuery(id);
+  if (isLoading) return <Loading />;
+  if (isError) return <Error error={error} />;
 
   return (
     <DetailPage screenTitle={"Profile"} style={{ paddingHorizontal: 10 }}>
-      {isLoading ? (
-        <Loading />
-      ) : (
-        <ScrollView>
-          <ProfileHeader />
-          <ProfileTabs />
-        </ScrollView>
-      )}
+      <ScrollView>
+        <ProfileHeader />
+        <ProfileTabs />
+      </ScrollView>
     </DetailPage>
   );
 };
