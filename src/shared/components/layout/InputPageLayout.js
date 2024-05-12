@@ -1,6 +1,12 @@
 import { useNavigation } from "@react-navigation/native";
 import React, { useLayoutEffect } from "react";
-import { Dimensions, KeyboardAvoidingView, Platform, View } from "react-native";
+import {
+  Dimensions,
+  KeyboardAvoidingView,
+  Platform,
+  ScrollView,
+  View,
+} from "react-native";
 import Button from "../ui/buttons/Button";
 import GoBackButton from "../ui/buttons/GoBackButton";
 import { AntDesign, Feather, MaterialCommunityIcons } from "@expo/vector-icons";
@@ -59,10 +65,12 @@ const InputPageLayout = ({
         justifyContent: "space-between",
         marginBottom: 25,
       }}>
-      <View
-        style={{ gap: 26, paddingHorizontal: 10, marginBottom: 10, flex: 1 }}>
-        {children}
-      </View>
+      <ScrollView>
+        <View
+          style={{ gap: 26, paddingHorizontal: 10, marginBottom: 60, flex: 1 }}>
+          {children}
+        </View>
+      </ScrollView>
 
       <Button
         arrow

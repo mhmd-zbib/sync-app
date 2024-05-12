@@ -7,6 +7,8 @@ import Separator from "../../../../../../shared/components/ui/Separator";
 import ProfileExperienceItem from "./ProfileExperienceItem";
 
 const ProfileExperience = ({ data }) => {
+  if (!data) return <Typography>Tap to add</Typography>;
+
   return (
     <FlatList
       scrollEnabled={false}

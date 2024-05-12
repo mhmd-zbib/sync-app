@@ -1,4 +1,4 @@
-import React, { useLayoutEffect } from "react";
+import React, { useLayoutEffect, useState } from "react";
 import { ScrollView, StyleSheet } from "react-native";
 import DetailPage from "../../../../shared/components/layout/DetailPage";
 import Error from "../../../../shared/components/layout/Error";
@@ -9,14 +9,19 @@ import ProfileHeader from "./components/ProfileHeader";
 import ProfileTabs from "./components/ProfileTabs";
 
 const ProfileScreen = ({ route }) => {
-  const { setId, id } = useProfileIdStore();
+  const { setId } = useProfileIdStore();
+  const [id, setIdFromRoute] = useState(null);
 
   useLayoutEffect(() => {
-    console.log(route.params.id);
-    setId(route.params.id);
-  }, [route.params.id, setId]);
+    const routeId = route.params?.id;
+    if (routeId) {
+      console.log(routeId);
+      setIdFromRoute(routeId);
+      setId(routeId);
+    }
+  }, [route.params?.id, setId]);
 
-  const { isLoading, error, isError } = useProfileQuery(id);
+  const { data, isLoading, error, isError } = useProfileQuery(id);
   if (isLoading) return <Loading />;
   if (isError) return <Error error={error} />;
 

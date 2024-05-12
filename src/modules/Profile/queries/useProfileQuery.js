@@ -6,9 +6,8 @@ import ContactService from "../../Contacts/services/ContactService";
 export function useProfileQuery(id) {
   return useQuery({
     queryKey: ["Profile", id],
-    queryFn: () => ContactService.getInfo(id),
-
-    // staleTime: 300000,
-    // cacheTime: 900000,
+    queryFn: () => {
+      return ContactService.getInfo(id);
+    },
   });
 }

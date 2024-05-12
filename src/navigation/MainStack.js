@@ -21,6 +21,7 @@ import TagListScreen from "../modules/Tags/features/TagsList/index.js";
 import GoBackButton from "../shared/components/ui/buttons/GoBackButton";
 import { useTheme } from "../shared/stores/themeStore";
 import TabBar from "./TabBar";
+import ExperienceAddScreen from "../modules/Experience/ExperienceAdd/index.js";
 
 const Stack = createNativeStackNavigator();
 
@@ -80,7 +81,6 @@ const MainStack = () => {
                 title: getFocusedRouteNameFromRoute(route),
               })}
             />
-
             {/* --------------------------------- Profile -------------------------------- */}
             <Stack.Screen
               name="ContactProfileScreen"
@@ -89,7 +89,6 @@ const MainStack = () => {
                 title: "Profile",
               }}
             />
-
             <Stack.Screen
               name="EditDescriptionScreen"
               component={EditDescriptionScreen}
@@ -98,6 +97,7 @@ const MainStack = () => {
               name="EditContactScreen"
               component={EditContactScreen}
             />
+            {/* ------------------------------- Experience ------------------------------- */}
             <Stack.Screen
               name="ExperienceListScreen"
               component={ExperienceListScreen}
@@ -106,10 +106,13 @@ const MainStack = () => {
               }}
             />
 
+            <Stack.Screen
+              name="ExperienceAddScreen"
+              component={ExperienceAddScreen}
+            />
+
             {/* ---------------------------------- Tags ---------------------------------- */}
-
             <Stack.Screen name="TagsListScreen" component={TagListScreen} />
-
             {/* -------------------------------- Contacts -------------------------------- */}
             <Stack.Screen
               name="ContactAddScreen"
@@ -119,7 +122,6 @@ const MainStack = () => {
               name="ContactSelectListScreen"
               component={ContactSelectListScreen}
             />
-
             {/* -------------------------------- Reminders ------------------------------- */}
             {/* ---------------------------------- Notes --------------------------------- */}
             <Stack.Screen name="NoteDetails" component={NoteDetails} />

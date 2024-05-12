@@ -50,8 +50,23 @@ class ContactService {
   }
 
   async getInfo(id) {
-    return await this.db.getFirstAsync(
+    let info = await this.db.getFirstAsync(
       "SELECT * FROM connections WHERE id = ?",
+      [id]
+    );
+    const experience = await this.db.getFirstAsync(
+      "SELECT * FROM experience WHERE connection_id = ?",
+      [id]
+    );
+
+    info = { ...info, experience: experience };
+    console.log(info, "thats a log");
+    return info;
+  }
+
+  async getExperience(id) {
+    return await this.db.getFirstAsync(
+      "SELECT * FROM experience WHERE connection_id = ?",
       [id]
     );
   }
