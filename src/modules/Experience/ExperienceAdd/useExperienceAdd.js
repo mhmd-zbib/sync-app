@@ -1,9 +1,8 @@
-import { useState } from "react";
-
-const useExperienceAdd = () => {
+export default function useExperienceAdd () {
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [showPicker, setShowPicker] = useState(false);
   const [fieldEditing, setFieldEditing] = useState(null);
+
   const [fromDate, setFromDate] = useState(null);
   const [toDate, setToDate] = useState(null);
 
@@ -34,14 +33,8 @@ const useExperienceAdd = () => {
   };
 
   return {
-    selectedDate,
-    showPicker,
-    fieldEditing,
-    fromDate,
-    toDate,
-    onChange,
     showDateTimePicker,
-  };
-};
+    onChange
+  }
 
-export default useExperienceAdd;
+}

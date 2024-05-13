@@ -11,7 +11,7 @@ const TagListScreen = ({ route }) => {
   return (
     <InputPageLayout
       buttonTitle={"Add"}
-      screenTitle={"Tags"}
+      screenTitle={"Tags"}  
       onPress={print}
       addButton>
       <TagList tags={data} onSelectTag={onSelectTag} selected={selected} />

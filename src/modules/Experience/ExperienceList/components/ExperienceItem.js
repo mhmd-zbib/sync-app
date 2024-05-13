@@ -5,7 +5,6 @@ import ProfileExperienceItem from "../../../Profile/features/ProfileDetails/Prof
 const ExperienceItem = ({ item }) => {
   return (
     <Card disabled>
-      <ProfileExperienceItem item={item} />
     </Card>
   );
 };
