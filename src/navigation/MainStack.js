@@ -22,6 +22,7 @@ import GoBackButton from "../shared/components/ui/buttons/GoBackButton";
 import { useTheme } from "../shared/stores/themeStore";
 import TabBar from "./TabBar";
 import ExperienceAddScreen from "../modules/Experience/ExperienceAdd/index.js";
+import TagAddScreen from "../modules/Tags/features/TagAdd/index.js";
 
 const Stack = createNativeStackNavigator();
 
@@ -113,6 +114,7 @@ const MainStack = () => {
 
             {/* ---------------------------------- Tags ---------------------------------- */}
             <Stack.Screen name="TagsListScreen" component={TagListScreen} />
+            <Stack.Screen name="TagAddScreen" component={TagAddScreen} />
             {/* -------------------------------- Contacts -------------------------------- */}
             <Stack.Screen
               name="ContactAddScreen"

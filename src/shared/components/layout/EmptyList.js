@@ -1,5 +1,7 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
+import { Ionicons, FontAwesome } from "@expo/vector-icons";
+
 import Typography from "../ui/Typography";
 import { useTheme } from "../../stores/themeStore";
 
@@ -14,7 +16,12 @@ const EmptyList = ({ title }) => {
         alignItems: "center",
         justifyContent: "center",
       }}>
-      <Typography color={theme.textSecondary}>No {title} found!</Typography>
+      <Ionicons name="newspaper" size={72} color={theme.accent} />
+      <View style={{ alignItems: "center" }}>
+        <Typography style={{ textAlign: "center" }} color={theme.textAccent}>
+          No {title} found!
+        </Typography>
+      </View>
     </View>
   );
 };

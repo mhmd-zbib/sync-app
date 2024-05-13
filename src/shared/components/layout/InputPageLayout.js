@@ -65,12 +65,12 @@ const InputPageLayout = ({
         justifyContent: "space-between",
         marginBottom: 25,
       }}>
-      <ScrollView>
-        <View
-          style={{ gap: 26, paddingHorizontal: 10, marginBottom: 60, flex: 1 }}>
-          {children}
-        </View>
-      </ScrollView>
+      {/* <ScrollView> */}
+      <View
+        style={{ gap: 26, paddingHorizontal: 10, marginBottom: 20, flex: 1 }}>
+        {children}
+      </View>
+      {/* </ScrollView> */}
 
       <Button
         arrow
