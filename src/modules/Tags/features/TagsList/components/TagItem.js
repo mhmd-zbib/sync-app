@@ -8,6 +8,7 @@ import { useTheme } from "../../../../../shared/stores/themeStore";
 import { View } from "react-native";
 
 const TagItem = ({ item, onSelect, selectedId }) => {
+  if (!item || item === null) return;
   const [selected, setSelected] = useState(selectedId);
   const { primary, textSecondary, accent } = useTheme();
 
@@ -15,8 +16,6 @@ const TagItem = ({ item, onSelect, selectedId }) => {
     setSelected(!selected);
     onSelect(item);
   };
-
-  if (!item) return;
 
   return (
     <Card
@@ -38,7 +37,7 @@ const TagItem = ({ item, onSelect, selectedId }) => {
             borderRadius: 8,
           }}
         />
-        <Typography color={item.color}>{item.tag}</Typography>
+        <Typography color={item.color}>{item.name}</Typography>
       </View>
 
       <MaterialCommunityIcons

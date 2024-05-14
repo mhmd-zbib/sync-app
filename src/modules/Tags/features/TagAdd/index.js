@@ -1,8 +1,11 @@
-import { StyleSheet, Text, View } from "react-native";
-import React from "react";
-import InputPageLayout from "../../../../shared/components/layout/InputPageLayout";
 import { Octicons } from "@expo/vector-icons";
+import React from "react";
+import { StyleSheet, TouchableOpacity, View } from "react-native";
+import InputPageLayout from "../../../../shared/components/layout/InputPageLayout";
+import InputText from "../../../../shared/components/ui/InputText";
 import { hexToRGBA } from "../../../../shared/hooks/useHexToRgb";
+import { useTheme } from "../../../../shared/stores/themeStore";
+import useAddTagMutation from "../../queries/useAddTagMutation";
 
 const tagColors = {
   red: "#FF0000",
@@ -14,10 +17,18 @@ const tagColors = {
   orange: "#e67e22",
 };
 const TagAddScreen = () => {
-  const color = tagColors.orange;
+  const [color, setSelectedColor] = React.useState(tagColors.orange);
+  const [name, setTagName] = React.useState("");
+
+  const { mutate } = useAddTagMutation();
 
   return (
-    <InputPageLayout buttonTitle={"Add"} screenTitle={"Add New Tag"}>
+    <InputPageLayout
+      disabled={!name.trim()}
+      onPress={() => mutate({ name, color })}
+      buttonTitle={"Add"}
+      screenTitle={"Add New Tag"}
+      style={{ gap: 25 }}>
       <Octicons
         name="tag"
         size={50}
@@ -30,11 +41,29 @@ const TagAddScreen = () => {
         }}
       />
 
-      <Text>TagAddScreen</Text>
+      <InputText label="Tag Name" value={name} onChange={setTagName} />
+
+      <View
+        style={{
+          flexDirection: "row",
+          justifyContent: "space-between",
+        }}>
+        {Object.keys(tagColors).map((tagName, index) => (
+          <TouchableOpacity
+            activeOpacity={0.8}
+            onPress={() => setSelectedColor(tagColors[tagName])}
+            key={index}
+            style={{
+              backgroundColor: tagColors[tagName],
+              width: 40,
+              height: 40,
+              borderRadius: 800,
+            }}
+          />
+        ))}
+      </View>
     </InputPageLayout>
   );
 };
 
 export default TagAddScreen;
-
-const styles = StyleSheet.create({});

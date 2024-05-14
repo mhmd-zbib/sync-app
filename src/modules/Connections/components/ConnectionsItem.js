@@ -2,6 +2,7 @@ import { useNavigation } from "@react-navigation/native";
 import React from "react";
 import ContactItem from "../../Contacts/features/ContactList/components/ContactItem";
 import GroupItem from "../../Groups/features/GroupList/components/GroupItem";
+import Loading from "../../../shared/components/layout/Loading";
 
 const categoryConfig = {
   contacts: {

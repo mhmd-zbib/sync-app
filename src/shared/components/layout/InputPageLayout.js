@@ -22,6 +22,7 @@ const InputPageLayout = ({
   headerRight,
   addButton = false,
   onAddPress,
+  style,
 }) => {
   const navigation = useNavigation();
   const theme = useTheme();
@@ -58,19 +59,19 @@ const InputPageLayout = ({
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === "ios" ? "padding" : null}
-      // enabled={true}
       keyboardVerticalOffset={keyboardVerticalOffset}
       style={{
         flex: 1,
         justifyContent: "space-between",
         marginBottom: 25,
       }}>
-      {/* <ScrollView> */}
       <View
-        style={{ gap: 26, paddingHorizontal: 10, marginBottom: 20, flex: 1 }}>
+        style={[
+          { gap: 26, paddingHorizontal: 10, marginBottom: 20, flex: 1 },
+          style,
+        ]}>
         {children}
       </View>
-      {/* </ScrollView> */}
 
       <Button
         arrow

@@ -54,8 +54,7 @@ const tagsTableSchema = {
   statement: `CREATE TABLE IF NOT EXISTS tags(
     id INTEGER PRIMARY KEY NOT NULL,
     name TEXT,
-    color TEXT,
-    created_at INTEGER
+    color TEXT
   )`,
 };
 
@@ -71,7 +70,7 @@ const connectionTagsTableSchema = {
 };
 
 const experienceTableSchema = {
-  version: 1.1,
+  version: 1,
   statement: `CREATE TABLE IF NOT EXISTS experience (
     id INTEGER PRIMARY KEY NOT NULL,
     connection_id INTEGER,

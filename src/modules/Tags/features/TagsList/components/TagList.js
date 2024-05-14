@@ -6,6 +6,7 @@ import useSort from "../../../../../shared/hooks/useSort";
 import useSearch from "../../../../../shared/hooks/useSearch";
 import EmptyList from "../../../../../shared/components/layout/EmptyList";
 import { useTheme } from "../../../../../shared/stores/themeStore";
+import Typography from "../../../../../shared/components/ui/Typography";
 
 const TagList = ({ tags, onSelectTag, selected }) => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -35,7 +36,7 @@ const TagList = ({ tags, onSelectTag, selected }) => {
         />
       )}
       keyExtractor={(item) => item.id}
-      contentContainerStyle={{ gap: 10 }}
+      contentContainerStyle={{ gap: 10, flex: 1 }}
     />
   );
 };
