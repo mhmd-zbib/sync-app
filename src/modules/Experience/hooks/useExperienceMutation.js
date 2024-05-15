@@ -11,7 +11,6 @@ export function useExperienceMutation() {
   return useMutation({
     mutationKey: ["AddExperience"],
     mutationFn: (expData) => {
-      // console.log(expData);
       ExperienceService.create(2, expData);
     },
     onSuccess: () => {
