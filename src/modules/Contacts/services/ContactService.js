@@ -42,7 +42,6 @@ class ContactService {
   }
 
   async editContact(id, phone, email) {
-    console.log(phone);
     return this.db.runAsync(
       "UPDATE connections SET phone_number = ?, email = ? WHERE id = ?",
       [phone, email, id]
@@ -60,7 +59,6 @@ class ContactService {
     );
 
     info = { ...info, experience: experience };
-    console.log(info, "thats a log");
     return info;
   }
 

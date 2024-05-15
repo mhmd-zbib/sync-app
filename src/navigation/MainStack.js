@@ -15,13 +15,13 @@ import AddNoteScreen from "../modules/Notes/features/NoteAdd";
 import NoteDetails from "../modules/Notes/features/NoteDetails";
 import EditContactScreen from "../modules/Profile/features/EditContact/index.js";
 import EditDescriptionScreen from "../modules/Profile/features/EditDescription/index.js";
-import ExperienceListScreen from "../modules/Experience/ExperienceList/index.js";
+import ExperienceListScreen from "../modules/Experience/features/ExperienceList/index.js";
 import ProfileScreen from "../modules/Profile/features/ProfileDetails/index.js";
 import TagListScreen from "../modules/Tags/features/TagsList/index.js";
 import GoBackButton from "../shared/components/ui/buttons/GoBackButton";
 import { useTheme } from "../shared/stores/themeStore";
 import TabBar from "./TabBar";
-import ExperienceAddScreen from "../modules/Experience/ExperienceAdd/index.js";
+import ExperienceAddScreen from "../modules/Experience/features/ExperienceAdd/index.js";
 import TagAddScreen from "../modules/Tags/features/TagAdd/index.js";
 
 const Stack = createNativeStackNavigator();

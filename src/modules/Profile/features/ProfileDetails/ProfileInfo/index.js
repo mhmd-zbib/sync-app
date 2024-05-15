@@ -47,6 +47,7 @@ const ProfileInfo = ({ id }) => {
           })
         }
       />
+
       <ProfileContainer
         label="Experience"
         data={data.experience && <ProfileExperience data={data.experience} />}

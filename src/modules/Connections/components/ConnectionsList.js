@@ -61,5 +61,6 @@ const styles = StyleSheet.create({
   container: {
     gap: 10,
     marginHorizontal: 10,
+    flex: 1,
   },
 });

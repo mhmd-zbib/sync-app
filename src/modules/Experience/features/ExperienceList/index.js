@@ -1,6 +1,6 @@
 import React from "react";
 import ExperienceList from "./components/ExperienceList";
-import DetailPage from "../../../shared/components/layout/DetailPage";
+import DetailPage from "../../../../shared/components/layout/DetailPage";
 import { useNavigation } from "@react-navigation/native";
 
 const ExperienceListScreen = ({ route }) => {

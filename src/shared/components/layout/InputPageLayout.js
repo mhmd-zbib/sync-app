@@ -23,6 +23,8 @@ const InputPageLayout = ({
   addButton = false,
   onAddPress,
   style,
+  deleteButton,
+  onDelete,
 }) => {
   const navigation = useNavigation();
   const theme = useTheme();
@@ -36,21 +38,28 @@ const InputPageLayout = ({
       headerLeft: () => (
         <GoBackButton onPress={onBackPress || (() => navigation.goBack())} />
       ),
-
       headerRight: () => {
         return (
-          <>
+          <View style={{ gap: 25, flexDirection: "row" }}>
+            {deleteButton && (
+              <MaterialCommunityIcons
+                onPress={onDelete}
+                name="trash-can-outline"
+                size={26}
+                color={"red"}
+              />
+            )}
             {addButton && (
               <AntDesign
                 onPress={onAddPress}
                 name="pluscircle"
-                size={24}
+                size={26}
                 color={theme.primary}
               />
             )}
 
             {headerRight}
-          </>
+          </View>
         );
       },
     });
@@ -65,13 +74,15 @@ const InputPageLayout = ({
         justifyContent: "space-between",
         marginBottom: 25,
       }}>
-      <View
-        style={[
-          { gap: 26, paddingHorizontal: 10, marginBottom: 20, flex: 1 },
-          style,
-        ]}>
-        {children}
-      </View>
+      <ScrollView>
+        <View
+          style={[
+            { gap: 26, paddingHorizontal: 10, marginBottom: 20, flex: 1 },
+            style,
+          ]}>
+          {children}
+        </View>
+      </ScrollView>
 
       <Button
         arrow
