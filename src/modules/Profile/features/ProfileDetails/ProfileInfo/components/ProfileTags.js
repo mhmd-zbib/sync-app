@@ -1,13 +1,11 @@
-import { StyleSheet, View } from "react-native";
 import React from "react";
+import { StyleSheet, View } from "react-native";
 import Typography from "../../../../../../shared/components/ui/Typography";
-import { useTheme } from "../../../../../../shared/stores/themeStore";
 import { hexToRGBA } from "../../../../../../shared/hooks/useHexToRgb";
+import { useTheme } from "../../../../../../shared/stores/themeStore";
 
 const ProfileTags = ({ tags }) => {
   const theme = useTheme();
-
-  // console.log(hexToRGBA(theme.color, 0.5));
 
   return (
     <View style={styles.container}>
@@ -24,7 +22,7 @@ const ProfileTags = ({ tags }) => {
                 backgroundColor: hexToRGBA(tag.color, 0.05),
               },
             ]}>
-            {tag.tag}
+            {tag.name}
           </Typography>
         ))}
     </View>

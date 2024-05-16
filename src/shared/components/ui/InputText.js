@@ -29,6 +29,7 @@ const InputText = ({
             borderColor: isFocused ? theme.primary : theme.accent,
           },
         ]}
+        
         value={value}
         onChangeText={onChange}
         placeholder={placeholder}

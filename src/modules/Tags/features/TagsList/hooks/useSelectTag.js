@@ -1,6 +1,11 @@
 import { useState } from "react";
+import useProfileIdStore from "../../../../Profile/store/useProfileIdStore";
+import { useProfileTagMutation } from "../../../../Profile/queries/useProfileTagMutation";
 
 export default function useSelectTag(selected) {
+  const { id } = useProfileIdStore();
+  const { mutate } = useProfileTagMutation();
+
   const [selectedTags, setSelectedTags] = useState(selected || []);
 
   const onSelectTag = (tag) => {
@@ -16,7 +21,7 @@ export default function useSelectTag(selected) {
   };
 
   const print = () => {
-    console.log(selectedTags);
+    mutate({ id, tags: selectedTags });
   };
 
   return { onSelectTag, selectedTags, print };

@@ -7,7 +7,7 @@ class TagService {
 
   async initializeDatabase() {
     this.db = await SQLite.openDatabaseAsync("syncapp");
-  }
+  } 
 
   async create(tagData) {
     console.log(tagData, "weee");

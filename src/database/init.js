@@ -10,6 +10,7 @@ const connectionsTableSchema = {
     description TEXT,
     created_at INTEGER,
     pinned INTEGER,
+    birthday STRING,
     favorite INTEGER
   )`,
 };
@@ -33,7 +34,7 @@ const socialLinksTableSchema = {
     connection_id INTEGER,
     platform TEXT,
     url TEXT,
-    FOREIGN KEY (connection_id) REFERENCES connections(id)
+    FOREIGN KEY (connection_id) REFERENCES connections(id) ON DELETE CASCADE
   )`,
 };
 
@@ -45,7 +46,7 @@ const notesTableSchema = {
     title TEXT,
     details TEXT,
     created_at INTEGER,
-    FOREIGN KEY (connection_id) REFERENCES connections(id)
+    FOREIGN KEY (connection_id) REFERENCES connections(id) ON DELETE CASCADE
   )`,
 };
 
@@ -78,7 +79,8 @@ const experienceTableSchema = {
     company TEXT,
     start_date INTEGER,
     end_date INTEGER,
-    description TEXT
+    description TEXT,
+    FOREIGN KEY (connection_id) REFERENCES connections(id) ON DELETE CASCADE
   )`,
 };
 
@@ -124,6 +126,7 @@ const initDb = async () => {
   try {
     for (const schema of tableSchemas) {
       await db.execAsync(schema.statement);
+      await db.execAsync("PRAGMA foreign_keys = ON");
     }
     console.log("Tables  created successfully");
   } catch (e) {

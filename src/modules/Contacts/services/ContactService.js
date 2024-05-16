@@ -58,7 +58,15 @@ class ContactService {
       [id]
     );
 
+    const tags = await this.db.getAllAsync(
+      "SELECT tags.name, tags.color FROM connection_tags JOIN tags ON connection_tags.tag_id = tags.id WHERE connection_tags.connection_id = ?;",
+      [id]
+    );
+
     info.experience = experience;
+    info.tags = tags;
+    console.log(info, "thats the backend");
+
     return info;
   }
 
@@ -67,6 +75,23 @@ class ContactService {
       "SELECT * FROM experience WHERE connection_id = ?",
       [id]
     );
+  }
+
+  async editBirthday(id, date) {
+    return await this.db.runAsync(
+      "UPDATE connections SET birthday = ? WHERE id = ?",
+      [date, id]
+    );
+  }
+
+  async addTags(id, tags) {
+    console.log(tags, " of the suer");
+    for (let tag of tags) {
+      await this.db.runAsync(
+        "INSERT INTO connection_tags (connection_id, tag_id) VALUES (?, ?);",
+        [id, tag]
+      );
+    }
   }
 }
 export default new ContactService();

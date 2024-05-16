@@ -32,6 +32,8 @@ const ProfileScreen = ({ route }) => {
     setOptionsVisible(!optionsVisible);
   };
 
+  console.log(data);
+
   return (
     <DetailPage
       optionButton

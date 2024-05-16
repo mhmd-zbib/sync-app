@@ -1,4 +1,4 @@
-import { FlatList, SectionList, StyleSheet, Text, View } from "react-native";
+  import { FlatList, SectionList, StyleSheet, Text, View } from "react-native";
 import React from "react";
 import ReminderItem from "./ReminderItem";
 import SearchBar from "../../../../../shared/components/ui/SearchBar";

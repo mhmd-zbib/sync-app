@@ -21,7 +21,7 @@ import { useTheme } from "../../stores/themeStore";
  * <OptionsModal
  *   toggleModal={handleToggle}
  *   modalVisible={isVisible}
- *   options={[{ title: "Option 1", onPress: handleOption1, color: "#333" }]}
+ *   options={[{ title: "Option 1 ", onPress: handleOption1, color: "#333" }]}
  * />
  */
 

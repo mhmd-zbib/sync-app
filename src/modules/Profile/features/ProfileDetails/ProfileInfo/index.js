@@ -15,8 +15,6 @@ const ProfileInfo = ({ id }) => {
     navigation.navigate(route, params);
   };
 
-  console.log(data);
-
   return (
     <View style={{ gap: 8, marginVertical: 20 }}>
       <ProfileContainer
@@ -42,7 +40,7 @@ const ProfileInfo = ({ id }) => {
       />
       <ProfileContainer
         label="Tags"
-        data={data.tags && <ProfileTags tags={data.tags} />}
+        data={data.tags.length > 0 && <ProfileTags tags={data.tags} />}
         onPress={() =>
           navigateTo("TagsListScreen", {
             selected: data.tags && data.tags.map((item) => item.id),
