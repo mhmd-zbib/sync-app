@@ -15,6 +15,8 @@ const ProfileInfo = ({ id }) => {
     navigation.navigate(route, params);
   };
 
+  console.log(data);
+
   return (
     <View style={{ gap: 8, marginVertical: 20 }}>
       <ProfileContainer
@@ -50,7 +52,11 @@ const ProfileInfo = ({ id }) => {
 
       <ProfileContainer
         label="Experience"
-        data={data.experience && <ProfileExperience data={data.experience} />}
+        data={
+          data.experience.length !== 0 && (
+            <ProfileExperience data={data.experience} />
+          )
+        }
         onPress={() =>
           navigateTo("ExperienceListScreen", { experience: data.experience })
         }

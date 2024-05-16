@@ -25,7 +25,11 @@ const TagList = ({ tags, onSelectTag, selected }) => {
       }}
       ListEmptyComponent={<EmptyList title={"tags"} />}
       ListHeaderComponent={
-        <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+        <SearchBar
+          placeHolder="Search tags"
+          searchTerm={searchTerm}
+          setSearchTerm={setSearchTerm}
+        />
       }
       data={searched}
       renderItem={({ item }) => (

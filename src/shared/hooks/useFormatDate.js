@@ -1,10 +1,3 @@
-/**
- *
- * @params {TimesStamp} - Enter time samp of date and time
- *
- *
- */
-
 class DateTimeFormatter {
   static monthNames = [
     "January",
@@ -22,6 +15,9 @@ class DateTimeFormatter {
   ];
 
   static formatMonthYear(timestamp) {
+    if (!timestamp || isNaN(timestamp)) {
+      throw new Error("Invalid timestamp provided");
+    }
     const date = new Date(parseInt(timestamp));
     const monthIndex = date.getMonth();
     const year = date.getFullYear();
@@ -30,6 +26,9 @@ class DateTimeFormatter {
   }
 
   static formatTimeDayMonth(timestamp) {
+    if (!timestamp || isNaN(timestamp)) {
+      throw new Error("Invalid timestamp provided");
+    }
     const date = new Date(timestamp);
     let hours = date.getHours();
     const ampm = hours >= 12 ? "PM" : "AM";
@@ -42,6 +41,9 @@ class DateTimeFormatter {
   }
 
   static formatTimeDayMonthYear(timestamp) {
+    // if (!timestamp || isNaN(timestamp)) {
+    //   return "Invalid timestamp provided";
+    // }
     const date = new Date(timestamp);
     let hours = date.getHours();
     const ampm = hours >= 12 ? "PM" : "AM";
@@ -55,6 +57,9 @@ class DateTimeFormatter {
   }
 
   static formatFullDate(timestamp) {
+    if (!timestamp || isNaN(timestamp)) {
+      return "Invalid timestamp provided";
+    }
     const date = new Date(timestamp);
     const day = date.getDate();
     const monthIndex = date.getMonth();
@@ -64,8 +69,11 @@ class DateTimeFormatter {
   }
 
   static fromISOtoUTC(dateString) {
+    if (!dateString) {
+      return "";
+    }
     const date = new Date(dateString);
-    const timestamp = date.getTime() / 1000;
+    const timestamp = date.getTime();
     return timestamp;
   }
 }

@@ -11,7 +11,7 @@ class Experience {
 
   async create(id, expData) {
     const { title, company, from, to, description } = expData;
-    return this.db.runAsync(
+    return await this.db.runAsync(
       "INSERT INTO experience ( connection_id, title, company, start_date, end_date, description) VALUES ( ? , ? , ? ,? , ? , ?)",
       [id, title, company, from, to, description]
     );

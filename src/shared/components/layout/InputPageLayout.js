@@ -74,10 +74,15 @@ const InputPageLayout = ({
         justifyContent: "space-between",
         marginBottom: 25,
       }}>
-      <ScrollView>
+      <ScrollView contentContainerStyle={{ flex: 1 }}>
         <View
           style={[
-            { gap: 26, paddingHorizontal: 10, marginBottom: 20, flex: 1 },
+            {
+              gap: 26,
+              paddingHorizontal: 10,
+              marginBottom: 20,
+              flex: 1,
+            },
             style,
           ]}>
           {children}

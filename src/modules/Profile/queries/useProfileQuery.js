@@ -1,13 +1,15 @@
 import { useQuery } from "@tanstack/react-query";
-import DummyProfile from "../test/DummyProfile";
 import useProfileIdStore from "../store/useProfileIdStore";
 import ContactService from "../../Contacts/services/ContactService";
+import ExperienceService from "../../Experience/services/ExperienceService";
 
 export function useProfileQuery(id) {
   return useQuery({
     queryKey: ["Profile", id],
-    queryFn: () => {
-      return ContactService.getInfo(id);
+    queryFn: async () => {
+      const info = await ContactService.getInfo(id);
+
+      return info;
     },
   });
 }

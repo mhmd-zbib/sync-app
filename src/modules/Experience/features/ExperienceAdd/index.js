@@ -17,11 +17,11 @@ const ExperienceAddScreen = () => {
   const [fieldEditing, setFieldEditing] = useState(null);
 
   const [expData, setExpData] = useState({
-    title: "test",
-    company: "test",
-    description: "tes",
-    from: "test",
-    to: "test",
+    title: "",
+    company: "",
+    description: "",
+    from: "",
+    to: "",
   });
 
   const [fromDate, setFromDate] = useState(null);
@@ -30,7 +30,11 @@ const ExperienceAddScreen = () => {
   const onChange = (event, selectedDate) => {
     Keyboard.dismiss();
     const currentDate = selectedDate || selectedDate;
+
     const stampDate = DateTimeFormatter.fromISOtoUTC(currentDate);
+
+    console.log(stampDate);
+
     setShowPicker(false);
     setSelectedDate(currentDate);
     if (fieldEditing === "from") {
@@ -71,6 +75,12 @@ const ExperienceAddScreen = () => {
 
   return (
     <InputPageLayout
+      disabled={
+        expData.title === "" ||
+        expData.company === "" ||
+        expData.from === "" ||
+        expData.to === ""
+      }
       buttonTitle={"Add"}
       screenTitle={"Add Experience"}
       onPress={() => mutate(expData)}>

@@ -1,13 +1,15 @@
 import React, { useState } from "react";
-import { FlatList, StyleSheet, TouchableOpacity } from "react-native";
-import ExperienceItem from "./ExperienceItem";
+import { FlatList } from "react-native";
+import EmptyList from "../../../../../shared/components/layout/EmptyList";
 import Card from "../../../../../shared/components/ui/cards/Card";
 import ProfileExperienceItem from "../../../../Profile/features/ProfileDetails/ProfileInfo/components/ProfileExperienceItem";
-import EmptyList from "../../../../../shared/components/layout/EmptyList";
+import Typography from "../../../../../shared/components/ui/Typography";
 
 const ExperienceList = ({ data }) => {
   const [selectMode, setSelectMode] = useState(false);
   const [selectedItems, setSelectedItems] = useState([]);
+
+  console.log(data);
 
   return (
     <FlatList
@@ -15,11 +17,11 @@ const ExperienceList = ({ data }) => {
       contentContainerStyle={{
         gap: 10,
         paddingHorizontal: 10,
-        flex: !data && 1,
+        flex: !data ? 0 : 1,
       }}
       renderItem={({ item }) => (
-        <Card onLongPress={() => setSelectMode(true)}>
-          <ProfileExperienceItem item={item} />
+        <Card>
+          <ProfileExperienceItem item={item} onLongPress />
         </Card>
       )}
       data={data}

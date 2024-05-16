@@ -53,12 +53,12 @@ class ContactService {
       "SELECT * FROM connections WHERE id = ?",
       [id]
     );
-    const experience = await this.db.getFirstAsync(
+    const experience = await this.db.getAllAsync(
       "SELECT * FROM experience WHERE connection_id = ?",
       [id]
     );
 
-    info = { ...info, experience: experience };
+    info.experience = experience;
     return info;
   }
 

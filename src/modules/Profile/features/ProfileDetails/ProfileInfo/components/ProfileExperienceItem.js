@@ -13,9 +13,9 @@ const ProfileExperienceItem = ({ item }) => {
         <Typography variant="al" color={theme.textAccent}>
           {item.company}
           {"   •   "}
-          {DateTimeFormatter.formatMonthYear(item.startDate)}
+          {DateTimeFormatter.formatFullDate(item.start_date)}
           {"   •   "}
-          {DateTimeFormatter.formatMonthYear(item.endDate)}
+          {DateTimeFormatter.formatFullDate(item.end_date)}
         </Typography>
         <Typography>{item.description}</Typography>
       </View>

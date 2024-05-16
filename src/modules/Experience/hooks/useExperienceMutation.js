@@ -6,15 +6,15 @@ import useProfileIdStore from "../../Profile/store/useProfileIdStore";
 export function useExperienceMutation() {
   const navigation = useNavigation();
   const queryClient = useQueryClient();
-  const id = useProfileIdStore();
+  const { id } = useProfileIdStore();
 
   return useMutation({
     mutationKey: ["AddExperience"],
     mutationFn: (expData) => {
-      ExperienceService.create(2, expData);
+      ExperienceService.create(id, expData);
     },
     onSuccess: () => {
-      navigation.goBack();
+      navigation.navigate("ContactProfileScreen");
       queryClient.invalidateQueries(["Profile"]);
     },
     onError: (error) => {
