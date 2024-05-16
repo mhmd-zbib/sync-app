@@ -37,7 +37,9 @@ const OptionsModal = ({ toggleModal, modalVisible, options }) => {
               activeOpacity={0.7}
               onPress={option.onPress}
               style={styles.option}>
-              <Typography color={option.color} variant="lg">
+              <Typography
+                color={option.color || theme.textSecondary}
+                variant="lg">
                 {option.title}
               </Typography>
             </TouchableOpacity>

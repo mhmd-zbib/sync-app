@@ -15,7 +15,9 @@ const ProfileExperienceItem = ({ item }) => {
           {"   •   "}
           {DateTimeFormatter.formatFullDate(item.start_date)}
           {"   •   "}
-          {DateTimeFormatter.formatFullDate(item.end_date)}
+          {item.end_date
+            ? DateTimeFormatter.formatFullDate(item.end_date)
+            : "Present"}
         </Typography>
         <Typography>{item.description}</Typography>
       </View>

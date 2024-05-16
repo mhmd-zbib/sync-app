@@ -24,14 +24,14 @@ class ContactService {
       "INSERT INTO connections (name, email, phone_number, created_at) VALUES (?, ?, ?, ?);",
       [name, email, phoneNumber, timestamp]
     );
-    const contactId = contact.insertId;
+
+    const contactId = contact.lastInsertRowId;
     return contactId;
   }
 
   async delete(id) {
-    return this.dbManager.createSQL("DELETE FROM connections WHERE id = ?;", [
-      id,
-    ]);
+    console.log(id);
+    return this.db.runAsync("DELETE FROM connections WHERE id = ?;", [id]);
   }
 
   async editDescription(id, description) {

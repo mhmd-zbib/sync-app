@@ -76,10 +76,7 @@ const ExperienceAddScreen = () => {
   return (
     <InputPageLayout
       disabled={
-        expData.title === "" ||
-        expData.company === "" ||
-        expData.from === "" ||
-        expData.to === ""
+        expData.title === "" || expData.company === "" || expData.from === ""
       }
       buttonTitle={"Add"}
       screenTitle={"Add Experience"}

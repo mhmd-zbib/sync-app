@@ -7,14 +7,17 @@ import { useProfileQuery } from "../../queries/useProfileQuery";
 import useProfileIdStore from "../../store/useProfileIdStore";
 import ProfileHeader from "./components/ProfileHeader";
 import ProfileTabs from "./components/ProfileTabs";
+import ProfileOptionsModal from "./components/ProfileOptionsModal";
 
 const ProfileScreen = ({ route }) => {
   const { setId } = useProfileIdStore();
   const [id, setIdFromRoute] = useState(null);
+  const [optionsVisible, setOptionsVisible] = useState(false);
 
   useLayoutEffect(() => {
     const routeId = route.params?.id;
     if (routeId) {
+      console.log(routeId);
       console.log(routeId);
       setIdFromRoute(routeId);
       setId(routeId);
@@ -25,8 +28,14 @@ const ProfileScreen = ({ route }) => {
   if (isLoading) return <Loading />;
   if (isError) return <Error error={error} />;
 
+  const toggleModal = () => {
+    setOptionsVisible(!optionsVisible);
+  };
+
   return (
     <DetailPage
+      optionButton
+      onOptionPress={toggleModal}
       screenTitle={"Profile"}
       style={{ paddingHorizontal: 10 }}
       loading={isLoading}
@@ -35,6 +44,7 @@ const ProfileScreen = ({ route }) => {
         <ProfileHeader />
         <ProfileTabs />
       </ScrollView>
+      <ProfileOptionsModal toggleModal={toggleModal} visible={optionsVisible} />
     </DetailPage>
   );
 };
