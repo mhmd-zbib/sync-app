@@ -1,10 +1,9 @@
 import React from "react";
 import {
   Modal,
-  View,
   StyleSheet,
-  TouchableOpacity,
   TouchableWithoutFeedback,
+  View,
 } from "react-native";
 import { useTheme } from "../../../stores/themeStore";
 import Button from "../buttons/Button";

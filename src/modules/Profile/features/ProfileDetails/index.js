@@ -8,6 +8,7 @@ import useProfileIdStore from "../../store/useProfileIdStore";
 import ProfileHeader from "./components/ProfileHeader";
 import ProfileTabs from "./components/ProfileTabs";
 import ProfileOptionsModal from "./components/ProfileOptionsModal";
+import Typography from "../../../../shared/components/ui/Typography";
 
 const ProfileScreen = ({ route }) => {
   const { setId } = useProfileIdStore();
@@ -37,13 +38,11 @@ const ProfileScreen = ({ route }) => {
       optionButton
       onOptionPress={toggleModal}
       screenTitle={"Profile"}
-      style={{ paddingHorizontal: 10 }}
+      style={{ paddingHorizontal: 10, gap: 20 }}
       loading={isLoading}
       error={error}>
-      <ScrollView>
-        <ProfileHeader />
-        <ProfileTabs />
-      </ScrollView>
+      <ProfileHeader />
+      <ProfileTabs />
       <ProfileOptionsModal toggleModal={toggleModal} visible={optionsVisible} />
     </DetailPage>
   );

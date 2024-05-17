@@ -6,10 +6,8 @@ import ExperienceService from "../../Experience/services/ExperienceService";
 export function useProfileQuery(id) {
   return useQuery({
     queryKey: ["Profile", id],
-    queryFn: async () => {
-      const info = await ContactService.getInfo(id);
-
-      return info;
-    },
+    queryFn: async () => ContactService.getInfo(id),
+    staleTime: 300000,
+    cacheTime: 900000,
   });
 }

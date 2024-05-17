@@ -1,14 +1,19 @@
 import { dbManager } from "../../../database/utils";
+import * as SQLite from "expo-sqlite";
 
 class NoteService {
-  constructor(dbManager) {
-    this.dbManager = dbManager;
+  constructor() {
+    this.initializeDatabase();
+  }
+
+  async initializeDatabase() {
+    this.db = await SQLite.openDatabaseAsync("syncapp");
   }
 
   async add(noteData) {
     const { connection_id, title, details, timestamp } = noteData;
     console.log(noteData);
-    return this.dbManager.createSQL(
+    return this.db.runAsync(
       "INSERT INTO notes (connection_id, title, details, created_at) VALUES (?,?,?,?)",
       [connection_id, title, details, timestamp]
     );
@@ -23,15 +28,17 @@ class NoteService {
   }
 
   async getDetails(id) {
-    const result = await this.dbManager.readSQL(
+    const result = await this.db.getFirstAsync(
       "SELECT * FROM notes WHERE id = ?",
       [id]
     );
-    return result[0];
+
+    return result;
   }
 
   async list(id) {
-    return await this.dbManager.readSQL(
+    console.log(id, "id!!");
+    return await this.db.getAllAsync(
       "SELECT * FROM notes WHERE connection_id = ?",
       [id]
     );
@@ -39,9 +46,7 @@ class NoteService {
 
   async delete(id) {
     console.log("deleting", id);
-    return await this.dbManager.createSQL("DELETE FROM notes WHERE id = ?", [
-      id,
-    ]);
+    return await this.db.runAsync("DELETE FROM notes WHERE id = ?", [id]);
   }
 }
 

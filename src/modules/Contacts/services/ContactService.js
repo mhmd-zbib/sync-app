@@ -65,7 +65,7 @@ class ContactService {
 
     info.experience = experience;
     info.tags = tags;
-    console.log(info, "thats the backend");
+    console.log("backend called");
 
     return info;
   }

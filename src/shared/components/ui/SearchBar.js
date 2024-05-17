@@ -1,6 +1,7 @@
 import { StyleSheet, Text, TextInput, View } from "react-native";
 import React from "react";
 import { useTheme } from "../../stores/themeStore";
+import { Ionicons, Feather } from "@expo/vector-icons";
 
 const SearchBar = ({
   searchTerm,
@@ -16,16 +17,20 @@ const SearchBar = ({
       style={[
         {
           borderWidth: 1,
-          borderColor: theme.accent,
-          // backgroundColor: theme.secondary,
-          borderRadius: 12,
+          backgroundColor: theme.secondary,
+          borderRadius: 500,
           paddingVertical: 12,
           paddingHorizontal: 22,
-          // display: "flex",
+          alignItemsL: "center",
+
+          justifyContent: "center",
           flexDirection: "row",
+          gap: 14,
         },
         containerStyle,
       ]}>
+      <Feather name="search" size={26} color={theme.primary} />
+
       <TextInput
         cursorColor={theme.textSecondary}
         placeholder={placeHolder}
