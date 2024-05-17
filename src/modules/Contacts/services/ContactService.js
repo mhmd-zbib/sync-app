@@ -59,7 +59,7 @@ class ContactService {
     );
 
     const tags = await this.db.getAllAsync(
-      "SELECT tags.name, tags.color FROM connection_tags JOIN tags ON connection_tags.tag_id = tags.id WHERE connection_tags.connection_id = ?;",
+      "SELECT tags.name, tags.color, tags.id FROM connection_tags JOIN tags ON connection_tags.tag_id = tags.id WHERE connection_tags.connection_id = ?;",
       [id]
     );
 
@@ -85,10 +85,18 @@ class ContactService {
   }
 
   async addTags(id, tags) {
-    console.log(tags, " of the suer");
     for (let tag of tags) {
       await this.db.runAsync(
         "INSERT INTO connection_tags (connection_id, tag_id) VALUES (?, ?);",
+        [id, tag]
+      );
+    }
+  }
+
+  async removeTags(id, tags) {
+    for (let tag of tags) {
+      await this.db.runAsync(
+        "DELETE FROM connection_tags WHERE connection_id = ? AND tag_id = ?;",
         [id, tag]
       );
     }

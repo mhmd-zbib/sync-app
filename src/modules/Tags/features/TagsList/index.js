@@ -7,14 +7,16 @@ import useSelectTag from "./hooks/useSelectTag";
 
 const TagListScreen = ({ route }) => {
   const { selected } = route.params || [];
-  const { onSelectTag, print } = useSelectTag(selected);
   const { navigate } = useNavigation();
   const { data: tags } = useListTagQuery();
+  const { onSelectTag, print, selectedTags } = useSelectTag(selected);
 
-  console.log(tags);
+  console.log(selected);
+  console.log(selectedTags);
 
   return (
     <InputPageLayout
+      disabled={selected === selectedTags ? true : false}
       buttonTitle={"Add"}
       screenTitle={"Tags"}
       onPress={print}

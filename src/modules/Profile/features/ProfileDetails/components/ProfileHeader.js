@@ -22,7 +22,6 @@ const ProfileHeader = () => {
   const onChange = (event, date) => {
     setShowPicker(false);
     if (event.type === "dismissed") return;
-
     if (event !== null && date) {
       const birthday = DateTimeFormatter.fromISOtoUTC(date);
       mutate({ id, birthday });
@@ -46,7 +45,7 @@ const ProfileHeader = () => {
           </Typography>
           <TouchableOpacity
             activeOpacity={0.8}
-            onPress={() => setShowPicker(true)}
+            onPress={birthday ? null : () => setShowPicker(true)}
             style={{
               width: "auto",
               alignSelf: "flex-start",

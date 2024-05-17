@@ -2,7 +2,7 @@ import { useNavigation } from "@react-navigation/native";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import ContactService from "../../Contacts/services/ContactService";
 
-export function useProfileTagMutation() {
+export function useProfileTagAddMutation() {
   const queryClient = useQueryClient();
   const navigation = useNavigation();
 

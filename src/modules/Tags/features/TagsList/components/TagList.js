@@ -1,17 +1,16 @@
 import React, { useState } from "react";
 import { FlatList } from "react-native";
-import TagItem from "./TagItem";
-import SearchBar from "../../../../../shared/components/ui/SearchBar";
-import useSort from "../../../../../shared/hooks/useSort";
-import useSearch from "../../../../../shared/hooks/useSearch";
 import EmptyList from "../../../../../shared/components/layout/EmptyList";
+import SearchBar from "../../../../../shared/components/ui/SearchBar";
+import useSearch from "../../../../../shared/hooks/useSearch";
+import useSort from "../../../../../shared/hooks/useSort";
 import { useTheme } from "../../../../../shared/stores/themeStore";
+import TagItem from "./TagItem";
 import Typography from "../../../../../shared/components/ui/Typography";
 
 const TagList = ({ tags, onSelectTag, selected }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const { background } = useTheme();
-
   const sorted = useSort(tags, "tag");
   const searched = useSearch(sorted, searchTerm, "tag");
 

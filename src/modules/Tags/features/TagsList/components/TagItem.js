@@ -25,6 +25,7 @@ const TagItem = ({ item, onSelect, selectedId }) => {
         padding: 12,
         alignItems: "center",
         justifyContent: "space-between",
+        // borderRadius: 500,
       }}>
       <View style={{ flexDirection: "row", alignItems: "center", gap: 15 }}>
         <Octicons
@@ -34,7 +35,7 @@ const TagItem = ({ item, onSelect, selectedId }) => {
           style={{
             backgroundColor: hexToRGBA(item.color, 0.12),
             padding: 8,
-            borderRadius: 8,
+            borderRadius: 10,
           }}
         />
         <Typography color={item.color}>{item.name}</Typography>
