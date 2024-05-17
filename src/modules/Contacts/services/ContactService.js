@@ -101,5 +101,12 @@ class ContactService {
       );
     }
   }
+
+  async editProfile(id, name, birthday) {
+    await this.db.runAsync(
+      "UPDATE connections SET name = ?, birthday = ? WHERE id = ?",
+      [name, birthday, id]
+    );
+  }
 }
 export default new ContactService();
