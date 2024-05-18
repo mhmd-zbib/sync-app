@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { useNoteAddMutation } from "../../../queries/useNoteAddMutation";
 import { useNoteEditMutation } from "../../../queries/useNoteEditMutation";
+import useProfileIdStore from "../../../../Profile/store/useProfileIdStore";
 
 export default function useNoteAdd(
   initialNoteData = { title: "", details: "" }
 ) {
   // const contactId = useContactIdStore((state) => state.id);
-  const contactId = 1;
+  const { id } = useProfileIdStore();
   const [noteData, setNoteData] = useState(initialNoteData);
 
   const { mutate: addNote } = useNoteAddMutation();
@@ -21,7 +22,7 @@ export default function useNoteAdd(
     const timestamp = date.getTime();
 
     noteData.timestamp = timestamp;
-    noteData.connection_id = contactId;
+    noteData.connection_id = id;
 
     // updates the note if the id exists
     if (noteData.id) {

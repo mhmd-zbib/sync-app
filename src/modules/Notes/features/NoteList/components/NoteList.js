@@ -42,7 +42,9 @@ const NoteList = () => {
       ListHeaderComponent={
         filtered.length > 0 ? (
           <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
-        ) : null
+        ) : (
+          <></>
+        )
       }
       ListHeaderComponentStyle={{
         backgroundColor: theme.background,

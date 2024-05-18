@@ -9,8 +9,6 @@ const ExperienceList = ({ data }) => {
   const [selectMode, setSelectMode] = useState(false);
   const [selectedItems, setSelectedItems] = useState([]);
 
-  console.log(data);
-
   return (
     <FlatList
       ListEmptyComponent={<EmptyList title={"experience"} />}

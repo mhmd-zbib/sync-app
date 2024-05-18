@@ -12,7 +12,8 @@ class NoteService {
 
   async add(noteData) {
     const { connection_id, title, details, timestamp } = noteData;
-    console.log(noteData);
+
+    console.log("adding note for ", connection_id);
     return this.db.runAsync(
       "INSERT INTO notes (connection_id, title, details, created_at) VALUES (?,?,?,?)",
       [connection_id, title, details, timestamp]
@@ -21,7 +22,7 @@ class NoteService {
 
   async edit(noteData) {
     const { id, title, details, timestamp } = noteData;
-    return this.dbManager.createSQL(
+    return this.db.runAsync(
       "UPDATE notes SET title = ?, details = ?, created_at = ? WHERE id = ?",
       [title, details, timestamp, id]
     );
@@ -37,7 +38,7 @@ class NoteService {
   }
 
   async list(id) {
-    console.log(id, "id!!");
+    console.log("getting lists for id, " + id);
     return await this.db.getAllAsync(
       "SELECT * FROM notes WHERE connection_id = ?",
       [id]
