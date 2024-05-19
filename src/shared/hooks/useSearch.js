@@ -36,7 +36,6 @@ const useSearch = (items, searchTerm, key, debounceDelay = 300) => {
         item[key]?.toString().toLowerCase().includes(lowercasedTerm)
     );
 
-    // Return empty array if no items match or if the key is not found
     return filteredItems.length > 0 ? filteredItems : [];
   }, [items, debouncedSearchTerm, key]);
 };

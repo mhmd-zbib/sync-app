@@ -7,6 +7,7 @@ import ConnectionsScreen from "../modules/Connections";
 import BackDrop from "../shared/components/ui/cards/BackDrop";
 import { useTheme } from "../shared/stores/themeStore";
 import ReminderListScreen from "../modules/Reminders/features/ReminderList";
+import ConnectionsTestScreen from "../../test/Connections.test";
 
 const TabBar = () => {
   const Tab = createBottomTabNavigator();
@@ -62,7 +63,8 @@ const TabBar = () => {
         />
         <Tab.Screen
           name="Connections"
-          component={ConnectionsScreen}
+          // component={ConnectionsScreen}
+          component={ConnectionsTestScreen}
           screenOptions={{ headerShown: false }}
         />
       </Tab.Navigator>

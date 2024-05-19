@@ -1,7 +1,7 @@
 import React from "react";
-import { Text, StyleSheet } from "react-native";
+import { StyleSheet, Text } from "react-native";
+import { RFValue } from "react-native-responsive-fontsize";
 import { useTheme } from "../../stores/themeStore";
-import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
 
 const Typography = ({
   children,
