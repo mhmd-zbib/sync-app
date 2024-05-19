@@ -35,27 +35,25 @@ class GroupService {
     return await this.db.getAllAsync("SELECT * FROM groups");
   }
 
-  //   async getContacts(id) {
-  //     const data = await this.dbManager.readSQL(
-  //       "SELECT c.name, c.id, gc.created_at FROM connections c JOIN group_connections gc ON c.id = gc.connection_id WHERE gc.group_id = ?;",
-  //       [id]
-  //     );
-  //     return data;
-  //   }
+  async getContacts(id) {
+    const data = await this.db.getAllAsync(
+      "SELECT c.name, c.id, gc.created_at FROM connections c JOIN group_connections gc ON c.id = gc.connection_id WHERE gc.group_id = ?;",
+      [id]
+    );
+    return data;
+  }
 
-  //   async getDetails(id) {
-  //     const details = await this.dbManager.readSQL(
-  //       "SELECT * FROM groups WHERE id = ?",
-  //       [id]
-  //     );
-  //     return details[0];
-  //   }
+  async getDetails(id) {
+    const details = await this.db.getFirstAsync(
+      "SELECT * FROM groups WHERE id = ?",
+      [id]
+    );
+    return details;
+  }
 
-  //   async delete(id) {
-  //     return await this.dbManager.createSQL("DELETE FROM groups WHERE id = ?", [
-  //       id,
-  //     ]);
-  //   }
+  async delete(id) {
+    return await this.db.runAsync("DELETE FROM groups WHERE id = ?", [id]);
+  }
 }
 
 export default new GroupService();

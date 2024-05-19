@@ -25,13 +25,13 @@ const ProfilePicture = ({ name, size = "md", onPress, emoji, color }) => {
         alignItems: "center",
         justifyContent: "center",
       }}>
-      {name ? (
-        <Typography style={{ fontSize: sizeStyle.fontSize }}>
-          {useGetInitials(name)}
-        </Typography>
-      ) : emoji ? (
+      {emoji ? (
         <Typography style={{ fontSize: sizeStyle.fontSize }}>
           {shortnameToUnicode[`:${emoji}:`]}
+        </Typography>
+      ) : name ? (
+        <Typography style={{ fontSize: sizeStyle.fontSize }}>
+          {useGetInitials(name)}
         </Typography>
       ) : (
         <Feather name="edit" size={24} color={theme.textSecondary} />
@@ -41,8 +41,6 @@ const ProfilePicture = ({ name, size = "md", onPress, emoji, color }) => {
 };
 
 export default ProfilePicture;
-
-const styles = StyleSheet.create({});
 
 const sizes = {
   sm: {

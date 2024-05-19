@@ -1,13 +1,15 @@
 import React, { useState } from "react";
-import { StyleSheet, View, TouchableOpacity } from "react-native";
+import { StyleSheet, View } from "react-native";
 import Typography from "../src/shared/components/ui/Typography";
 import { useTheme } from "../src/shared/stores/themeStore";
+import { FILTER_OPTIONS } from "./FILTER_OPTIONS";
 
-const options = ["Contacts", "Groups", "Starred", "Tagged"];
-const ConnectionOptionsTest = () => {
+const ConnectionOptionsTest = ({ setFilter }) => {
   const theme = useTheme();
-  const [selectedOption, setSelectedOption] = useState(options[0]);
+  const [selectedOption, setSelectedOption] = useState(FILTER_OPTIONS.Contacts);
+
   const selectOption = (option) => {
+    setFilter(option);
     setSelectedOption(option);
   };
 
@@ -22,12 +24,14 @@ const ConnectionOptionsTest = () => {
 
   return (
     <View style={styles.container}>
-      {options.map((option, index) => (
+      {Object.values(FILTER_OPTIONS).map((option) => (
         <Typography
-          key={index}
+          key={option}
           style={[
             styles.option,
-            isSelected(option) && selectedStyle, // Apply selected style conditionally
+            isSelected(option)
+              ? selectedStyle
+              : { borderColor: theme.accent, borderWidth: 1 },
           ]}
           onPress={() => selectOption(option)}>
           {option}
@@ -42,12 +46,13 @@ export default ConnectionOptionsTest;
 const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
-    justifyContent: "space-between",
+    justifyContent: "flex-start",
+    gap: 10,
+    flexWrap: "wrap",
   },
   option: {
     padding: 8,
     paddingHorizontal: 12,
     borderRadius: 500,
-    borderWidth: 1,
   },
 });
