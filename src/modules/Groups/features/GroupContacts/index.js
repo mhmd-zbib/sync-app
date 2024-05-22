@@ -10,6 +10,8 @@ const GroupContactTab = () => {
   const id = useGroupIdStore((state) => state.id);
   const { data, isLoading, isError, error } = useGroupContactsQuery(id);
 
+  console.log(data, " data");
+
   if (isLoading) return <Loading />;
   if (isError) return <Error error={error} />;
   return <GroupContactList data={data} />;

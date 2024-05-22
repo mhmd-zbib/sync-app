@@ -22,6 +22,8 @@ class GroupService {
 
   async addContacts(id, contacts, timestamp) {
     for (let contact of contacts) {
+      console.log(contact, id, timestamp);
+
       await this.db.runAsync(
         "INSERT INTO group_connections ( group_id, connection_id, created_at) VALUES (?, ?,?)",
         [id, contact, timestamp]
@@ -36,11 +38,10 @@ class GroupService {
   }
 
   async getContacts(id) {
-    const data = await this.db.getAllAsync(
+    return await this.db.getAllAsync(
       "SELECT c.name, c.id, gc.created_at FROM connections c JOIN group_connections gc ON c.id = gc.connection_id WHERE gc.group_id = ?;",
       [id]
     );
-    return data;
   }
 
   async getDetails(id) {

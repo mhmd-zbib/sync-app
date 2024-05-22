@@ -9,4 +9,4 @@ export default function useSort(items, key, order = "asc") {
     return (a[key] - b[key]) * sortOrder;
   };
   return [...items].sort(compare);
-} 
+}

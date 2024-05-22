@@ -15,6 +15,8 @@ const EmptyList = ({ title }) => {
         height: "100%",
         alignItems: "center",
         justifyContent: "center",
+        // height: ,
+        // backgroundColor: "red",
       }}>
       <Ionicons name="newspaper" size={72} color={theme.accent} />
       <View style={{ alignItems: "center" }}>

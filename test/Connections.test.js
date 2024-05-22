@@ -11,11 +11,13 @@ import { useGroupListQuery } from "../src/modules/Groups/queries/useGroupListQue
 import Loading from "../src/shared/components/layout/Loading";
 import { useTheme } from "../src/shared/stores/themeStore";
 import EmptyList from "../src/shared/components/layout/EmptyList";
+import DetailPage from "../src/shared/components/layout/DetailPage";
+import useSort from "../src/shared/hooks/useSort";
 
 const ConnectionsTestScreen = () => {
-  const [filter, setFilter] = useState(FILTER_OPTIONS.Contacts);
   const { data: contacts, isLoading: contactLoading } = useGetContacts();
   const { data: groups, isLoading: groupsLoading } = useGroupListQuery();
+  const [filter, setFilter] = useState(FILTER_OPTIONS.Contacts);
   const theme = useTheme();
 
   if (contactLoading || groupsLoading) {
@@ -50,39 +52,46 @@ const ConnectionsTestScreen = () => {
     navigation.navigate(navigateTo(), { id: item.id });
   };
 
+  const sorted = useSort(renderData(), "name");
+
   return (
-    <FlatList
-      ListHeaderComponent={
-        <View
-          style={{
-            gap: 15,
-            backgroundColor: theme.background,
-            paddingBottom: 10,
-            marginBottom: -10,
-          }}>
-          <Typography variant="xlg" fontWeight={500}>
-            Connections
-          </Typography>
-          <SearchBar placeHolder="Search" />
-          <ConnectionOptionsTest setFilter={setFilter} />
-        </View>
-      }
-      stickyHeaderHiddenOnScroll
-      stickyHeaderIndices={[0]}
-      data={renderData()}
-      contentContainerStyle={{
-        gap: 15,
-      }}
-      keyExtractor={(item) => item.id.toString()}
-      ListEmptyComponent={<EmptyList title={FILTER_OPTIONS[filter]} />}
-      renderItem={({ item }) => (
-        <ConnectionItem
-          onPress={() => handlePress(item)}
-          item={item}
-          filter={filter}
-        />
-      )}
-    />
+    <>
+      <FlatList
+        ListHeaderComponent={
+          <View
+            style={{
+              gap: 15,
+              marginHorizontal: 10,
+              backgroundColor: theme.background,
+              paddingBottom: 10,
+              marginBottom: -10,
+            }}>
+            {/* <View style={{ marginHorizontal: 10, gap: 10 }}> */}
+            <Typography variant="xlg" fontWeight={500}>
+              Connections
+            </Typography>
+            <SearchBar placeHolder="Search" />
+            {/* </View> */}
+            <ConnectionOptionsTest setFilter={setFilter} />
+          </View>
+        }
+        stickyHeaderHiddenOnScroll
+        stickyHeaderIndices={[0]}
+        data={sorted}
+        contentContainerStyle={{
+          gap: 15,
+        }}
+        keyExtractor={(item) => item.id.toString()}
+        ListEmptyComponent={<EmptyList title={FILTER_OPTIONS[filter]} />}
+        renderItem={({ item }) => (
+          <ConnectionItem
+            onPress={() => handlePress(item)}
+            item={item}
+            filter={filter}
+          />
+        )}
+      />
+    </>
   );
 };
 

@@ -4,3 +4,4 @@ export const FILTER_OPTIONS = {
   Starred: "Starred",
   Tagged: "Tagged",
 };
+  

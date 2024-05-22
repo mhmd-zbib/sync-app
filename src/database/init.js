@@ -63,7 +63,7 @@ const connectionTagsTableSchema = {
   version: 1,
   statement: `CREATE TABLE IF NOT EXISTS connection_tags (
     id INTEGER PRIMARY KEY NOT NULL,
-    connection_id INTEGER,
+    connection_id INTEGER,  
     tag_id INTEGER,
     FOREIGN KEY (connection_id) REFERENCES connections(id) ON DELETE CASCADE,
     FOREIGN KEY (tag_id) REFERENCES tags(id) ON DELETE CASCADE
