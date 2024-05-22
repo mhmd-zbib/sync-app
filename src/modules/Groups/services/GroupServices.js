@@ -16,14 +16,14 @@ class GroupService {
       "INSERT INTO groups (name, emoji, background_color, created_at, member_count)  VALUES (?, ?, ?, ?, ?)",
       [groupName, emoji, backgroundColor, timestamp, selectedContacts.length]
     );
-    const id = groupCreate.insertId;
+    const id = groupCreate.lastInsertRowId;
+    console.log(id, "this is the id of the creation");
     return id;
   }
 
   async addContacts(id, contacts, timestamp) {
     for (let contact of contacts) {
       console.log(contact, id, timestamp);
-
       await this.db.runAsync(
         "INSERT INTO group_connections ( group_id, connection_id, created_at) VALUES (?, ?,?)",
         [id, contact, timestamp]
@@ -38,10 +38,15 @@ class GroupService {
   }
 
   async getContacts(id) {
-    return await this.db.getAllAsync(
+    console.log("getting contacts");
+
+    const getContacts = await this.db.getAllAsync(
       "SELECT c.name, c.id, gc.created_at FROM connections c JOIN group_connections gc ON c.id = gc.connection_id WHERE gc.group_id = ?;",
       [id]
     );
+
+    console.log(getContacts, "the contacts");
+    return getContacts;
   }
 
   async getDetails(id) {
@@ -49,6 +54,7 @@ class GroupService {
       "SELECT * FROM groups WHERE id = ?",
       [id]
     );
+    console.log(details, "details");
     return details;
   }
 

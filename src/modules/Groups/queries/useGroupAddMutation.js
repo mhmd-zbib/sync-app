@@ -16,9 +16,9 @@ export function useGroupAddMutation() {
     mutationKey: "AddGroup",
     mutationFn: async (groupData) => {
       console.log("Group data:", groupData);
-      const groupCreate = await GroupServices.create(groupData);
+      const groupId = await GroupServices.create(groupData);
       return await GroupServices.addContacts(
-        groupCreate,
+        groupId,
         groupData.selectedContacts,
         groupData.timestamp
       );

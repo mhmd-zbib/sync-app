@@ -13,6 +13,8 @@ export default function useGroupAdd() {
     !groupName || selectedContacts.length === 0 || !emoji || !backgroundColor;
 
   const onCreate = () => {
+    console.log(groupName, selectedContacts, emoji, backgroundColor);
+
     const date = new Date();
     const timestamp = date.getTime();
     handleAddGroup({
