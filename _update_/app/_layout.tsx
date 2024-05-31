@@ -8,7 +8,7 @@ import {
   ThemeProvider as ColorSchemeProvider,
   useTheme,
 } from "@/hooks/useColorScheme";
-import { SafeAreaView, useColorScheme } from "react-native";
+import { SafeAreaView, Text, useColorScheme } from "react-native";
 import {
   DarkTheme,
   DefaultTheme,
@@ -19,22 +19,22 @@ import {
 import themes from "@/constants/Colors";
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
-SplashScreen.preventAutoHideAsync();
+// SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
-  const [loaded] = useFonts({
-    SpaceMono: require("../assets/fonts/SpaceMono-Regular.ttf"),
-  });
+  // const [loaded] = useFonts({
+  //   SpaceMono: require("../assets/fonts/SpaceMono-Regular.ttf"),
+  // });
 
-  useEffect(() => {
-    if (loaded) {
-      SplashScreen.hideAsync();
-    }
-  }, [loaded]);
+  // useEffect(() => {
+  //   if (loaded) {
+  //     SplashScreen.hideAsync();
+  //   }
+  // }, [loaded]);
 
-  if (!loaded) {
-    return null;
-  }
+  // if (!loaded) {
+  //   return null;
+  // }
 
   const colorScheme = useColorScheme();
 
@@ -74,6 +74,7 @@ function StackWrapper() {
         contentStyle: { backgroundColor: userTheme.background },
       }}>
       <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+      <Stack.Screen name="test" options={{ headerShown: false }} />
     </Stack>
   );
 }
