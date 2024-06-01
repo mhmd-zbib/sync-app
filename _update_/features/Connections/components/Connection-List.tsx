@@ -12,19 +12,26 @@ import React, { useMemo, useState } from "react";
 import { FlatList, View } from "react-native";
 import { FilterOptions } from "../types/enums";
 import { filterData } from "../utils/connectionFilter";
-import ConnectionListItem from "./ConnectionListItem";
-import ConnectionListHeader from "./ConnectionTab";
+import ConnectionListItem from "./Connection-List-Item";
+import ConnectionListHeader from "./Connection-Tab";
+import useSearch from "@/hooks/useSearch";
 
 const ConnectionList = () => {
   const theme = useTheme();
+  const [searchTerm, setSearchTerm] = useState("");
   const [filter, setFilter] = useState<FilterOptions>(FilterOptions.All);
   const categoryData = useMemo(() => filterData(data, filter), [data, filter]);
+  const searchableData = useSearch(
+    categoryData,
+    searchTerm,
+    (item) => item.name
+  );
 
   return (
     <FlatList
       ListHeaderComponent={
         <View style={{ gap: 10 }}>
-          <SearchInput value="heyy" />
+          <SearchInput value={searchTerm} onChangeText={setSearchTerm} />
           <ConnectionListHeader filter={filter} setFilter={setFilter} />
         </View>
       }
@@ -34,7 +41,7 @@ const ConnectionList = () => {
       }}
       stickyHeaderHiddenOnScroll
       stickyHeaderIndices={[0]}
-      data={categoryData}
+      data={searchableData}
       renderItem={({ item }) => (
         <ConnectionListItem
           onPress={() => {

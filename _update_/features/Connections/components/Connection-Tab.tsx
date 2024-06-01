@@ -4,7 +4,7 @@
  */
 
 import React from "react";
-import ConnectionTabItem from "./ConnectionTabItem";
+import ConnectionTabItem from "./Connection-Tab-Item";
 import { View } from "react-native";
 import { FilterOptions } from "../types/enums";
 import { ConnectionListHeaderProps } from "../types/interfaces";

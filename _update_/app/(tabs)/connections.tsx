@@ -1,4 +1,4 @@
-import ConnectionList from "@/modules/Connections/components/ConnectionList";
+import ConnectionList from "@/features/Connections/components/Connection-List";
 import React from "react";
 
 const ConnectionsLayout = () => {

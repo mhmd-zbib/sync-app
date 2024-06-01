@@ -1,22 +1,14 @@
-import { useFonts } from "expo-font";
 import { Stack } from "expo-router";
-import * as SplashScreen from "expo-splash-screen";
-import { useEffect } from "react";
 import "react-native-reanimated";
 
 import {
   ThemeProvider as ColorSchemeProvider,
   useTheme,
 } from "@/hooks/useColorScheme";
-import { SafeAreaView, Text, useColorScheme } from "react-native";
-import {
-  DarkTheme,
-  DefaultTheme,
-  NavigationContainer,
-  Theme,
-  ThemeProvider,
-} from "@react-navigation/native";
-import themes from "@/constants/Colors";
+import { DefaultTheme, Theme, ThemeProvider } from "@react-navigation/native";
+import { SafeAreaView, useColorScheme } from "react-native";
+import * as SystemUI from "expo-system-ui";
+import { useEffect } from "react";
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 // SplashScreen.preventAutoHideAsync();
@@ -63,6 +55,10 @@ export default function RootLayout() {
 
 function StackWrapper() {
   const userTheme = useTheme();
+  useEffect(() => {
+    SystemUI.setBackgroundColorAsync(userTheme.background);
+    console.log("hisss");
+  }, []);
 
   return (
     <Stack

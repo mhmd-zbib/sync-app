@@ -1,13 +1,14 @@
 import React from "react";
 import { useTheme } from "@/hooks/useColorScheme";
-import { Text, TextStyle } from "react-native";
+import { Text, TextStyle, TextProps } from "react-native";
 // import { RFValue } from "react-native-responsive-fontsize";
 
-type ThemedTextProps = {
+interface ThemedTextProps extends TextProps {
   children: React.ReactNode;
   size?: number | string;
   variant?: "primary" | "secondary" | "accent" | "background";
-};
+  style?: TextStyle;
+}
 
 type Theme = {
   textPrimary: string;
@@ -25,8 +26,10 @@ const colorMap: Record<string, keyof Theme> = {
 
 const ThemedText = ({
   children,
-  size = 14, // Default font size
+  size = 14,
   variant = "primary",
+  style,
+  ...props
 }: ThemedTextProps) => {
   const theme = useTheme();
 
@@ -37,7 +40,11 @@ const ThemedText = ({
     color: theme[textColor],
   };
 
-  return <Text style={textStyle}>{children}</Text>;
+  return (
+    <Text {...props} style={[textStyle, style]}>
+      {children}
+    </Text>
+  );
 };
 
 export default ThemedText;
