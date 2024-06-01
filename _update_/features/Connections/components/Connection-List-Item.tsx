@@ -3,10 +3,10 @@
  */
 
 import Avatar from "@/components/Avatar";
+import { Card } from "@/components/Card";
 import ThemedText from "@/components/ThemedText";
 import React from "react";
-import { Card } from "@/components/Card";
-import { ContactData, ContactListItem } from "../types/interfaces";
+import { ContactListItem } from "../types/interfaces";
 
 const ConnectionListItem = ({ contact, onPress }: ContactListItem) => {
   return (

@@ -9,12 +9,13 @@ import data from "@/__test__/data/Contacts.json";
 import SearchInput from "@/components/SearchInput";
 import { useTheme } from "@/hooks/useColorScheme";
 import React, { useMemo, useState } from "react";
-import { FlatList, View } from "react-native";
+import { FlatList, Platform, View } from "react-native";
 import { FilterOptions } from "../types/enums";
 import { filterData } from "../utils/connectionFilter";
 import ConnectionListItem from "./Connection-List-Item";
 import ConnectionListHeader from "./Connection-Tab";
 import useSearch from "@/hooks/useSearch";
+import ThemedText from "@/components/ThemedText";
 
 const ConnectionList = () => {
   const theme = useTheme();
@@ -28,30 +29,30 @@ const ConnectionList = () => {
   );
 
   return (
-    <FlatList
-      ListHeaderComponent={
-        <View style={{ gap: 10 }}>
-          <SearchInput value={searchTerm} onChangeText={setSearchTerm} />
+    <View style={{ gap: 10 }}>
+      <SearchInput value={searchTerm} onChangeText={setSearchTerm} />
+      <FlatList
+        ListHeaderComponent={
           <ConnectionListHeader filter={filter} setFilter={setFilter} />
-        </View>
-      }
-      ListHeaderComponentStyle={{
-        backgroundColor: theme.background,
-        paddingBottom: 10,
-      }}
-      stickyHeaderHiddenOnScroll
-      stickyHeaderIndices={[0]}
-      data={searchableData}
-      renderItem={({ item }) => (
-        <ConnectionListItem
-          onPress={() => {
-            console.log("hi");
-          }}
-          contact={item}
-        />
-      )}
-      keyExtractor={(item) => item.id.toString()}
-    />
+        }
+        stickyHeaderHiddenOnScroll
+        stickyHeaderIndices={[0]}
+        ListHeaderComponentStyle={{
+          backgroundColor: theme.background,
+          paddingBottom: 10,
+        }}
+        data={searchableData}
+        renderItem={({ item }) => (
+          <ConnectionListItem
+            onPress={() => {
+              console.log("hi");
+            }}
+            contact={item}
+          />
+        )}
+        keyExtractor={(item) => item.id.toString()}
+      />
+    </View>
   );
 };
 

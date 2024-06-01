@@ -1,7 +1,8 @@
 interface Reminder {
+  id: number;
   title: string;
   details: string;
-  date: number | string;
+  date: string;
 }
 
 interface ReminderListItem {
