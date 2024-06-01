@@ -1,8 +1,29 @@
+/**
+ * ThemedView Component
+ *
+ * ThemedView is a component that renders a view with a background color based on the current theme.
+ * It uses the useTheme hook from the useColorScheme module to dynamically apply the theme color.
+ *
+ * @param children - React node to be rendered inside the ThemedView.
+ * @param color - Optional. The key of the color in the theme to be applied as the background color. Default is "background".
+ * @param style - Optional. Additional styles to be applied to the ThemedView.
+ * @param props - Additional props to be spread to the underlying TouchableOpacity component.
+ *
+ * Example usage:
+ * ```=
+ * <ThemedView color="primary" style={{ flex: 1 }}>
+ *   {Children components here...}
+ * </ThemedView>
+ * ```
+ *
+ * @returns A TouchableOpacity component with a background color based on the current theme.
+ */
+
 import { Theme, useTheme } from "@/hooks/useColorScheme";
 import React from "react";
-import { View, ViewProps } from "react-native";
+import { TouchableOpacity, TouchableOpacityProps } from "react-native";
 
-interface ThemedViewProps extends ViewProps {
+interface ThemedViewProps extends TouchableOpacityProps {
   children?: React.ReactNode;
   color?: keyof Theme;
 }
@@ -16,9 +37,12 @@ const ThemedView = ({
   const theme = useTheme();
 
   return (
-    <View style={[{ backgroundColor: theme[color] }, style]} {...props}>
+    <TouchableOpacity
+      activeOpacity={0.8}
+      style={[{ backgroundColor: theme[color] }, style]}
+      {...props}>
       {children}
-    </View>
+    </TouchableOpacity>
   );
 };
 

@@ -1,14 +1,12 @@
+/**
+ * Tabs Buttons
+ */
+
 import ThemedText from "@/components/ThemedText";
-import ThemedView from "@/components/ThemedView";
 import { useTheme } from "@/hooks/useColorScheme";
 import React from "react";
 import { TouchableOpacity } from "react-native";
-
-interface ConnectionTabItemProps {
-  title: string;
-  onPress: () => void;
-  isActiveTab: boolean;
-}
+import { ConnectionTabItemProps } from "../types/interfaces";
 
 const ConnectionTabItem = ({
   title,
@@ -24,8 +22,8 @@ const ConnectionTabItem = ({
       style={{
         backgroundColor: isActiveTab ? theme.primary : theme.background,
         padding: 12,
-        paddingVertical: 10,
-        borderRadius: 9,
+        paddingVertical: 8,
+        borderRadius: 500,
         borderWidth: 1,
         borderColor: isActiveTab ? "" : theme.subAccent,
       }}>
