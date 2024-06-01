@@ -2,33 +2,31 @@ import React from "react";
 import { View } from "react-native";
 import ConnectionTabItem from "./ConnectionTabItem";
 
-interface ConnectionTabProps {
-  setActiveTab: React.Dispatch<React.SetStateAction<string>>;
-  activeTab: string;
+interface ConnectionListHeaderProps {
+  filter: "all" | "tagged" | "starred";
+  setFilter: (filter: "all" | "tagged" | "starred") => void;
 }
 
-const ConnectionTab: React.FC<ConnectionTabProps> = ({
-  setActiveTab,
-  activeTab,
+const ConnectionListHeader: React.FC<ConnectionListHeaderProps> = ({
+  filter,
+  setFilter,
 }) => {
-  const listTabs = ["Connections", "Groups", "Starred"];
-
-  const handleTabPress = (tab: string) => {
-    setActiveTab(tab);
-  };
+  const buttonTitles = ["All", "Tagged", "Starred"];
 
   return (
     <View style={{ flexDirection: "row", gap: 10 }}>
-      {listTabs.map((tab) => (
+      {buttonTitles.map((title) => (
         <ConnectionTabItem
-          key={tab}
-          title={tab}
-          onPress={() => handleTabPress(tab)}
-          isActiveTab={activeTab === tab}
+          key={title}
+          title={title}
+          onPress={() =>
+            setFilter(title.toLowerCase() as "all" | "tagged" | "starred")
+          }
+          isActiveTab={filter === title.toLowerCase()}
         />
       ))}
     </View>
   );
 };
 
-export default ConnectionTab;
+export default ConnectionListHeader;

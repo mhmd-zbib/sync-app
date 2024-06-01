@@ -2,7 +2,9 @@ import data from "@/__test__/data/Contacts.json";
 import React, { useMemo, useState } from "react";
 import { FlatList, Text, View } from "react-native";
 import { filterData } from "../utils/connectionFilter";
-import ConnectionTabItem from "./ConnectionTabItem";
+import ConnectionListHeader from "./ConnectionTab";
+import { useTheme } from "@/hooks/useColorScheme";
+import ConnectionListItem from "./ConnectionListItem";
 
 interface Contact {
   id: number;
@@ -13,34 +15,23 @@ interface Contact {
 
 const ConnectionList = () => {
   const [filter, setFilter] = useState<"all" | "tagged" | "starred">("all");
-  const buttonTitles = ["All", "Tagged", "Starred"];
-
   const filteredData = useMemo(() => filterData(data, filter), [data, filter]);
-
-  const renderItem = ({ item }: { item: Contact }) => (
-    <View style={{ backgroundColor: "white" }}>
-      <Text>Name: {item.name}</Text>
-    </View>
-  );
+  const theme = useTheme();
 
   return (
     <View>
-      <View style={{ flexDirection: "row", gap: 10 }}>
-        {buttonTitles.map((title) => (
-          <ConnectionTabItem
-            key={title}
-            title={title}
-            onPress={() =>
-              setFilter(title.toLowerCase() as "all" | "tagged" | "starred")
-            }
-            isActiveTab={filter === title.toLowerCase()}
-          />
-        ))}
-      </View>
-
       <FlatList
+        ListHeaderComponent={
+          <ConnectionListHeader filter={filter} setFilter={setFilter} />
+        }
+        ListHeaderComponentStyle={{
+          backgroundColor: theme.background,
+          paddingBottom: 10,
+        }}
+        stickyHeaderHiddenOnScroll
+        stickyHeaderIndices={[0]}
         data={filteredData}
-        renderItem={renderItem}
+        renderItem={({ item }) => <ConnectionListItem contact={item} />}
         keyExtractor={(item) => item.id.toString()}
       />
     </View>

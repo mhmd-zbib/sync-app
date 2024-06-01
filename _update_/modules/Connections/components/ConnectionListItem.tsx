@@ -13,7 +13,7 @@ interface ContactData {
 
 const ConnectionListItem = ({ contact }: ContactData) => {
   return (
-    <Card>
+    <Card style={{ marginBottom: 10 }}>
       <View
         style={{
           flexDirection: "row",
