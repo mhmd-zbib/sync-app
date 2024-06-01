@@ -1,87 +1,49 @@
-/**
- * Left of at rendering the parts for the screens and every part of them
- */
+import data from "@/__test__/data/Contacts.json";
+import React, { useMemo, useState } from "react";
+import { FlatList, Text, View } from "react-native";
+import { filterData } from "../utils/connectionFilter";
+import ConnectionTabItem from "./ConnectionTabItem";
 
-import { useTheme } from "@/hooks/useColorScheme";
-import React, { useState } from "react";
-import { FlatList, TextInput } from "react-native";
-import ContactListItem from "./ConnectionListItem";
-import ConnectionTab from "./ConnectionTab";
-import useSearch from "@/hooks/useSearch";
-import ThemedText from "@/components/ThemedText";
+interface Contact {
+  id: number;
+  name: string;
+  isTagged: boolean;
+  isStarred: boolean;
+}
 
 const ConnectionList = () => {
-  const [activeTab, setActiveTab] = useState("Connections");
+  const [filter, setFilter] = useState<"all" | "tagged" | "starred">("all");
+  const buttonTitles = ["All", "Tagged", "Starred"];
 
-  const data = {
-    contact: [
-      { name: "mohammad" },
-      { name: "ali" },
-      { name: "hussein" },
-      { name: "hussein" },
-      { name: "hussein" },
-      { name: "hussein" },
-      { name: "hussein" },
-      { name: "hussein" },
-      { name: "hussein" },
-      { name: "hussein" },
-      { name: "hussein" },
-      { name: "hussein" },
-      { name: "hussein" },
-      { name: "hussein" },
-      { name: "hussein" },
-      { name: "hussein" },
-      { name: "hussein" },
-      { name: "hussein" },
-      { name: "hussein" },
-      { name: "hussein" },
-      { name: "hussein" },
-    ],
-    group: [
-      { name: "math" },
-      { name: "math" },
-      { name: "computer" },
-      { name: "math" },
-      { name: "math" },
-      { name: "math" },
-      { name: "math" },
-      { name: "math" },
-      { name: "math" },
-    ],
-  };
+  const filteredData = useMemo(() => filterData(data, filter), [data, filter]);
 
-  const theme = useTheme();
-  const [searchTerm, setSearch] = useState("");
-  const filteredData = activeTab === "Connections" ? data.contact : data.group;
-
-  const filteredPeople = useSearch(
-    filteredData,
-    searchTerm,
-    (contact) => contact.name
+  const renderItem = ({ item }: { item: Contact }) => (
+    <View style={{ backgroundColor: "white" }}>
+      <Text>Name: {item.name}</Text>
+    </View>
   );
-  console.log(filteredPeople, "ey");
 
   return (
-    <>
-      {/* <ThemedText>hi</ThemedText> */}
+    <View>
+      <View style={{ flexDirection: "row", gap: 10 }}>
+        {buttonTitles.map((title) => (
+          <ConnectionTabItem
+            key={title}
+            title={title}
+            onPress={() =>
+              setFilter(title.toLowerCase() as "all" | "tagged" | "starred")
+            }
+            isActiveTab={filter === title.toLowerCase()}
+          />
+        ))}
+      </View>
+
       <FlatList
-        ListHeaderComponentStyle={{
-          backgroundColor: theme.background, // assuming theme is defined somewhere
-          paddingBottom: 10,
-        }}
-        ListHeaderComponent={
-          <>
-            <TextInput value={searchTerm} onChangeText={setSearch} />
-            <ConnectionTab setActiveTab={setActiveTab} activeTab={activeTab} />
-          </>
-        }
-        stickyHeaderHiddenOnScroll
-        stickyHeaderIndices={[0]}
-        data={filteredPeople}
-        contentContainerStyle={{ paddingTop: 10 }}
-        renderItem={({ item }) => <ContactListItem contact={item} />}
+        data={filteredData}
+        renderItem={renderItem}
+        keyExtractor={(item) => item.id.toString()}
       />
-    </>
+    </View>
   );
 };
 

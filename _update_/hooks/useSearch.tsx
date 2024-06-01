@@ -5,32 +5,25 @@ interface Item {
   [key: string]: any;
 }
 
-/**
- * Enhanced useSearch hook that includes debouncing to improve performance during search operations.
- * Filters an array of objects based on a debounced search term applied to a specified object key.
- *
- * @param {Item[]} items - The array of objects to be searched.
- * @param {string} searchTerm - The term to search for within the objects.
- * @param {(item: Item) => any} keyExtractor - A function that extracts the value to search against from each item.
- * @param {number} debounceDelay - The delay in milliseconds for the debounce mechanism.
- *
- * @returns {Item[]} - An array of objects from 'items' that match the search criteria.
- */
-const useSearch = (
-  items: Item[],
+type KeyExtractorFn = (item: Item) => any;
+
+const useSearch = <T extends Item>(
+  items: T[],
   searchTerm: string,
-  keyExtractor: (item: Item) => any,
+  keyExtractor: KeyExtractorFn,
   debounceDelay: number = 300
-): Item[] => {
+): T[] => {
   const debouncedSearchTerm = useDebounce(searchTerm, debounceDelay);
 
   return useMemo(() => {
-    if (
-      !Array.isArray(items) ||
-      typeof searchTerm !== "string" ||
-      typeof keyExtractor !== "function"
-    ) {
-      return [];
+    if (!Array.isArray(items)) {
+      throw new Error("'items' must be an array.");
+    }
+    if (typeof searchTerm !== "string") {
+      throw new Error("'searchTerm' must be a string.");
+    }
+    if (typeof keyExtractor !== "function") {
+      throw new Error("'keyExtractor' must be a function.");
     }
 
     if (!debouncedSearchTerm.trim()) {
@@ -42,7 +35,7 @@ const useSearch = (
       keyExtractor(item)?.toString().toLowerCase().includes(lowercasedTerm)
     );
 
-    return filteredItems.length > 0 ? filteredItems : [];
+    return filteredItems;
   }, [items, debouncedSearchTerm, keyExtractor]);
 };
 
