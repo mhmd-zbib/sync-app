@@ -7,5 +7,5 @@ interface Reminder {
 
 interface ReminderListItem {
   reminder: Reminder;
-  onPress: (event: Event) => void;
+  onPress: () => void;
 }

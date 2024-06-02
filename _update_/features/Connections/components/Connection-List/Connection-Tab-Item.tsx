@@ -6,7 +6,7 @@ import ThemedText from "@/components/ThemedText";
 import { useTheme } from "@/hooks/useColorScheme";
 import React from "react";
 import { TouchableOpacity } from "react-native";
-import { ConnectionTabItemProps } from "../types/interfaces";
+import { ConnectionTabItemProps } from "../../types/interfaces";
 
 const ConnectionTabItem = ({
   title,

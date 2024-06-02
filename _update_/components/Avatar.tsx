@@ -33,7 +33,7 @@ const Avatar = ({ name, size = 48 }: AvatarProps) => {
 
   return (
     <View style={styles.container}>
-      <ThemedText>{initials.toUpperCase()}</ThemedText>
+      <ThemedText size={size / 3}>{initials.toUpperCase()}</ThemedText>
     </View>
   );
 };

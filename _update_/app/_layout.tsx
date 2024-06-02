@@ -6,9 +6,12 @@ import {
   useTheme,
 } from "@/hooks/useColorScheme";
 import { DefaultTheme, Theme, ThemeProvider } from "@react-navigation/native";
-import { SafeAreaView, useColorScheme } from "react-native";
+import { SafeAreaView, TouchableOpacity, useColorScheme } from "react-native";
 import * as SystemUI from "expo-system-ui";
 import { useEffect } from "react";
+import ThemedText from "@/components/ThemedText";
+import { Ionicons } from "@expo/vector-icons";
+import BackButton from "@/components/BackButton";
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 // SplashScreen.preventAutoHideAsync();
@@ -63,13 +66,17 @@ function StackWrapper() {
   return (
     <Stack
       screenOptions={{
+        headerTitleAlign: "center",
+        animation: "fade_from_bottom",
         statusBarColor: userTheme.background,
         navigationBarColor: userTheme.background,
         headerTintColor: userTheme.primary,
         headerStyle: { backgroundColor: userTheme.background },
         contentStyle: { backgroundColor: userTheme.background },
+        headerLeft: BackButton,
       }}>
       <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+      <Stack.Screen name="contact" options={{ headerTitle: "Profile" }} />
       <Stack.Screen name="test" options={{ headerShown: false }} />
     </Stack>
   );

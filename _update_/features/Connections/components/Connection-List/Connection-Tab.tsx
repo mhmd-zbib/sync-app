@@ -6,8 +6,8 @@
 import React from "react";
 import ConnectionTabItem from "./Connection-Tab-Item";
 import { View } from "react-native";
-import { FilterOptions } from "../types/enums";
-import { ConnectionListHeaderProps } from "../types/interfaces";
+import { FilterOptions } from "../../types/enums";
+import { ConnectionListHeaderProps } from "../../types/interfaces";
 
 const ConnectionListHeader: React.FC<ConnectionListHeaderProps> = ({
   filter,

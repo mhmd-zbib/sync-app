@@ -1,7 +1,7 @@
 import { useTheme } from "@/hooks/useColorScheme";
 import { Feather } from "@expo/vector-icons";
 import React from "react";
-import { TextInput, View, TextInputProps } from "react-native";
+import { TextInput, View, TextInputProps, StyleProp } from "react-native";
 
 interface SearchInputProps extends TextInputProps {
   additionalItem?: React.ReactNode;
@@ -9,6 +9,7 @@ interface SearchInputProps extends TextInputProps {
 
 const SearchInput: React.FC<SearchInputProps> = ({
   additionalItem,
+  style,
   ...props
 }) => {
   const theme = useTheme();
@@ -25,6 +26,7 @@ const SearchInput: React.FC<SearchInputProps> = ({
           alignItems: "center",
           gap: 10,
         },
+        style,
       ]}>
       <Feather name="search" size={24} color={theme.textSecondary} />
       <TextInput

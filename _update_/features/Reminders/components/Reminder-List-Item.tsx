@@ -4,7 +4,7 @@ import React from "react";
 
 const ReminderListItem = ({ reminder, onPress }: ReminderListItem) => {
   return (
-    <Card style={{ marginBottom: 10 }}>
+    <Card style={{ marginBottom: 10 }} onPress={onPress}>
       <ThemedText size={12} variant="accent">
         {reminder.date}
       </ThemedText>

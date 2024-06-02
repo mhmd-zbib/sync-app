@@ -2,6 +2,7 @@ import { FilterOptions } from "./enums";
 
 //  Contact interface
 export interface ContactData {
+  id: number;
   name: string;
   created_at?: number;
 }
@@ -9,7 +10,7 @@ export interface ContactData {
 //ContactListItem interface
 export interface ContactListItem {
   contact: ContactData;
-  onPress: () => void;
+  onPress?: () => void;
 }
 
 //  ConnectionList header interface
