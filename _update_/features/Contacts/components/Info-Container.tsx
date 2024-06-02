@@ -1,28 +1,27 @@
+import React from "react";
+import { View } from "react-native";
 import Separator from "@/components/Separator";
 import ThemedText from "@/components/ThemedText";
 import ThemedView from "@/components/ThemedView";
-import React from "react";
-import { View } from "react-native";
+import { Card } from "@/components/Card";
 
 interface InfoContainerProps {
   title: string;
-  children: React.ReactNode;
+  children?: React.ReactNode;
 }
 
 const InfoContainer = ({ title, children }: InfoContainerProps) => {
-  if (!children || children.valueOf() === undefined) {
-    return;
-  }
+  console.log(children);
 
   return (
-    <ThemedView color="secondary" style={{ padding: 16, borderRadius: 16 }}>
+    <Card>
       <ThemedText variant="accent" size={14}>
         {title}
       </ThemedText>
       <Separator />
 
-      <View>{children}</View>
-    </ThemedView>
+      {children}
+    </Card>
   );
 };
 
