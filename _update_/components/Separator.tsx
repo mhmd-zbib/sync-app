@@ -6,7 +6,14 @@ const Separator = () => {
   const theme = useTheme();
 
   return (
-    <View style={{ width: "100%", height: 1, backgroundColor: theme.accent }} />
+    <View
+      style={{
+        width: "100%",
+        height: 1,
+        backgroundColor: theme.accent,
+        marginVertical: 16,
+      }}
+    />
   );
 };
 

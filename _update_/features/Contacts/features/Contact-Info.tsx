@@ -3,6 +3,7 @@ import React from "react";
 import { View } from "react-native";
 import InfoContainer from "../components/Info-Container";
 import Separator from "@/components/Separator";
+import ContactContainer from "../components/Contact-Container";
 
 const ContactInfo = () => {
   return (
@@ -12,9 +13,9 @@ const ContactInfo = () => {
       </InfoContainer>
 
       <InfoContainer title="Contact">
-        <ThemedText> Phone Number</ThemedText>
+        <ContactContainer title="Phone Number" data="afaga" />
         <Separator />
-        <ThemedText> Email Address</ThemedText>
+        <ContactContainer title="Email Address" data="rosberg@gmail.com" />
       </InfoContainer>
     </View>
   );

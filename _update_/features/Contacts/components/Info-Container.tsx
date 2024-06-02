@@ -1,9 +1,8 @@
-import { View, Text } from "react-native";
-import React from "react";
-import ThemedView from "@/components/ThemedView";
-import ThemedText from "@/components/ThemedText";
-import { useTheme } from "@/hooks/useColorScheme";
 import Separator from "@/components/Separator";
+import ThemedText from "@/components/ThemedText";
+import ThemedView from "@/components/ThemedView";
+import React from "react";
+import { View } from "react-native";
 
 interface InfoContainerProps {
   title: string;
@@ -11,12 +10,12 @@ interface InfoContainerProps {
 }
 
 const InfoContainer = ({ title, children }: InfoContainerProps) => {
-  const theme = useTheme();
+  if (!children || children.valueOf() === undefined) {
+    return;
+  }
 
   return (
-    <ThemedView
-      color="secondary"
-      style={{ padding: 16, borderRadius: 16, gap: 10 }}>
+    <ThemedView color="secondary" style={{ padding: 16, borderRadius: 16 }}>
       <ThemedText variant="accent" size={14}>
         {title}
       </ThemedText>
