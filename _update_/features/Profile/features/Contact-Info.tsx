@@ -1,11 +1,11 @@
 import ThemedText from "@/components/ThemedText";
 import React from "react";
 import { StyleSheet, View } from "react-native";
-import ContactDescription from "../components/Contact-Description";
-import InfoContainer from "../components/Info-Container";
-import ContactCommunication from "../components/Contact-Communication";
-import { ContactTagList } from "../components/Contact-TagList";
-import ContactExperience from "../components/Contact-Experience";
+import ContactDescription from "../components/Contact-Info/Contact-Description";
+import InfoContainer from "../components/Contact-Info/Info-Container";
+import ContactCommunication from "../components/Contact-Info/Contact-Communication";
+import { ContactTagList } from "../components/Contact-Info/Contact-TagList";
+import ContactExperience from "../components/Contact-Info/Contact-Experience";
 
 const DATA = {
   description: "",

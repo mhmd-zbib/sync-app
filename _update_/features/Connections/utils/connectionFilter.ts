@@ -3,23 +3,18 @@
  */
 
 import { FilterOptions } from "../types/enums";
-
-interface Contact {
-  id: number;
-  name: string;
-  isTagged: boolean;
-  isStarred: boolean;
-}
+import { Contact } from "../types/interfaces";
 
 export const filterData = (
   data: Contact[],
   filter: FilterOptions
 ): Contact[] => {
-  if (filter === FilterOptions.Tagged) {
-    return data.filter((item) => item.isTagged);
-  } else if (filter === FilterOptions.Starred) {
-    return data.filter((item) => item.isStarred);
-  } else {
-    return data;
+  switch (filter) {
+    case FilterOptions.Tagged:
+      return data.filter((item) => item.isTagged);
+    case FilterOptions.Starred:
+      return data.filter((item) => item.isStarred);
+    default:
+      return data;
   }
 };

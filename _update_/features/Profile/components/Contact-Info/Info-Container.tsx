@@ -9,8 +9,6 @@ interface InfoContainerProps {
 }
 
 const InfoContainer = ({ title, children }: InfoContainerProps) => {
-  console.log(children);
-
   return (
     <Card>
       <ThemedText variant="accent" size={14}>

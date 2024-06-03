@@ -3,8 +3,8 @@
  * Controls the filter options of the ConnectionList
  */
 
+import Button from "@/components/Button";
 import React from "react";
-import ConnectionTabItem from "./Connection-Tab-Item";
 import { View } from "react-native";
 import { FilterOptions } from "../../types/enums";
 import { ConnectionListHeaderProps } from "../../types/interfaces";
@@ -22,11 +22,12 @@ const ConnectionListHeader: React.FC<ConnectionListHeaderProps> = ({
   return (
     <View style={{ flexDirection: "row", gap: 10 }}>
       {buttonTitles.map((title) => (
-        <ConnectionTabItem
+        <Button
           key={title}
           title={title}
           onPress={() => setFilter(title)}
-          isActiveTab={filter === title}
+          variant={filter === title ? "primary" : "secondary"}
+          rounded
         />
       ))}
     </View>

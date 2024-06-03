@@ -1,38 +1,37 @@
-/**
- *  Connections List item for <contacts></contacts>
- *  Filters the contacts upon the type in the Enum ( all, starred, tagged)
- *  the header is elastic for better UX
- *
- */
-
-import data from "@/__test__/data/Contacts.json";
-import AnimatedHeader from "@/components/AnimatedHeader";
-import SearchInput from "@/components/SearchInput";
+import React, { useState } from "react";
+import {
+  Animated,
+  FlatList,
+  NativeScrollEvent,
+  NativeSyntheticEvent,
+} from "react-native";
 import { useTheme } from "@/hooks/useColorScheme";
 import useSearch from "@/hooks/useSearch";
-import React, { useMemo, useState } from "react";
-import { Animated, FlatList } from "react-native";
 import { FilterOptions } from "../types/enums";
 import { filterData } from "../utils/connectionFilter";
-import ConnectionListItem from "../components/Connection-List/Connection-List-Item";
+import AnimatedHeader from "@/components/AnimatedHeader";
+import SearchInput from "@/components/SearchInput";
+import data from "@/__test__/data/Contacts.json";
 import ConnectionListHeader from "../components/Connection-List/Connection-Tab";
-import Button from "@/components/Button";
+import ConnectionListItem from "../components/Connection-List/Connection-List-Item";
 
 const HEADER_HEIGHT = 70;
 
 const ConnectionList = () => {
   const theme = useTheme();
   const [searchTerm, setSearchTerm] = useState("");
-  const [filter, setFilter] = useState<FilterOptions>(FilterOptions.All);
-  const categoryData = useMemo(() => filterData(data, filter), [data, filter]);
+  const [filter, setFilter] = useState(FilterOptions.All);
+  const categoryData = filterData(data, filter);
   const searchableData = useSearch(
     categoryData,
     searchTerm,
     (item) => item.name
   );
-
   const scrollY = new Animated.Value(0);
 
+  const handleScroll = (e: NativeSyntheticEvent<NativeScrollEvent>) => {
+    scrollY.setValue(e.nativeEvent.contentOffset.y);
+  };
   return (
     <>
       <AnimatedHeader scrollY={scrollY} headerHeight={HEADER_HEIGHT}>
@@ -54,9 +53,7 @@ const ConnectionList = () => {
         renderItem={({ item }) => <ConnectionListItem contact={item} />}
         contentContainerStyle={{ paddingTop: HEADER_HEIGHT }}
         keyExtractor={(item) => item.id.toString()}
-        onScroll={(e) => {
-          scrollY.setValue(e.nativeEvent.contentOffset.y);
-        }}
+        onScroll={handleScroll}
       />
     </>
   );

@@ -25,3 +25,10 @@ export interface ConnectionTabItemProps {
   onPress: () => void;
   isActiveTab: boolean;
 }
+
+export interface Contact {
+  id: number;
+  name: string;
+  isTagged: boolean;
+  isStarred: boolean;
+}

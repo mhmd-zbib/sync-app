@@ -14,9 +14,11 @@ const ContactExperience = ({ experience }: ExperiencePropsType) => {
           <ThemedText size={18}>{experience.title}</ThemedText>
 
           <View style={{ flexDirection: "row", gap: 10 }}>
-            <ThemedText variant="accent">{experience.company_name}</ThemedText>
-            <ThemedText variant="accent">{experience.from_date}</ThemedText>
             <ThemedText variant="accent">
+              {experience.company_name}
+              {"  ●  "}
+              {experience.from_date}
+              {"  ●  "}
               {experience.to_date ? experience.to_date : "Current"}
             </ThemedText>
           </View>
