@@ -1,9 +1,7 @@
-import React from "react";
-import { View } from "react-native";
+import { Card } from "@/components/Card";
 import Separator from "@/components/Separator";
 import ThemedText from "@/components/ThemedText";
-import ThemedView from "@/components/ThemedView";
-import { Card } from "@/components/Card";
+import React from "react";
 
 interface InfoContainerProps {
   title: string;
@@ -19,7 +17,6 @@ const InfoContainer = ({ title, children }: InfoContainerProps) => {
         {title}
       </ThemedText>
       <Separator />
-
       {children}
     </Card>
   );

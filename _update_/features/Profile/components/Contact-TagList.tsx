@@ -1,11 +1,6 @@
 import ThemedText from "@/components/ThemedText";
 import { View } from "react-native";
-
-interface TagsType {
-  name: string;
-  id: number;
-  color: string;
-}
+import EmptyComponent from "./Empty-Component";
 
 interface ContactTagListProps {
   tags: TagsType[];
@@ -13,7 +8,7 @@ interface ContactTagListProps {
 
 export const ContactTagList = ({ tags }: ContactTagListProps) => {
   if (!tags || tags.length === 0) {
-    return <ThemedText>No tags</ThemedText>;
+    return <EmptyComponent />;
   }
   return (
     <View

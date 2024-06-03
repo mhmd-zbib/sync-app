@@ -7,6 +7,7 @@ import { useTheme } from "@/hooks/useColorScheme";
 import React from "react";
 import { TouchableOpacity } from "react-native";
 import { ConnectionTabItemProps } from "../../types/interfaces";
+import Button from "@/components/Button";
 
 const ConnectionTabItem = ({
   title,
@@ -16,21 +17,12 @@ const ConnectionTabItem = ({
   const theme = useTheme();
 
   return (
-    <TouchableOpacity
-      activeOpacity={0.8}
+    <Button
       onPress={onPress}
-      style={{
-        backgroundColor: isActiveTab ? theme.primary : theme.background,
-        padding: 12,
-        paddingVertical: 8,
-        borderRadius: 500,
-        borderWidth: 1,
-        borderColor: isActiveTab ? "" : theme.subAccent,
-      }}>
-      <ThemedText variant={isActiveTab ? "background" : "accent"}>
-        {title}
-      </ThemedText>
-    </TouchableOpacity>
+      title={title}
+      variant={isActiveTab ? "primary" : "secondary"}
+      rounded
+    />
   );
 };
 

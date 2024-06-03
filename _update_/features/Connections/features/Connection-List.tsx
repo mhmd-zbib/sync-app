@@ -11,13 +11,12 @@ import SearchInput from "@/components/SearchInput";
 import { useTheme } from "@/hooks/useColorScheme";
 import useSearch from "@/hooks/useSearch";
 import React, { useMemo, useState } from "react";
-import { Animated, FlatList, View } from "react-native";
-import { FilterOptions } from "../../types/enums";
-import { filterData } from "../../utils/connectionFilter";
-import ConnectionListItem from "./Connection-List-Item";
-import ConnectionListHeader from "./Connection-Tab";
-import { router } from "expo-router";
-import { getReactNavigationScreensConfig } from "expo-router/build/getReactNavigationConfig";
+import { Animated, FlatList } from "react-native";
+import { FilterOptions } from "../types/enums";
+import { filterData } from "../utils/connectionFilter";
+import ConnectionListItem from "../components/Connection-List/Connection-List-Item";
+import ConnectionListHeader from "../components/Connection-List/Connection-Tab";
+import Button from "@/components/Button";
 
 const HEADER_HEIGHT = 70;
 

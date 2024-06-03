@@ -28,7 +28,7 @@ const AnimatedHeader = ({
   return (
     <Animated.View
       style={{
-        alignItems: "center",
+        // alignItems: "center",
         justifyContent: "center",
         backgroundColor: theme.background,
         zIndex: 900,
