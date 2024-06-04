@@ -1,29 +1,13 @@
 import { FilterOptions } from "./enums";
 
-//  Contact interface
-export interface ContactData {
-  id: number;
-  name: string;
-  created_at?: number;
-}
-
-//ContactListItem interface
-export interface ContactListItem {
-  contact: ContactData;
+export interface ContactItemProps {
+  contact: Contact;
   onPress?: () => void;
 }
 
-//  ConnectionList header interface
 export interface ConnectionListHeaderProps {
   filter: FilterOptions;
   setFilter: (filter: FilterOptions) => void;
-}
-
-//  ConnectionItemButton interface
-export interface ConnectionTabItemProps {
-  title: string;
-  onPress: () => void;
-  isActiveTab: boolean;
 }
 
 export interface Contact {
@@ -37,9 +21,21 @@ export interface Connections {
   id: number;
   type: string;
   name?: string;
-  title?: string;
   createdAt: number;
   isTagged?: boolean;
   isStarred?: boolean;
   memberCount?: number;
 }
+
+export interface Group {
+  id: number;
+  name: string;
+  createdAt: number;
+  memberCount: number;
+}
+
+export interface GroupItemProps {
+  group: Group;
+}
+
+export type ConnectionData = Contact | Group;

@@ -10,7 +10,7 @@
   {
     "id": 2,
     "type": "group",
-    "title": "Physics",
+    "name": "Physics",
     "memberCount": 35,
     "createdAt": 1630440800000
   },
@@ -33,7 +33,7 @@
   {
     "id": 5,
     "type": "group",
-    "title": "Chemistry",
+    "name": "Chemistry",
     "memberCount": 28,
     "createdAt": 1630440800000
   },
@@ -56,7 +56,7 @@
   {
     "id": 8,
     "type": "group",
-    "title": "Mathematics",
+    "name": "Mathematics",
     "memberCount": 42,
     "createdAt": 1630440800000
   }

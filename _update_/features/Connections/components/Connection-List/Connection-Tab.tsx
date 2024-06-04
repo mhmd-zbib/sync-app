@@ -22,7 +22,11 @@ const ConnectionListHeader: React.FC<ConnectionListHeaderProps> = ({
 
   return (
     <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-      <View style={{ gap: 10, flexDirection: "row" }}>
+      <View
+        style={{
+          gap: 10,
+          flexDirection: "row",
+        }}>
         {buttonTitles.map((title) => (
           <Button
             key={title}

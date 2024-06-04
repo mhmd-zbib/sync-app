@@ -9,8 +9,6 @@ export const filterData = (
   data: Connections[],
   filter: FilterOptions
 ): Connections[] => {
-  console.log(data, filter);
-
   switch (filter) {
     case FilterOptions.Tagged:
       return data.filter((item) => item.isTagged);
