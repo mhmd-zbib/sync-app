@@ -5,7 +5,7 @@
 
 import Button from "@/components/Button";
 import React from "react";
-import { View } from "react-native";
+import { ScrollView, View } from "react-native";
 import { FilterOptions } from "../../types/enums";
 import { ConnectionListHeaderProps } from "../../types/interfaces";
 
@@ -15,22 +15,25 @@ const ConnectionListHeader: React.FC<ConnectionListHeaderProps> = ({
 }) => {
   const buttonTitles: FilterOptions[] = [
     FilterOptions.All,
+    FilterOptions.Group,
     FilterOptions.Tagged,
     FilterOptions.Starred,
   ];
 
   return (
-    <View style={{ flexDirection: "row", gap: 10 }}>
-      {buttonTitles.map((title) => (
-        <Button
-          key={title}
-          title={title}
-          onPress={() => setFilter(title)}
-          variant={filter === title ? "primary" : "secondary"}
-          rounded
-        />
-      ))}
-    </View>
+    <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+      <View style={{ gap: 10, flexDirection: "row" }}>
+        {buttonTitles.map((title) => (
+          <Button
+            key={title}
+            title={title}
+            onPress={() => setFilter(title)}
+            variant={filter === title ? "primary" : "secondary"}
+            rounded
+          />
+        ))}
+      </View>
+    </ScrollView>
   );
 };
 

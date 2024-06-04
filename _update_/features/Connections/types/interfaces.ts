@@ -32,3 +32,14 @@ export interface Contact {
   isTagged: boolean;
   isStarred: boolean;
 }
+
+export interface Connections {
+  id: number;
+  type: string;
+  name?: string;
+  title?: string;
+  createdAt: number;
+  isTagged?: boolean;
+  isStarred?: boolean;
+  memberCount?: number;
+}

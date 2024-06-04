@@ -3,18 +3,22 @@
  */
 
 import { FilterOptions } from "../types/enums";
-import { Contact } from "../types/interfaces";
+import { Connections } from "../types/interfaces";
 
 export const filterData = (
-  data: Contact[],
+  data: Connections[],
   filter: FilterOptions
-): Contact[] => {
+): Connections[] => {
+  console.log(data, filter);
+
   switch (filter) {
     case FilterOptions.Tagged:
       return data.filter((item) => item.isTagged);
     case FilterOptions.Starred:
       return data.filter((item) => item.isStarred);
+    case FilterOptions.Group:
+      return data.filter((item) => item.type === "group");
     default:
-      return data;
+      return data.filter((item) => item.type === "contact");
   }
 };

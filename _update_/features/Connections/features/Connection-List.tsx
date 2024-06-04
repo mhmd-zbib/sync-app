@@ -1,3 +1,9 @@
+import data from "@/__test__/data/Connections.json";
+import AnimatedHeader from "@/components/AnimatedHeader";
+import SearchInput from "@/components/SearchInput";
+import ThemedText from "@/components/ThemedText";
+import { useTheme } from "@/hooks/useColorScheme";
+import useSearch from "@/hooks/useSearch";
 import React, { useState } from "react";
 import {
   Animated,
@@ -5,15 +11,9 @@ import {
   NativeScrollEvent,
   NativeSyntheticEvent,
 } from "react-native";
-import { useTheme } from "@/hooks/useColorScheme";
-import useSearch from "@/hooks/useSearch";
+import ConnectionListHeader from "../components/Connection-List/Connection-Tab";
 import { FilterOptions } from "../types/enums";
 import { filterData } from "../utils/connectionFilter";
-import AnimatedHeader from "@/components/AnimatedHeader";
-import SearchInput from "@/components/SearchInput";
-import data from "@/__test__/data/Contacts.json";
-import ConnectionListHeader from "../components/Connection-List/Connection-Tab";
-import ConnectionListItem from "../components/Connection-List/Connection-List-Item";
 
 const HEADER_HEIGHT = 70;
 
@@ -22,6 +22,7 @@ const ConnectionList = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [filter, setFilter] = useState(FilterOptions.All);
   const categoryData = filterData(data, filter);
+
   const searchableData = useSearch(
     categoryData,
     searchTerm,
@@ -50,8 +51,15 @@ const ConnectionList = () => {
           paddingBottom: 10,
         }}
         data={searchableData}
-        renderItem={({ item }) => <ConnectionListItem contact={item} />}
-        contentContainerStyle={{ paddingTop: HEADER_HEIGHT }}
+        renderItem={({ item }) => (
+          <ThemedText>
+            {filter === FilterOptions.Group ? item.title : item.name}
+          </ThemedText>
+        )}
+        contentContainerStyle={{
+          paddingTop: HEADER_HEIGHT,
+          backgroundColor: "red",
+        }}
         keyExtractor={(item) => item.id.toString()}
         onScroll={handleScroll}
       />

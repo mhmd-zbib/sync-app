@@ -1,0 +1,63 @@
+[
+  {
+    "id": 1,
+    "type": "contact",
+    "name": "Jane Doe",
+    "createdAt": 1630440800000,
+    "isTagged": true,
+    "isStarred": false
+  },
+  {
+    "id": 2,
+    "type": "group",
+    "title": "Physics",
+    "memberCount": 35,
+    "createdAt": 1630440800000
+  },
+  {
+    "id": 3,
+    "type": "contact",
+    "name": "Bob Johnson",
+    "createdAt": 1630440800000,
+    "isTagged": false,
+    "isStarred": true
+  },
+  {
+    "id": 4,
+    "type": "contact",
+    "name": "Alice Smith",
+    "createdAt": 1630440800000,
+    "isTagged": true,
+    "isStarred": false
+  },
+  {
+    "id": 5,
+    "type": "group",
+    "title": "Chemistry",
+    "memberCount": 28,
+    "createdAt": 1630440800000
+  },
+  {
+    "id": 6,
+    "type": "contact",
+    "name": "John Brown",
+    "createdAt": 1630440800000,
+    "isTagged": false,
+    "isStarred": true
+  },
+  {
+    "id": 7,
+    "type": "contact",
+    "name": "Emily Wilson",
+    "createdAt": 1630440800000,
+    "isTagged": true,
+    "isStarred": true
+  },
+  {
+    "id": 8,
+    "type": "group",
+    "title": "Mathematics",
+    "memberCount": 42,
+    "createdAt": 1630440800000
+  }
+]
