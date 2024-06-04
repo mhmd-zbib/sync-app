@@ -1,11 +1,11 @@
 import ThemedText from "@/components/ThemedText";
 import React from "react";
 import { StyleSheet, View } from "react-native";
-import ContactDescription from "../components/Contact-Info/Contact-Description";
-import InfoContainer from "../components/Contact-Info/Info-Container";
-import ContactCommunication from "../components/Contact-Info/Contact-Communication";
-import { ContactTagList } from "../components/Contact-Info/Contact-TagList";
-import ContactExperience from "../components/Contact-Info/Contact-Experience";
+import ContactDescription from "../components/Info/Contact-Description";
+import InfoContainer from "../components/Info/Info-Container";
+import ContactCommunication from "../components/Info/Contact-Communication";
+import { ContactTagList } from "../components/Info/Contact-Tag-List";
+import ContactExperience from "../components/Info/Contact-Experience";
 
 const DATA = {
   description: "",
@@ -13,7 +13,15 @@ const DATA = {
     phone_number: 54,
     email_address: "afa",
   },
-  tags: [{ name: "contact", id: 1, color: "green" }],
+  tags: [
+    { name: "contact", id: 1, color: "orange" },
+    { name: "contact", id: 1, color: "red" },
+    { name: "contact", id: 1, color: "purple" },
+    { name: "contact", id: 1, color: "pink" },
+    { name: "contact", id: 1, color: "pink" },
+    { name: "contact", id: 1, color: "green" },
+    { name: "contact", id: 1, color: "blue" },
+  ],
   experience: [
     {
       title: "Neurochemical Doctor",

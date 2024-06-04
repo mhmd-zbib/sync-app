@@ -1,5 +1,5 @@
 /**
- * Connection item for ConnectionList (mainly contacts now)
+ * Connection list item
  */
 
 import Avatar from "@/components/Avatar";

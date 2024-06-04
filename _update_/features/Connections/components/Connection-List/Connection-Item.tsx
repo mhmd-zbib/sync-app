@@ -1,3 +1,8 @@
+/**
+ * Connection items have same render item with diff modifications
+ * this is the main format of the cards
+ */
+
 import { Card } from "@/components/Card";
 import { Link } from "expo-router";
 import React from "react";

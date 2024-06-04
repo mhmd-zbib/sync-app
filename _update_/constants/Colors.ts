@@ -1,5 +1,5 @@
 const shared = {
-  primary: "lightblue",
+  // primary: "lightblue",
 };
 
 const themes = {

@@ -1,6 +1,7 @@
 import ThemedText from "@/components/ThemedText";
 import { View } from "react-native";
 import EmptyComponent from "./Empty-Component";
+import ContactTagItem from "./Contact-Tag-Item";
 
 interface ContactTagListProps {
   tags: TagsType[];
@@ -18,15 +19,7 @@ export const ContactTagList = ({ tags }: ContactTagListProps) => {
         flexWrap: "wrap",
       }}>
       {tags.map((tag) => (
-        <ThemedText
-          style={{
-            backgroundColor: tag.color,
-            paddingHorizontal: 8,
-            paddingVertical: 3,
-            borderRadius: 6,
-          }}>
-          {tag.name}
-        </ThemedText>
+        <ContactTagItem tag={tag} />
       ))}
     </View>
   );

@@ -11,14 +11,18 @@ interface ContactTabProps {
 const ContactTab = ({ tab, setTab }: ContactTabProps) => {
   const buttonTitles: ContactTabs[] = [
     ContactTabs.Info,
-    ContactTabs.Groups,
     ContactTabs.Notes,
     ContactTabs.Reminders,
+    ContactTabs.Groups,
   ];
 
   return (
     <View
-      style={{ flexDirection: "row", gap: 10, justifyContent: "space-around" }}>
+      style={{
+        flexDirection: "row",
+        gap: 10,
+        justifyContent: "space-between",
+      }}>
       {buttonTitles.map((title) => (
         <Button
           key={title}

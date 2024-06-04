@@ -19,7 +19,6 @@ import ContactListItem from "../components/Connection-List/Contact-List-Item";
 import { Contact, Group } from "../types/interfaces";
 
 const HEADER_HEIGHT = 70;
-
 const ConnectionList = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [filter, setFilter] = useState(FilterOptions.All);
