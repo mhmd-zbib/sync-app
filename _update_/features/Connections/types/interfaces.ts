@@ -28,6 +28,8 @@ export interface Connections {
   isStarred?: boolean;
   memberCount?: number;
   isPinned?: boolean;
+  emoji?: string;
+  color?: string;
 }
 
 export interface Group {
@@ -35,6 +37,8 @@ export interface Group {
   name: string;
   createdAt: number;
   memberCount: number;
+  color: string;
+  emoji: string;
 }
 
 export interface GroupItemProps {

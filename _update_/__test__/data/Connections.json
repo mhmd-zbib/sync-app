@@ -13,7 +13,9 @@
     "type": "group",
     "name": "Physics",
     "memberCount": 35,
-    "createdAt": 1630440800000
+    "createdAt": 1630440800000,
+    "color": "#D08",
+    "emoji": ":dollar:"
   },
   {
     "id": 3,

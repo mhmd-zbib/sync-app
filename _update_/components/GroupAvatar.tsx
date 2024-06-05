@@ -1,6 +1,7 @@
 import React from "react";
 import { View } from "react-native";
 import Emoji from "react-native-emoji";
+import Avatar from "./Avatar";
 
 interface GroupAvatarProps {
   emoji: string;
@@ -9,6 +10,8 @@ interface GroupAvatarProps {
 }
 
 const GroupAvatar = ({ emoji, color, size = 35 }: GroupAvatarProps) => {
+  if (!emoji || !color) return <Avatar name="G R" />;
+
   return (
     <View
       style={{

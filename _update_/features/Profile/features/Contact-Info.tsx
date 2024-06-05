@@ -60,7 +60,7 @@ const ContactInfo = () => {
       </InfoContainer>
 
       <InfoContainer title="Experience">
-        <ContactExperience experience={experience} />
+        <ContactExperience experiences={experience} />
       </InfoContainer>
     </View>
   );

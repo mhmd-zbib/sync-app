@@ -9,12 +9,15 @@ import React from "react";
 import { StyleSheet, View } from "react-native";
 import { GroupItemProps } from "../../types/interfaces";
 import ConnectionItem from "./Connection-Item";
+import GroupAvatar from "@/components/GroupAvatar";
 
 const GroupListItem = ({ group }: GroupItemProps) => {
   const theme = useTheme();
   return (
     <ConnectionItem href="">
-      <Avatar name={group.name} />
+      <GroupAvatar emoji={group.emoji} color={group.color} size={56} />
+
+      {/* <Avatar name={group.name} /> */}
       <View style={styles.groupInfo}>
         <ThemedText>{group.name}</ThemedText>
         <ThemedText
