@@ -17,7 +17,7 @@ import { FilterOptions } from "../types/enums";
 import { filterData } from "../utils/connectionFilter";
 import GroupListItem from "../components/Connection-List/Group-List-Item";
 import ContactListItem from "../components/Connection-List/Contact-List-Item";
-import { Contact, Group } from "../types/interfaces";
+import { ConnectionData, Contact, Group } from "../types/interfaces";
 
 const HEADER_HEIGHT = 70;
 const ConnectionList = () => {
@@ -40,7 +40,7 @@ const ConnectionList = () => {
   return (
     <>
       <AnimatedHeader scrollY={scrollY} headerHeight={HEADER_HEIGHT}>
-        {/* <ThemedText size={18}>Connections</ThemedText> */}
+        {/* <ThemedText sisze={18}>Connections</ThemedText> */}
         <SearchInput value={searchTerm} onChangeText={setSearchTerm} />
       </AnimatedHeader>
 

@@ -14,10 +14,9 @@ import GroupAvatar from "@/components/GroupAvatar";
 const GroupListItem = ({ group }: GroupItemProps) => {
   const theme = useTheme();
   return (
-    <ConnectionItem href="">
+    <ConnectionItem href={`group/${group.id}`}>
       <GroupAvatar emoji={group.emoji} color={group.color} size={56} />
 
-      {/* <Avatar name={group.name} /> */}
       <View style={styles.groupInfo}>
         <ThemedText>{group.name}</ThemedText>
         <ThemedText

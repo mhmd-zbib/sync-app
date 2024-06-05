@@ -1,6 +1,5 @@
-import { View, Text, FlatList } from "react-native";
 import React from "react";
-import ThemedText from "@/components/ThemedText";
+import { FlatList } from "react-native";
 import ContactGroupItem from "./Contact-Group-Item";
 
 interface GroupListProp {
@@ -10,6 +9,7 @@ interface GroupListProp {
 const ContactGroupList = ({ groups }: GroupListProp) => {
   return (
     <FlatList
+      scrollEnabled={false}
       data={groups}
       contentContainerStyle={{ gap: 10 }}
       columnWrapperStyle={{ gap: 10 }}

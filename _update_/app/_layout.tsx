@@ -1,4 +1,4 @@
-import { Stack } from "expo-router";
+import { Stack, usePathname } from "expo-router";
 import "react-native-reanimated";
 
 import {
@@ -60,7 +60,6 @@ function StackWrapper() {
   const userTheme = useTheme();
   useEffect(() => {
     SystemUI.setBackgroundColorAsync(userTheme.background);
-    console.log("hisss");
   }, []);
 
   return (
@@ -76,7 +75,11 @@ function StackWrapper() {
         headerLeft: BackButton,
       }}>
       <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-      <Stack.Screen name="contact" options={{ headerTitle: "Profile" }} />
+      <Stack.Screen
+        name="contact/[id]/index"
+        options={{ headerTitle: "Profile" }}
+      />
+      <Stack.Screen name="group/[id]" options={{ headerTitle: "Group Info" }} />
       <Stack.Screen name="test" options={{ headerShown: false }} />
     </Stack>
   );

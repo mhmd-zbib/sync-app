@@ -1,3 +1,4 @@
+import ThemedText from "@/components/ThemedText";
 import ContactGroup from "@/features/Contact-Group/features/Contact-Group";
 import ContactReminder from "@/features/Contact-Reminder/features/Contact-Reminder";
 import NoteList from "@/features/Notes/features/Note-List";
@@ -6,6 +7,7 @@ import ContactInfo from "@/features/Profile/features/Contact-Info";
 import ContactLinks from "@/features/Profile/features/Contact-Links";
 import ContactTab from "@/features/Profile/features/Contact-Tab";
 import { ContactTabs } from "@/features/Profile/types/enums";
+import { useLocalSearchParams } from "expo-router";
 import React, { useMemo, useState } from "react";
 import { ScrollView, View } from "react-native";
 
@@ -21,8 +23,9 @@ const fakeData = [
   { platform: "tumblr", link: "https://example.tumblr.com/" },
 ];
 
-const ContactLayout = () => {
+const ContactScreen = () => {
   const [tab, setTab] = useState<ContactTabs>(ContactTabs.Info);
+  const { id } = useLocalSearchParams();
 
   const tabComponents = useMemo(
     () => ({
@@ -38,6 +41,7 @@ const ContactLayout = () => {
     <ScrollView bounces={false} overScrollMode="never">
       <View style={{ paddingHorizontal: 10, gap: 16 }}>
         <ContactHeader />
+        <ThemedText>{id}</ThemedText>
         <ContactLinks links={fakeData} />
         <ContactTab tab={tab} setTab={setTab} />
         {tabComponents[tab]}
@@ -46,4 +50,4 @@ const ContactLayout = () => {
   );
 };
 
-export default ContactLayout;
+export default ContactScreen;
