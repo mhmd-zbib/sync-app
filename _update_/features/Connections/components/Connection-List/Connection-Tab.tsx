@@ -16,8 +16,9 @@ const ConnectionListHeader: React.FC<ConnectionListHeaderProps> = ({
   const buttonTitles: FilterOptions[] = [
     FilterOptions.All,
     FilterOptions.Group,
-    FilterOptions.Tagged,
     FilterOptions.Starred,
+    FilterOptions.Tagged,
+    FilterOptions.unTagged,
   ];
 
   return (

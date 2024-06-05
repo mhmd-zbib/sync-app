@@ -33,12 +33,16 @@ export function formatFullDateTime(timestamp: number): string {
 // Format: 8 Aug 2023
 export function formatShortDate(timestamp: number): string {
   const date = new Date(timestamp * 1000);
-  const options: Intl.DateTimeFormatOptions = {
-    month: "short",
-    day: "numeric",
-    year: "numeric",
-  };
-  return date.toLocaleDateString("en-US", options);
+
+  // Get the day, month, and year from the date object
+  const day = date.getDate();
+  const month = date.toLocaleDateString("en-US", { month: "short" }); // Get short month name
+  const year = date.getFullYear();
+
+  // Concatenate the components to form the desired format
+  const formattedDate = `${day} ${month} ${year}`;
+
+  return formattedDate;
 }
 
 // Format: 31/5/2024

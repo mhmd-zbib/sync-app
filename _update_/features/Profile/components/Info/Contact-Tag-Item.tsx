@@ -17,11 +17,11 @@ const ContactTagItem: React.FC<TagItemType> = ({ tag }) => {
     backgroundColor: colorToRGBA(tagColor, 0.15),
     borderColor: colorToRGBA(tagColor, 0.8),
   };
-  const textStyle = { color: colorToRGBA(tagColor, 0.8) };
+  const textStyle = { color: colorToRGBA(tagColor, 1) };
 
   return (
     <View style={containerStyle}>
-      <Text style={textStyle}>{tag.name}</Text>
+      <Text style={[textStyle, { fontSize: 12 }]}>{tag.name}</Text>
     </View>
   );
 };

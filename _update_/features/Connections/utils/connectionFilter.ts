@@ -12,12 +12,16 @@ export const filterData = (
   switch (filter) {
     case FilterOptions.Tagged:
       return data
-        .filter((item) => item.isTagged)
+        .filter((item) => item.tag)
+        .map(({ isPinned, ...rest }) => rest);
+    case FilterOptions.unTagged:
+      return data
+        .filter((item) => !item.tag && item.type === "contact")
         .map(({ isPinned, ...rest }) => rest);
     case FilterOptions.Starred:
       return data
         .filter((item) => item.isStarred)
-        .map(({ isStarred, isPinned, ...rest }) => rest); // When passing the starred to their place we dont wanna have the star (they arl are starred)
+        .map(({ isStarred, isPinned, ...rest }) => rest);
     case FilterOptions.Group:
       return data.filter((item) => item.type === "group");
     default:

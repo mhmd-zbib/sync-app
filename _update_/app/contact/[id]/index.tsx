@@ -1,4 +1,3 @@
-import ThemedText from "@/components/ThemedText";
 import ContactGroup from "@/features/Contact-Group/features/Contact-Group";
 import ContactReminder from "@/features/Contact-Reminder/features/Contact-Reminder";
 import NoteList from "@/features/Notes/features/Note-List";
@@ -26,7 +25,6 @@ const fakeData = [
 const ContactScreen = () => {
   const [tab, setTab] = useState<ContactTabs>(ContactTabs.Info);
   const { id } = useLocalSearchParams();
-
   const tabComponents = useMemo(
     () => ({
       [ContactTabs.Info]: <ContactInfo />,
@@ -41,7 +39,6 @@ const ContactScreen = () => {
     <ScrollView bounces={false} overScrollMode="never">
       <View style={{ paddingHorizontal: 10, gap: 16 }}>
         <ContactHeader />
-        <ThemedText>{id}</ThemedText>
         <ContactLinks links={fakeData} />
         <ContactTab tab={tab} setTab={setTab} />
         {tabComponents[tab]}

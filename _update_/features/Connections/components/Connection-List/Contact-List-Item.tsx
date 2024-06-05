@@ -10,7 +10,8 @@ import { View } from "react-native";
 import { ContactItemProps } from "../../types/interfaces";
 import ConnectionItem from "./Connection-Item";
 import { useTheme } from "@/hooks/useColorScheme";
-import { formatDateDMY } from "@/utils/format-date";
+import { formatDateDMY, formatShortDate } from "@/utils/format-date";
+import ContactTagItem from "@/features/Profile/components/Info/Contact-Tag-Item";
 
 const ContactListItem = ({ contact }: ContactItemProps) => {
   const theme = useTheme();
@@ -18,29 +19,59 @@ const ContactListItem = ({ contact }: ContactItemProps) => {
     <ConnectionItem href={`contact/${contact.id}`}>
       <View>
         {contact.isStarred && (
-          <AntDesign
-            name="star"
+          <View
             style={{
               position: "absolute",
               zIndex: 800,
               right: 0,
               bottom: 0,
-            }}
-            size={18}
-            color={"#D69010"}
-          />
+              alignItems: "center",
+              justifyContent: "center",
+            }}>
+            <AntDesign
+              style={{ position: "absolute" }}
+              name="star"
+              size={18}
+              color={"#ffcd17"}
+            />
+            <AntDesign name="staro" size={20} color={"white"} />
+          </View>
         )}
         <Avatar name={contact.name} />
       </View>
+      <View style={{ gap: 5 }}>
+        <ThemedText>{contact.name}</ThemedText>
+        {contact.tag && (
+          <ContactTagItem tag={contact.tag} />
 
-      <ThemedText>{contact.name}</ThemedText>
-      {contact.isPinned && (
-        <Octicons name="pin" size={16} color={theme.textAccent} />
-      )}
+          // <ThemedText
+          //   variant="secondary"
+          //   style={{
+          //     backgroundColor: theme.accent,
+          //     paddingVertical: 3,
+          //     paddingHorizontal: 8,
+          //     borderRadius: 5,
+          //   }}
+          //   size={12}>
+          //   {contact.position}
+          // </ThemedText>
+        )}
+      </View>
 
-      <ThemedText variant="secondary" size={12} style={{ marginLeft: "auto" }}>
-        {formatDateDMY(contact.createdAt)}
-      </ThemedText>
+      <View
+        style={{
+          marginLeft: "auto",
+          alignItems: "flex-end",
+          justifyContent: "space-between",
+          gap: 8,
+        }}>
+        <ThemedText variant="secondary" size={12}>
+          {formatShortDate(contact.createdAt)}
+        </ThemedText>
+        {contact.isPinned && (
+          <Octicons name="pin" size={16} color={theme.textAccent} />
+        )}
+      </View>
     </ConnectionItem>
   );
 };

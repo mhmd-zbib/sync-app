@@ -3,17 +3,22 @@
     "id": 1,
     "type": "contact",
     "name": "Jane Doe",
-    "createdAt": 1630440800000,
+    "createdAt": 1679481600,
     "isTagged": true,
     "isStarred": false,
-    "isPinned": true
+    "isPinned": true,
+    "tag": {
+      "id": 2,
+      "color": "blue",
+      "name": "Product Manager"
+    }
   },
   {
     "id": 2,
     "type": "group",
     "name": "Physics",
     "memberCount": 35,
-    "createdAt": 1630440800000,
+    "createdAt": 1679481600,
     "color": "#D08",
     "emoji": ":dollar:"
   },
@@ -23,7 +28,7 @@
     "name": "Bob Johnson",
     "createdAt": 1630440800000,
     "isTagged": false,
-    "isStarred": true
+    "isStarred": false
   },
   {
     "id": 4,
@@ -31,7 +36,12 @@
     "name": "Alice Smith",
     "createdAt": 1630440800000,
     "isTagged": true,
-    "isStarred": false
+    "isStarred": true,
+    "tag": {
+      "id": 2,
+      "color": "red",
+      "name": "Shop Owner"
+    }
   },
   {
     "id": 5,

@@ -17,6 +17,7 @@ export interface Contact {
   isStarred: boolean;
   isPinned: boolean;
   createdAt: number;
+  tag: TagsType;
 }
 
 export interface Connections {
@@ -30,6 +31,7 @@ export interface Connections {
   isPinned?: boolean;
   emoji?: string;
   color?: string;
+  tag?: TagsType;
 }
 
 export interface Group {

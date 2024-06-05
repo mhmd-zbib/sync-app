@@ -4,4 +4,5 @@ export enum FilterOptions {
   Group = "Groups",
   Tagged = "Tagged",
   Starred = "Starred",
+  unTagged = "un-Tagged",
 }
