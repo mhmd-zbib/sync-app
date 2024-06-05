@@ -1,12 +1,13 @@
 import ThemedText from "@/components/ThemedText";
+import ContactReminder from "@/features/Contact-Reminders/features/Contact-Reminder";
 import NoteList from "@/features/Notes/features/Note-List";
 import ContactHeader from "@/features/Profile/features/Contact-Header";
 import ContactInfo from "@/features/Profile/features/Contact-Info";
 import ContactLinks from "@/features/Profile/features/Contact-Links";
 import ContactTab from "@/features/Profile/features/Contact-Tab";
 import { ContactTabs } from "@/features/Profile/types/enums";
-import React, { useState, useMemo } from "react";
-import { ScrollView, View, Animated } from "react-native";
+import React, { useMemo, useState } from "react";
+import { ScrollView, View } from "react-native";
 
 const fakeData = [
   { platform: "facebook", link: "https://www.facebook.com/example" },
@@ -27,7 +28,7 @@ const ContactLayout = () => {
     () => ({
       [ContactTabs.Info]: <ContactInfo />,
       [ContactTabs.Notes]: <NoteList />,
-      [ContactTabs.Reminders]: <ThemedText>Reminders</ThemedText>,
+      [ContactTabs.Reminders]: <ContactReminder />,
       [ContactTabs.Groups]: <ThemedText>Groups</ThemedText>,
     }),
     []

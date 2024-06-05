@@ -1,59 +1,9 @@
-import { View, Text, FlatList } from "react-native";
-import React, { useState } from "react";
-import NoteItem from "../components/Note-List-Item";
 import SearchInput from "@/components/SearchInput";
 import useSearch from "@/hooks/useSearch";
-
-const NOTE = [
-  {
-    id: 124,
-    createdAt: 12412412412,
-    title: "note title",
-    details: "Note description",
-  },
-  {
-    id: 12,
-    createdAt: 12412412412,
-    title: "note title",
-    details: "Note description",
-  },
-  {
-    id: 2,
-    createdAt: 12412412412,
-    title: "note title",
-    details: "Note description",
-  },
-  {
-    id: 2,
-    createdAt: 12412412412,
-    title: "note title",
-    details: "Note description",
-  },
-  {
-    id: 2,
-    createdAt: 12412412412,
-    title: "note title",
-    details: "Note description",
-  },
-  {
-    id: 2,
-    createdAt: 12412412412,
-    title: "note title",
-    details: "Note description",
-  },
-  {
-    id: 2,
-    createdAt: 12412412412,
-    title: "note title",
-    details: "Note description",
-  },
-  {
-    id: 2,
-    createdAt: 12412412412,
-    title: "note title",
-    details: "Note description",
-  },
-];
+import React, { useState } from "react";
+import { FlatList } from "react-native";
+import NoteItem from "../components/Note-List-Item";
+import NOTE from "@/__test__/data/Notes.json";
 
 const NoteList = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -61,6 +11,7 @@ const NoteList = () => {
 
   return (
     <FlatList
+      scrollEnabled={false}
       ListHeaderComponent={
         <SearchInput value={searchTerm} onChangeText={setSearchTerm} />
       }

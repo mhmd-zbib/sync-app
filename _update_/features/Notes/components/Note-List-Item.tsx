@@ -13,7 +13,9 @@ const NoteItem = ({ note }: NoteItemProps) => {
         {note.createdAt}
       </ThemedText>
       <ThemedText size={16}>{note.title}</ThemedText>
-      <ThemedText variant="secondary">{note.details}</ThemedText>
+      <ThemedText variant="secondary" numberOfLines={4}>
+        {note.details}
+      </ThemedText>
     </Card>
   );
 };
