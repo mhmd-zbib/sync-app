@@ -13,11 +13,11 @@ export interface ConnectionListHeaderProps {
 export interface Contact {
   id: number;
   name: string;
-  isTagged: boolean;
-  isStarred: boolean;
-  isPinned: boolean;
+  isTagged?: boolean;
+  isStarred?: boolean;
+  isPinned?: boolean;
   createdAt: number;
-  tag: TagsType;
+  tag?: TagsType;
 }
 
 export interface Connections {

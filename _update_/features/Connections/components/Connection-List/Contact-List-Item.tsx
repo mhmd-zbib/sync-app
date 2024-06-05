@@ -4,14 +4,14 @@
 
 import Avatar from "@/components/Avatar";
 import ThemedText from "@/components/ThemedText";
+import ContactTagItem from "@/features/Profile/components/Info/Contact-Tag-Item";
+import { useTheme } from "@/hooks/useColorScheme";
+import { formatShortDate } from "@/utils/format-date";
 import { AntDesign, Octicons } from "@expo/vector-icons";
 import React from "react";
 import { View } from "react-native";
 import { ContactItemProps } from "../../types/interfaces";
 import ConnectionItem from "./Connection-Item";
-import { useTheme } from "@/hooks/useColorScheme";
-import { formatDateDMY, formatShortDate } from "@/utils/format-date";
-import ContactTagItem from "@/features/Profile/components/Info/Contact-Tag-Item";
 
 const ContactListItem = ({ contact }: ContactItemProps) => {
   const theme = useTheme();

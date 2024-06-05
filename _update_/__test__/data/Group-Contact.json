@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1,
+    "type": "contact",
+    "name": "Jane Doe",
+    "createdAt": 1679481600
+  },
+  {
+    "id": 4,
+    "type": "contact",
+    "name": "Jane Doe",
+    "createdAt": 1679481600
+  }
+]
