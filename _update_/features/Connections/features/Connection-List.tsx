@@ -10,6 +10,7 @@ import {
   FlatList,
   NativeScrollEvent,
   NativeSyntheticEvent,
+  View,
 } from "react-native";
 import ConnectionListHeader from "../components/Connection-List/Connection-Tab";
 import { FilterOptions } from "../types/enums";
@@ -33,9 +34,13 @@ const ConnectionList = () => {
     scrollY.setValue(e.nativeEvent.contentOffset.y);
   };
 
+  const pinned = searchableData.filter((contact) => contact.isPinned);
+  const unPinned = searchableData.filter((contact) => !contact.isPinned);
+
   return (
     <>
       <AnimatedHeader scrollY={scrollY} headerHeight={HEADER_HEIGHT}>
+        {/* <ThemedText size={18}>Connections</ThemedText> */}
         <SearchInput value={searchTerm} onChangeText={setSearchTerm} />
       </AnimatedHeader>
 
@@ -46,7 +51,7 @@ const ConnectionList = () => {
           <ConnectionListHeader filter={filter} setFilter={setFilter} />
         }
         stickyHeaderHiddenOnScroll
-        data={searchableData}
+        data={[...pinned, ...unPinned]}
         renderItem={({ item }) => {
           switch (filter) {
             case FilterOptions.Group:

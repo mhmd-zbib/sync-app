@@ -15,6 +15,8 @@ export interface Contact {
   name: string;
   isTagged: boolean;
   isStarred: boolean;
+  isPinned: boolean;
+  createdAt: number;
 }
 
 export interface Connections {
@@ -25,6 +27,7 @@ export interface Connections {
   isTagged?: boolean;
   isStarred?: boolean;
   memberCount?: number;
+  isPinned?: boolean;
 }
 
 export interface Group {

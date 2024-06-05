@@ -5,7 +5,8 @@
     "name": "Jane Doe",
     "createdAt": 1630440800000,
     "isTagged": true,
-    "isStarred": false
+    "isStarred": false,
+    "isPinned": true
   },
   {
     "id": 2,
@@ -51,7 +52,8 @@
     "name": "Emily Wilson",
     "createdAt": 1630440800000,
     "isTagged": true,
-    "isStarred": true
+    "isStarred": true,
+    "isPinned": true
   },
   {
     "id": 8,

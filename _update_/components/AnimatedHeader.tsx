@@ -4,7 +4,7 @@
 
 import { useTheme } from "@/hooks/useColorScheme";
 import React from "react";
-import { Animated } from "react-native";
+import { Animated, View } from "react-native";
 
 interface AnimatedHeaderProps {
   scrollY: Animated.Value;
@@ -28,7 +28,7 @@ const AnimatedHeader = ({
   return (
     <Animated.View
       style={{
-        // alignItems: "center",
+        alignItems: "center",
         justifyContent: "center",
         backgroundColor: theme.background,
         zIndex: 900,
@@ -41,7 +41,14 @@ const AnimatedHeader = ({
         height: headerHeight,
         flex: 1,
       }}>
-      {children}
+      <View
+        style={{
+          height: headerHeight,
+          alignItems: "center",
+          justifyContent: "center",
+        }}>
+        {children}
+      </View>
     </Animated.View>
   );
 };

@@ -8,7 +8,7 @@ interface AvatarProps {
   size?: number;
 }
 
-const Avatar = ({ name, size = 48 }: AvatarProps) => {
+const Avatar = ({ name, size = 56 }: AvatarProps) => {
   const theme = useTheme();
 
   const words = name.split(" ");

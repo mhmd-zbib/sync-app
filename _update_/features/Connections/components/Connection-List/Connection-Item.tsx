@@ -18,6 +18,7 @@ const ConnectionItem = ({
     <Link href={href} asChild>
       <Card
         style={{
+          paddingVertical: 12,
           flexDirection: "row",
           alignItems: "center",
           gap: 10,
