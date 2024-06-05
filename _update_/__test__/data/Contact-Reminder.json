@@ -2,86 +2,26 @@
   {
     "id": 1,
     "title": "Assistant Professor",
-    "createdAt": "1689543162000"
+    "date": 1689543162000
   },
   {
     "id": 2,
     "title": "Structural Analysis Engineer",
-    "createdAt": "1694523637000"
+    "date": 1694523637000
+  },
+  {
+    "id": 9,
+    "title": "Structural Analysis Engineer",
+    "date": 1694523637000
   },
   {
     "id": 3,
     "title": "Automation Specialist III",
-    "createdAt": "1693836870000"
+    "date": 1693836870000
   },
   {
     "id": 4,
     "title": "Speech Pathologist",
-    "createdAt": "1705975367000"
-  },
-  {
-    "id": 5,
-    "title": "Senior Cost Accountant",
-    "createdAt": "1696334268000"
-  },
-  {
-    "id": 6,
-    "title": "Senior Editor",
-    "createdAt": "1695436971000"
-  },
-  {
-    "id": 7,
-    "title": "General Manager",
-    "createdAt": "1688107068000"
-  },
-  {
-    "id": 8,
-    "title": "Structural Engineer",
-    "createdAt": "1707317937000"
-  },
-  {
-    "id": 9,
-    "title": "Desktop Support Technician",
-    "createdAt": "1689451359000"
-  },
-  {
-    "id": 10,
-    "title": "Sales Representative",
-    "createdAt": "1717011743000"
-  },
-  {
-    "id": 11,
-    "title": "Dental Hygienist",
-    "createdAt": "1696234755000"
-  },
-  {
-    "id": 12,
-    "title": "Marketing Manager",
-    "createdAt": "1710754758000"
-  },
-  {
-    "id": 13,
-    "title": "Actuary",
-    "createdAt": "1698838802000"
-  },
-  {
-    "id": 14,
-    "title": "Health Coach II",
-    "createdAt": "1715694258000"
-  },
-  {
-    "id": 15,
-    "title": "Software Test Engineer III",
-    "createdAt": "1709480200000"
-  },
-  {
-    "id": 16,
-    "title": "Junior Executive",
-    "createdAt": "1691577844000"
-  },
-  {
-    "id": 17,
-    "title": "Paralegal",
-    "createdAt": "1691678017000"
+    "date": 1705975367000
   }
 ]

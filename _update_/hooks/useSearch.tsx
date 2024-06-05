@@ -4,9 +4,7 @@ import useDebounce from "./useDebounce";
 interface Item {
   [key: string]: any;
 }
-
 type KeyExtractorFn = (item: Item) => any;
-
 const useSearch = <T extends Item>(
   items: T[],
   searchTerm: string,
@@ -25,11 +23,9 @@ const useSearch = <T extends Item>(
     if (typeof keyExtractor !== "function") {
       throw new Error("'keyExtractor' must be a function.");
     }
-
     if (!debouncedSearchTerm.trim()) {
       return items;
     }
-
     const lowercasedTerm = debouncedSearchTerm.toLowerCase();
     const filteredItems = items.filter((item) =>
       keyExtractor(item)?.toString().toLowerCase().includes(lowercasedTerm)

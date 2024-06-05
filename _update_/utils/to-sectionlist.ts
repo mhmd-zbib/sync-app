@@ -6,7 +6,7 @@
  */
 export function convertToSectionListFormat<T>(
   inputData: T[],
-  getKey: (item: T) => string
+  getKey: (item: T) => any
 ): { title: string; data: T[] }[] {
   const groupedData: { [key: string]: T[] } = {};
 
