@@ -21,7 +21,7 @@ const ContactReminderItem = ({ reminder }: ContactReminderProps) => {
         flexDirection: "row",
         alignItems: "center",
         gap: 8,
-        marginVertical: 3,
+        marginBottom: 16,
       }}>
       <View
         style={{

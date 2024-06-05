@@ -1,0 +1,51 @@
+[
+  {
+    "id": 1,
+    "name": "Simone",
+    "memberCount": 11,
+    "color": "#e24d86",
+    "emoji": ":heart:"
+  },
+  {
+    "id": 2,
+    "name": "Theodor",
+    "memberCount": 6,
+    "color": "#9ca2b9",
+    "emoji": ":star:"
+  },
+  {
+    "id": 3,
+    "name": "Rosella",
+    "memberCount": 6,
+    "color": "#0cdc04",
+    "emoji": ":fire:"
+  },
+  {
+    "id": 4,
+    "name": "Forrest",
+    "memberCount": 19,
+    "color": "#f775a0",
+    "emoji": ":smile:"
+  },
+  {
+    "id": 5,
+    "name": "Mil",
+    "memberCount": 8,
+    "color": "#e59ea8",
+    "emoji": ":star:"
+  },
+  {
+    "id": 6,
+    "name": "Berri",
+    "memberCount": 4,
+    "color": "#d2785d",
+    "emoji": ":fire:"
+  },
+  {
+    "id": 7,
+    "name": "Natalee",
+    "memberCount": 4,
+    "color": "#0d9cbd",
+    "emoji": ":star:"
+  }
+]

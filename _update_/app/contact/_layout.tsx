@@ -1,5 +1,5 @@
-import ThemedText from "@/components/ThemedText";
-import ContactReminder from "@/features/Contact-Reminders/features/Contact-Reminder";
+import ContactGroup from "@/features/Contact-Group/features/Contact-Group";
+import ContactReminder from "@/features/Contact-Reminder/features/Contact-Reminder";
 import NoteList from "@/features/Notes/features/Note-List";
 import ContactHeader from "@/features/Profile/features/Contact-Header";
 import ContactInfo from "@/features/Profile/features/Contact-Info";
@@ -29,7 +29,7 @@ const ContactLayout = () => {
       [ContactTabs.Info]: <ContactInfo />,
       [ContactTabs.Notes]: <NoteList />,
       [ContactTabs.Reminders]: <ContactReminder />,
-      [ContactTabs.Groups]: <ThemedText>Groups</ThemedText>,
+      [ContactTabs.Groups]: <ContactGroup />,
     }),
     []
   );

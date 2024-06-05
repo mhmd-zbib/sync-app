@@ -12,7 +12,7 @@ export const Card = ({ children, onPress, style, ...props }: CardProps) => {
     <ThemedView
       onPress={onPress}
       style={[
-        { borderRadius: 16, paddingHorizontal: 16, paddingVertical: 12 },
+        { borderRadius: 16, paddingHorizontal: 16, paddingVertical: 16 },
         style,
       ]}
       color="secondary">
