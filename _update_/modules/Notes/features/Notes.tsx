@@ -1,19 +1,19 @@
-import groups from "@/__test__/data/Groups.json";
+import NOTE from "@/__test__/data/Notes.json";
 import SearchInput from "@/components/SearchInput";
 import useSearch from "@/hooks/useSearch";
 import React, { useState } from "react";
-import ContactGroupList from "../components/Contact-Group-List";
+import NoteList from "../components/Note-List";
 
-const ContactGroup = () => {
+const Notes = () => {
   const [searchTerm, setSearchTerm] = useState("");
-  const searchable = useSearch(groups, searchTerm, (item) => item.name);
+  const searchable = useSearch(NOTE, searchTerm, (item) => item.title);
 
   return (
     <>
       <SearchInput value={searchTerm} onChangeText={setSearchTerm} />
-      <ContactGroupList groups={searchable} />
+      <NoteList notes={searchable} />
     </>
   );
 };
 
-export default ContactGroup;
+export default Notes;

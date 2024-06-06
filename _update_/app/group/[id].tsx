@@ -1,8 +1,8 @@
 import ThemedText from "@/components/ThemedText";
-import GroupContact from "@/features/Group-Details/features/Group-Contact";
-import GroupHeader from "@/features/Group-Details/features/Group-Header";
-import GroupTab from "@/features/Group-Details/features/Group-Tab";
-import { GroupTabs } from "@/features/Group-Details/types/enums";
+import GroupContact from "@/modules/Group/features/Group-Members";
+import GroupHeader from "@/modules/Group/features/Group-Header";
+import GroupTab from "@/modules/Group/features/Group-Tab";
+import { GroupTabs } from "@/modules/Group/types/enums";
 import React, { useMemo, useState } from "react";
 import { View } from "react-native";
 

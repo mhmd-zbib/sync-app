@@ -1,11 +1,12 @@
-import ContactGroup from "@/features/Contact-Group/features/Contact-Group";
-import ContactReminder from "@/features/Contact-Reminder/features/Contact-Reminder";
-import NoteList from "@/features/Notes/features/Note-List";
-import ContactHeader from "@/features/Profile/features/Contact-Header";
-import ContactInfo from "@/features/Profile/features/Contact-Info";
-import ContactLinks from "@/features/Profile/features/Contact-Links";
-import ContactTab from "@/features/Profile/features/Contact-Tab";
-import { ContactTabs } from "@/features/Profile/types/enums";
+import ContactHeader from "@/modules/Contact/features/Contact-Header";
+import ContactInfo from "@/modules/Contact/features/Contact-Info";
+import ContactLinks from "@/modules/Contact/features/Contact-Links";
+import ContactTab from "@/modules/Contact/features/Contact-Tab";
+import { ContactTabs } from "@/modules/Contact/types/enums";
+import ContactGroups from "@/modules/Group/features/Contact-Group";
+// import ContactGroup from "@/modules/Group/features/Contact-Group";
+import Notes from "@/modules/Notes/features/Notes";
+import ContactReminder from "@/modules/Reminders/features/Contact-Reminder";
 import { useLocalSearchParams } from "expo-router";
 import React, { useMemo, useState } from "react";
 import { ScrollView, View } from "react-native";
@@ -28,9 +29,9 @@ const ContactScreen = () => {
   const tabComponents = useMemo(
     () => ({
       [ContactTabs.Info]: <ContactInfo />,
-      [ContactTabs.Notes]: <NoteList />,
+      [ContactTabs.Notes]: <Notes />,
       [ContactTabs.Reminders]: <ContactReminder />,
-      [ContactTabs.Groups]: <ContactGroup />,
+      [ContactTabs.Groups]: <ContactGroups />,
     }),
     []
   );

@@ -4,7 +4,7 @@
 
 import Avatar from "@/components/Avatar";
 import ThemedText from "@/components/ThemedText";
-import ContactTagItem from "@/features/Profile/components/Info/Contact-Tag-Item";
+import ContactTagItem from "@/modules/Contact/components/Info/Contact-Tag-Item";
 import { useTheme } from "@/hooks/useColorScheme";
 import { formatShortDate } from "@/utils/format-date";
 import { AntDesign, Octicons } from "@expo/vector-icons";
