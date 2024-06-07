@@ -1,0 +1,22 @@
+{
+  "id": 1,
+  "title": "Senior Editor",
+  "details": "Proin interdum mauris non ligula pellentesque ultrices. Phasellus id sapien in sapien iaculis congue. Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl.\n\nAenean lectus. Pellentesque eget nunc. Donec quis orci eget orci vehicula condimentum.\n\nCurabitur in libero ut massa volutpat convallis. Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo. Maecenas pulvinar lobortis est.",
+  "tags": [
+    {
+      "name": "Enrichetta",
+      "id": 1
+    },
+
+    {
+      "name": "Enrichetta",
+      "id": 1
+    },
+    {
+      "name": "Enrichetta",
+      "id": 1
+    }
+  ],
+  "completed": false,
+  "dueTo": "1714148595000"
+}
