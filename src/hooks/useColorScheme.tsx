@@ -11,6 +11,7 @@ export interface Theme {
   subAccent?: string;
   secondary: string;
   background: string;
+  key?: string;
 }
 
 const ThemeContext = createContext<Theme | undefined>(undefined);

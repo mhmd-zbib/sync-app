@@ -1,5 +1,6 @@
 import ThemedText from "@/components/ThemedText";
-import DashboardConnection from "@/modules/Dashboard/features/Dashboard-Connection";
+import DashboardContact from "@/modules/Dashboard/features/Dashboard-Contact";
+import DashboardConnection from "@/modules/Dashboard/features/Reminders-Created";
 import React from "react";
 import { ScrollView, View } from "react-native";
 
@@ -17,6 +18,7 @@ const DashboardScreen = () => {
         </View>
 
         <DashboardConnection />
+        <DashboardContact />
       </View>
     </ScrollView>
   );
