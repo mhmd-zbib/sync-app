@@ -1,8 +1,7 @@
 import { Card } from "@/components/Card";
 import React from "react";
-import DashboardContainer from "../components/Dashboard-Container";
-import RingProgress from "../../../components/Ring-Graph";
 import BarGraph from "../../../components/Bar-Graph";
+import DashboardContainer from "../components/Dashboard-Container";
 
 const RemindersCreated = () => {
   const data = [

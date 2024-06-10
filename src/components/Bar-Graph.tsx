@@ -36,7 +36,7 @@ const BarGraph: React.FC<BarGraphProps> = ({ data }) => {
     const margin = 10;
     const bars = data.map((item, index) => {
       const aboveAverage = item.value > average + margin;
-      const backgroundColor = aboveAverage ? "#2970FF" : theme.accent;
+      const backgroundColor = aboveAverage ? theme.primary : theme.accent;
 
       return (
         <View key={index} style={styles.barContainer}>
@@ -44,7 +44,7 @@ const BarGraph: React.FC<BarGraphProps> = ({ data }) => {
             style={[
               styles.bar,
               {
-                height: (item.value / maxValue) * 120,
+                height: (item.value / maxValue) * 170,
                 backgroundColor,
               },
             ]}
