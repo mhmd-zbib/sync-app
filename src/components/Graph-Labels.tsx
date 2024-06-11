@@ -1,24 +1,55 @@
 import React from "react";
-import { Text } from "react-native-svg";
+import { View } from "react-native";
+import ThemedText from "@/components/ThemedText";
+import { useTheme } from "@/hooks/useColorScheme";
+import { StyleSheet } from "react-native";
 
-type LabelProps = {
-  x: number;
-  y: number;
-  text: string | number;
-  fontSize?: number;
-  color?: string;
+interface BarLabelProps {
+  value: number;
+  isSelected: boolean;
+}
+
+const GraphLabel: React.FC<BarLabelProps> = ({ value, isSelected }) => {
+  const theme = useTheme();
+
+  return (
+    <View style={styles.container}>
+      {isSelected && (
+        <View style={styles.labelContainer}>
+          <View
+            style={[styles.labelBackground, { backgroundColor: theme.accent }]}>
+            <ThemedText>{value}</ThemedText>
+          </View>
+          <View style={[styles.divider, { backgroundColor: theme.accent }]} />
+        </View>
+      )}
+    </View>
+  );
 };
 
-export function Label({
-  x,
-  y,
-  text,
-  fontSize = 12,
-  color = "white",
-}: LabelProps) {
-  return (
-    <Text x={x} y={y} fill={color} fontSize={fontSize} textAnchor="middle">
-      {text}
-    </Text>
-  );
-}
+const styles = StyleSheet.create({
+  container: {
+    alignItems: "center",
+  },
+  labelContainer: {
+    alignItems: "center",
+    zIndex: 500,
+    position: "absolute",
+    top: -60,
+  },
+  labelBackground: {
+    borderRadius: 20,
+    paddingHorizontal: 16,
+    paddingVertical: 6,
+    alignItems: "center",
+    flexDirection: "row",
+    justifyContent: "center",
+    width: 80,
+  },
+  divider: {
+    width: 1,
+    height: 20,
+  },
+});
+
+export default GraphLabel;

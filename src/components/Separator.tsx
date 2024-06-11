@@ -2,16 +2,17 @@ import { useTheme } from "@/hooks/useColorScheme";
 import React from "react";
 import { View } from "react-native";
 
-const Separator = () => {
+const Separator = ({ vertical, ...props }: { vertical: boolean }) => {
   const theme = useTheme();
 
   return (
     <View
       style={{
-        width: "100%",
-        height: 1,
+        width: vertical ? 1 : "100%",
+        height: vertical ? "100%" : 1,
         backgroundColor: theme.accent,
-        marginVertical: 16,
+        // marginVertical: vertical ? 0 : 16,
+        // margin: "auto",
       }}
     />
   );
