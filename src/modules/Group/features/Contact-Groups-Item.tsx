@@ -1,3 +1,5 @@
+//! CHANGE PLACE TO CONTACTS
+
 import { Card } from "@/components/Card";
 import GroupAvatar from "@/components/GroupAvatar";
 import ThemedText from "@/components/ThemedText";

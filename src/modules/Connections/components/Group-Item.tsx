@@ -7,7 +7,7 @@ import ThemedText from "@/components/ThemedText";
 import { useTheme } from "@/hooks/useColorScheme";
 import React from "react";
 import { StyleSheet, View } from "react-native";
-import { GroupItemProps } from "../../types/interfaces";
+import { GroupItemProps } from "../types/interfaces";
 import ConnectionItem from "./Connection-Item";
 import GroupAvatar from "@/components/GroupAvatar";
 

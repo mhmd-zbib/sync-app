@@ -8,7 +8,7 @@ interface ReminderListItem {
   reminder: RemindersType;
 }
 
-const ReminderListItem = ({ reminder }: ReminderListItem) => {
+const ReminderItem = ({ reminder }: ReminderListItem) => {
   return (
     <Link href={`reminder/${reminder.id}`} asChild>
       <Card style={{ marginBottom: 10 }}>
@@ -26,4 +26,4 @@ const ReminderListItem = ({ reminder }: ReminderListItem) => {
   );
 };
 
-export default ReminderListItem;
+export default ReminderItem;

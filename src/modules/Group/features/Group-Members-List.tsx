@@ -1,6 +1,6 @@
-import data from "@/__test__/data/Group-Contact.json";
-import ContactListItem from "@/modules/Connections/components/Connection-List/Contact-List-Item";
 import React from "react";
+import data from "@/__test__/data/Group-Contact.json";
+import ContactListItem from "@/modules/Connections/components/Contact-Item";
 import { FlatList } from "react-native";
 
 const GroupMembersList = () => {

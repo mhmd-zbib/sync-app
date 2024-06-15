@@ -1,5 +1,5 @@
-import Reminders from "@/modules/Reminders/features/Reminders";
+import ReminderList from "@/modules/Reminders/features/Reminder-List";
 
 export default function HomeScreen() {
-  return <Reminders />;
+  return <ReminderList />;
 }

@@ -3,16 +3,17 @@
  * The header hides on scroll and reappears and works well
  */
 
+import reminders from "@/__test__/data/Reminders.json";
 import AnimatedHeader from "@/components/AnimatedHeader";
 import SearchInput from "@/components/SearchInput";
-import { getMonthFromUnixTimestamp } from "@/utils/date-utils";
+import ThemedText from "@/components/ThemedText";
+import { useTheme } from "@/hooks/useColorScheme";
+import useSearch from "@/hooks/useSearch";
+import { formatMonthYear } from "@/utils/format-date";
 import { convertToSectionListFormat } from "@/utils/to-sectionlist";
 import React, { useState } from "react";
-import { Animated, SectionList } from "react-native";
-import ReminderListItem from "./Reminder-List-Item";
-import ReminderListSection from "./Reminder-List-Section";
-import useSearch from "@/hooks/useSearch";
-import { formatMonthYear, formatShortDate } from "@/utils/format-date";
+import { Animated, SectionList, View } from "react-native";
+import ReminderListItem from "./Reminder-Item";
 
 const HEADER_HEIGHT = 70;
 
@@ -20,7 +21,32 @@ interface ReminderListProps {
   reminders: RemindersType[];
 }
 
-const ReminderList = ({ reminders }: ReminderListProps) => {
+const ReminderListSection = ({ title }: { title: string }) => {
+  const theme = useTheme();
+  return (
+    <View
+      style={{
+        flexDirection: "row",
+        gap: 10,
+        alignItems: "center",
+        marginBottom: 8,
+        marginTop: 24,
+      }}>
+      <ThemedText size={16} variant="accent">
+        {title}
+      </ThemedText>
+      <View
+        style={{
+          backgroundColor: theme.accent,
+          height: 1,
+          width: "100%",
+        }}
+      />
+    </View>
+  );
+};
+
+const ReminderList = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const searchable = useSearch(reminders, searchTerm, (item) => item.title);
   const sectionedListData = convertToSectionListFormat<RemindersType>(

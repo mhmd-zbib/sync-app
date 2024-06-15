@@ -2,7 +2,8 @@ import NOTE from "@/__test__/data/Notes.json";
 import SearchInput from "@/components/SearchInput";
 import useSearch from "@/hooks/useSearch";
 import React, { useState } from "react";
-import NoteList from "../components/Note-List";
+import { FlatList } from "react-native";
+import NoteItem from "./Note-List-Item";
 
 const Notes = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -11,7 +12,12 @@ const Notes = () => {
   return (
     <>
       <SearchInput value={searchTerm} onChangeText={setSearchTerm} />
-      <NoteList notes={searchable} />
+      <FlatList
+        scrollEnabled={false}
+        contentContainerStyle={{ gap: 10 }}
+        data={searchable}
+        renderItem={({ item }) => <NoteItem note={item} />}
+      />
     </>
   );
 };

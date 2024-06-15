@@ -10,9 +10,9 @@ import {
   NativeScrollEvent,
   NativeSyntheticEvent,
 } from "react-native";
-import ConnectionListHeader from "../components/Connection-List/Connection-Tab";
-import ContactListItem from "../components/Connection-List/Contact-List-Item";
-import GroupListItem from "../components/Connection-List/Group-List-Item";
+import ConnectionListHeader from "../components/Connection-Tab";
+import ContactListItem from "../components/Contact-Item";
+import GroupListItem from "../components/Group-Item";
 import { FilterOptions } from "../types/enums";
 import { Connections, Contact, Group } from "../types/interfaces";
 import { filterData } from "../utils/connectionFilter";

@@ -1,11 +1,11 @@
 import ThemedText from "@/components/ThemedText";
-import GroupContact from "@/modules/Group/features/Group-Members";
-import GroupHeader from "@/modules/Group/features/Group-Header";
-import GroupTab from "@/modules/Group/features/Group-Tab";
+import GroupContact from "@/modules/Group/features/Group-Members-List";
+import GroupHeader from "@/modules/Group/components/Group-Header";
+import GroupTab from "@/modules/Group/components/Group-Tab";
 import { GroupTabs } from "@/modules/Group/types/enums";
 import React, { useMemo, useState } from "react";
 import { View } from "react-native";
-import Notes from "@/modules/Notes/features/Notes";
+import Notes from "@/modules/Notes/features/Note-List";
 
 const GroupScreen = () => {
   const [tab, setTab] = useState<GroupTabs>(GroupTabs.Connections);

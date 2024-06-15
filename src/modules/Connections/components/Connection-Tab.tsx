@@ -6,8 +6,8 @@
 import Button from "@/components/Button";
 import React from "react";
 import { ScrollView, View } from "react-native";
-import { FilterOptions } from "../../types/enums";
-import { ConnectionListHeaderProps } from "../../types/interfaces";
+import { FilterOptions } from "../types/enums";
+import { ConnectionListHeaderProps } from "../types/interfaces";
 
 const ConnectionListHeader: React.FC<ConnectionListHeaderProps> = ({
   filter,
