@@ -1,17 +1,15 @@
-import ThemedText from "@/components/ThemedText";
 import { useTheme } from "@/hooks/useColorScheme";
 import React, { useState } from "react";
 import { StyleSheet, TouchableOpacity, View } from "react-native";
 import GraphLabel from "./Graph-Labels";
-import GraphTicks from "./Graph-Ticks";
 
 interface BarGraphProps {
-  data: { label: string; value: number }[];
+  data: number[];
 }
 
 const BarGraph: React.FC<BarGraphProps> = ({ data }) => {
   const theme = useTheme();
-  const maxValue = Math.max(...data.map((item) => item.value));
+  const maxValue = Math.max(...data.map((item) => item));
 
   const RenderBars = () => {
     const [selectedBarIndex, setSelectedBarIndex] = useState(null);
@@ -24,20 +22,17 @@ const BarGraph: React.FC<BarGraphProps> = ({ data }) => {
       setSelectedBarIndex(null);
     };
 
-    const total = data.reduce((acc, item) => acc + item.value, 0);
+    const total = data.reduce((acc, item) => acc + item, 0);
     const average = total / data.length;
     const margin = 10;
     const bars = data.map((item, index) => {
-      const aboveAverage = item.value > average + margin;
+      const aboveAverage = item > average + margin;
       const barType = aboveAverage ? theme.primary : theme.accent;
       const backgroundColor = selectedBarIndex === index ? theme.key : barType;
 
       return (
         <View key={index}>
-          <GraphLabel
-            value={item.value}
-            isSelected={selectedBarIndex === index}
-          />
+          <GraphLabel value={item} isSelected={selectedBarIndex === index} />
           <TouchableOpacity
             activeOpacity={1}
             onPressIn={() => handlePressIn(index)}
@@ -49,7 +44,7 @@ const BarGraph: React.FC<BarGraphProps> = ({ data }) => {
                   selectedBarIndex === null || selectedBarIndex === index
                     ? 1
                     : 0.4,
-                height: (item.value / maxValue) * 120,
+                height: (item / maxValue) * 120,
                 backgroundColor,
               },
             ]}
@@ -61,11 +56,8 @@ const BarGraph: React.FC<BarGraphProps> = ({ data }) => {
   };
 
   return (
-    <View>
-      <View style={[styles.chart]}>
-        <RenderBars />
-      </View>
-      <GraphTicks item={data.map((item) => item.label)} />
+    <View style={[styles.chart]}>
+      <RenderBars />
     </View>
   );
 };
@@ -85,7 +77,6 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: "row",
     justifyContent: "space-between",
-    // backgroundColor: "gray",
     alignItems: "flex-end",
   },
 

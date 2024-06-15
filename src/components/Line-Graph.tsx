@@ -102,13 +102,11 @@ export function LineGraph(props: LineGraphProps) {
       {props.data.map((item, i) => (
         <View
           style={{
-            left: xScale(i) - 30,
-            top: yScale(item) - 30,
+            left: xScale(i) - 40,
+            top: yScale(item) - 40,
             position: "absolute",
             alignItems: "center",
           }}>
-          <GraphLabel value={item} isSelected={isSelected === i} />
-
           <TouchableOpacity
             activeOpacity={1}
             onPressIn={() => {
@@ -118,12 +116,13 @@ export function LineGraph(props: LineGraphProps) {
               setIsSelected(null);
             }}
             style={{
-              width: 60,
-              height: 60,
+              width: 80,
+              height: 80,
               borderRadius: 50,
               alignItems: "center",
               justifyContent: "center",
             }}>
+            <GraphLabel value={item} isSelected={isSelected === i} />
             <View
               style={{
                 width: 12,
@@ -143,7 +142,6 @@ export function LineGraph(props: LineGraphProps) {
           </TouchableOpacity>
         </View>
       ))}
-      <GraphTicks item={props.data} padding={-5} />
     </View>
   );
 }

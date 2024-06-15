@@ -11,8 +11,7 @@ const Separator = ({ vertical, ...props }: { vertical: boolean }) => {
         width: vertical ? 1 : "100%",
         height: vertical ? "100%" : 1,
         backgroundColor: theme.accent,
-        // marginVertical: vertical ? 0 : 16,
-        // margin: "auto",
+        marginVertical: vertical ? 0 : 16,
       }}
     />
   );

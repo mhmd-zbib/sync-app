@@ -1,18 +1,23 @@
 import { Card } from "@/components/Card";
-import { GraphLabels } from "@/components/Graph-Labels";
+import GraphTicks from "@/components/Graph-Ticks";
 import { LineGraph } from "@/components/Line-Graph";
-import { useTheme } from "@/hooks/useColorScheme";
 import React from "react";
-import { View } from "react-native";
 
 const DashboardContact = () => {
-  const data = [12, 10, 0, 10, 6, 15, 9];
-  const labels = ["sept", "nov", "dec", " mar", "apr", "may", "jun"];
-  const theme = useTheme();
+  const data = [
+    { label: "S", value: 23 },
+    { label: "M", value: 20 },
+    { label: "W", value: 7 },
+    { label: "T", value: 14 },
+    { label: "Th", value: 80 },
+    { label: "F", value: 34 },
+    { label: "S", value: 60 },
+  ];
 
   return (
     <Card disabled>
-      <LineGraph data={data} />
+      <LineGraph data={data.map((item) => item.value)} />
+      <GraphTicks item={data.map((item) => item.label)} />
     </Card>
   );
 };
