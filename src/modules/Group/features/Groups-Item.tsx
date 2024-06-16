@@ -11,7 +11,7 @@ interface ContactGroupProps {
   group: GroupType;
 }
 
-const ContactGroupsItem = ({ group }: ContactGroupProps) => {
+const GroupsItem = ({ group }: ContactGroupProps) => {
   return (
     <Link href={`group/${group.id}`} asChild>
       <Card
@@ -34,4 +34,4 @@ const ContactGroupsItem = ({ group }: ContactGroupProps) => {
   );
 };
 
-export default ContactGroupsItem;
+export default GroupsItem;

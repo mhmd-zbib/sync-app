@@ -10,8 +10,13 @@ import { formatShortDate } from "@/utils/format-date";
 import { AntDesign, Octicons } from "@expo/vector-icons";
 import React from "react";
 import { View } from "react-native";
-import { ContactItemProps } from "../types/interfaces";
 import ConnectionItem from "./Connection-Item";
+import { Contact } from "../types/interfaces";
+
+export interface ContactItemProps {
+  contact: Contact;
+  onPress?: () => void;
+}
 
 const ContactListItem = ({ contact }: ContactItemProps) => {
   const theme = useTheme();

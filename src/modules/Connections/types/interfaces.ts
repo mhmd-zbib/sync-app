@@ -1,10 +1,5 @@
 import { FilterOptions } from "./enums";
 
-export interface ContactItemProps {
-  contact: Contact;
-  onPress?: () => void;
-}
-
 export interface ConnectionListHeaderProps {
   filter: FilterOptions;
   setFilter: (filter: FilterOptions) => void;
