@@ -1,5 +1,4 @@
 import reminders from "@/__test__/data/Reminders.json";
-import AnimatedHeader from "@/components/AnimatedHeader";
 import SearchInput from "@/components/SearchInput";
 import ReminderList from "@/modules/Reminders/features/Reminder-List";
 import { View } from "react-native";
