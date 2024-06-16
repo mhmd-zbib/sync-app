@@ -1,7 +1,7 @@
 import details from "@/__test__/data/Remidner-Details.json";
 import ThemedText from "@/components/ThemedText";
 import { useTheme } from "@/hooks/useColorScheme";
-import { formatDayMonth, formatFullDateTime } from "@/utils/format-date";
+import { formatFullDateTime } from "@/utils/format-date";
 import { Link, useLocalSearchParams } from "expo-router";
 import React from "react";
 import { View } from "react-native";

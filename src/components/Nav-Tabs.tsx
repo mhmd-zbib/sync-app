@@ -1,7 +1,7 @@
 import Button from "@/components/Button"; // Assuming this is correctly imported
 import { Link, usePathname } from "expo-router";
 import React from "react";
-import { View } from "react-native";
+import { ScrollView, View } from "react-native";
 
 type NavItem = {
   path: string;
@@ -25,7 +25,6 @@ const NavTab: React.FC<GroupTabProps> = ({
 }) => {
   const path = usePathname();
 
-  // Function to determine if the current path is active
   const isActive = (navPath: string) => {
     return path === navPath;
   };
@@ -36,10 +35,10 @@ const NavTab: React.FC<GroupTabProps> = ({
         flexDirection: "row",
         justifyContent,
         alignItems: "center",
-        gap: 20,
+        gap: justifyContent === "flex-start" ? 20 : 0,
       }}>
       {navItems.map((item, index) => (
-        <Link key={index} href={item.path} asChild>
+        <Link key={index} href={item.path} asChild replace>
           <Button
             style={{}}
             rounded

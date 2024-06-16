@@ -2,7 +2,7 @@ import { useTheme } from "@/hooks/useColorScheme";
 import React from "react";
 import { View } from "react-native";
 
-const Separator = ({ vertical, ...props }: { vertical: boolean }) => {
+const Separator = ({ vertical, ...props }: { vertical?: boolean }) => {
   const theme = useTheme();
 
   return (

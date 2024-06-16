@@ -57,7 +57,7 @@ export function formatDateDMY(timestamp: number): string {
 }
 
 export function formatMonthYear(timestamp: number): string {
-  const date = new Date(timestamp * 1000);
+  const date = new Date(timestamp * 1);
   const options: Intl.DateTimeFormatOptions = {
     month: "short",
     // day: "numeric",

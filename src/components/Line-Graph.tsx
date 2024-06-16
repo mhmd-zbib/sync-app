@@ -9,11 +9,8 @@ import {
   Path,
   Stop,
   Svg,
-  Text,
 } from "react-native-svg";
-import ThemedText from "./ThemedText";
 import GraphLabel from "./Graph-Labels";
-import GraphTicks from "./Graph-Ticks";
 
 type LineGraphProps = {
   data: number[];

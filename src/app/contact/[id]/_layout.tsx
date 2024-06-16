@@ -1,6 +1,7 @@
 import NavTab from "@/components/Nav-Tabs";
 import ContactHeader from "@/modules/Contact/components/Contact-Header";
 import ContactLinksList from "@/modules/Contact/components/Contact-Link/Contact-Links-List";
+import { ContactTab } from "@/modules/Contact/components/Contact-Tab";
 import { Slot, useLocalSearchParams } from "expo-router";
 import React from "react";
 import { ScrollView, View } from "react-native";

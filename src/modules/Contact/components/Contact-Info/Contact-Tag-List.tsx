@@ -1,10 +1,9 @@
-import ThemedText from "@/components/ThemedText";
 import { View } from "react-native";
-import EmptyComponent from "./Empty-Component";
 import ContactTagItem from "./Contact-Tag-Item";
+import EmptyComponent from "./Empty-Component";
 
 interface ContactTagListProps {
-  tags: TagsType[];
+  tags: any[];
 }
 
 export const ContactTagList = ({ tags }: ContactTagListProps) => {
