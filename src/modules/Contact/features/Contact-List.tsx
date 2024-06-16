@@ -1,21 +1,20 @@
-import ThemedText from "@/components/ThemedText";
-import ContactListItem from "@/modules/Connections/components/Contact-Item";
 import React from "react";
-import { FlatList, Text } from "react-native";
+import { FlatList } from "react-native";
+import { Contact } from "../types/interface";
+import ContactItem from "./Contact-Item";
+import ThemedText from "@/components/ThemedText";
 
-const MOCK_DATA = [
-  { name: "Ali" },
-  { name: "Mohammad" },
-  { name: "Hussein", isStarred: true },
-  { name: "Ahmad", isTagged: true },
-];
+interface ContactList {
+  data: Contact[];
+}
 
-const ContactList = () => {
+const ContactList = ({ data }: ContactList) => {
   return (
     <FlatList
       contentContainerStyle={{ gap: 10 }}
-      renderItem={({ item }) => <ContactListItem contact={item} />}
-      data={MOCK_DATA}
+      renderItem={({ item }) => <ContactItem contact={item} />}
+      data={data}
+      ListEmptyComponent={<ThemedText>Nohting here</ThemedText>}
     />
   );
 };

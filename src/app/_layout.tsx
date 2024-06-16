@@ -63,7 +63,7 @@ function StackWrapper() {
   }, []);
 
   const path = usePathname();
-  console.log(path);
+  console.log(path, "---------------------------------------------------");
 
   return (
     <Stack

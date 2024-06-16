@@ -20,9 +20,9 @@ const GroupsItem = ({ group }: ContactGroupProps) => {
           flex: 1,
           gap: 10,
           alignItems: "center",
+          paddingVertical: 12,
         }}>
-        <GroupAvatar color={group.color} emoji={group.emoji} size={42} />
-
+        <GroupAvatar color={group.color} emoji={group.emoji} size={55} />
         <View style={{ justifyContent: "space-between" }}>
           <ThemedText size={16}>{group.name}</ThemedText>
           <ThemedText size={12} variant="accent">

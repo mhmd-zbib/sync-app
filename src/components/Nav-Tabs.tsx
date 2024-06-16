@@ -1,27 +1,42 @@
-import Button from "@/components/Button";
-import { Link, useLocalSearchParams, usePathname } from "expo-router";
+import Button from "@/components/Button"; // Assuming this is correctly imported
+import { Link, usePathname } from "expo-router";
+import React from "react";
 import { View } from "react-native";
 
-export const GroupTab = () => {
-  const path = usePathname();
-  const { id } = useLocalSearchParams();
+type NavItem = {
+  path: string;
+  title: string;
+};
 
-  // Define the navigation items with their respective paths and titles
-  const navItems = [
-    { path: `/group/${id}`, title: "Info" },
-    { path: `/group/${id}/notes`, title: "Notes" },
-  ];
+type GroupTabProps = {
+  justifyContent?:
+    | "flex-start"
+    | "center"
+    | "flex-end"
+    | "space-between"
+    | "space-around"
+    | "space-evenly";
+  navItems: NavItem[];
+};
+
+const NavTab: React.FC<GroupTabProps> = ({
+  navItems,
+  justifyContent = "space-between",
+}) => {
+  const path = usePathname();
+
   // Function to determine if the current path is active
   const isActive = (navPath: string) => {
     return path === navPath;
   };
+
   return (
     <View
       style={{
         flexDirection: "row",
-        justifyContent: "space-between",
-        flex: 1,
+        justifyContent,
         alignItems: "center",
+        gap: 20,
       }}>
       {navItems.map((item, index) => (
         <Link key={index} href={item.path} asChild>
@@ -36,3 +51,5 @@ export const GroupTab = () => {
     </View>
   );
 };
+
+export default NavTab;

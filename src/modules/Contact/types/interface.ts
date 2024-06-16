@@ -11,3 +11,13 @@ interface ExperienceType {
   from_date: number;
   to_date: number | undefined;
 }
+
+export interface Contact {
+  id: number;
+  name: string;
+  isTagged?: boolean;
+  isStarred?: boolean;
+  isPinned?: boolean;
+  createdAt: number;
+  tag?: TagsType;
+}

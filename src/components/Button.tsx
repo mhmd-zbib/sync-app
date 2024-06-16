@@ -1,11 +1,16 @@
 import { useTheme } from "@/hooks/useColorScheme";
 import React from "react";
-import { ButtonProps, TouchableOpacity } from "react-native";
+import {
+  ButtonProps,
+  TouchableOpacity,
+  TouchableOpacityProps,
+} from "react-native";
 import ThemedText from "./ThemedText";
 
-interface ButtonPropsType extends ButtonProps {
+interface ButtonPropsType extends TouchableOpacityProps {
   variant?: "primary" | "secondary";
   title: string;
+
   rounded?: boolean;
 }
 
@@ -28,6 +33,8 @@ const Button = ({
         borderRadius: rounded ? 800 : 8,
         borderWidth: 1,
         borderColor: variant === "primary" ? theme.primary : theme.subAccent,
+        alignItems: "center",
+        justifyContent: "center",
       }}>
       <ThemedText variant={variant === "primary" ? "background" : "secondary"}>
         {title}

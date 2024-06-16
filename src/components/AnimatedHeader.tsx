@@ -3,7 +3,7 @@
  */
 
 import { useTheme } from "@/hooks/useColorScheme";
-import React from "react";
+import React, { useState } from "react";
 import { Animated, View } from "react-native";
 
 interface AnimatedHeaderProps {
@@ -12,12 +12,9 @@ interface AnimatedHeaderProps {
   children: React.ReactNode;
 }
 
-const AnimatedHeader = ({
-  scrollY,
-  headerHeight = 70,
-  children,
-}: AnimatedHeaderProps) => {
+const AnimatedHeader = ({ scrollY, children }: AnimatedHeaderProps) => {
   const theme = useTheme();
+  const [headerHeight, setHeaderHeight] = useState(0);
 
   const diffClamp = Animated.diffClamp(scrollY, 0, headerHeight);
   const translateY = diffClamp.interpolate({
@@ -28,27 +25,17 @@ const AnimatedHeader = ({
   return (
     <Animated.View
       style={{
-        alignItems: "center",
-        justifyContent: "center",
         backgroundColor: theme.background,
         zIndex: 900,
         elevation: 900,
         transform: [{ translateY: translateY }],
-        position: "absolute",
+        position: "absolute", // Change to absolute
         top: 0,
         left: 0,
         right: 0,
-        height: headerHeight,
-        flex: 1,
+        width: "100%", // Ensure full width
       }}>
-      <View
-        style={{
-          height: headerHeight,
-          alignItems: "center",
-          justifyContent: "center",
-        }}>
-        {children}
-      </View>
+      <View>{children}</View>
     </Animated.View>
   );
 };

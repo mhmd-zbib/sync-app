@@ -1,20 +1,3 @@
-import { FilterOptions } from "./enums";
-
-export interface ConnectionListHeaderProps {
-  filter: FilterOptions;
-  setFilter: (filter: FilterOptions) => void;
-}
-
-export interface Contact {
-  id: number;
-  name: string;
-  isTagged?: boolean;
-  isStarred?: boolean;
-  isPinned?: boolean;
-  createdAt: number;
-  tag?: TagsType;
-}
-
 export interface Connections {
   id: number;
   type: string;

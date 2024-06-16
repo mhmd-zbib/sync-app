@@ -1,9 +1,9 @@
+import data from "@/__test__/data/Groups.json";
 import GroupsList from "@/modules/Group/features/Groups-List";
 import React from "react";
-import data from "@/__test__/data/Groups.json";
 
-const GroupsScreen = () => {
+const ContactGroupsScreen = () => {
   return <GroupsList data={data} />;
 };
 
-export default GroupsScreen;
+export default ContactGroupsScreen;

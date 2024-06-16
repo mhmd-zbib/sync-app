@@ -1,14 +1,21 @@
+import Button from "@/components/Button";
+import NavTab from "@/components/Nav-Tabs";
 import SearchInput from "@/components/SearchInput";
-import ConnectionsTab from "@/modules/Connections/components/Connection-Tab";
-import { Slot } from "expo-router";
+import { Link, Slot, usePathname } from "expo-router";
 import React from "react";
 import { View } from "react-native";
 
 const ConnectionsLayout = () => {
+  const navItems = [
+    { path: "/connections", title: "Connections" },
+    { path: "/connections/groups", title: "Groups" },
+    { path: "/connections/starred", title: "Starred" },
+    { path: "/connections/tagged", title: "Tagged" },
+  ];
   return (
-    <View style={{ gap: 10 }}>
+    <View style={{ gap: 10, flex: 1, marginTop: 10 }}>
       <SearchInput />
-      <ConnectionsTab />
+      <NavTab navItems={navItems} />
       <Slot />
     </View>
   );
