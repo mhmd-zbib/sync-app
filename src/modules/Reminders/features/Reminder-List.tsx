@@ -7,6 +7,8 @@ import React from "react";
 import { SectionList, SectionListProps } from "react-native";
 import { ReminderListSection } from "../components/Reminder-List-Section";
 import ReminderListItem from "./Reminder-Item";
+import EmptyList from "@/components/Empty-List";
+import ThemedText from "@/components/ThemedText";
 
 interface ReminderSectionData {
   title: string;
@@ -18,9 +20,12 @@ interface ReminderList extends SectionListProps<RemindersType> {
 }
 
 const ReminderList = ({ data }: ReminderList) => {
+  if (!data || data.length === 0) {
+    return <EmptyList message="No reminders assigned!" />;
+  }
+
   return (
     <SectionList
-      contentContainerStyle={{ marginHorizontal: 10, marginTop: -24 }}
       overScrollMode="never"
       alwaysBounceVertical={false}
       bouncesZoom={false}

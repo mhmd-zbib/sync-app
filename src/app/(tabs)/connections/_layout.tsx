@@ -15,7 +15,6 @@ const ConnectionsLayout = () => {
   return (
     <View style={{ gap: 10, flex: 1, marginTop: 10, marginHorizontal: 10 }}>
       <ScreenTitle title="Connections" />
-
       <SearchInput />
       <NavTab navItems={navItems} />
       <Slot />
