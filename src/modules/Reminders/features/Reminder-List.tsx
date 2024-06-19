@@ -3,12 +3,11 @@
  * The header hides on scroll and reappears and works well
  */
 
+import EmptyList from "@/components/Empty-List";
 import React from "react";
 import { SectionList, SectionListProps } from "react-native";
 import { ReminderListSection } from "../components/Reminder-List-Section";
 import ReminderListItem from "./Reminder-Item";
-import EmptyList from "@/components/Empty-List";
-import ThemedText from "@/components/ThemedText";
 
 interface ReminderSectionData {
   title: string;

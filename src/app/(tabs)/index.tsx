@@ -6,7 +6,7 @@ import { View } from "react-native";
 
 export default function HomeScreen() {
   return (
-    <View style={{ flex: 1, marginTop: 10, marginHorizontal: 10 }}>
+    <View style={{ flex: 1, marginTop: 10, marginHorizontal: 10, gap: 10 }}>
       <ReminderScreenHeader />
       <SearchInput />
       <ReminderList data={reminders} />

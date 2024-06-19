@@ -13,7 +13,6 @@ const ReminderScreenHeader = () => {
       style={{
         alignItems: "center",
         flexDirection: "row",
-        marginBottom: 16,
       }}>
       <View
         style={{

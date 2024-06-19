@@ -1,6 +1,6 @@
 import ThemedText from "@/components/ThemedText";
 import { useTheme } from "@/hooks/useColorScheme";
-import { formatDayMonth, formatMonthYear } from "@/utils/format-date";
+import { formatMonthYear } from "@/utils/format-date";
 import React from "react";
 import { View } from "react-native";
 
@@ -13,7 +13,7 @@ export const ReminderListSection = ({ title }: { title: string }) => {
         gap: 10,
         alignItems: "center",
         marginBottom: 8,
-        marginTop: 24,
+        // marginTop: 24,
       }}>
       <ThemedText size={16} variant="accent">
         {formatMonthYear(title)}
