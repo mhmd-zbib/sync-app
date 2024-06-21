@@ -58,8 +58,10 @@ const BarGraph: React.FC<BarGraphProps> = ({ data, labels }) => {
   };
 
   return (
-    <View style={[styles.chart]}>
-      <RenderBars />
+    <View>
+      <View style={[styles.chart]}>
+        <RenderBars />
+      </View>
       <GraphTicks item={labels} />
     </View>
   );

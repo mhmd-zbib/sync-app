@@ -10,14 +10,14 @@ interface DashboardContainerProps {
 
 const DashboardContainer = ({ title, children }: DashboardContainerProps) => {
   return (
-    <Card disabled style={{ gap: 42 }}>
-      <View style={{ gap: 5 }}>
-        <ThemedText style={{ fontWeight: "500" }} size={18}>
-          {title}
-        </ThemedText>
-        <View>{children}</View>
-      </View>
-    </Card>
+    <View style={{ gap: 5 }}>
+      <ThemedText style={{ fontWeight: "500" }} size={18}>
+        {title}
+      </ThemedText>
+      <Card disabled style={{ gap: 42 }}>
+        {children}
+      </Card>
+    </View>
   );
 };
 

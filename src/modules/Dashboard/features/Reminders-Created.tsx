@@ -5,7 +5,6 @@ import { useTheme } from "@/hooks/useColorScheme";
 import { MaterialIcons } from "@expo/vector-icons";
 import React from "react";
 import { View } from "react-native";
-import DashboardContainer from "../components/Dashboard-Container";
 
 const RemindersCreated = () => {
   const data = [
@@ -43,7 +42,7 @@ const RemindersCreated = () => {
   };
 
   return (
-    <DashboardContainer title="Reminders">
+    <>
       <View
         style={{
           flexDirection: "row",
@@ -67,7 +66,7 @@ const RemindersCreated = () => {
         </View>
       </View>
       <BarGraph data={value} labels={label} />
-    </DashboardContainer>
+    </>
   );
 };
 
