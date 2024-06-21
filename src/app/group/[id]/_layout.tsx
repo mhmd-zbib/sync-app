@@ -1,4 +1,6 @@
+import GroupAvatar from "@/components/GroupAvatar";
 import NavTab from "@/components/Nav-Tabs";
+import ThemedText from "@/components/ThemedText";
 import GroupHeader from "@/modules/Group/components/Group-Header";
 import { Slot, useLocalSearchParams } from "expo-router";
 import React from "react";
@@ -14,7 +16,20 @@ const GroupLayout = () => {
   return (
     <ScrollView bounces={false} overScrollMode="never">
       <View style={{ paddingHorizontal: 10, gap: 16 }}>
-        <GroupHeader />
+        <View
+          style={{
+            flexDirection: "row",
+            gap: 16,
+            marginTop: 16,
+          }}>
+          <GroupAvatar size={80} emoji="smiley" color="red" />
+          <View style={{ justifyContent: "center" }}>
+            <ThemedText size={20}>Math</ThemedText>
+            <ThemedText variant="secondary" size={16}>
+              Doctor
+            </ThemedText>
+          </View>
+        </View>
         <NavTab navItems={navItems} justifyContent="flex-start" />
         <Slot />
       </View>

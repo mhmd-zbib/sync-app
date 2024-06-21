@@ -15,7 +15,7 @@ export interface Connections {
 export interface Group {
   id: number;
   name: string;
-  createdAt: number;
+  createdAt: number | string;
   memberCount: number;
   color: string;
   emoji: string;

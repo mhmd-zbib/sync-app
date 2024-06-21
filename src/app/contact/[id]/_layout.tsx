@@ -1,12 +1,12 @@
+import Avatar from "@/components/Avatar";
 import NavTab from "@/components/Nav-Tabs";
-import ContactHeader from "@/modules/Contact/components/Contact-Header";
-import ContactLinksList from "@/modules/Contact/components/Contact-Link/Contact-Links-List";
-import { ContactTab } from "@/modules/Contact/components/Contact-Tab";
+import ThemedText from "@/components/ThemedText";
+import ContactLinksItem from "@/modules/Contact/components/Contact-Link-Item";
 import { Slot, useLocalSearchParams } from "expo-router";
 import React from "react";
 import { ScrollView, View } from "react-native";
 
-const fakeData = [
+const links = [
   { platform: "facebook", link: "https://www.facebook.com/example" },
   { platform: "linkedin", link: "https://www.linkedin.com/in/example" },
   { platform: "github", link: "https://github.com/example" },
@@ -31,12 +31,31 @@ const ContactLayout = () => {
   return (
     <ScrollView bounces={false} overScrollMode="never">
       <View style={{ paddingHorizontal: 10, gap: 16 }}>
-        <ContactHeader />
-        <ContactLinksList links={fakeData} />
+        <View
+          style={{
+            flexDirection: "row",
+            gap: 16,
+            marginTop: 16,
+          }}>
+          <Avatar size={80} name={"Test Person"} />
+          <View style={{ justifyContent: "center" }}>
+            <ThemedText size={20}>
+              {"Test Person"} {id}
+            </ThemedText>
+            <ThemedText variant="secondary" size={16}>
+              Doctor
+            </ThemedText>
+          </View>
+        </View>
+
+        <View style={{ flexDirection: "row", flexWrap: "wrap" }}>
+          {links.map(({ platform, link }, index) => (
+            <ContactLinksItem key={index} iconName={platform} link={link} />
+          ))}
+        </View>
+
         <NavTab navItems={navItems} />
-        {/*  */}
         <Slot />
-        {/*  */}
       </View>
     </ScrollView>
   );

@@ -1,7 +1,7 @@
 import { colorToRGBA } from "@/helpers/toRGB";
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
-import { TagColors } from "../../types/enums";
+import { TagColors } from "../../Contact/types/enums";
 
 interface TagItemType {
   tag: TagsType;

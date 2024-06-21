@@ -2,7 +2,7 @@ import { FontAwesome6 } from "@expo/vector-icons";
 import React from "react";
 import { TouchableOpacity } from "react-native";
 import { useTheme } from "@/hooks/useColorScheme";
-import { handleOpenLink } from "../../utils/Contact-Linking";
+import { handleOpenLink } from "../utils/Contact-Linking";
 
 interface ContactLinksProps {
   iconName: string;

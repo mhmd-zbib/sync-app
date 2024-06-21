@@ -1,6 +1,6 @@
-import GroupsList from "@/modules/Group/features/Groups-List";
-import React from "react";
 import data from "@/__test__/data/Groups.json";
+import GroupsList from "@/modules/Group/components/Groups-List";
+import React from "react";
 
 const GroupsScreen = () => {
   return <GroupsList data={data} />;
