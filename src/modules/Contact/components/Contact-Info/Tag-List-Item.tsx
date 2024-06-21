@@ -1,6 +1,6 @@
-import React from "react";
-import { Text, View, StyleSheet } from "react-native";
 import { colorToRGBA } from "@/helpers/toRGB";
+import React from "react";
+import { StyleSheet, Text, View } from "react-native";
 import { TagColors } from "../../types/enums";
 
 interface TagItemType {
@@ -10,7 +10,7 @@ interface TagItemType {
 interface TagColorsIndex {
   [key: string]: string;
 }
-const ContactTagItem: React.FC<TagItemType> = ({ tag }) => {
+const TagListItem: React.FC<TagItemType> = ({ tag }) => {
   const tagColor = TagColors[tag.color as keyof typeof TagColors] || "#CCCCCC";
   const containerStyle = {
     ...styles.container,
@@ -21,7 +21,7 @@ const ContactTagItem: React.FC<TagItemType> = ({ tag }) => {
 
   return (
     <View style={containerStyle}>
-      <Text style={[textStyle, { fontSize: 12 }]}>{tag.name}</Text>
+      <Text style={[textStyle, { fontSize: 13 }]}>{tag.name}</Text>
     </View>
   );
 };
@@ -37,4 +37,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ContactTagItem;
+export default TagListItem;

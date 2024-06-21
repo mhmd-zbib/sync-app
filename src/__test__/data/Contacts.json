@@ -4,6 +4,7 @@
     "name": "Ogdon",
     "isTagged": true,
     "isStarred": false,
+    "isPinned": true,
     "createdAt": "1708412583000",
     "ip_address": "132.121.183.221"
   },
@@ -11,6 +12,7 @@
     "id": 2,
     "name": "Freemon",
     "isTagged": true,
+    "isPinned": true,
     "isStarred": false,
     "createdAt": "1693259674000",
     "ip_address": "144.79.233.129"

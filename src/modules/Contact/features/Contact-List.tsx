@@ -1,14 +1,15 @@
+import data from "@/__test__/data/Contacts.json";
+import ThemedText from "@/components/ThemedText";
 import React from "react";
 import { FlatList } from "react-native";
-import { Contact } from "../types/interface";
 import ContactItem from "./Contact-Item";
-import ThemedText from "@/components/ThemedText";
+import { Contact } from "../types/interface";
 
-interface ContactList {
+interface ContactListProps {
   data: Contact[];
 }
 
-const ContactList = ({ data }: ContactList) => {
+const ContactList = ({ data }: ContactListProps) => {
   return (
     <FlatList
       contentContainerStyle={{ gap: 10 }}

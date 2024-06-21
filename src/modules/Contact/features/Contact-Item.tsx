@@ -2,7 +2,7 @@ import Avatar from "@/components/Avatar";
 import { Card } from "@/components/Card";
 import ThemedText from "@/components/ThemedText";
 import { useTheme } from "@/hooks/useColorScheme";
-import ContactTagItem from "@/modules/Contact/components/Contact-Info/Contact-Tag-Item";
+import ContactTagItem from "@/modules/Contact/components/Contact-Info/Tag-List-Item";
 import { formatShortDate } from "@/utils/format-date";
 import { AntDesign, Octicons } from "@expo/vector-icons";
 import { Link } from "expo-router";

@@ -18,6 +18,6 @@ export interface Contact {
   isTagged?: boolean;
   isStarred?: boolean;
   isPinned?: boolean;
-  createdAt: number;
+  createdAt: number | string;
   tag?: TagsType;
 }

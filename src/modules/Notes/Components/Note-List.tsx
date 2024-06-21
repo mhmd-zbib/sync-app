@@ -1,6 +1,6 @@
 import React from "react";
 import { FlatList, FlatListProps } from "react-native";
-import NoteItem from "./Note-List-Item";
+import NoteItem from "../features/Note-List-Item";
 
 interface NoteListProps extends FlatListProps<NoteType> {
   data: NoteType[];
