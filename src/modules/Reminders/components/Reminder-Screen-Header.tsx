@@ -18,7 +18,7 @@ const ReminderScreenHeader = () => {
         style={{
           flexDirection: "row",
           borderRadius: 200,
-          gap: 5,
+          gap: 8,
           paddingHorizontal: 16,
           paddingVertical: 9,
           alignItems: "center",
@@ -26,7 +26,7 @@ const ReminderScreenHeader = () => {
           backgroundColor: theme.secondary,
         }}>
         <FontAwesome5 name="bolt" size={16} color={theme.primary} />
-        <ThemedText>hi</ThemedText>
+        <ThemedText variant="secondary">23</ThemedText>
       </View>
       <View style={{ width: "50%", gap: 4, position: "absolute", left: "25%" }}>
         <ThemedText>Reminders Goals</ThemedText>

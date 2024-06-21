@@ -1,3 +1,4 @@
+import { Card } from "@/components/Card";
 import ThemedText from "@/components/ThemedText";
 import React from "react";
 import { View } from "react-native";
@@ -9,12 +10,14 @@ interface DashboardContainerProps {
 
 const DashboardContainer = ({ title, children }: DashboardContainerProps) => {
   return (
-    <View style={{ gap: 5 }}>
-      <ThemedText style={{ fontWeight: "500" }} size={18}>
-        {title}
-      </ThemedText>
-      <View>{children}</View>
-    </View>
+    <Card disabled style={{ gap: 42 }}>
+      <View style={{ gap: 5 }}>
+        <ThemedText style={{ fontWeight: "500" }} size={18}>
+          {title}
+        </ThemedText>
+        <View>{children}</View>
+      </View>
+    </Card>
   );
 };
 

@@ -2,12 +2,14 @@ import { useTheme } from "@/hooks/useColorScheme";
 import React, { useState } from "react";
 import { StyleSheet, TouchableOpacity, View } from "react-native";
 import GraphLabel from "./Graph-Labels";
+import GraphTicks from "./Graph-Ticks";
 
 interface BarGraphProps {
   data: number[];
+  labels: any[];
 }
 
-const BarGraph: React.FC<BarGraphProps> = ({ data }) => {
+const BarGraph: React.FC<BarGraphProps> = ({ data, labels }) => {
   const theme = useTheme();
   const maxValue = Math.max(...data.map((item) => item));
 
@@ -58,6 +60,7 @@ const BarGraph: React.FC<BarGraphProps> = ({ data }) => {
   return (
     <View style={[styles.chart]}>
       <RenderBars />
+      <GraphTicks item={labels} />
     </View>
   );
 };

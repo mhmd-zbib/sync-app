@@ -1,6 +1,7 @@
 import ScreenTitle from "@/components/Screen-Title";
-import DashboardContact from "@/modules/Dashboard/features/Dashboard-Contact";
-import DashboardConnection from "@/modules/Dashboard/features/Reminders-Created";
+import DashboardContainer from "@/modules/Dashboard/components/Dashboard-Container";
+import ContactsCreated from "@/modules/Dashboard/features/Contacts-Created";
+import RemindersCreated from "@/modules/Dashboard/features/Reminders-Created";
 import React from "react";
 import { ScrollView, View } from "react-native";
 
@@ -12,8 +13,13 @@ const DashboardScreen = () => {
           title="My Sync"
           subtitle="What gets measured gets improved"
         />
-        <DashboardConnection />
-        <DashboardContact />
+
+        <DashboardContainer title="Reminders">
+          <RemindersCreated />
+        </DashboardContainer>
+        <DashboardContainer title="Contacts">
+          <ContactsCreated />
+        </DashboardContainer>
       </View>
     </ScrollView>
   );

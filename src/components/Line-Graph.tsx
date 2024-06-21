@@ -11,9 +11,11 @@ import {
   Svg,
 } from "react-native-svg";
 import GraphLabel from "./Graph-Labels";
+import GraphTicks from "./Graph-Ticks";
 
 type LineGraphProps = {
   data: number[];
+  labels: any[];
 };
 
 const GRAPH_ASPECT_RATIO = 9 / 16;
@@ -139,6 +141,8 @@ export function LineGraph(props: LineGraphProps) {
           </TouchableOpacity>
         </View>
       ))}
+
+      <GraphTicks item={props.labels} />
     </View>
   );
 }

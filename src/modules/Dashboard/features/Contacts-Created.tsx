@@ -2,8 +2,9 @@ import { Card } from "@/components/Card";
 import GraphTicks from "@/components/Graph-Ticks";
 import { LineGraph } from "@/components/Line-Graph";
 import React from "react";
+import DashboardContainer from "../components/Dashboard-Container";
 
-const DashboardContact = () => {
+const ContactsCreated = () => {
   const data = [
     { label: "S", value: 23 },
     { label: "M", value: 20 },
@@ -14,12 +15,16 @@ const DashboardContact = () => {
     { label: "S", value: 60 },
   ];
 
+  const value = data.map((item) => item.value);
+  const labels = data.map((item) => item.label);
+
   return (
-    <Card disabled>
-      <LineGraph data={data.map((item) => item.value)} />
-      <GraphTicks item={data.map((item) => item.label)} />
-    </Card>
+    <DashboardContainer title="Contacts">
+      <Card disabled>
+        <LineGraph data={value} labels={labels} />
+      </Card>
+    </DashboardContainer>
   );
 };
 
-export default DashboardContact;
+export default ContactsCreated;

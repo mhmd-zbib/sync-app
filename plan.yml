@@ -1,0 +1,19 @@
+dashboard:
+  -reminders:
+    # got 2 bar graphs, 1 ring graph, and tabs on the top for it. also got tabs for navigation
+    -> created: .by month
+      .by week
+    -> missed: .total
+    -> completed: .total
+      .this week
+  -contacts:
+    # got one line graph
+    ->created: .by week
+      .by month
+
+Reminders: 3 tabs for "Created" , "Missed", "Completed"
+-Created: a header that displays the most created score, how much is created this week and the top created this month
+-Completed: a ring graph that shows the total complition of the reminders we have
+-Missed: a bar graph with details of what we got and all.
+
+Contacts:
