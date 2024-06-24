@@ -28,7 +28,6 @@ const ReminderList = ({ data }: ReminderList) => {
       overScrollMode="never"
       alwaysBounceVertical={false}
       bouncesZoom={false}
-      invertStickyHeaders
       stickyHeaderHiddenOnScroll={false}
       renderSectionHeader={({ section }) => (
         <ReminderListSection title={section.title} />

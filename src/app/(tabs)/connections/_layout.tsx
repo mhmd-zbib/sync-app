@@ -3,7 +3,7 @@ import ScreenTitle from "@/components/Screen-Title";
 import SearchInput from "@/components/SearchInput";
 import { Slot } from "expo-router";
 import React from "react";
-import { View } from "react-native";
+import { ScrollView, StyleSheet, View } from "react-native";
 
 const ConnectionsLayout = () => {
   const navItems = [
@@ -13,13 +13,26 @@ const ConnectionsLayout = () => {
     { path: "/connections/tagged", title: "Tagged" },
   ];
   return (
-    <View style={{ gap: 10, flex: 1, marginTop: 10, marginHorizontal: 10 }}>
+    <ScrollView stickyHeaderIndices={[1]} stickyHeaderHiddenOnScroll>
       <ScreenTitle title="Connections" />
-      <SearchInput />
+      <SearchInput style={styles.searchInput} />
       <NavTab navItems={navItems} />
-      <Slot />
-    </View>
+      <View style={{ marginTop: 10 }}>
+        <Slot />
+      </View>
+    </ScrollView>
   );
 };
+
+const styles = StyleSheet.create({
+  title: {
+    marginTop: 20,
+    marginBottom: 10,
+  },
+  searchInput: {
+    paddingVertical: 10,
+    backgroundColor: "black",
+  },
+});
 
 export default ConnectionsLayout;

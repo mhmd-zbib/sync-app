@@ -3,18 +3,21 @@
  */
 
 import { useTheme } from "@/hooks/useColorScheme";
-import React, { useState } from "react";
+import React from "react";
 import { Animated, View } from "react-native";
 
 interface AnimatedHeaderProps {
   scrollY: Animated.Value;
-  headerHeight?: number;
+  headerHeight: number;
   children: React.ReactNode;
 }
 
-const AnimatedHeader = ({ scrollY, children }: AnimatedHeaderProps) => {
+const AnimatedHeader = ({
+  scrollY,
+  headerHeight,
+  children,
+}: AnimatedHeaderProps) => {
   const theme = useTheme();
-  const [headerHeight, setHeaderHeight] = useState(0);
 
   const diffClamp = Animated.diffClamp(scrollY, 0, headerHeight);
   const translateY = diffClamp.interpolate({

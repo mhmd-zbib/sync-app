@@ -29,8 +29,11 @@ const ContactLayout = () => {
   ];
 
   return (
-    <ScrollView bounces={false} overScrollMode="never">
-      <View style={{ paddingHorizontal: 10, gap: 16 }}>
+    <ScrollView
+      bounces={false}
+      overScrollMode="never"
+      stickyHeaderHiddenOnScroll>
+      <View style={{ gap: 16 }}>
         <View
           style={{
             flexDirection: "row",
@@ -39,21 +42,17 @@ const ContactLayout = () => {
           }}>
           <Avatar size={80} name={"Test Person"} />
           <View style={{ justifyContent: "center" }}>
-            <ThemedText size={20}>
-              {"Test Person"} {id}
-            </ThemedText>
+            <ThemedText size={20}>Test Person {id}</ThemedText>
             <ThemedText variant="secondary" size={16}>
               Doctor
             </ThemedText>
           </View>
         </View>
-
         <View style={{ flexDirection: "row", flexWrap: "wrap" }}>
           {links.map(({ platform, link }, index) => (
             <ContactLinksItem key={index} iconName={platform} link={link} />
           ))}
         </View>
-
         <NavTab navItems={navItems} />
         <Slot />
       </View>

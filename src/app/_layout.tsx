@@ -1,37 +1,22 @@
 import { Stack, usePathname } from "expo-router";
 import "react-native-reanimated";
-
+import BackButton from "@/components/BackButton";
 import {
   ThemeProvider as ColorSchemeProvider,
   useTheme,
 } from "@/hooks/useColorScheme";
 import { DefaultTheme, Theme, ThemeProvider } from "@react-navigation/native";
-import { SafeAreaView, TouchableOpacity, useColorScheme } from "react-native";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import * as SystemUI from "expo-system-ui";
 import { useEffect } from "react";
-import ThemedText from "@/components/ThemedText";
-import { Ionicons } from "@expo/vector-icons";
-import BackButton from "@/components/BackButton";
+import { SafeAreaView, useColorScheme } from "react-native";
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 // SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
-  // const [loaded] = useFonts({
-  //   SpaceMono: require("../assets/fonts/SpaceMono-Regular.ttf"),
-  // });
-
-  // useEffect(() => {
-  //   if (loaded) {
-  //     SplashScreen.hideAsync();
-  //   }
-  // }, [loaded]);
-
-  // if (!loaded) {
-  //   return null;
-  // }
-
   const colorScheme = useColorScheme();
+  const queryClient = new QueryClient();
 
   const DarkTheme: Theme = {
     dark: true,
@@ -46,24 +31,25 @@ export default function RootLayout() {
   };
 
   return (
-    <ColorSchemeProvider>
-      <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
-        <SafeAreaView style={{ flex: 1 }}>
-          <StackWrapper />
-        </SafeAreaView>
-      </ThemeProvider>
-    </ColorSchemeProvider>
+    <QueryClientProvider client={queryClient}>
+      <ColorSchemeProvider>
+        <ThemeProvider
+          value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
+          <SafeAreaView style={{ flex: 1 }}>
+            <StackWrapper />
+          </SafeAreaView>
+        </ThemeProvider>
+      </ColorSchemeProvider>
+    </QueryClientProvider>
   );
 }
 
 function StackWrapper() {
   const userTheme = useTheme();
+  const path = usePathname();
   useEffect(() => {
     SystemUI.setBackgroundColorAsync(userTheme.background);
   }, []);
-
-  const path = usePathname();
-  console.log(path, "---------------------------------------------------");
 
   return (
     <Stack

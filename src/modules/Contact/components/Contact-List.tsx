@@ -3,6 +3,7 @@ import React from "react";
 import { FlatList } from "react-native";
 import { Contact } from "../types/interface";
 import ContactItem from "./Contact-Item";
+import EmptyList from "@/components/Empty-List";
 
 interface ContactListProps {
   data: Contact[];
@@ -15,7 +16,7 @@ const ContactList = ({ data, ...props }: ContactListProps) => {
       contentContainerStyle={{ gap: 10 }}
       renderItem={({ item }) => <ContactItem contact={item} />}
       data={data}
-      ListEmptyComponent={<ThemedText>Nohting here</ThemedText>}
+      ListEmptyComponent={<EmptyList />}
     />
   );
 };

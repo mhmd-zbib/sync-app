@@ -4,7 +4,13 @@ import NoteList from "@/modules/Notes/Components/Note-List";
 import React from "react";
 
 const ContactNotesScreen = () => {
-  return <NoteList data={data} ListHeaderComponent={<SearchInput />} />;
+  return (
+    <NoteList
+      data={data}
+      ListHeaderComponent={<SearchInput />}
+      stickyHeaderIndices={[0]}
+    />
+  );
 };
 
 export default ContactNotesScreen;

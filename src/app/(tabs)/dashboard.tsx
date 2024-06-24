@@ -13,7 +13,6 @@ const DashboardScreen = () => {
           title="My Sync"
           subtitle="What gets measured gets improved"
         />
-
         <DashboardContainer title="Reminders">
           <RemindersCreated />
         </DashboardContainer>

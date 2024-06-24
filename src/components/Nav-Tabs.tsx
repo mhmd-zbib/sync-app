@@ -1,7 +1,7 @@
-import Button from "@/components/Button"; // Assuming this is correctly imported
+import Button from "@/components/Button";
 import { Link, usePathname } from "expo-router";
 import React from "react";
-import { ScrollView, View } from "react-native";
+import { View } from "react-native";
 
 type NavItem = {
   path: string;
@@ -22,6 +22,7 @@ type GroupTabProps = {
 const NavTab: React.FC<GroupTabProps> = ({
   navItems,
   justifyContent = "space-between",
+  ...props
 }) => {
   const path = usePathname();
 
@@ -31,6 +32,7 @@ const NavTab: React.FC<GroupTabProps> = ({
 
   return (
     <View
+      {...props}
       style={{
         flexDirection: "row",
         justifyContent,
