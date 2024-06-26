@@ -10,7 +10,14 @@ const BackButton = () => {
   return (
     <ThemedView
       color="secondary"
-      style={{ padding: 8, borderRadius: 8 }}
+      style={{
+        height: 40,
+        width: 40,
+        alignItems: "center",
+        justifyContent: "center",
+        borderRadius: 8,
+        marginLeft: -10,
+      }}
       onPress={() => {
         router.back();
       }}>

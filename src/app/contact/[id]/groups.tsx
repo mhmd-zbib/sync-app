@@ -3,7 +3,7 @@ import GroupsList from "@/modules/Group/components/Groups-List";
 import React from "react";
 
 const ContactGroupsScreen = () => {
-  return <GroupsList data={data} />;
+  return <GroupsList scrollEnabled={false} data={data} />;
 };
 
 export default ContactGroupsScreen;

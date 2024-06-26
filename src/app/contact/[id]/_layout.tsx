@@ -1,9 +1,9 @@
+import React from "react";
 import Avatar from "@/components/Avatar";
 import NavTab from "@/components/Nav-Tabs";
 import ThemedText from "@/components/ThemedText";
 import ContactLinksItem from "@/modules/Contact/components/Contact-Link-Item";
-import { Slot, useLocalSearchParams } from "expo-router";
-import React from "react";
+import { Slot, Stack, useLocalSearchParams } from "expo-router";
 import { ScrollView, View } from "react-native";
 
 const links = [

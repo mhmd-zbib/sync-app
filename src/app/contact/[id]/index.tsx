@@ -2,9 +2,9 @@ import Separator from "@/components/Separator";
 import ThemedText from "@/components/ThemedText";
 import React from "react";
 import { StyleSheet, View } from "react-native";
-import InfoContainer from "@/modules/Contact/components/Info-Container";
+import InfoContainer from "@/components/Info-Container";
 import TagListItem from "@/modules/Tags/components/Tag-List-Item";
-import EmptyComponent from "@/modules/Contact/components/Empty-Component";
+import EmptyComponent from "@/components/Empty-Component";
 
 const DATA = {
   description: "afafas",

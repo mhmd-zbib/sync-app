@@ -4,7 +4,13 @@ import NoteList from "@/modules/Notes/Components/Note-List";
 import React from "react";
 
 const GroupNotesScreen = () => {
-  return <NoteList data={data} ListHeaderComponent={<SearchInput />} />;
+  return (
+    <NoteList
+      data={data}
+      ListHeaderComponent={<SearchInput />}
+      scrollEnabled={false}
+    />
+  );
 };
 
 export default GroupNotesScreen;

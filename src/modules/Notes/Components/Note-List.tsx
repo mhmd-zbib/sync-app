@@ -2,16 +2,12 @@ import React from "react";
 import { FlatList, FlatListProps } from "react-native";
 import NoteItem from "./Note-List-Item";
 
-interface NoteListProps extends FlatListProps<NoteType> {
-  data: NoteType[];
-}
-
-const NoteList = ({ data, ...props }: NoteListProps) => {
+const NoteList: React.FC<FlatListProps<NoteType>> = (props) => {
   return (
     <FlatList
       {...props}
       contentContainerStyle={{ gap: 10 }}
-      data={data}
+      data={props.data}
       renderItem={({ item }) => <NoteItem note={item} />}
     />
   );

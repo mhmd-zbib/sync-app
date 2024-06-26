@@ -12,14 +12,17 @@ const ConnectionsLayout = () => {
     { path: "/connections/starred", title: "Starred" },
     { path: "/connections/tagged", title: "Tagged" },
   ];
+
   return (
     <ScrollView stickyHeaderIndices={[1]} stickyHeaderHiddenOnScroll>
+      {/* <Navigator router={TabRouter}> */}
       <ScreenTitle title="Connections" />
-      <SearchInput style={styles.searchInput} />
+      <SearchInput padding />
       <NavTab navItems={navItems} />
       <View style={{ marginTop: 10 }}>
         <Slot />
       </View>
+      {/* </Navigator> */}
     </ScrollView>
   );
 };
@@ -28,10 +31,6 @@ const styles = StyleSheet.create({
   title: {
     marginTop: 20,
     marginBottom: 10,
-  },
-  searchInput: {
-    paddingVertical: 10,
-    backgroundColor: "black",
   },
 });
 

@@ -16,9 +16,7 @@ const RemindersScreenLayout = () => {
       stickyHeaderIndices={[0]}
       style={{ flex: 1 }}
       stickyHeaderHiddenOnScroll>
-      <View style={styles.headerContainer}>
-        <SearchInput />
-      </View>
+      <SearchInput padding />
       <ReminderList
         data={reminders}
         onScroll={(e) => {
@@ -38,11 +36,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 10,
     marginTop: 10,
   },
-  headerContainer: {
-    alignItems: "center",
-    flexDirection: "row",
-    flex: 1,
-  },
+
   reminderGoalsContainer: {
     flexDirection: "row",
     borderRadius: 200,

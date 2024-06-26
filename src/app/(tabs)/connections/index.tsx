@@ -1,4 +1,3 @@
-import Person1 from "@/__test__/hoc/Person1";
 import EmptyList from "@/components/Empty-List";
 import Loading from "@/components/Loading";
 import ContactList from "@/modules/Contact/components/Contact-List";
@@ -12,11 +11,11 @@ const ContactsScreen = () => {
     return <Loading />;
   }
 
-  if (contactsQuery.data?.length === 0) {
+  if (contactsQuery.data?.length === 0 || !contactsQuery.data) {
     return <EmptyList />;
   }
 
-  return <ContactList data={contactsQuery.data} />;
+  return <ContactList data={contactsQuery.data} scrollEnabled={false} />;
 };
 
 export default ContactsScreen;

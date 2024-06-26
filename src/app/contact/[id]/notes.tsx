@@ -7,7 +7,14 @@ const ContactNotesScreen = () => {
   return (
     <NoteList
       data={data}
-      ListHeaderComponent={<SearchInput />}
+      scrollEnabled={false}
+      ListHeaderComponent={
+        <SearchInput
+          onScroll={() => {
+            console.log("scrolled");
+          }}
+        />
+      }
       stickyHeaderIndices={[0]}
     />
   );

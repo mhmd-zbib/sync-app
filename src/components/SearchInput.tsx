@@ -5,38 +5,47 @@ import { TextInput, View, TextInputProps, StyleProp } from "react-native";
 
 interface SearchInputProps extends TextInputProps {
   additionalItem?: React.ReactNode;
+  padding?: boolean;
 }
 
 const SearchInput: React.FC<SearchInputProps> = ({
   additionalItem,
   style,
+  padding,
   ...props
 }) => {
   const theme = useTheme();
 
   return (
     <View
-      style={[
-        {
-          backgroundColor: theme.secondary,
-          borderRadius: 100,
-          flexDirection: "row",
-          paddingHorizontal: 18,
-          paddingVertical: 12,
-          alignItems: "center",
-          gap: 10,
-        },
-        style,
-      ]}>
-      <Feather name="search" size={24} color={theme.textSecondary} />
-      <TextInput
-        {...props}
-        cursorColor={theme.textAccent}
-        placeholderTextColor={theme.textAccent}
-        placeholder="Search"
-        style={[{ flex: 1, color: theme.textPrimary, fontSize: 16 }]}
-      />
-      {additionalItem && additionalItem}
+      style={{
+        backgroundColor: theme.background,
+        paddingVertical: padding ? 10 : 0,
+      }}>
+      <View
+        style={[
+          {
+            backgroundColor: theme.secondary,
+            borderRadius: 100,
+            flexDirection: "row",
+            paddingHorizontal: 18,
+            paddingVertical: 12,
+            alignItems: "center",
+            gap: 10,
+          },
+
+          style,
+        ]}>
+        <Feather name="search" size={24} color={theme.textSecondary} />
+        <TextInput
+          {...props}
+          cursorColor={theme.textAccent}
+          placeholderTextColor={theme.textAccent}
+          placeholder="Search"
+          style={[{ flex: 1, color: theme.textPrimary, fontSize: 16 }]}
+        />
+        {additionalItem && additionalItem}
+      </View>
     </View>
   );
 };

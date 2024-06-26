@@ -8,7 +8,7 @@ import { ScrollView, View } from "react-native";
 const DashboardScreen = () => {
   return (
     <ScrollView>
-      <View style={{ paddingHorizontal: 10, gap: 26, marginTop: 10 }}>
+      <View style={{ gap: 26, marginTop: 10 }}>
         <ScreenTitle
           title="My Sync"
           subtitle="What gets measured gets improved"

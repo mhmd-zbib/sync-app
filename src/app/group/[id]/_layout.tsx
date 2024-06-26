@@ -1,17 +1,22 @@
 import GroupAvatar from "@/components/GroupAvatar";
 import NavTab from "@/components/Nav-Tabs";
 import ThemedText from "@/components/ThemedText";
-import GroupHeader from "@/modules/Group/components/Group-Header";
+import { useNavigation } from "@react-navigation/native";
 import { Slot, useLocalSearchParams } from "expo-router";
-import React from "react";
+import React, { useLayoutEffect } from "react";
 import { ScrollView, View } from "react-native";
 
 const GroupLayout = () => {
+  const navigation = useNavigation();
   const { id } = useLocalSearchParams();
   const navItems = [
     { path: `/group/${id}`, title: "Contacts" },
     { path: `/group/${id}/notes`, title: "Notes" },
   ];
+
+  useLayoutEffect(() => {
+    navigation.setOptions({ title: "Group" });
+  }, [navigation]);
 
   return (
     <ScrollView bounces={false} overScrollMode="never">

@@ -1,15 +1,16 @@
-import { Stack, usePathname } from "expo-router";
-import "react-native-reanimated";
 import BackButton from "@/components/BackButton";
+import NavHeader from "@/components/NavHeader";
 import {
   ThemeProvider as ColorSchemeProvider,
   useTheme,
 } from "@/hooks/useColorScheme";
 import { DefaultTheme, Theme, ThemeProvider } from "@react-navigation/native";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { Stack, usePathname } from "expo-router";
 import * as SystemUI from "expo-system-ui";
 import { useEffect } from "react";
 import { SafeAreaView, useColorScheme } from "react-native";
+import "react-native-reanimated";
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 // SplashScreen.preventAutoHideAsync();
@@ -35,7 +36,7 @@ export default function RootLayout() {
       <ColorSchemeProvider>
         <ThemeProvider
           value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
-          <SafeAreaView style={{ flex: 1 }}>
+          <SafeAreaView style={{ flex: 1, paddingHorizontal: 10 }}>
             <StackWrapper />
           </SafeAreaView>
         </ThemeProvider>
@@ -46,7 +47,6 @@ export default function RootLayout() {
 
 function StackWrapper() {
   const userTheme = useTheme();
-  const path = usePathname();
   useEffect(() => {
     SystemUI.setBackgroundColorAsync(userTheme.background);
   }, []);
@@ -54,42 +54,17 @@ function StackWrapper() {
   return (
     <Stack
       screenOptions={{
+        // header: (nav) => <NavHeader title={nav.route.name} />,
         headerTitleAlign: "center",
         animation: "fade_from_bottom",
         statusBarColor: userTheme.background,
         navigationBarColor: userTheme.background,
         headerTintColor: userTheme.primary,
-        headerStyle: { backgroundColor: userTheme.background },
         contentStyle: { backgroundColor: userTheme.background },
+        headerStyle: { backgroundColor: userTheme.background },
         headerLeft: BackButton,
       }}>
       <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-      <Stack.Screen
-        name="contact/[id]/index"
-        options={{ headerTitle: "Profile" }}
-      />
-      <Stack.Screen name="group/[id]" options={{ headerTitle: "Group Info" }} />
-      <Stack.Screen
-        name="reminder/[id]/index"
-        options={{ headerTitle: "Reminder Info" }}
-      />
-      <Stack.Screen
-        name="note/[id]/index"
-        options={{ headerTitle: "Note Info" }}
-      />
-      <Stack.Screen
-        name="contact/[id]/description/[description]"
-        options={{ headerTitle: "Edit Description" }}
-      />
-      <Stack.Screen
-        name="contact/[id]/communication/[communication]"
-        options={{ headerTitle: "Edit Contact" }}
-      />
-      <Stack.Screen
-        name="contact/[id]/tags/[tags]"
-        options={{ headerTitle: "Edit Tags" }}
-      />
-
       <Stack.Screen name="test" options={{ headerShown: false }} />
     </Stack>
   );
