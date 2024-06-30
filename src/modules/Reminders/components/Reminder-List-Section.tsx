@@ -1,4 +1,4 @@
-import ThemedText from "@/components/ThemedText";
+import ThemedText from "@/components/ui/ThemedText";
 import { useTheme } from "@/hooks/useColorScheme";
 import { formatMonthYear } from "@/utils/format-date";
 import React from "react";

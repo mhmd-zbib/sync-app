@@ -1,5 +1,5 @@
 import data from "@/__test__/data/Notes.json";
-import SearchInput from "@/components/SearchInput";
+import SearchInput from "@/components/ui/SearchInput";
 import NoteList from "@/modules/Notes/Components/Note-List";
 import React from "react";
 

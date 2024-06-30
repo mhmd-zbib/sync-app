@@ -1,16 +1,10 @@
 import reminders from "@/__test__/data/Reminders.json";
-import ProgressBar from "@/components/Progress-Bar";
-import SearchInput from "@/components/SearchInput";
-import ThemedText from "@/components/ThemedText";
-import { useTheme } from "@/hooks/useColorScheme";
+import SearchInput from "@/components/ui/SearchInput";
 import ReminderList from "@/modules/Reminders/components/Reminder-List";
-import { FontAwesome5 } from "@expo/vector-icons";
 import React from "react";
-import { ScrollView, StyleSheet, View } from "react-native";
+import { ScrollView, StyleSheet } from "react-native";
 
 const RemindersScreenLayout = () => {
-  const theme = useTheme();
-
   return (
     <ScrollView
       stickyHeaderIndices={[0]}
@@ -18,6 +12,7 @@ const RemindersScreenLayout = () => {
       stickyHeaderHiddenOnScroll>
       <SearchInput padding />
       <ReminderList
+        scrollEnabled={false}
         data={reminders}
         onScroll={(e) => {
           e.nativeEvent;

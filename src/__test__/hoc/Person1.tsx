@@ -1,4 +1,4 @@
-import Button from "@/components/Button";
+import Button from "@/components/ui/Button";
 import React from "react";
 import { View } from "react-native";
 import WithMoneyButton from "./withAuth";

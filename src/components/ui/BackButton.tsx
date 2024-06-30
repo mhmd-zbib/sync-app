@@ -1,9 +1,8 @@
-import { Ionicons } from "@expo/vector-icons";
-import React from "react";
-import ThemedView from "./ThemedView";
 import { useTheme } from "@/hooks/useColorScheme";
 import { MaterialIcons } from "@expo/vector-icons";
 import { router } from "expo-router";
+import React from "react";
+import ThemedView from "./ThemedView";
 
 const BackButton = () => {
   const theme = useTheme();
@@ -16,7 +15,7 @@ const BackButton = () => {
         alignItems: "center",
         justifyContent: "center",
         borderRadius: 8,
-        marginLeft: -10,
+        marginLeft: -15,
       }}
       onPress={() => {
         router.back();

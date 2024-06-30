@@ -1,7 +1,7 @@
 import { View, Text } from "react-native";
 import React from "react";
 import { usePathname } from "expo-router";
-import ThemedText from "@/components/ThemedText";
+import ThemedText from "@/components/ui/ThemedText";
 
 const NotFound = () => {
   const path = usePathname();

@@ -1,4 +1,4 @@
-import Button from "@/components/Button";
+import Button from "@/components/ui/Button";
 import { Link, usePathname } from "expo-router";
 import React from "react";
 import { View } from "react-native";

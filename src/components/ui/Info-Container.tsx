@@ -1,6 +1,6 @@
-import { Card } from "@/components/Card";
-import Separator from "@/components/Separator";
-import ThemedText from "@/components/ThemedText";
+import { Card } from "@/components/ui/Card";
+import Separator from "@/components/ui/Separator";
+import ThemedText from "@/components/ui/ThemedText";
 import { Link } from "expo-router";
 import React from "react";
 import { View, ViewProps } from "react-native";

@@ -1,4 +1,4 @@
-import ThemedText from "@/components/ThemedText";
+import ThemedText from "@/components/ui/ThemedText";
 import { Group } from "@/modules/Connections/types/interfaces";
 import React from "react";
 import { FlatList, FlatListProps } from "react-native";

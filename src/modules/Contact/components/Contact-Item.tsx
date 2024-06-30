@@ -1,21 +1,22 @@
-import Avatar from "@/components/Avatar";
-import { Card } from "@/components/Card";
-import ThemedText from "@/components/ThemedText";
+import Avatar from "@/components/ui/Avatar";
+import { Card } from "@/components/ui/Card";
+import ThemedText from "@/components/ui/ThemedText";
 import { useTheme } from "@/hooks/useColorScheme";
 import ContactTagItem from "@/modules/Tags/components/Tag-List-Item";
 import { formatShortDate } from "@/utils/format-date";
 import { AntDesign, Octicons } from "@expo/vector-icons";
 import { Link } from "expo-router";
-import React from "react";
+import React, { memo } from "react";
 import { View } from "react-native";
 import { Contact } from "../types/interface";
 
 export interface ContactItemProps {
   contact: Contact;
+
   onPress?: () => void;
 }
 
-const ContactItem = ({ contact }: ContactItemProps) => {
+const ContactItem = memo(({ contact }: ContactItemProps) => {
   const theme = useTheme();
   return (
     <Link href={`contact/${contact.id}`} asChild>
@@ -69,6 +70,6 @@ const ContactItem = ({ contact }: ContactItemProps) => {
       </Card>
     </Link>
   );
-};
+});
 
 export default ContactItem;

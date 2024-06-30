@@ -1,8 +1,8 @@
 //! CHANGE PLACE TO CONTACTS
 
-import { Card } from "@/components/Card";
-import GroupAvatar from "@/components/GroupAvatar";
-import ThemedText from "@/components/ThemedText";
+import { Card } from "@/components/ui/Card";
+import GroupAvatar from "@/components/ui/GroupAvatar";
+import ThemedText from "@/components/ui/ThemedText";
 import { Link } from "expo-router";
 import React from "react";
 import { View } from "react-native";

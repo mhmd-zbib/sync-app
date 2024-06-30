@@ -1,6 +1,6 @@
-import GroupAvatar from "@/components/GroupAvatar";
-import NavTab from "@/components/Nav-Tabs";
-import ThemedText from "@/components/ThemedText";
+import GroupAvatar from "@/components/ui/GroupAvatar";
+import NavTab from "@/components/ui/Nav-Tabs";
+import ThemedText from "@/components/ui/ThemedText";
 import { useNavigation } from "@react-navigation/native";
 import { Slot, useLocalSearchParams } from "expo-router";
 import React, { useLayoutEffect } from "react";

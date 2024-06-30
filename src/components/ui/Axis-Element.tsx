@@ -1,6 +1,6 @@
 import React from "react";
 import { View, StyleSheet } from "react-native";
-import ThemedText from "@/components/ThemedText";
+import ThemedText from "@/components/ui/ThemedText";
 import { useTheme } from "@/hooks/useColorScheme";
 
 interface AxisProps {

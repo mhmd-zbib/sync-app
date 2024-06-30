@@ -1,4 +1,4 @@
-import ThemedText from "@/components/ThemedText";
+import ThemedText from "@/components/ui/ThemedText";
 import { useLocalSearchParams } from "expo-router";
 import React from "react";
 import { View } from "react-native";

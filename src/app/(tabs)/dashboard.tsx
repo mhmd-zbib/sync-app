@@ -1,4 +1,4 @@
-import ScreenTitle from "@/components/Screen-Title";
+import ScreenTitle from "@/components/ui/Screen-Title";
 import DashboardContainer from "@/modules/Dashboard/components/Dashboard-Container";
 import ContactsCreated from "@/modules/Dashboard/features/Contacts-Created";
 import RemindersCreated from "@/modules/Dashboard/features/Reminders-Created";

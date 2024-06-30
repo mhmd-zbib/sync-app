@@ -1,5 +1,5 @@
 import details from "@/__test__/data/Remidner-Details.json";
-import ThemedText from "@/components/ThemedText";
+import ThemedText from "@/components/ui/ThemedText";
 import { useTheme } from "@/hooks/useColorScheme";
 import { formatFullDateTime } from "@/utils/format-date";
 import { Link, useLocalSearchParams } from "expo-router";

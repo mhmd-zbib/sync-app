@@ -1,6 +1,6 @@
-import NavTab from "@/components/Nav-Tabs";
-import ScreenTitle from "@/components/Screen-Title";
-import SearchInput from "@/components/SearchInput";
+import NavTab from "@/components/ui/Nav-Tabs";
+import ScreenTitle from "@/components/ui/Screen-Title";
+import SearchInput from "@/components/ui/SearchInput";
 import { Slot } from "expo-router";
 import React from "react";
 import { ScrollView, StyleSheet, View } from "react-native";

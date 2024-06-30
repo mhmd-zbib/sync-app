@@ -1,6 +1,6 @@
-import BarGraph from "@/components/Bar-Graph";
-import Separator from "@/components/Separator";
-import ThemedText from "@/components/ThemedText";
+import BarGraph from "@/components/ui/Bar-Graph";
+import Separator from "@/components/ui/Separator";
+import ThemedText from "@/components/ui/ThemedText";
 import { useTheme } from "@/hooks/useColorScheme";
 import { MaterialIcons } from "@expo/vector-icons";
 import React from "react";

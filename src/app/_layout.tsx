@@ -1,5 +1,5 @@
-import BackButton from "@/components/BackButton";
-import NavHeader from "@/components/NavHeader";
+import BackButton from "@/components/ui/BackButton";
+import NavHeader from "@/components/ui/NavHeader";
 import {
   ThemeProvider as ColorSchemeProvider,
   useTheme,
@@ -47,9 +47,12 @@ export default function RootLayout() {
 
 function StackWrapper() {
   const userTheme = useTheme();
+  const path = usePathname();
   useEffect(() => {
     SystemUI.setBackgroundColorAsync(userTheme.background);
   }, []);
+
+  console.log(path);
 
   return (
     <Stack

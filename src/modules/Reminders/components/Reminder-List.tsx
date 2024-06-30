@@ -3,7 +3,7 @@
  * The header hides on scroll and reappears and works well
  */
 
-import EmptyList from "@/components/Empty-List";
+import EmptyList from "@/components/ui/Empty-List";
 import React from "react";
 import { SectionList, SectionListProps } from "react-native";
 import { ReminderListSection } from "./Reminder-List-Section";

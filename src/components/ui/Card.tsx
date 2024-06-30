@@ -1,4 +1,4 @@
-import ThemedView from "@/components/ThemedView";
+import ThemedView from "@/components/ui/ThemedView";
 import { GestureResponderEvent, ViewStyle } from "react-native";
 
 interface CardProps {

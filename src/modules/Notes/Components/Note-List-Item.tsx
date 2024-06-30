@@ -1,5 +1,5 @@
-import { Card } from "@/components/Card";
-import ThemedText from "@/components/ThemedText";
+import { Card } from "@/components/ui/Card";
+import ThemedText from "@/components/ui/ThemedText";
 import { Link } from "expo-router";
 import React from "react";
 

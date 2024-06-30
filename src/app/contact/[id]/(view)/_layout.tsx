@@ -1,32 +1,28 @@
-import React from "react";
-import Avatar from "@/components/Avatar";
-import NavTab from "@/components/Nav-Tabs";
-import ThemedText from "@/components/ThemedText";
+import ErrorScreen from "@/components/layouts/ErrorScreen";
+import Avatar from "@/components/ui/Avatar";
+import Loading from "@/components/ui/Loading";
+import NavTab from "@/components/ui/Nav-Tabs";
+import ThemedText from "@/components/ui/ThemedText";
 import ContactLinksItem from "@/modules/Contact/components/Contact-Link-Item";
-import { Slot, Stack, useLocalSearchParams } from "expo-router";
+import { useContact } from "@/modules/Contact/query/get-contact";
+import { Slot, useLocalSearchParams } from "expo-router";
+import React from "react";
 import { ScrollView, View } from "react-native";
-
-const links = [
-  { platform: "facebook", link: "https://www.facebook.com/example" },
-  { platform: "linkedin", link: "https://www.linkedin.com/in/example" },
-  { platform: "github", link: "https://github.com/example" },
-  { platform: "twitter", link: "https://twitter.com/example" },
-  { platform: "instagram", link: "https://www.instagram.com/example" },
-  { platform: "youtube", link: "https://www.youtube.com/example" },
-  { platform: "pinterest", link: "https://www.pinterest.com/example" },
-  { platform: "reddit", link: "https://www.reddit.com/user/example" },
-  { platform: "tumblr", link: "https://example.tumblr.com/" },
-];
 
 const ContactLayout = () => {
   const { id } = useLocalSearchParams();
-
   const navItems = [
     { path: `/contact/${id}`, title: "Info" },
     { path: `/contact/${id}/notes`, title: "Notes" },
     { path: `/contact/${id}/reminders`, title: "Reminders" },
     { path: `/contact/${id}/groups`, title: "Groups" },
   ];
+
+  const { data, isLoading, isError } = useContact({ contactId: id });
+  const { name, links } = data || {};
+
+  if (isLoading) return <Loading />;
+  if (!data || isError) return <ErrorScreen />;
 
   return (
     <ScrollView
@@ -40,16 +36,16 @@ const ContactLayout = () => {
             gap: 16,
             marginTop: 16,
           }}>
-          <Avatar size={80} name={"Test Person"} />
+          <Avatar size={80} name={name} />
           <View style={{ justifyContent: "center" }}>
-            <ThemedText size={20}>Test Person {id}</ThemedText>
-            <ThemedText variant="secondary" size={16}>
+            <ThemedText size={20}>{name}</ThemedText>
+            {/* <ThemedText variant="secondary" size={16}>
               Doctor
-            </ThemedText>
+            </ThemedText> */}
           </View>
         </View>
         <View style={{ flexDirection: "row", flexWrap: "wrap" }}>
-          {links.map(({ platform, link }, index) => (
+          {links?.map(({ platform, link }, index) => (
             <ContactLinksItem key={index} iconName={platform} link={link} />
           ))}
         </View>

@@ -1,4 +1,4 @@
-import Button from "@/components/Button";
+import Button from "@/components/ui/Button";
 import { Link, useLocalSearchParams, usePathname } from "expo-router";
 import { View } from "react-native";
 

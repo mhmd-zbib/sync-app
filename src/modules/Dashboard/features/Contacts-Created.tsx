@@ -1,6 +1,6 @@
-import { Card } from "@/components/Card";
-import GraphTicks from "@/components/Graph-Ticks";
-import { LineGraph } from "@/components/Line-Graph";
+import { Card } from "@/components/ui/Card";
+import GraphTicks from "@/components/ui/Graph-Ticks";
+import { LineGraph } from "@/components/ui/Line-Graph";
 import React from "react";
 import DashboardContainer from "../components/Dashboard-Container";
 import { View } from "react-native";
