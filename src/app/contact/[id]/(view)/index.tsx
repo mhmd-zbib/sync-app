@@ -10,7 +10,7 @@ import { StyleSheet, View } from "react-native";
 
 const ContactInfoScreen = () => {
   const { id } = useLocalSearchParams();
-  const { data, isLoading, isError } = useContact({ contactId: id });
+  const { data } = useContact({ contactId: id });
   const { description, phone, email, tags = [], experience = [] } = data || {};
 
   return (
@@ -61,17 +61,11 @@ const ContactInfoScreen = () => {
             <>
               <View style={{ gap: 8 }}>
                 <ThemedText size={18}>{exp.title}</ThemedText>
-
-                <View style={{ flexDirection: "row", gap: 10 }}>
-                  <ThemedText variant="accent">
-                    {exp.company_name}
-                    {"  ●  "}
-                    {exp.from_date}
-                    {"  ●  "}
-                    {exp.to_date ? exp.to_date : "Current"}
-                  </ThemedText>
-                </View>
-
+                <ThemedText variant="accent">
+                  {`${exp.company_name}    ●    ${exp.from_date}    ●   ${
+                    exp.to_date ? exp.to_date : "Current"
+                  }`}
+                </ThemedText>
                 <ThemedText>{exp.description}</ThemedText>
               </View>
 

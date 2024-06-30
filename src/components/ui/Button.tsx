@@ -6,17 +6,31 @@ import ThemedText from "./ThemedText";
 interface ButtonPropsType extends TouchableOpacityProps {
   variant?: "primary" | "secondary";
   title: string;
-
   rounded?: boolean;
+  size?: "sm" | "md" | "lg";
 }
 
 const Button = ({
   variant = "primary",
   title,
   rounded = false,
+  size = "md",
   ...props
 }: ButtonPropsType) => {
   const theme = useTheme();
+
+  const getPaddingVertical = (): number => {
+    switch (size) {
+      case "sm":
+        return 8;
+      case "lg":
+        return 20;
+      case "md":
+      default:
+        return 16;
+    }
+  };
+
   return (
     <TouchableOpacity
       {...props}
@@ -25,7 +39,7 @@ const Button = ({
         backgroundColor:
           variant === "primary" ? theme.primary : theme.background,
         paddingHorizontal: 16,
-        paddingVertical: 10,
+        paddingVertical: getPaddingVertical(),
         borderRadius: rounded ? 800 : 8,
         borderWidth: 1,
         borderColor: variant === "primary" ? theme.primary : theme.subAccent,

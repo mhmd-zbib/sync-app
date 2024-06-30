@@ -9,6 +9,7 @@ const GroupsList: React.FC<FlatListProps<Group>> = (props) => {
     <FlatList
       {...props}
       data={props.data}
+      keyExtractor={(item) => item.id.toString()}
       renderItem={({ item }) => <GroupsItem group={item} />}
       contentContainerStyle={{ gap: 10, flex: 1, alignContent: "center" }}
       ListEmptyComponent={<ThemedText>nothing here</ThemedText>}

@@ -9,11 +9,11 @@ export const ReminderListSection = ({ title }: { title: string }) => {
   return (
     <View
       style={{
+        marginTop: 10,
         flexDirection: "row",
         gap: 10,
         alignItems: "center",
-        marginBottom: 8,
-        // marginTop: 24,
+        marginBottom: 2,
       }}>
       <ThemedText size={16} variant="accent">
         {formatMonthYear(title)}

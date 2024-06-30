@@ -20,7 +20,7 @@ const GroupLayout = () => {
 
   return (
     <ScrollView bounces={false} overScrollMode="never">
-      <View style={{ paddingHorizontal: 10, gap: 16 }}>
+      <View style={{ gap: 16 }}>
         <View
           style={{
             flexDirection: "row",

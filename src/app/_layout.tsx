@@ -57,7 +57,6 @@ function StackWrapper() {
   return (
     <Stack
       screenOptions={{
-        // header: (nav) => <NavHeader title={nav.route.name} />,
         headerTitleAlign: "center",
         animation: "fade_from_bottom",
         statusBarColor: userTheme.background,

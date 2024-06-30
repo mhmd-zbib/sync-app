@@ -1,11 +1,21 @@
-//! CHANGE PLACE TO CONTACTS
-
-import { Card } from "@/components/ui/Card";
+import React, { memo } from "react";
+import { View, StyleSheet } from "react-native";
+import Card from "@/components/ui/Card";
 import GroupAvatar from "@/components/ui/GroupAvatar";
 import ThemedText from "@/components/ui/ThemedText";
-import { Link } from "expo-router";
-import React from "react";
-import { View } from "react-native";
+
+const styles = StyleSheet.create({
+  cardContainer: {
+    flexDirection: "row",
+    flex: 1,
+    alignItems: "center",
+  },
+  textContainer: {
+    flex: 1,
+    marginLeft: 10, // Adjusted spacing between avatar and text
+    justifyContent: "space-between",
+  },
+});
 
 interface ContactGroupProps {
   group: GroupType;
@@ -13,24 +23,16 @@ interface ContactGroupProps {
 
 const GroupsItem = ({ group }: ContactGroupProps) => {
   return (
-    <Link href={`group/${group.id}`} asChild>
-      <Card
-        style={{
-          flexDirection: "row",
-          flex: 1,
-          gap: 10,
-          alignItems: "center",
-        }}>
-        <GroupAvatar color={group.color} emoji={group.emoji} size={42} />
-        <View style={{ justifyContent: "space-between" }}>
-          <ThemedText size={16}>{group.name}</ThemedText>
-          <ThemedText size={12} variant="accent">
-            {group.memberCount} Connections
-          </ThemedText>
-        </View>
-      </Card>
-    </Link>
+    <Card href={`group/${group.id}`} style={styles.cardContainer}>
+      <GroupAvatar color={group.color} emoji={group.emoji} size={42} />
+      <View style={styles.textContainer}>
+        <ThemedText size={16}>{group.name}</ThemedText>
+        <ThemedText size={12} variant="accent">
+          {group.memberCount} Connections
+        </ThemedText>
+      </View>
+    </Card>
   );
 };
 
-export default GroupsItem;
+export default memo(GroupsItem);

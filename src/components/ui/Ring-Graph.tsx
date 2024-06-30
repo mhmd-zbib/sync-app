@@ -1,20 +1,15 @@
 import ThemedText from "@/components/ui/ThemedText";
 import { useTheme } from "@/hooks/useColorScheme";
 import React from "react";
-import { View, Text } from "react-native";
+import { View } from "react-native";
 import Svg, { Circle } from "react-native-svg";
 
 interface RingProgressProps {
   progress: number;
   total: number;
-  title?: string;
 }
 
-const RingProgress: React.FC<RingProgressProps> = ({
-  progress,
-  total,
-  title,
-}) => {
+const RingProgress: React.FC<RingProgressProps> = ({ progress, total }) => {
   if (total < progress) {
     throw new Error("Total should always be greater than or equal to progress");
   }
@@ -61,10 +56,12 @@ const RingProgress: React.FC<RingProgressProps> = ({
             justifyContent: "center",
           }}>
           <ThemedText style={{ fontWeight: "600" }} size={20}>
-            {title}
+            {Math.round((progress / total) * 100)}%
           </ThemedText>
+
           <ThemedText variant="secondary" size={14}>
-            {progress} /{total}
+            Completed
+            {/* {progress} /{total} */}
           </ThemedText>
         </View>
       </Svg>

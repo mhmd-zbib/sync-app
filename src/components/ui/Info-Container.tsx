@@ -1,9 +1,8 @@
-import { Card } from "@/components/ui/Card";
 import Separator from "@/components/ui/Separator";
 import ThemedText from "@/components/ui/ThemedText";
-import { Link } from "expo-router";
 import React from "react";
 import { View, ViewProps } from "react-native";
+import Card from "./Card";
 
 interface InfoContainerProps extends ViewProps {
   title: string;
@@ -18,15 +17,13 @@ const InfoContainer = ({
   ...view
 }: InfoContainerProps) => {
   return (
-    <Link href={href} asChild>
-      <Card>
-        <ThemedText variant="accent" size={14}>
-          {title}
-        </ThemedText>
-        <Separator />
-        <View {...view}>{children}</View>
-      </Card>
-    </Link>
+    <Card href={href}>
+      <ThemedText variant="accent" size={14}>
+        {title}
+      </ThemedText>
+      <Separator />
+      <View {...view}>{children}</View>
+    </Card>
   );
 };
 

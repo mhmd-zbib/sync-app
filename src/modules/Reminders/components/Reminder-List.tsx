@@ -32,6 +32,7 @@ const ReminderList = ({ data }: ReminderList) => {
       renderSectionHeader={({ section }) => (
         <ReminderListSection title={section.title} />
       )}
+      contentContainerStyle={{ gap: 10 }}
       sections={data}
       renderItem={({ item }) => <ReminderListItem reminder={item} />}
     />

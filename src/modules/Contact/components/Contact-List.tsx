@@ -1,14 +1,16 @@
 import EmptyList from "@/components/ui/Empty-List";
-import React from "react";
+import React, { useMemo } from "react";
 import { FlatList, FlatListProps } from "react-native";
 import { Contact } from "../types/interface";
 import ContactItem from "./Contact-Item";
 
-const renderItem = ({ item }: { item: Contact }) => (
-  <ContactItem contact={item} />
-);
-
 const ContactList: React.FC<FlatListProps<Contact>> = (props) => {
+  const renderItem = useMemo(() => {
+    return ({ item }: { item: Contact }) => (
+      <ContactItem contact={item} href={`/contact/${item.id}`} />
+    );
+  }, []);
+
   return (
     <FlatList
       {...props}

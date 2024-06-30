@@ -9,14 +9,20 @@ import { Contact } from "../types/interface";
 
 export interface ContactItemProps {
   contact: Contact;
+  href: string;
 }
 
-const ContactItem = memo(({ contact }: ContactItemProps) => {
+const ContactItem = memo(({ contact, href }: ContactItemProps) => {
   const theme = useTheme();
   return (
     <Card
-      href="/"
-      style={{ flexDirection: "row", alignItems: "center", gap: 10 }}>
+      href={href}
+      style={{
+        flexDirection: "row",
+        alignItems: "center",
+        gap: 10,
+        padding: 14,
+      }}>
       <Avatar star={contact.isStarred} name={contact.name} />
       <ThemedText>{contact.name}</ThemedText>
 

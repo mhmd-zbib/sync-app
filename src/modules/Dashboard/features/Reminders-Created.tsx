@@ -1,6 +1,7 @@
 import BarGraph from "@/components/ui/Bar-Graph";
 import Separator from "@/components/ui/Separator";
 import ThemedText from "@/components/ui/ThemedText";
+import ThemedView from "@/components/ui/ThemedView";
 import { useTheme } from "@/hooks/useColorScheme";
 import { MaterialIcons } from "@expo/vector-icons";
 import React from "react";
@@ -42,7 +43,9 @@ const RemindersCreated = () => {
   };
 
   return (
-    <>
+    <ThemedView
+      color="secondary"
+      style={{ padding: 16, borderRadius: 20, gap: 30 }}>
       <View
         style={{
           flexDirection: "row",
@@ -66,7 +69,7 @@ const RemindersCreated = () => {
         </View>
       </View>
       <BarGraph data={value} labels={label} />
-    </>
+    </ThemedView>
   );
 };
 

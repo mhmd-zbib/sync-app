@@ -14,8 +14,8 @@ const TagListItem: React.FC<TagItemType> = ({ tag }) => {
   const tagColor = TagColors[tag.color as keyof typeof TagColors] || "#CCCCCC";
   const containerStyle = {
     ...styles.container,
-    backgroundColor: colorToRGBA(tagColor, 0.15),
-    borderColor: colorToRGBA(tagColor, 0.8),
+    backgroundColor: colorToRGBA(tagColor, 0.07),
+    borderColor: colorToRGBA(tagColor, 0.3),
   };
   const textStyle = { color: colorToRGBA(tagColor, 1) };
 
