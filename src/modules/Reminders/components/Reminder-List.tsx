@@ -33,7 +33,7 @@ const ReminderList = ({ data }: ReminderList) => {
         <ReminderListSection title={section.title} />
       )}
       sections={data}
-      renderItem={({ item, index }) => <ReminderListItem reminder={item} />}
+      renderItem={({ item }) => <ReminderListItem reminder={item} />}
     />
   );
 };

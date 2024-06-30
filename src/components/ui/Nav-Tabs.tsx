@@ -1,7 +1,8 @@
 import Button from "@/components/ui/Button";
-import { Link, usePathname } from "expo-router";
+import { Link, router, usePathname } from "expo-router";
 import React from "react";
 import { View } from "react-native";
+import ThemedText from "./ThemedText";
 
 type NavItem = {
   path: string;
@@ -40,14 +41,15 @@ const NavTab: React.FC<GroupTabProps> = ({
         gap: justifyContent === "flex-start" ? 20 : 0,
       }}>
       {navItems.map((item, index) => (
-        <Link key={index} href={item.path} asChild replace>
-          <Button
-            style={{}}
-            rounded
-            variant={isActive(item.path) ? "primary" : "secondary"}
-            title={item.title}
-          />
-        </Link>
+        <Button
+          key={index}
+          onPress={() => {
+            router.replace(item.path);
+          }}
+          rounded
+          variant={isActive(item.path) ? "primary" : "secondary"}
+          title={item.title}
+        />
       ))}
     </View>
   );

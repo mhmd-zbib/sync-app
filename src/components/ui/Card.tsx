@@ -1,28 +1,33 @@
-import ThemedView from "@/components/ui/ThemedView";
-import { GestureResponderEvent, ViewStyle } from "react-native";
+import { useTheme } from "@/hooks/useColorScheme";
+import { Link } from "expo-router";
+import React from "react";
+import { TouchableOpacity, ViewStyle } from "react-native";
 
 interface CardProps {
   children: React.ReactNode;
-  onPress?: ((event: GestureResponderEvent) => void) | undefined;
+  href: string;
   style?: ViewStyle;
-  disabled?: boolean;
 }
 
-export const Card = ({
-  children,
-  onPress,
-  style,
-  disabled,
-  ...props
-}: CardProps) => {
+const Card = ({ children, href, style }: CardProps) => {
+  const theme = useTheme();
+
   return (
-    <ThemedView
-      disabled={disabled}
-      {...props}
-      onPress={onPress}
-      style={[{ borderRadius: 16, padding: 16 }, style]}
-      color="secondary">
-      {children}
-    </ThemedView>
+    <Link asChild href={href}>
+      <TouchableOpacity
+        activeOpacity={0.7}
+        style={{
+          backgroundColor: theme.secondary,
+          padding: 18,
+          borderRadius: 15,
+          display: "flex",
+          flexDirection: "column",
+          ...style,
+        }}>
+        {children}
+      </TouchableOpacity>
+    </Link>
   );
 };
+
+export default Card;
