@@ -7,7 +7,7 @@ import { ScrollView, View } from "react-native";
 const DashboardLayouts = () => {
   const navItems = [
     { path: `/dashboard`, title: "Reminders" },
-    { path: `/dashboard/notes`, title: "Contacts" },
+    { path: `/dashboard/contact`, title: "Contacts" },
     { path: `/dashboard/reminders`, title: "Notes" },
     { path: `/dashboard/groups`, title: "Goals" },
   ];
@@ -16,7 +16,9 @@ const DashboardLayouts = () => {
     <ScrollView stickyHeaderIndices={[1]} stickyHeaderHiddenOnScroll>
       <ScreenTitle title="My Sync" />
 
-      <NavTab navItems={navItems} />
+      <View style={{ marginVertical: 10 }}>
+        <NavTab navItems={navItems} />
+      </View>
 
       <Slot />
     </ScrollView>

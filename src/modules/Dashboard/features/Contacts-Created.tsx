@@ -1,9 +1,6 @@
-import { Card } from "@/components/ui/Card";
-import GraphTicks from "@/components/ui/Graph-Ticks";
 import { LineGraph } from "@/components/ui/Line-Graph";
 import React from "react";
 import DashboardContainer from "../components/Dashboard-Container";
-import { View } from "react-native";
 
 const ContactsCreated = () => {
   const data = [
@@ -19,7 +16,11 @@ const ContactsCreated = () => {
   const value = data.map((item) => item.value);
   const labels = data.map((item) => item.label);
 
-  return <LineGraph data={value} labels={labels} />;
+  return (
+    <DashboardContainer title="Created">
+      <LineGraph data={value} labels={labels} />
+    </DashboardContainer>
+  );
 };
 
 export default ContactsCreated;

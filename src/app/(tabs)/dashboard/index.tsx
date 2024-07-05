@@ -1,18 +1,17 @@
-import ContactsCreated from "@/modules/Dashboard/features/Contacts-Created";
 import RemindersCompleted from "@/modules/Dashboard/features/Reminders-Completed";
 import RemindersCreated from "@/modules/Dashboard/features/Reminders-Created";
+import RemindersMissed from "@/modules/Dashboard/features/Reminders-Missed";
 import React from "react";
 import { View } from "react-native";
 
-const DashboardScreen = () => {
+const ReminderDashboardScreen = () => {
   return (
-    <View style={{ gap: 26 }}>
+    <View style={{ gap: 24 }}>
       <RemindersCreated />
       <RemindersCompleted />
-      <RemindersCreated />
-      <ContactsCreated />
+      <RemindersMissed />
     </View>
   );
 };
 
-export default DashboardScreen;
+export default ReminderDashboardScreen;

@@ -1,5 +1,5 @@
-import { Card } from "@/components/ui/Card";
 import ThemedText from "@/components/ui/ThemedText";
+import ThemedView from "@/components/ui/ThemedView";
 import React from "react";
 import { View } from "react-native";
 
@@ -10,13 +10,18 @@ interface DashboardContainerProps {
 
 const DashboardContainer = ({ title, children }: DashboardContainerProps) => {
   return (
-    <View style={{ gap: 5 }}>
-      <ThemedText style={{ fontWeight: "500" }} size={18}>
-        {title}
-      </ThemedText>
-      <Card disabled style={{ gap: 42 }}>
+    <View style={{ gap: 12 }}>
+      <ThemedText size={16}>{title}</ThemedText>
+      <ThemedView
+        style={{
+          paddingHorizontal: 24,
+          padding: 18,
+          borderRadius: 20,
+          gap: 30,
+        }}
+        color="secondary">
         {children}
-      </Card>
+      </ThemedView>
     </View>
   );
 };
