@@ -25,7 +25,15 @@ const RemindersMissed = () => {
   const label = data.map((item) => item.label);
   return (
     <DashboardContainer title="Missed">
-      <DashboardTitle value={12} title="Missed" />
+      <View
+        style={{
+          flex: 1,
+          flexDirection: "row",
+          justifyContent: "space-between",
+        }}>
+        <DashboardTitle value={12} title="Missed this week" />
+        <DashboardTitle value={3} title="Average" />
+      </View>
 
       <BarGraph data={value} labels={label} />
     </DashboardContainer>

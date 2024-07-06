@@ -34,7 +34,7 @@ const RemindersCreated = () => {
             flex: 1,
           }}>
           {/* <DashboardTitle value={`10`} title="Created" /> */}
-          <DashboardTitle value={`10`} title="Created this week" />
+          <DashboardTitle value={`10`} title="Created this week" sub="2" />
           <DashboardTitle value={`6`} title="Average" />
         </View>
       </View>

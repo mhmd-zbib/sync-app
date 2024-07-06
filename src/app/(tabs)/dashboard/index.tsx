@@ -18,7 +18,7 @@ const ReminderDashboardScreen = () => {
       {/* <RemindersGoal /> */}
 
       <RemindersCreated />
-      <RemindersCompleted />
+      {/* <RemindersCompleted /> */}
       <RemindersMissed />
     </>
   );
