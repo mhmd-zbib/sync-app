@@ -7,6 +7,7 @@ const Separator = ({ vertical, ...props }: { vertical?: boolean }) => {
 
   return (
     <View
+      {...props}
       style={{
         width: vertical ? 1 : "100%",
         height: vertical ? "100%" : 1,

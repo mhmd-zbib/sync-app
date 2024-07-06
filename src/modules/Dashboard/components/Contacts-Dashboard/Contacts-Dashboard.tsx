@@ -1,8 +1,8 @@
 import { LineGraph } from "@/components/ui/Line-Graph";
 import React from "react";
-import DashboardContainer from "../components/Dashboard-Container";
+import DashboardContainer from "../../../../components/ui/Dashboard-Container";
 
-const ContactsCreated = () => {
+const ContactsDashboard = () => {
   const data = [
     { label: "S", value: 23 },
     { label: "M", value: 20 },
@@ -23,4 +23,4 @@ const ContactsCreated = () => {
   );
 };
 
-export default ContactsCreated;
+export default ContactsDashboard;

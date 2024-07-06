@@ -41,7 +41,7 @@ const RingProgress: React.FC<RingProgressProps> = ({ progress, total }) => {
           cx={cx}
           cy={cy}
           r={radius}
-          stroke={theme.key}
+          stroke={theme.primary}
           strokeWidth={strokeWidth}
           strokeDasharray={`${progressValue}, ${circumference}`}
           fill="none"
@@ -57,11 +57,6 @@ const RingProgress: React.FC<RingProgressProps> = ({ progress, total }) => {
           }}>
           <ThemedText style={{ fontWeight: "600" }} size={20}>
             {Math.round((progress / total) * 100)}%
-          </ThemedText>
-
-          <ThemedText variant="secondary" size={14}>
-            Completed
-            {/* {progress} /{total} */}
           </ThemedText>
         </View>
       </Svg>

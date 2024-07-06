@@ -1,8 +1,8 @@
 import { useTheme } from "@/hooks/useColorScheme";
 import React, { useState } from "react";
 import { StyleSheet, TouchableOpacity, View } from "react-native";
+import AverageAxisGraph from "./Average-Axis-Graph";
 import GraphLabel from "./Graph-Labels";
-import GraphTicks from "./Graph-Ticks";
 
 interface BarGraphProps {
   data: number[];
@@ -12,6 +12,8 @@ interface BarGraphProps {
 const BarGraph: React.FC<BarGraphProps> = ({ data, labels }) => {
   const theme = useTheme();
   const maxValue = Math.max(...data.map((item) => item));
+  const total = data.reduce((acc, item) => acc + item, 0);
+  const average = total / data.length;
 
   const RenderBars = () => {
     const [selectedBarIndex, setSelectedBarIndex] = useState(null);
@@ -46,7 +48,7 @@ const BarGraph: React.FC<BarGraphProps> = ({ data, labels }) => {
                   selectedBarIndex === null || selectedBarIndex === index
                     ? 1
                     : 0.4,
-                height: (item / maxValue) * 120,
+                height: (item / maxValue) * 120 + 10,
                 backgroundColor,
               },
             ]}
@@ -59,10 +61,10 @@ const BarGraph: React.FC<BarGraphProps> = ({ data, labels }) => {
 
   return (
     <View>
-      <View style={[styles.chart]}>
+      <View style={[styles.chart, { borderColor: theme.accent }]}>
         <RenderBars />
       </View>
-      <GraphTicks item={labels} />
+      <AverageAxisGraph height={average} />
     </View>
   );
 };
@@ -83,13 +85,15 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "flex-end",
+    // borderBottomWidth: 1,
+    // borderLeftWidth: 1,
   },
 
   bar: {
-    borderRadius: 6,
-    width: 30,
+    width: 35,
     justifyContent: "flex-end",
     alignItems: "center",
+    borderRadius: 8,
   },
 });
 

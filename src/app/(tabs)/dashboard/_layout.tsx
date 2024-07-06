@@ -20,7 +20,9 @@ const DashboardLayouts = () => {
         <NavTab navItems={navItems} />
       </View>
 
-      <Slot />
+      <View style={{ gap: 14 }}>
+        <Slot />
+      </View>
     </ScrollView>
   );
 };

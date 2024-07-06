@@ -1,10 +1,11 @@
+import DashboardContainer from "@/components/ui/Dashboard-Container";
+import DashboardTitle from "@/components/ui/Dashboard-Title";
 import RingProgress from "@/components/ui/Ring-Graph";
 import ThemedText from "@/components/ui/ThemedText";
 import React from "react";
 import { View } from "react-native";
-import DashboardContainer from "../components/Dashboard-Container";
 
-const Section = ({ title, value }: { title: string; value: number }) => {
+const Section = ({ title, value }: { title: string; value: any }) => {
   return (
     <View>
       <ThemedText variant="secondary">{title}</ThemedText>
@@ -22,13 +23,17 @@ const RemindersCompleted = () => {
           justifyContent: "space-between",
           alignItems: "center",
         }}>
-        <View style={{ gap: 10 }}>
-          <Section title="Total Set" value={100} />
-          <Section title="Completed" value={50} />
-          <Section title="Completion Rate" value={50} />
+        <View
+          style={{
+            gap: 20,
+            // height: 160,
+            // backgroundColor: "red",
+          }}>
+          <DashboardTitle title="Last 7 days" value={10} />
+          {/* <DashboardTitle title="Total" value={40} /> */}
         </View>
 
-        <RingProgress progress={50} total={180} />
+        {/* <RingProgress progress={50} total={180} /> */}
       </View>
     </DashboardContainer>
   );

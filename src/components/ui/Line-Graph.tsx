@@ -10,15 +10,15 @@ import {
   Stop,
   Svg,
 } from "react-native-svg";
+import AverageAxisGraph from "./Average-Axis-Graph";
 import GraphLabel from "./Graph-Labels";
-import GraphTicks from "./Graph-Ticks";
 
 type LineGraphProps = {
   data: number[];
   labels: any[];
 };
 
-const GRAPH_ASPECT_RATIO = 9 / 16;
+const GRAPH_ASPECT_RATIO = 7 / 16;
 
 export function LineGraph(props: LineGraphProps) {
   const [isSelected, setIsSelected] = useState<any>(null);
@@ -34,12 +34,12 @@ export function LineGraph(props: LineGraphProps) {
   const yScale = d3
     .scaleLinear()
     .domain([min, max + yBuffer])
-    .range([height - 10, 10]);
+    .range([height - 15, 15]);
 
   const xScale = d3
     .scaleLinear()
     .domain([0, props.data.length - 1])
-    .range([10, width - 10]);
+    .range([0, width]);
 
   const lineFn = d3
     .line<number>()
@@ -65,22 +65,25 @@ export function LineGraph(props: LineGraphProps) {
 
   return (
     <View
+      // style={{ backgroundColor: "red" }}
       onLayout={(ev) => {
         setWidth(ev.nativeEvent.layout.width);
       }}>
+      <AverageAxisGraph height={50} />
+
       <Svg width={width} height={height}>
         <Defs>
           <LinearGradient id="gradient" x1={"0%"} x2="0%" y1={"0%"} y2={"100%"}>
-            <Stop offset={"0%"} stopColor={"white"} stopOpacity={0.3} />
+            <Stop offset={"0%"} stopColor={theme.primary} stopOpacity={0.3} />
             <Stop offset={"100%"} stopColor={"black"} stopOpacity={0} />
           </LinearGradient>
         </Defs>
 
         <Path
           d={svgLine}
-          stroke={"white"}
+          stroke={theme.primary}
           fill={"none"}
-          strokeWidth={2}
+          strokeWidth={3}
           opacity={isSelected ? 0.4 : 1}
         />
         <Path d={svgArea} stroke={"none"} fill={"url(#gradient)"} />
@@ -142,7 +145,7 @@ export function LineGraph(props: LineGraphProps) {
         </View>
       ))}
 
-      <GraphTicks item={props.labels} />
+      {/* <GraphTicks item={props.labels} /> */}
     </View>
   );
 }
