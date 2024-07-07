@@ -3,18 +3,20 @@ import DashboardTitle from "@/components/ui/Dashboard-Title";
 import RingProgress from "@/components/ui/Ring-Graph";
 import ThemedText from "@/components/ui/ThemedText";
 import React from "react";
-import { View } from "react-native";
+import { PixelRatio, View } from "react-native";
 
-const Section = ({ title, value }: { title: string; value: any }) => {
-  return (
-    <View>
-      <ThemedText variant="secondary">{title}</ThemedText>
-      <ThemedText size={20}>{value}</ThemedText>
-    </View>
-  );
-};
+interface RemindersCompletedProps {
+  completed: {
+    total: number;
+    weeklyTotal: number;
+    monthlyTotal: number;
+    weeklyRatio: number;
+  };
+}
 
-const RemindersCompleted = () => {
+const RemindersCompleted = ({ completed }: RemindersCompletedProps) => {
+  const { weeklyTotal, monthlyTotal, weeklyRatio } = completed;
+
   return (
     <DashboardContainer title="Completed">
       <View
@@ -25,15 +27,14 @@ const RemindersCompleted = () => {
         }}>
         <View
           style={{
-            gap: 20,
-            // height: 160,
-            // backgroundColor: "red",
+            height: "100%",
+            justifyContent: "space-evenly",
           }}>
-          <DashboardTitle title="Last 7 days" value={10} />
-          {/* <DashboardTitle title="Total" value={40} /> */}
+          <DashboardTitle title="Completed this week" value={weeklyTotal} />
+          <DashboardTitle title="This month " value={monthlyTotal} />
         </View>
 
-        {/* <RingProgress progress={50} total={180} /> */}
+        <RingProgress ratio={weeklyRatio} />
       </View>
     </DashboardContainer>
   );

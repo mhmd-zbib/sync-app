@@ -1,28 +1,20 @@
 import BarGraph from "@/components/ui/Bar-Graph";
-import React from "react";
-import DashboardContainer from "../../../../components/ui/Dashboard-Container";
 import DashboardTitle from "@/components/ui/Dashboard-Title";
+import React from "react";
 import { View } from "react-native";
-import Separator from "@/components/ui/Separator";
+import DashboardContainer from "../../../../components/ui/Dashboard-Container";
 
-const DATA = {
-  weekMissed: 11,
-  totalMissed: 20,
-};
+interface RemindersMissedProps {
+  missed: {
+    weeklyTotal: number;
+    monthlyTotal: number;
+    weekly: number[];
+  };
+}
 
-const RemindersMissed = () => {
-  const data = [
-    { label: "S", value: 12 },
-    { label: "M", value: 20 },
-    { label: "W", value: 47 },
-    { label: "T", value: 17 },
-    { label: "Th", value: 80 },
-    { label: "F", value: 0 },
-    { label: "S", value: 23 },
-  ];
+const RemindersMissed = ({ missed }: RemindersMissedProps) => {
+  const { weeklyTotal, weekly, monthlyTotal } = missed;
 
-  const value = data.map((item) => item.value);
-  const label = data.map((item) => item.label);
   return (
     <DashboardContainer title="Missed">
       <View
@@ -31,11 +23,11 @@ const RemindersMissed = () => {
           flexDirection: "row",
           justifyContent: "space-between",
         }}>
-        <DashboardTitle value={12} title="Missed this week" />
-        <DashboardTitle value={3} title="Average" />
+        <DashboardTitle value={weeklyTotal} title="Missed this week" />
+        <DashboardTitle value={monthlyTotal} title="This month" />
       </View>
 
-      <BarGraph data={value} labels={label} />
+      <BarGraph data={weekly} />
     </DashboardContainer>
   );
 };

@@ -1,4 +1,3 @@
-import ThemedText from "@/components/ui/ThemedText";
 import { useTheme } from "@/hooks/useColorScheme";
 import React from "react";
 import { View } from "react-native";

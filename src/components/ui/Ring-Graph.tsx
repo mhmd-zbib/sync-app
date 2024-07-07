@@ -5,19 +5,18 @@ import { View } from "react-native";
 import Svg, { Circle } from "react-native-svg";
 
 interface RingProgressProps {
-  progress: number;
-  total: number;
+  ratio: number; // Progress ratio (e.g., 0.75 for 75%)
 }
 
-const RingProgress: React.FC<RingProgressProps> = ({ progress, total }) => {
-  if (total < progress) {
-    throw new Error("Total should always be greater than or equal to progress");
+const RingProgress: React.FC<RingProgressProps> = ({ ratio }) => {
+  if (ratio < 0 || ratio > 1) {
+    throw new Error("Ratio should be between 0 and 1 inclusive");
   }
-  const radius = 70;
-  const strokeWidth = 30;
 
-  const clampedProgress = Math.min(progress, total);
-  const percentage = (clampedProgress / total) * 100;
+  const radius = 70;
+  const strokeWidth = 20;
+
+  const percentage = ratio * 100;
   const circumference = 2 * Math.PI * radius;
   const progressValue = (circumference * percentage) / 100;
   const cx = radius + strokeWidth / 2;
@@ -41,7 +40,7 @@ const RingProgress: React.FC<RingProgressProps> = ({ progress, total }) => {
           cx={cx}
           cy={cy}
           r={radius}
-          stroke={theme.primary}
+          stroke={theme.key}
           strokeWidth={strokeWidth}
           strokeDasharray={`${progressValue}, ${circumference}`}
           fill="none"
@@ -55,8 +54,8 @@ const RingProgress: React.FC<RingProgressProps> = ({ progress, total }) => {
             alignItems: "center",
             justifyContent: "center",
           }}>
-          <ThemedText style={{ fontWeight: "600" }} size={20}>
-            {Math.round((progress / total) * 100)}%
+          <ThemedText style={{ fontWeight: "600" }} size={26}>
+            {Math.round(ratio * 100)}%
           </ThemedText>
         </View>
       </Svg>

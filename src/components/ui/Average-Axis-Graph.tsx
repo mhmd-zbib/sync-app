@@ -12,7 +12,7 @@ const AverageAxisGraph = ({ height }: { height: number }) => {
         width: "100%",
         height: 50,
         borderColor: color.accent,
-        borderBottomWidth: 1,
+        // borderBottomWidth: 1,
       }}
     />
   );

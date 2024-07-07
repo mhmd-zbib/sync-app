@@ -10,12 +10,11 @@ import {
   Stop,
   Svg,
 } from "react-native-svg";
-import AverageAxisGraph from "./Average-Axis-Graph";
 import GraphLabel from "./Graph-Labels";
 
 type LineGraphProps = {
   data: number[];
-  labels: any[];
+  labels?: any[];
 };
 
 const GRAPH_ASPECT_RATIO = 7 / 16;
@@ -54,10 +53,6 @@ export function LineGraph(props: LineGraphProps) {
     .y1((d, iy) => yScale(d))
     .curve(d3.curveCatmullRom);
 
-  const rainbowColorScale = d3
-    .scaleSequential(d3.interpolateRainbow)
-    .domain([0, props.data.length - 1]);
-
   const svgLine = lineFn(props.data) || "";
   const svgArea = areaFn(props.data) || "";
 
@@ -65,12 +60,9 @@ export function LineGraph(props: LineGraphProps) {
 
   return (
     <View
-      // style={{ backgroundColor: "red" }}
       onLayout={(ev) => {
         setWidth(ev.nativeEvent.layout.width);
       }}>
-      <AverageAxisGraph height={50} />
-
       <Svg width={width} height={height}>
         <Defs>
           <LinearGradient id="gradient" x1={"0%"} x2="0%" y1={"0%"} y2={"100%"}>
@@ -144,8 +136,6 @@ export function LineGraph(props: LineGraphProps) {
           </TouchableOpacity>
         </View>
       ))}
-
-      {/* <GraphTicks item={props.labels} /> */}
     </View>
   );
 }

@@ -7,7 +7,7 @@ import { ScrollView, View } from "react-native";
 const DashboardLayouts = () => {
   const navItems = [
     { path: `/dashboard`, title: "Reminders" },
-    { path: `/dashboard/contact`, title: "Contacts" },
+    { path: `/dashboard/contacts`, title: "Contacts" },
     { path: `/dashboard/reminders`, title: "Notes" },
     { path: `/dashboard/groups`, title: "Goals" },
   ];

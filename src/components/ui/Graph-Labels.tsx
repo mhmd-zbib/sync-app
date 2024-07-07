@@ -1,28 +1,26 @@
-import React from "react";
-import { View } from "react-native";
 import ThemedText from "@/components/ui/ThemedText";
 import { useTheme } from "@/hooks/useColorScheme";
-import { StyleSheet } from "react-native";
+import React from "react";
+import { StyleSheet, View } from "react-native";
 
-interface BarLabelProps {
+interface GraphLabelProps {
   value: number;
   isSelected: boolean;
 }
 
-const GraphLabel: React.FC<BarLabelProps> = ({ value, isSelected }) => {
+const GraphLabel: React.FC<GraphLabelProps> = ({ value, isSelected }) => {
   const theme = useTheme();
+
+  if (!isSelected) return null;
 
   return (
     <View style={styles.container}>
-      {isSelected && (
-        <View style={styles.labelContainer}>
-          <View
-            style={[styles.labelBackground, { backgroundColor: theme.accent }]}>
-            <ThemedText>{value}</ThemedText>
-          </View>
-          <View style={[styles.divider, { backgroundColor: theme.accent }]} />
+      <View style={styles.labelContainer}>
+        <View
+          style={[styles.labelBackground, { backgroundColor: theme.accent }]}>
+          <ThemedText>{value}</ThemedText>
         </View>
-      )}
+      </View>
     </View>
   );
 };
@@ -42,13 +40,23 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     paddingVertical: 6,
     alignItems: "center",
-    flexDirection: "row",
     justifyContent: "center",
-    width: 80,
+    width: 50,
   },
-  divider: {
-    width: 1,
-    height: 20,
+  triangle: {
+    top: -21,
+    width: 25,
+    height: 25,
+    backgroundColor: "transparent",
+    borderStyle: "solid",
+    borderLeftWidth: 12.5,
+    borderRightWidth: 12.5,
+    borderBottomWidth: 25,
+    borderLeftColor: "transparent",
+    borderRightColor: "transparent",
+    transform: [{ rotate: "45deg" }],
+    position: "absolute",
+    zIndex: -5,
   },
 });
 

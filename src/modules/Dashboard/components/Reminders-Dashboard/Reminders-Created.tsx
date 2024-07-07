@@ -1,28 +1,21 @@
-import BarGraph from "@/components/ui/Bar-Graph";
-import Button from "@/components/ui/Button";
 import DashboardContainer from "@/components/ui/Dashboard-Container";
 import DashboardTitle from "@/components/ui/Dashboard-Title";
 import { LineGraph } from "@/components/ui/Line-Graph";
-import Separator from "@/components/ui/Separator";
-import ThemedText from "@/components/ui/ThemedText";
-import { useTheme } from "@/hooks/useColorScheme";
-import { MaterialIcons } from "@expo/vector-icons";
 import React from "react";
 import { View } from "react-native";
 
-const RemindersCreated = () => {
-  const data = [
-    { label: "S", value: 20 },
-    { label: "M", value: 90 },
-    { label: "W", value: 47 },
-    { label: "T", value: 17 },
-    { label: "Th", value: 50 },
-    { label: "F", value: 34 },
-    { label: "S", value: 23 },
-  ];
+interface RemindersCreatedType {
+  created: {
+    total: number;
+    weekly: number[];
+    weeklyTotal: number;
+    monthlyTotal: number;
+    plus: number;
+  };
+}
 
-  const value = data.map((item) => item.value);
-  const label = data.map((item) => item.label);
+const RemindersCreated = ({ created }: RemindersCreatedType) => {
+  const { weekly, weeklyTotal, monthlyTotal, plus } = created;
 
   return (
     <DashboardContainer title="Created">
@@ -33,12 +26,15 @@ const RemindersCreated = () => {
             justifyContent: "space-between",
             flex: 1,
           }}>
-          {/* <DashboardTitle value={`10`} title="Created" /> */}
-          <DashboardTitle value={`10`} title="Created this week" sub="2" />
-          <DashboardTitle value={`6`} title="Average" />
+          <DashboardTitle
+            value={weeklyTotal}
+            title="Created this week"
+            sub={plus}
+          />
+          <DashboardTitle value={monthlyTotal} title="This month" />
         </View>
       </View>
-      <LineGraph data={value} labels={label} />
+      <LineGraph data={weekly} />
     </DashboardContainer>
   );
 };
