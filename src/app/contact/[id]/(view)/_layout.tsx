@@ -10,15 +10,15 @@ import React from "react";
 import { ScrollView, View } from "react-native";
 
 const ContactLayout = () => {
-  const { id } = useLocalSearchParams();
+  const { contactId } = useLocalSearchParams();
   const navItems = [
-    { path: `/contact/${id}`, title: "Info" },
-    { path: `/contact/${id}/notes`, title: "Notes" },
-    { path: `/contact/${id}/reminders`, title: "Reminders" },
-    { path: `/contact/${id}/groups`, title: "Groups" },
+    { path: `/contact/${contactId}`, title: "Info" },
+    { path: `/contact/${contactId}/notes`, title: "Notes" },
+    { path: `/contact/${contactId}/reminders`, title: "Reminders" },
+    { path: `/contact/${contactId}/groups`, title: "Groups" },
   ];
 
-  const { data, isLoading, isError } = useContact({ contactId: id });
+  const { data, isLoading, isError } = useContact({ contactId: contactId });
   const { name, links } = data || {};
 
   if (isLoading) return <Loading />;

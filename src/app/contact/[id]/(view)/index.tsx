@@ -9,8 +9,9 @@ import React from "react";
 import { StyleSheet, View } from "react-native";
 
 const ContactInfoScreen = () => {
-  const { id } = useLocalSearchParams();
-  const { data } = useContact({ contactId: id });
+  const { contactId } = useLocalSearchParams();
+  const { data } = useContact({ contactId });
+
   const { description, phone, email, tags = [], experience = [] } = data || {};
 
   return (

@@ -19,21 +19,19 @@ const RemindersCreated = ({ created }: RemindersCreatedType) => {
 
   return (
     <DashboardContainer title="Created">
-      <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
-        <View
-          style={{
-            flexDirection: "row",
-            justifyContent: "space-between",
-            flex: 1,
-          }}>
-          <DashboardTitle
-            value={weeklyTotal}
-            title="Created this week"
-            sub={plus}
-          />
-          <DashboardTitle value={monthlyTotal} title="This month" />
-        </View>
+      <View
+        style={{
+          flexDirection: "row",
+          justifyContent: "space-between",
+        }}>
+        <DashboardTitle
+          value={weeklyTotal}
+          title="Created this week"
+          sub={plus}
+        />
+        <DashboardTitle value={monthlyTotal} title="This month" />
       </View>
+
       <LineGraph data={weekly} />
     </DashboardContainer>
   );

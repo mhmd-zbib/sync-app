@@ -12,7 +12,7 @@ const DashboardTitle = ({
   title: string;
   value?: number;
   sub?: number;
-  sideValue?: number;
+  sideValue?: any;
 }) => {
   const theme = useTheme();
   return (
