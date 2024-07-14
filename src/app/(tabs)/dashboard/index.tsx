@@ -1,10 +1,10 @@
-import RemindersCompleted from "@/modules/Dashboard/components/Reminders-Dashboard/Reminders-Completed";
+import RemindersCompleted from "@/features/Dashboard/components/Reminders-Dashboard/Reminders-Completed";
 import DashboardMiniCont from "@/components/ui/Dashboard-Mini-Cont";
-import RemindersCreated from "@/modules/Dashboard/components/Reminders-Dashboard/Reminders-Created";
-import RemindersGoal from "@/modules/Dashboard/components/Reminders-Dashboard/Reminders-Goal";
+import RemindersCreated from "@/features/Dashboard/components/Reminders-Dashboard/Reminders-Created";
+import RemindersGoal from "@/features/Dashboard/components/Reminders-Dashboard/Reminders-Goal";
 import React from "react";
 import { View } from "react-native";
-import RemindersMissed from "@/modules/Dashboard/components/Reminders-Dashboard/Reminders-Missed";
+import RemindersMissed from "@/features/Dashboard/components/Reminders-Dashboard/Reminders-Missed";
 
 const activityData = {
   created: {

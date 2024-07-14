@@ -1,6 +1,6 @@
 import reminders from "@/__test__/data/Reminders.json";
 import SearchInput from "@/components/ui/SearchInput";
-import ReminderList from "@/modules/Reminders/components/Reminder-List";
+import ReminderList from "@/features/Reminders/components/Reminder-List";
 import React from "react";
 import { ScrollView, StyleSheet } from "react-native";
 

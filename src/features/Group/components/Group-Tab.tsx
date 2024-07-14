@@ -11,6 +11,7 @@ export const GroupTab = () => {
     { path: `/group/${id}`, title: "Info" },
     { path: `/group/${id}/notes`, title: "Notes" },
   ];
+
   // Function to determine if the current path is active
   const isActive = (navPath: string) => {
     return path === navPath;

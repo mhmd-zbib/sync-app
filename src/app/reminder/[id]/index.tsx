@@ -1,4 +1,4 @@
-import ReminderDetails from "@/modules/Reminders/components/Reminder-Details";
+import ReminderDetails from "@/features/Reminders/components/Reminder-Details";
 import React from "react";
 
 const Reminder = () => {

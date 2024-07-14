@@ -1,6 +1,6 @@
 import FormLayout from "@/components/layouts/FormLayout";
 import TextInput from "@/components/ui/TextInput";
-import { useContact } from "@/modules/Contact/query/get-contact";
+import { useContact } from "@/features/Contact/query/get-contact";
 import { useLocalSearchParams, usePathname } from "expo-router";
 import React, { useState } from "react";
 

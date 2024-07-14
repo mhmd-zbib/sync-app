@@ -1,6 +1,6 @@
 import { View, Text } from "react-native";
 import React from "react";
-import { useContactReminders } from "@/modules/Contact/query/get-contact-reminders";
+import { useContactReminders } from "@/features/Contact/query/get-contact-reminders";
 import { useLocalSearchParams } from "expo-router";
 
 const ContactRemindersScreen = () => {

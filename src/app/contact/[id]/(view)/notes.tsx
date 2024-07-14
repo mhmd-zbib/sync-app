@@ -1,6 +1,6 @@
 import SearchInput from "@/components/ui/SearchInput";
-import { useContactNotes } from "@/modules/Contact/query/get-contact-notes";
-import NoteList from "@/modules/Notes/Components/Note-List";
+import { useContactNotes } from "@/features/Contact/query/get-contact-notes";
+import NoteList from "@/features/Notes/Components/Note-List";
 import { useLocalSearchParams } from "expo-router";
 import React from "react";
 

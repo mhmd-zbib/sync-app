@@ -1,7 +1,7 @@
 import EmptyList from "@/components/ui/Empty-List";
 import Loading from "@/components/ui/Loading";
-import ContactList from "@/modules/Contact/components/Contact-List";
-import { useContacts } from "@/modules/Contact/query/get-contacts";
+import ContactList from "@/features/Contact/components/Contact-List";
+import { useContacts } from "@/features/Contact/query/get-contacts";
 import React from "react";
 const ContactsScreen = () => {
   const contactsQuery = useContacts();
